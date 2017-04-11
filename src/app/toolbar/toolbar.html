@@ -1,0 +1,32 @@
+<!--<a class="navbar-brand" href="javascript:void(0)">-->
+    <!--<div class="navbar-brand-img"></div>-->
+    <!--&lt;!&ndash;<img src="img/logo/lobiadmin-logo-text-white-32.png" class="hidden-xs" alt="" />&ndash;&gt;-->
+<!--</a>-->
+<!--Menu show/hide toggle button-->
+<ul class="nav navbar-nav pull-left show-hide-menu">
+    <li>
+        <lobi-menu-toggle></lobi-menu-toggle>
+    </li>
+</ul>
+<div class="clearfix-xxs"></div>
+<div class="navbar-items-2">
+    <!--Choose languages dropdown-->
+    <ul class="nav navbar-nav">
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <img src="images/flags/{{vm.selectedLanguage.code}}.png" alt="en" />
+                <span class="visible-lg-inline-block visible-md-inline-block visible-sm-inline-block">{{vm.selectedLanguage.title}}</span>
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li ng-repeat="language in vm.languages">
+                    <a ng-click="vm.changeLanguage(language)">
+                        <img src="images/flags/{{language.code}}.png" alt="language.code" />
+                        {{language.title}}
+                    </a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+<div class="clearfix"></div>

@@ -1,0 +1,60 @@
+<div class="setting-box hidden-print">
+    <div class="btn-toggle">
+        <span class="glyphicon glyphicon-cog"></span>
+    </div>
+    <form action class="lobi-form">
+        <fieldset>
+            <header>Settings</header>
+            <div class="row row-skin-options">
+                <div class="col-xs-12">
+                    <h4>Skins</h4>
+                    {{vm.title}}
+                    <div class="col-xs-3 setting-item" ng-repeat="theme in vm.themes">
+                        <label class="radio">
+                            <input type="radio" name="header-skin" value="{{theme}}" checked>
+                            <div>
+                                <div class="setting-header"></div>
+                                <div class="setting-menu"></div>
+                            </div>
+                            <i class="fa fa-check-square"></i>
+                        </label>
+                    </div>
+                    <!--<div class="col-xs-3 setting-item">-->
+                        <!--<label class="radio">-->
+                            <!--<input type="radio" name="header-skin" value="header-cyan">-->
+                            <!--<div>-->
+                                <!--<div class="setting-header"></div>-->
+                                <!--<div class="setting-menu"></div>-->
+                            <!--</div>-->
+                            <!--<i class="fa fa-check-square"></i>-->
+                        <!--</label>-->
+                    <!--</div>-->
+                    <!--<div class="col-xs-3 setting-item">-->
+                        <!--<label class="radio">-->
+                            <!--<input type="radio" name="header-skin" value="header-green">-->
+                            <!--<div>-->
+                                <!--<div class="setting-header"></div>-->
+                                <!--<div class="setting-menu"></div>-->
+                            <!--</div>-->
+                            <!--<i class="fa fa-check-square"></i>-->
+                        <!--</label>-->
+                    <!--</div>-->
+                    <!--<div class="col-xs-3 setting-item">-->
+                        <!--<label class="radio">-->
+                            <!--<input type="radio" name="header-skin" value="header-brown">-->
+                            <!--<div>-->
+                                <!--<div class="setting-header"></div>-->
+                                <!--<div class="setting-menu"></div>-->
+                            <!--</div>-->
+                            <!--<i class="fa fa-check-square"></i>-->
+                        <!--</label>-->
+                    <!--</div>-->
+                </div>
+            </div>
+            <button type="button" class="btn btn-primary btn-block btn-pretty"
+                    ng-click="vm.clearStorage()" data-action="clear-storage"><i class="fa fa-refresh"></i>
+                Clear local storage
+            </button>
+        </fieldset>
+    </form>
+</div>

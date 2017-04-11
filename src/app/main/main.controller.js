@@ -1,4 +1,7 @@
-(function() {
+/**
+ * Created by zura on 11/13/2016.
+ */
+(function () {
   'use strict';
 
   angular
@@ -6,34 +9,23 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($timeout, webDevTec, toastr) {
-    var vm = this;
+  function MainController($scope) {
 
-    vm.awesomeThings = [];
-    vm.classAnimation = '';
-    vm.creationDate = 1491917007405;
-    vm.showToastr = showToastr;
+    // Methods
 
-    activate();
 
-    function activate() {
-      getWebDevTec();
-      $timeout(function() {
-        vm.classAnimation = 'rubberBand';
-      }, 4000);
-    }
+    init();
 
-    function showToastr() {
-      toastr.info('Fork <a href="https://github.com/Swiip/generator-gulp-angular" target="_blank"><b>generator-gulp-angular</b></a>');
-      vm.classAnimation = '';
-    }
+    ///////////
 
-    function getWebDevTec() {
-      vm.awesomeThings = webDevTec.getTec();
-
-      angular.forEach(vm.awesomeThings, function(awesomeThing) {
-        awesomeThing.rank = Math.random();
+    function init() {
+      // Remove the splash screen
+      $scope.$on('$viewContentAnimationEnded', function (event) {
+        if (event.targetScope.$id === $scope.$id) {
+          angular.element('#page-preloader').remove();
+        }
       });
     }
+
   }
 })();

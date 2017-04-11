@@ -9,8 +9,34 @@
  *  If you want to override some bootstrap variables, you have to change values here.
  *  The list of variables are listed here bower_components/bootstrap/less/variables.less
  */
-@navbar-inverse-link-color: #5AADBB;
-@icon-font-path: '../../bootstrap/fonts/';
+
+@chosen-sprite-path: "../images/chosen-sprite.png";
+@chosen-sprite-retina-path: "../images/chosen-sprite@2x.png";
+@preloader-inner-size: 320px;
+@preloader-loader-size: 60px;
+
+//@import "bootstrap-variables";
+//@import "../../bower_components/bootstrap/less/bootstrap";
+
+html,
+body,
+#main-view,
+#content-view {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  overflow: hidden;
+}
+
+#main-view {
+  padding-bottom: @navbar-height;
+}
+
+#content-view {
+  overflow: auto;
+}
 
 .browsehappy {
   margin: 0.2em 0;
@@ -19,11 +45,22 @@
   padding: 0.2em 0;
 }
 
-.thumbnail {
-  height: 200px;
+#main {
+  height: 100%;
+}
 
-  img.pull-right {
-    width: 50px;
+#page-preloader {
+  .preloader-inner{
+    width: @preloader-inner-size;
+    position: absolute;
+    left: 50%;
+    margin-left: -@preloader-inner-size/2;
+    top: 50%;
+    margin-top: -200px;
+  }
+
+  .sk-circle{
+    margin-top: 30px;
   }
 }
 

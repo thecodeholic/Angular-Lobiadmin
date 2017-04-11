@@ -1,0 +1,14 @@
+<div id="layout-default">
+    <nav class="navbar navbar-default navbar-header header" ui-view="toolbar"></nav>
+
+    <lobi-menu></lobi-menu>
+    <!--<div id="navigation-view" ui-view="navigation"></div>-->
+    <div id="main">
+        <spinner ng-show="$root.showPageLoader"></spinner>
+
+
+        <div id="content-view" ui-view="content"></div>
+
+    </div>
+    <!--<settings-box></settings-box>-->
+</div>

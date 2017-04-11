@@ -1,0 +1,27 @@
+.panel-group {
+  .panel {
+    .panel-heading {
+      .icon-expanded {
+        display: none;
+      }
+      .icon-collapsed {
+        display: block;
+      }
+
+      &:focus {
+        outline: 0;
+      }
+    }
+
+    &.panel-open {
+      .panel-heading {
+        .icon-collapsed {
+          display: none;
+        }
+        .icon-expanded {
+          display: block;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+#layout-default{
+  height: 100%;
+
+  #content-view{
+    //background-color: #f2f2f2;
+  }
+  #main{
+    padding-bottom: 48px;
+    @media (max-width: @screen-xs-max){
+      padding-bottom: 80px;
+    }
+    .spinner-backdrop{
+      z-index: 4;
+    }
+    footer{
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      z-index: 3;
+      padding: 15px;
+      background-color: lighten(@gray-lighter, 3%);
+      border-top: 1px solid #e7e7e7;
+
+      p{
+        margin-bottom: 0;
+      }
+    }
+  }
+}

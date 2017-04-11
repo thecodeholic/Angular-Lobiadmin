@@ -1,0 +1,21 @@
+.theme-variant(@themeName, @color) {
+  body.theme-@{themeName} {
+    .menu {
+      nav {
+        ul {
+          > li {
+            &.active {
+              > a {
+                color: @color;
+              }
+
+              &:after {
+                border-right-color: @color;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

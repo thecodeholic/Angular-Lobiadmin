@@ -1,0 +1,13 @@
+<div id="error" class="display-block w-full">
+    <!--Author      : @arboshiki-->
+    <div class="error-page w-full display-inline-block vertical-align-middle">
+        <h1 class="error-page-code animated pulse"><i class="fa fa-warning"></i> {{$rootScope.pageTitle}}</h1>
+        <h1 class="error-page-text">{{vm.subtitle}}</h1>
+        {{vm.body}}
+    </div>
+    <script>
+        $('.error-page [data-func="go-back"]').click(function (ev) {
+            window.history.back();
+        });
+    </script>
+</div>
