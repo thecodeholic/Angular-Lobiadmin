@@ -28,6 +28,7 @@
 
     lobiNavigationServiceProvider.saveItem('app.dashboard', {
       text: 'Dashboard',
+      state: 'app.dashboard',
       weight: 1
       // icon: 'fa fa-table'
     });

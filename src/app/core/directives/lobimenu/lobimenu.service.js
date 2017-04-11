@@ -55,7 +55,6 @@
             _preventEmptyLinksClick();
             _addToggleIconsToMenu();
             _showMenuToggleIcon();
-            _enableMenuHeaderButtonTooltips();
             //Enable menu collapse/expand
             _enableToggle();
 
@@ -76,17 +75,6 @@
             _enableHideShow();
 
             // _enableResponsiveness();
-        }
-
-        function _enableMenuHeaderButtonTooltips() {
-            var $btns = me.$el.find('.menu-header-buttons .btn').tooltip({
-                container: 'body'
-            });
-            if ($($window).width() < ConfigService.SCREEN_MD) {
-                $btns.on('click', function () {
-                    $(this).tooltip('hide');
-                });
-            }
         }
 
         function _preventEmptyLinksClick() {
