@@ -19,13 +19,17 @@
     vm.lockScreen = lockScreen;
     vm.toggleMenu = toggleMenu;
     vm.languages = {
+      en: {
+        'title': 'English',
+        'code': 'en'
+      },
       de: {
         'title': 'Deutsch',
         'code': 'de'
       },
-      en: {
-        'title': 'English',
-        'code': 'en'
+      ka: {
+        'title': 'ქართული',
+        'code': 'ka'
       }
     };
 
