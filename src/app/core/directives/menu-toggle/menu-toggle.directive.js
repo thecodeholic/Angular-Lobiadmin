@@ -15,7 +15,6 @@
             replace: true,
             template: '<a class="border-radius-0 btn font-size-lg" data-action="show-hide-sidebar">\
                             <i class="fa fa-bars"></i>\
-                            \<div class="menu-text font-size-xs">Menu</div>\
                         </a>',
             link: function (scope, element) {
                 LobiMenuService.$showHideBtn = element;

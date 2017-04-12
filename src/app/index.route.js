@@ -18,6 +18,11 @@
             templateUrl: 'app/layouts/default.html',
             controller: 'MainController as vm'
           },
+          'navigation@app': {
+            templateUrl: 'app/navigation/navigation.html',
+            controller: 'NavigationController',
+            controllerAs: 'vm'
+          },
           'toolbar@app': {
             templateUrl: 'app/toolbar/toolbar.html',
             controller: 'ToolbarController',
