@@ -9,8 +9,8 @@
   </li>
 </ul>
 <form class="navbar-search pull-left">
-  <label for="search" class="sr-only">Search...</label>
-  <input type="text" class="font-size-lg" name="search" id="search" placeholder="Search...">
+  <label for="search" class="sr-only">{{'APP.TOOLBAR.SEARCH' | translate}}</label>
+  <input type="text" class="font-size-lg" name="search" id="search" placeholder="{{'APP.TOOLBAR.SEARCH' | translate}}">
   <a class="btn btn-search">
     <span class="glyphicon glyphicon-search"></span>
   </a>
@@ -27,12 +27,12 @@
         <b class="caret"></b>
       </a>
       <ul class="dropdown-menu" uib-dropdown-menu>
-        <li><a href="#profile"><span class="glyphicon glyphicon-user"></span> &nbsp;&nbsp;Profile</a></li>
-        <li><a href="#timeline"><i class="fa fa-code-fork"></i> &nbsp;&nbsp;Timeline</a></li>
-        <li><a href="#lobimail"><span class="glyphicon glyphicon-envelope"></span> &nbsp;&nbsp;Messages</a></li>
+        <li><a href="#profile"><span class="glyphicon glyphicon-user"></span> &nbsp;&nbsp;{{'APP.TOOLBAR.PROFILE' | translate}}</a></li>
+        <li><a href="#timeline"><i class="fa fa-code-fork"></i> &nbsp;&nbsp;{{'APP.TOOLBAR.TIMELINE' | translate}}</a></li>
+        <li><a href="#lobimail"><span class="glyphicon glyphicon-envelope"></span> &nbsp;&nbsp;{{'APP.TOOLBAR.MESSAGES' | translate}}</a></li>
         <li class="divider"></li>
-        <li><a href="lock.html"><span class="glyphicon glyphicon-lock"></span> &nbsp;&nbsp;Lock screen</a></li>
-        <li><a href="login.html"><span class="glyphicon glyphicon-off"></span> &nbsp;&nbsp;Log out</a></li>
+        <li><a href="lock.html"><span class="glyphicon glyphicon-lock"></span> &nbsp;&nbsp;{{'APP.TOOLBAR.LOCK_SCREEN' | translate}}</a></li>
+        <li><a href="login.html"><span class="glyphicon glyphicon-off"></span> &nbsp;&nbsp;{{'APP.TOOLBAR.LOG_OUT' | translate}}</a></li>
       </ul>
     </li>
   </ul>
@@ -70,10 +70,10 @@
       </a>
       <div class="dropdown-menu dropdown-notifications notification-messages border-1 animated-fast flipInX" uib-dropdown-menu>
         <div class="notifications-heading border-bottom-1 bg-white">
-          Messages
+          {{'APP.TOOLBAR.MESSAGES' | translate}}
           <div class="header-actions pull-right">
             <a href="#lobimail" data-action="compose-email">
-              <small><i class="fa fa-edit"></i> Create new</small>
+              <small><i class="fa fa-edit"></i> {{'APP.TOOLBAR.CREATE_NEW' | translate}}</small>
             </a>
           </div>
         </div>
@@ -86,7 +86,7 @@
                 <h5 class="notification-sub-heading">Happy birthday!!</h5>
                 <p class="body-text">Happy birthday. Lorem ipsum dolor sit amor.</p>
               </div>
-              <span class="notification-time">5 min. ago</span>
+              <span class="notification-time">5 {{'APP.GLOBAL.MIN' | translate}}. {{'APP.GLOBAL.AGO' | translate}}</span>
             </a>
           </li>
           <li class="unread">
@@ -98,7 +98,7 @@
                 <p class="body-text">Whirling indicating staunch pglaf, leafy siroc clerks paying eager promoting storm
                   aliquet treasures.</p>
               </div>
-              <span class="notification-time">15 min. ago</span>
+              <span class="notification-time">15 {{'APP.GLOBAL.MIN' | translate}}. {{'APP.GLOBAL.AGO' | translate}}</span>
             </a>
           </li>
           <li class="unread">
@@ -110,7 +110,7 @@
                 <p class="body-text">Region doth chaucer, smiled erhung, recording frail cove design train thy holiday
                   committed. Told how fixed parcae tented whistle doom recording deceivers tribe.</p>
               </div>
-              <span class="notification-time">1 hr. ago</span>
+              <span class="notification-time">1 {{'APP.GLOBAL.HR' | translate}}. {{'APP.GLOBAL.AGO' | translate}}</span>
             </a>
           </li>
           <li>
@@ -122,7 +122,7 @@
                 <p class="body-text">Garden check we, dearer you sharply, martin cable, square bonfires, freely,
                   delphian scorning copying courage. </p>
               </div>
-              <span class="notification-time">17 hr. ago</span>
+              <span class="notification-time">17 {{'APP.GLOBAL.HR' | translate}}. {{'APP.GLOBAL.AGO' | translate}}</span>
             </a>
           </li>
           <li>
@@ -133,7 +133,7 @@
                 <h5 class="notification-sub-heading">Need support about product</h5>
                 <p class="body-text">Essaying unappointed pull disdain, downfall square liberal.</p>
               </div>
-              <span class="notification-time">2 days ago.</span>
+              <span class="notification-time">2 {{'APP.GLOBAL.DAYS' | translate}} {{'APP.GLOBAL.AGO' | translate}}</span>
             </a>
           </li>
           <li>
@@ -145,12 +145,12 @@
                 <p class="body-text">Paltering kingfisher patience woven his, aeneas self each square surer semper. Self
                   reaped bonfires, gift rounds dearer garden.</p>
               </div>
-              <span class="notification-time">January 15, 2014</span>
+              <span class="notification-time">{{'APP.GLOBAL.JANUARY' | translate}} 15, 2014</span>
             </a>
           </li>
         </ul>
         <div class="notifications-footer text-center border-top-1 bg-white">
-          <a href="#lobimail">View all</a>
+          <a href="#lobimail">{{'APP.TOOLBAR.VIEW_ALL' | translate}}</a>
         </div>
       </div>
     </li>
@@ -161,16 +161,16 @@
       </a>
       <div class="dropdown-menu dropdown-notifications notification-news border-1 animated-fast flipInX" uib-dropdown-menu>
         <div class="notifications-heading border-bottom-1 bg-white">
-          Notifications
+          {{'APP.TOOLBAR.NOTIFICATIONS' | translate}}
         </div>
         <ul class="notifications-body max-h-300">
           <li class="unread">
             <div class="notification">
               <img class="notification-image" src="assets/images/users/3.jpg" alt="">
               <div class="notification-msg">
-                <h5 class="notification-sub-heading text-gray-darker"><a href="#">Sam Solly</a> posted a comment about
+                <h5 class="notification-sub-heading text-gray-darker"><a href="#">Sam Solly</a> {{'APP.TOOLBAR.NOTIFICATIONS_INNER.POSTED_A_COMMENT_ABOUT' | translate}}
                   <a href="#">Programming in HTML5</a></h5>
-                <p class="body-text"><i class="fa fa-comment"></i> 6 hr. ago</p>
+                <p class="body-text"><i class="fa fa-comment"></i> 6 {{'APP.GLOBAL.HR' | translate}}. {{'APP.GLOBAL.AGO' | translate}}</p>
               </div>
             </div>
           </li>
@@ -179,11 +179,11 @@
               <img class="notification-image" src="assets/images/users/4.jpg" alt="">
               <div class="notification-msg">
                 <h4 class="notification-heading"><a href="#">John Doe</a></h4>
-                <h5 class="notification-sub-heading text-nowrap">Friend request
-                  <a href="#" class="btn btn-info btn-xs btn-response">Accept</a>
-                  <a href="#" class="btn btn-danger btn-xs btn-response">Decline</a>
+                <h5 class="notification-sub-heading text-nowrap">{{'APP.TOOLBAR.NOTIFICATIONS_INNER.FRIEND_REQUEST' | translate}}
+                  <a href="#" class="btn btn-info btn-xs btn-response">{{'APP.TOOLBAR.NOTIFICATIONS_INNER.ACCEPT' | translate}}</a>
+                  <a href="#" class="btn btn-danger btn-xs btn-response">{{'APP.TOOLBAR.NOTIFICATIONS_INNER.DECLINE' | translate}}</a>
                 </h5>
-                <p class="body-text"><i class="fa fa-user"></i> 12 hr. ago</p>
+                <p class="body-text"><i class="fa fa-user"></i> 12 {{'APP.GLOBAL.HR' | translate}}. {{'APP.GLOBAL.AGO' | translate}}</p>
               </div>
             </div>
           </li>
@@ -191,11 +191,11 @@
             <div class="notification">
               <img class="notification-image" src="assets/images/users/2.jpg" alt="">
               <div class="notification-msg">
-                <h5 class="notification-sub-heading"><a href="#">George Darso</a> invited you to join the conference
+                <h5 class="notification-sub-heading"><a href="#">George Darso</a> {{'APP.TOOLBAR.NOTIFICATIONS_INNER.INVITED_YOU_TO_JOIN_THE_CONFERENCE' | translate}}
                 </h5>
-                <p class="body-text"><i class="fa fa-clock-o"></i> yesterday</p>
+                <p class="body-text"><i class="fa fa-clock-o"></i> {{'APP.GLOBAL.YESTERDAY' | translate}}</p>
               </div>
-              <a href="#" class="link-action">View invitation</a>
+              <a href="#" class="link-action">{{'APP.TOOLBAR.NOTIFICATIONS_INNER.VIEW_INVITATION' | translate}}</a>
             </div>
           </li>
           <li>
@@ -203,9 +203,9 @@
               <img class="notification-image" src="assets/images/users/1.jpg" alt="">
               <div class="notification-msg">
                 <h5 class="notification-sub-heading">
-                  <a href="#">Guga Grigo</a> likes your photo
+                  <a href="#">Guga Grigo</a> {{'APP.TOOLBAR.NOTIFICATIONS_INNER.LIKES_YOUR_PHOTO' | translate}}
                 </h5>
-                <p class="body-text"><i class="fa fa-thumbs-up"></i> Tuesday</p>
+                <p class="body-text"><i class="fa fa-thumbs-up"></i> {{'APP.GLOBAL.TUESDAY' | translate}}</p>
               </div>
               <a href="#"><img src="assets/images/users/me-160.jpg" alt="" class="liked-photo"/></a>
             </div>
@@ -214,10 +214,10 @@
             <div class="notification">
               <div class="notification-icon"><i class="glyphicon glyphicon-user"></i></div>
               <div class="notification-msg">
-                <h5 class="notification-sub-heading"><a href="#">Poll Hunely</a> has accepted your invitation.</h5>
-                <p class="body-text"><i class="fa fa-check"></i> yesterday</p>
+                <h5 class="notification-sub-heading"><a href="#">Poll Hunely</a> {{'APP.TOOLBAR.NOTIFICATIONS_INNER.HAS_ACCEPTED_YOUR_INVITATION' | translate}}</h5>
+                <p class="body-text"><i class="fa fa-check"></i> {{'APP.GLOBAL.YESTERDAY' | translate}}</p>
               </div>
-              <a href="#" class="link-action"><i class="fa fa-calendar"></i> Add to calendar</a>
+              <a href="#" class="link-action"><i class="fa fa-calendar"></i> {{'APP.TOOLBAR.NOTIFICATIONS_INNER.ADD_TO_CALENDAR' | translate}}</a>
             </div>
           </li>
           <li>
@@ -225,15 +225,14 @@
               <div class="notification-icon"><i class="fa fa-users"></i></div>
               <div class="notification-msg">
                 <h5 class="notification-sub-heading"><a href="#" data-toggle="tooltip" data-html="true"
-                                                        data-title="Mari Abdu<br>Guga Grigo<br>David Sula">3 new
-                  users</a> has just signed up</h5>
-                <p class="body-text"><i class="fa fa-user"></i> Sunday</p>
+                                                        data-title="Mari Abdu<br>Guga Grigo<br>David Sula">3 {{'APP.TOOLBAR.NOTIFICATIONS_INNER.NEW_USERS' | translate}}</a> {{'APP.TOOLBAR.NOTIFICATIONS_INNER.HAS_JUST_SIGNED_UP' | translate}}</h5>
+                <p class="body-text"><i class="fa fa-user"></i> {{'APP.GLOBAL.SUNDAY' | translate}}</p>
               </div>
             </div>
           </li>
         </ul>
         <div class="notifications-footer border-top-1 bg-white text-center">
-          <a href="#">View all</a>
+          <a href="#">{{'APP.TOOLBAR.VIEW_ALL' | translate}}</a>
         </div>
       </div>
     </li>
@@ -244,12 +243,12 @@
       </a>
       <div class="dropdown-menu dropdown-notifications notification-tasks border-1 animated-fast flipInX" uib-dropdown-menu>
         <div class="notifications-heading border-bottom-1 bg-white">
-          Active tasks
+          {{'APP.TOOLBAR.ACTIVE_TASKS' | translate}}
         </div>
         <ul class="notifications-body max-h-300">
           <li>
             <div class="notification">
-              <p class="body-text"><span class="label label-danger">Critical</span> Create SASS files <span
+              <p class="body-text"><span class="label label-danger">{{'APP.TOOLBAR.CRITICAL' | translate}}</span> Create SASS files <span
                 class="pull-right">90%</span></p>
               <div class="progress">
                 <div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar"
@@ -257,13 +256,13 @@
                 </div>
               </div>
               <a href="#" data-container="body" data-toggle="tooltip" data-html="true"
-                 data-title="Zura Sekhno<br>George darso<br>Guga Grigo">Working on</a>
-              <a href="#" class="link-action">Details</a>
+                 data-title="Zura Sekhno<br>George darso<br>Guga Grigo">{{'APP.TOOLBAR.WORKING_ON' | translate}}</a>
+              <a href="#" class="link-action">{{'APP.TOOLBAR.DETAILS' | translate}}</a>
             </div>
           </li>
           <li>
             <div class="notification">
-              <p class="body-text"><span class="label label-warning">Important</span> Create new login form <span
+              <p class="body-text"><span class="label label-warning">{{'APP.TOOLBAR.IMPORTANT' | translate}}</span> Create new login form <span
                 class="pull-right">30%</span></p>
               <div class="progress progress-sm">
                 <div class="progress-bar progress-bar-warning progress-bar-striped active" role="progressbar"
@@ -271,13 +270,13 @@
                 </div>
               </div>
               <a href="#" data-container="body" data-toggle="tooltip" data-html="true"
-                 data-title="Zura Sekhno<br>George darso<br>Guga Grigo">Working on</a>
-              <a href="#" class="link-action">Details</a>
+                 data-title="Zura Sekhno<br>George darso<br>Guga Grigo">{{'APP.TOOLBAR.WORKING_ON' | translate}}</a>
+              <a href="#" class="link-action">{{'APP.TOOLBAR.DETAILS' | translate}}</a>
             </div>
           </li>
           <li>
             <div class="notification">
-              <p class="body-text"><span class="label label-primary">Normal</span> Create angularjs version <span
+              <p class="body-text"><span class="label label-primary">{{'APP.TOOLBAR.NORMAL' | translate}}</span> Create angularjs version <span
                 class="pull-right">10%</span></p>
               <div class="progress progress-xs">
                 <div class="progress-bar progress-bar-danger progress-bar-striped active" role="progressbar"
@@ -285,13 +284,13 @@
                 </div>
               </div>
               <a href="#" data-container="body" data-toggle="tooltip" data-html="true"
-                 data-title="John Doe<br>Jane Smth">Working on</a>
-              <a href="#" class="link-action">Details</a>
+                 data-title="John Doe<br>Jane Smth">{{'APP.TOOLBAR.WORKING_ON' | translate}}</a>
+              <a href="#" class="link-action">{{'APP.TOOLBAR.DETAILS' | translate}}</a>
             </div>
           </li>
           <li>
             <div class="notification">
-              <p class="body-text"><span class="label label-warning">Important</span> Password reset <span
+              <p class="body-text"><span class="label label-warning">{{'APP.TOOLBAR.IMPORTANT' | translate}}</span> Password reset <span
                 class="pull-right">50%</span></p>
               <div class="progress">
                 <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="50"
@@ -299,13 +298,13 @@
                 </div>
               </div>
               <a href="#" data-container="body" data-toggle="tooltip" data-html="true"
-                 data-title="Zura Sekhno<br>George darso<br>Guga Grigo">Working on</a>
-              <a href="#" class="link-action">Details</a>
+                 data-title="Zura Sekhno<br>George darso<br>Guga Grigo">{{'APP.TOOLBAR.WORKING_ON' | translate}}</a>
+              <a href="#" class="link-action">{{'APP.TOOLBAR.DETAILS' | translate}}</a>
             </div>
           </li>
           <li>
             <div class="notification">
-              <p class="body-text"><span class="label label-danger">Critical</span> Hardware repair <span
+              <p class="body-text"><span class="label label-danger">{{'APP.TOOLBAR.CRITICAL' | translate}}</span> Hardware repair <span
                 class="pull-right fa fa-check text-success"></span></p>
               <div class="progress">
                 <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar"
@@ -313,13 +312,13 @@
                   class="sr-only">100% Complete</span></div>
               </div>
               <a href="#" data-container="body" data-toggle="tooltip" data-html="true"
-                 data-title="John Doe<br>Jane Smth">Working on</a>
-              <a href="#" class="link-action">Details</a>
+                 data-title="John Doe<br>Jane Smth">{{'APP.TOOLBAR.WORKING_ON' | translate}}</a>
+              <a href="#" class="link-action">{{'APP.TOOLBAR.DETAILS' | translate}}</a>
             </div>
           </li>
           <li>
             <div class="notification">
-              <p class="body-text"><span class="label label-success">Important</span> Set up new server <span
+              <p class="body-text"><span class="label label-success">{{'APP.TOOLBAR.IMPORTANT' | translate}}</span> Set up new server <span
                 class="pull-right fa fa-check text-success"></span></p>
               <div class="progress progress-lg">
                 <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar"
@@ -327,13 +326,13 @@
                   class="sr-only">100% Complete</span></div>
               </div>
               <a href="#" data-container="body" data-toggle="tooltip" data-html="true"
-                 data-title="Poll Husaly<br>Akaki Liqo">Working on</a>
-              <a href="#" class="link-action">Details</a>
+                 data-title="Poll Husaly<br>Akaki Liqo">{{'APP.TOOLBAR.DONE' | translate}}</a>
+              <a href="#" class="link-action">{{'APP.TOOLBAR.DETAILS' | translate}}</a>
             </div>
           </li>
         </ul>
         <div class="notifications-footer border-top-1 bg-white text-center">
-          <a href="#">View all</a>
+          <a href="#">{{'APP.TOOLBAR.VIEW_ALL' | translate}}</a>
         </div>
       </div>
     </li>
