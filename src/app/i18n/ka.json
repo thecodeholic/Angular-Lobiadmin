@@ -1,0 +1,69 @@
+{
+  "APP": {
+    "GLOBAL":{
+      "DAY": "დღის",
+      "DAYS": "დღის",
+      "HR": "სთ",
+      "MIN": "წთ",
+      "SEC": "წმ",
+      "AGO": "წინ",
+      "YESTERDAY": "გუშინ",
+      "MONDAY": "ორშაბათი",
+      "TUESDAY": "სამშაბათი",
+      "WEDNESDAY": "ოთხშაბათი",
+      "THURSDAY": "ხუთშაბათი",
+      "FRIDAY": "პარასკევი",
+      "SATURDAY": "შაბათი",
+      "SUNDAY": "კვირა",
+
+      "JANUARY": "იანვარი",
+      "FEBRUARY": "თებერვალი",
+      "MARCH": "მარტი",
+      "APRIL": "აპრილი",
+      "MAY": "მაისი",
+      "JUNE": "ივნისი",
+      "JULE": "ივლისი",
+      "AUGUST": "აგვისტო",
+      "SEPTEMBER": "სექტემბერი",
+      "OCTOBER": "ოქტომბერი",
+      "NOVEMBER": "ნოემბერი",
+      "DECEMBER": "დეკემბერი"
+    },
+
+    "TOOLBAR": {
+      "SEARCH": "ძიება...",
+
+      "PROFILE": "პროფილი",
+      "TIMELINE": "კედელი",
+      "MESSAGES": "მესიჯები",
+      "LOCK_SCREEN": "ეკრანის დაბლოკვა",
+      "LOG_OUT": "გამოსვლა",
+      "CREATE_NEW": "ახლის შექმნა",
+      "VIEW_ALL": "ყველას ნახვა",
+
+      "NOTIFICATIONS": "შეტყობინებები",
+      "NOTIFICATIONS_INNER": {
+        "FRIEND_REQUEST": "მეგობრობის შეთავაზება",
+        "ACCEPT": "თანხმობა",
+        "DECLINE": "უარი",
+        "VIEW_INVITATION": "მოწვევის ნახვა",
+        "ADD_TO_CALENDAR": "კალენდარში დამატება",
+        "POSTED_A_COMMENT_ABOUT": "დააკომენტარა",
+        "INVITED_YOU_TO_JOIN_THE_CONFERENCE": "მოგიწვიათ კონფერენციაზე",
+        "LIKES_YOUR_PHOTO": "მოიწონა თქვენი ფოტო",
+        "HAS_ACCEPTED_YOUR_INVITATION": "დათანხმდა თქვენს მოწვევას",
+        "HAS_JUST_SIGNED_UP": "ახლახანს დარეგისტრირდა",
+        "NEW_USER": "ახალი მომხმარებელი",
+        "NEW_USERS": "ახალი მომხმარებელი"
+      },
+
+      "ACTIVE_TASKS": "მიმდინარე დავალებები",
+      "CRITICAL": "სასწრაფო",
+      "IMPORTANT": "აუცილებელი",
+      "NORMAL": "ნორმალური",
+      "WORKING_ON": "პროცესში",
+      "DETAILS": "დეტალურად",
+      "DONE": "დასრულებული"
+    }
+  }
+}
