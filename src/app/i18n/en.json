@@ -1,0 +1,69 @@
+{
+  "APP": {
+    "GLOBAL":{
+      "DAY": "day",
+      "DAYS": "days",
+      "HR": "hr",
+      "MIN": "min",
+      "SEC": "sec",
+      "AGO": "ago",
+      "YESTERDAY": "Yesterday",
+      "MONDAY": "Monday",
+      "TUESDAY": "Tuesday",
+      "WEDNESDAY": "Wednesday",
+      "THURSDAY": "Thursday",
+      "FRIDAY": "Friday",
+      "SATURDAY": "Saturday",
+      "SUNDAY": "Sunday",
+
+      "JANUARY": "January",
+      "FEBRUARY": "February",
+      "MARCH": "March",
+      "APRIL": "April",
+      "MAY": "May",
+      "JUNE": "June",
+      "JULE": "Jule",
+      "AUGUST": "August",
+      "SEPTEMBER": "September",
+      "OCTOBER": "October",
+      "NOVEMBER": "November",
+      "DECEMBER": "December"
+    },
+
+    "TOOLBAR": {
+      "SEARCH": "Search...",
+
+      "PROFILE": "Profile",
+      "TIMELINE": "Timeline",
+      "MESSAGES": "Messages",
+      "LOCK_SCREEN": "Lock screen",
+      "LOG_OUT": "Log out",
+      "CREATE_NEW": "Create new",
+      "VIEW_ALL": "View All",
+
+      "NOTIFICATIONS": "Notifications",
+      "NOTIFICATIONS_INNER": {
+        "FRIEND_REQUEST": "Friend request",
+        "ACCEPT": "Accept",
+        "DECLINE": "Decline",
+        "VIEW_INVITATION": "View invitation",
+        "ADD_TO_CALENDAR": "Add to calendar",
+        "POSTED_A_COMMENT_ABOUT": "posted a comment about",
+        "INVITED_YOU_TO_JOIN_THE_CONFERENCE": "invited you to join the conference",
+        "LIKES_YOUR_PHOTO": "likes your photo",
+        "HAS_ACCEPTED_YOUR_INVITATION": "has accepted your invitation",
+        "HAS_JUST_SIGNED_UP": "has just signed up",
+        "NEW_USER": "new user",
+        "NEW_USERS": "new users"
+      },
+
+      "ACTIVE_TASKS": "Active tasks",
+      "CRITICAL": "Critical",
+      "IMPORTANT": "Important",
+      "NORMAL": "Normal",
+      "WORKING_ON": "Working on",
+      "DETAILS": "Details",
+      "DONE": "Done"
+    }
+  }
+}
