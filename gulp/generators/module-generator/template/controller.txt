@@ -1,0 +1,26 @@
+(function () {
+  'use strict';
+
+  angular
+      .module('app.{{ModuleName}}')
+      .controller('{{ControllerName}}', {{ControllerName}}Fn);
+
+  /** @ngInject */
+  function {{ControllerName}}Fn(){
+      // var vm = this;
+
+      // Data
+
+
+      // Methods
+
+
+      init();
+
+      ///////////
+
+      function init(){
+
+      }
+  }
+})();

@@ -9,9 +9,10 @@
       .controller('DashboardController', DashboardControllerFn);
 
   /** @ngInject */
-  function DashboardControllerFn(){
+  function DashboardControllerFn($filter){
       // var vm = this;
 
+      $filter('translate')("SOME TEXT");
       // Data
 
 

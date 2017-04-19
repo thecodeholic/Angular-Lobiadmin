@@ -17,6 +17,7 @@
   /** @ngInject */
   function lobiNavigationServiceProvider() {
     var $log = angular.injector(['ng']).get('$log');
+    var $filter = angular.injector(['ng']).get('$filter');
 
     var navigationItems = [],
       provider = this,
@@ -41,6 +42,8 @@
       }
 
       var finalItem = findItemByKeyOrCreate(key);
+
+      // item.text = item.translate ? $filter('translate')(item.translate) : item.text;
 
       angular.extend(finalItem, item);
 
