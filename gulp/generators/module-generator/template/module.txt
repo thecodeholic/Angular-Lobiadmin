@@ -1,0 +1,31 @@
+(function () {
+  'use strict';
+
+  angular
+    .module('app.{{ModuleName}}', [])
+    .config(Config);
+
+  /** @ngInject */
+  function Config($stateProvider, lobiNavigationServiceProvider) {
+
+    $stateProvider
+      .state('app.{{ModuleName}}', {
+        url: '/{{FolderName}}',
+        views: {
+          'content@app': {
+            templateUrl: 'app/{{ModulePath}}/{{FolderName}}.html',
+            controller: '{{ControllerName}} as vm'
+          }
+        },
+        bodyClass: 'app-{{FolderName}}'
+      })
+    ;
+
+    lobiNavigationServiceProvider.saveItem('app.{{ModuleName}}', {
+      text: '{{ModuleDisplayName}}',
+      state: 'app.{{ModuleName}}',
+      weight: 1
+      // icon: 'fa fa-table'
+    });
+  }
+})();
