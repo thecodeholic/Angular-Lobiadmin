@@ -19,8 +19,7 @@
 
       'app.pages',
 
-      'app.dashboard',
-      'app.testModule'
+      'app.dashboard'
     ]);
 
 })();
