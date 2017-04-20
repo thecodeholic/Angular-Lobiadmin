@@ -1,6 +1,8 @@
 {
   "APP": {
     "GLOBAL":{
+      "MONTHS": "months",
+      "MONTH": "month",
       "DAY": "day",
       "DAYS": "days",
       "HR": "hr",

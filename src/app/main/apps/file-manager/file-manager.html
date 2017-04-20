@@ -1,3 +1,73 @@
 <div id="fileManager">
-  {{ModuleContent}}
+  <div class="top-menu">
+    <div class="menu-left">
+      <i class="fa fa-bars" aria-hidden="true"></i>
+      <span class="path-to-file">My Files &gt; Documents</span>
+    </div>
+    <div class="menu-right">
+      <i class="fa fa-search" aria-hidden="true"></i>
+      <div ng-if="vm.currentView === 'list-condensed'"
+                 ng-click="vm.toggleView()">
+        <i class="fa fa-th-list" aria-hidden="true"></i>
+        <span class="tool-tip">List View</span>
+      </div>
+      <div ng-if="vm.currentView === 'grid-view'"
+           ng-click="vm.toggleView()">
+        <i class="fa fa-th" aria-hidden="true"></i>
+        <span class="tool-tip">Grid View</span>
+      </div>
+    </div>
+  </div>
+  <div class="main">
+    <div class="view">
+      <!--<div class="add-new-button">
+        <i class="fa fa-plus-circle" aria-hidden="true"></i>
+      </div>-->
+      <div class="view-content">
+        <table class="files table table-bordered">
+          <tr>
+            <td></td>
+            <td ng-click="orderByField='name'; reverseSort = !reverseSort">{{'FILE_MANAGER.VIEW.NAME' | translate}} <span ng-show="orderByField == 'name'"><span ng-show="!reverseSort"><i class="fa fa-sort-asc" aria-hidden="true"></i></span><span ng-show="reverseSort"><i class="fa fa-sort-desc" aria-hidden="true"></i></span></span></td>
+            <td ng-click="orderByField='type'; reverseSort = !reverseSort">{{'FILE_MANAGER.VIEW.TYPE' | translate}} <span ng-show="orderByField == 'type'"><span ng-show="!reverseSort"><i class="fa fa-sort-asc" aria-hidden="true"></i></span><span ng-show="reverseSort"><i class="fa fa-sort-desc" aria-hidden="true"></i></span></span></td>
+            <td ng-click="orderByField='owner'; reverseSort = !reverseSort">{{'FILE_MANAGER.VIEW.OWNER' | translate}} <span ng-show="orderByField == 'owner'"><span ng-show="!reverseSort"><i class="fa fa-sort-asc" aria-hidden="true"></i></span><span ng-show="reverseSort"><i class="fa fa-sort-desc" aria-hidden="true"></i></span></span></td>
+            <td ng-click="orderByField='size'; reverseSort = !reverseSort">{{'FILE_MANAGER.VIEW.SIZE' | translate}} <span ng-show="orderByField == 'size'"><span ng-show="!reverseSort"><i class="fa fa-sort-asc" aria-hidden="true"></i></span><span ng-show="reverseSort"><i class="fa fa-sort-desc" aria-hidden="true"></i></span></span></td>
+            <td ng-click="orderByField='date'; reverseSort = !reverseSort">{{'FILE_MANAGER.VIEW.LAST_MODIFIED' | translate}} <span ng-show="orderByField == 'date'"><span ng-show="!reverseSort"><i class="fa fa-sort-asc" aria-hidden="true"></i></span><span ng-show="reverseSort"><i class="fa fa-sort-desc" aria-hidden="true"></i></span></span></td>
+          </tr>
+          <tr ng-repeat="x in vm.files | orderBy:orderByField:reverseSort" ng-click="vm.selectFile(x)" ng-right-click="vm.openMenu($event, x)">
+            <td ng-bind-html="x.icon"></td>
+            <td>{{x.name}}</td>
+            <td>{{x.type}}</td>
+            <td>{{x.owner}}</td>
+            <td>{{x.size}}</td>
+            <td>{{x.date | date:'HH:mm, dd/MM/yyyy'}}</td>
+          </tr>
+        </table>
+        <div class="context-menu" ng-if="vm.openContext != null" ng-style="vm.myPos">
+          <div ng-bind="vm.openContext.name"></div>
+          <div ng-bind="vm.openContext.type"></div>
+          <div ng-bind="vm.openContext.owner"></div>
+          <div ng-bind="vm.openContext.size"></div>
+          <div ng-bind="vm.openContext.date"></div>
+        </div>
+      </div>
+    </div>
+    <div class="selected">
+      <div class="selected-actions">
+
+      </div>
+      <div class="selected-image">
+
+      </div>
+      <div class="selected-description" ng-if="vm.selectedFile != null">
+
+
+        <div ng-bind-html="vm.selectedFile.icon"></div>
+        name: <span ng-bind="vm.selectedFile.name"></span><br>
+        type: <span ng-bind="vm.selectedFile.type"></span><br>
+        owner: <span ng-bind="vm.selectedFile.owner"></span><br>
+        size: <span ng-bind="vm.selectedFile.size"></span><br>
+        date: <span ng-bind="vm.selectedFile.date"></span>
+      </div>
+    </div>
+  </div>
 </div>

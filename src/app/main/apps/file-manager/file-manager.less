@@ -1,3 +1,83 @@
 #fileManager{
-
+  .top-menu{
+    height:100px;
+    width:100%;
+    padding:35px;
+    background-color:darkslategrey;
+    .menu{
+      &-left{
+        float:left;
+        color:white;
+        i{
+          font-size:20px;
+          margin: 5px;
+        }
+        .path-to-file{
+          font-size: 20px;
+          margin: 5px 15px;
+        }
+      }
+      &-right{
+        float:right;
+        color:white;
+        user-select: none;
+        >div{
+          display: inline-block;
+        }
+        i{
+          font-size:20px;
+          margin: 5px;
+        }
+      }
+    }
+  }
+  .main{
+    width: 100%;
+    .view{
+      width: 80%;
+      height: 500px;
+      overflow-y: auto;
+      float: left;
+      .files{
+        width:100%;
+        border:0;
+        tr{
+          height: 60px;
+          td:first-child{
+            font-size:20px;
+          }
+        }
+        td{
+          text-align: center;
+          vertical-align: middle;
+        }
+        tr:hover{
+          background-color: wheat;
+        }
+        tr:first-child:hover{
+          background-color: white;
+        }
+        tr:first-child{
+          font-weight: bold;
+          font-size: 20px;
+          td:hover{
+            background-color: wheat;
+          }
+          td:first-child{
+            background-color: white;
+          }
+        }
+      }
+      .context-menu{
+        position: absolute;
+      }
+    }
+    .selected{
+      width: 20%;
+      height: 500px;
+      overflow-y: auto;
+      float: right;
+      background-color: honeydew;
+    }
+  }
 }

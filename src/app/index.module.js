@@ -20,7 +20,7 @@
       'app.pages',
 
       'app.dashboard',
-      'app.file-manager'
+      'app.fileManager'
     ]);
 
 })();
