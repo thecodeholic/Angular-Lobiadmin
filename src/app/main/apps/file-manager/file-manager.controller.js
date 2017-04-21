@@ -4,30 +4,77 @@
   angular
     .module('app.fileManager')
     .controller('FileManagerController', FileManagerControllerFn)
-    .directive('ngRightClick', function ($parse) {
-      return function (scope, element, attrs) {
-        var fn = $parse(attrs.ngRightClick);
-        element.bind('contextmenu', function (event) {
-          scope.$apply(function () {
-            event.preventDefault();
-            fn(scope, {$event: event});
-          });
-        });
-      };
-    });
+    .directive('ngRightClick', ngRightClickFn);
 
   /** @ngInject */
+  function ngRightClickFn($parse) {
+    return function (scope, element, attrs) {
+      var fn = $parse(attrs.ngRightClick);
+      element.bind('contextmenu', function (event) {
+        scope.$apply(function () {
+          event.preventDefault();
+          fn(scope, {$event: event});
+        });
+      });
+    };
+  }
+
   function FileManagerControllerFn() {
     var vm = this;
 
+    vm.selectFile = selectFile;
+    vm.resetSelection = resetSelection;
+    vm.toggleView = toggleView;
+
+    vm.selectedFile = null;
     vm.currentView = 'list-condensed';
     vm.orderByField = 'name';
-    vm.reverseSort = false;
-    vm.selectedFile = null;
-    vm.openContext = null;
+    vm.defaultSort = true;
+    vm.menuOptions = [
+      /*
+       ['Menu item name', function ($itemScope, $event, modelValue, text, $li) {
+       vm.selected = $itemScope.item.name;
+       }]
+       */
+      ['Open', function ($itemScope) {
+        console.log("Open Selected File"+"\nfileID: "+ $itemScope.file.id);
+        vm.selectedFile = $itemScope.file;
+      }],
+      null, // Divider
+      ['Share', function ($itemScope) {
+        console.log("Share Selected File"+"\nfileID: "+ $itemScope.file.id);
+        vm.selectedFile = $itemScope.file;
+      }],
+      null, // Divider
+      ['Manage Tags', function ($itemScope) {
+        console.log("Manage Tags For Selected File"+"\nfileID: "+ $itemScope.file.id);
+        vm.selectedFile = $itemScope.file;
+      }],
+      null, // Divider
+      ['Cut', function ($itemScope) {
+        console.log("Cut Selected File"+"\nfileID: "+ $itemScope.file.id);
+        vm.selectedFile = $itemScope.file;
+      }],
+      null, // Divider
+      ['Rename', function ($itemScope) {
+        console.log("Rename Selected File"+"\nfileID: "+ $itemScope.file.id);
+        vm.selectedFile = $itemScope.file;
+      }],
+      null, // Divider
+      ['Change Owner', function ($itemScope) {
+        console.log("Change Owner For Selected File"+"\nfileID: "+ $itemScope.file.id);
+        vm.selectedFile = $itemScope.file;
+      }],
+      null, // Divider
+      ['Delete', function ($itemScope) {
+        console.log("Delete Selected File"+"\nfileID: "+ $itemScope.file.id);
+        vm.selectedFile = $itemScope.file;
+      }]
+    ];
+
 
     // Methods
-    vm.toggleView = function () {
+    function toggleView() {
       if (vm.currentView === 'list-condensed') {
         vm.currentView = 'grid-view';
       } else if (vm.currentView === 'grid-view') {
@@ -35,19 +82,13 @@
       }
     }
 
-    vm.selectFile = function (x) {
+    function selectFile(x) {
       vm.selectedFile = x;
-      console.log(vm.selectedFile);
-    };
-    vm.openMenu = function (event, x) {
-      vm.openContext = x;
-      console.log(event);
-      vm.myPos = { left: event.pageX - (event.screenX-event.pageX), top: event.pageY - (event.screenY-event.pageY)};
-    };
-    vm.resetSelection = function () {
+    }
+
+    function resetSelection() {
       vm.selectedFile = null;
-      console.log(vm.selectedFile);
-    };
+    }
 
     init();
     function init() {
@@ -59,124 +100,124 @@
           "name": "Adeline",
           "type": "Folder",
           "owner": "Public",
-          "size": "34 Mb",
+          "size": 128832362,
           "date": 1288323623006
         },
         {
           "id": 2,
           "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
           "name": "Renee",
-          "type": "Folder",
+          "type": "Image",
           "owner": "Public",
-          "size": "52 Mb",
+          "size": 2332300,
           "date": 1288323323006
         },
         {
           "id": 3,
           "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
           "name": "Mathis",
-          "type": "Spreadsheet",
+          "type": "Word",
           "owner": "Public",
-          "size": "12 Mb",
+          "size": 233300,
           "date": 1288323623306
         },
         {
           "id": 4,
           "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
           "name": "Elizabeth",
-          "type": "Spreadsheet",
+          "type": "Excel",
           "owner": "Me",
-          "size": "20 Mb",
+          "size": 23323,
           "date": 1288343623006
         },
         {
           "id": 5,
           "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
           "name": "Mcmahon",
-          "type": "Spreadsheet",
+          "type": "Power Point",
           "owner": "Public",
-          "size": "11 Mb",
+          "size": 13623006,
           "date": 1288313623006
         },
         {
           "id": 6,
           "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
           "name": "Alisha",
-          "type": "Spreadsheet",
+          "type": "Video",
           "owner": "Public",
-          "size": "38 Mb",
+          "size": 13623006,
           "date": 1288323673006
         },
         {
           "id": 7,
           "icon": "<i class='fa fa-file-text' aria-hidden='true'></i>",
           "name": "Consuelo",
-          "type": "Document",
+          "type": "Audio",
           "owner": "Public",
-          "size": "38 Mb",
+          "size": 2883936,
           "date": 1288393623006
         },
         {
           "id": 8,
           "icon": "<i class='fa fa-file-text' aria-hidden='true'></i>",
           "name": "Bobbie",
-          "type": "Document",
+          "type": "HTML",
           "owner": "Emily Bennet",
-          "size": "85 Mb",
+          "size": 87236,
           "date": 1288723623006
         },
         {
           "id": 9,
           "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
           "name": "Berg",
-          "type": "Spreadsheet",
+          "type": "Css",
           "owner": "Me",
-          "size": "42 Mb",
+          "size": 28832,
           "date": 1288323645006
         },
         {
           "id": 10,
           "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
           "name": "Nina",
-          "type": "Spreadsheet",
+          "type": "Code",
           "owner": "Emily Bennet",
-          "size": "47 Mb",
+          "size": 23673,
           "date": 1288323673006
         },
         {
           "id": 11,
           "icon": "<i class='fa fa-file-text' aria-hidden='true'></i>",
           "name": "Loretta",
-          "type": "Document",
+          "type": "Archive",
           "owner": "Public",
-          "size": "50 Mb",
+          "size": 2883237,
           "date": 1288323723006
         },
         {
           "id": 12,
           "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
           "name": "Newman",
-          "type": "Folder",
+          "type": "Other",
           "owner": "Public",
-          "size": "31 Mb",
+          "size": 83236230,
           "date": 1288323623044
         },
         {
           "id": 13,
           "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
           "name": "Yvette",
-          "type": "Spreadsheet",
+          "type": "Document",
           "owner": "Emily Bennet",
-          "size": "10 Mb",
+          "size": 28838362,
           "date": 1288383623006
         },
         {
           "id": 14,
           "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
           "name": "Polly",
-          "type": "Folder",
+          "type": "Document",
           "owner": "Emily Bennet",
-          "size": "62 Mb",
+          "size": 88736,
           "date": 1288873623006
         }
       ];

@@ -14,7 +14,7 @@
       'ui.bootstrap',
       'toastr',
       'pascalprecht.translate',
-
+      'ui.bootstrap.contextMenu',
       'app.core',
 
       'app.pages',
