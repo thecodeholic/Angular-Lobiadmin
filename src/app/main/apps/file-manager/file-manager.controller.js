@@ -24,6 +24,8 @@
     vm.resetSelection = resetSelection;
     vm.toggleView = toggleView;
     vm.checkFileType = checkFileType;
+    vm.chooseFiles = chooseFiles;
+    vm.chooseFolder = chooseFolder;
 
     /////////////////////////
 
@@ -171,7 +173,6 @@
       $translate(['FILE_MANAGER.MENU.OPEN', 'FILE_MANAGER.MENU.SHARE', 'FILE_MANAGER.MENU.MANAGE_TAGS', 'FILE_MANAGER.MENU.CUT',
         'FILE_MANAGER.MENU.RENAME', 'FILE_MANAGER.MENU.CHANGE_OWNER', 'FILE_MANAGER.MENU.DELETE', 'FILE_MANAGER.MENU.VIEW',
         'FILE_MANAGER.MENU.DOWNLOAD', 'FILE_MANAGER.MENU.VERSIONS']).then(function (translations) {
-        console.log(translations);
         vm.folderMenuOptions = [
           /*
            ['Menu item name', function ($itemScope, $event, modelValue, text, $li) {
@@ -222,6 +223,14 @@
     function resetSelection() {
       vm.selectedFile = null;
     }
+    
+    function chooseFiles(input) {
+      console.log(input.files);
+    }
+
+    function chooseFolder(input) {
+      console.log(input.files);
+    }
 
     function checkFileType($itemScope) {
       if ($itemScope.type === 'Folder') {
@@ -233,51 +242,61 @@
 
     function openFn($itemScope) {
       console.log("Open Selected File" + "\nfileID: " + $itemScope.file.id);
+      console.log($itemScope.file);
       vm.selectedFile = $itemScope.file;
     }
 
     function shareFn($itemScope) {
       console.log("Share Selected File" + "\nfileID: " + $itemScope.file.id);
+      console.log($itemScope.file);
       vm.selectedFile = $itemScope.file;
     }
 
     function manageTagsFn($itemScope) {
       console.log("Manage Tags For Selected File" + "\nfileID: " + $itemScope.file.id);
+      console.log($itemScope.file);
       vm.selectedFile = $itemScope.file;
     }
 
     function cutFn($itemScope) {
       console.log("Cut Selected File" + "\nfileID: " + $itemScope.file.id);
+      console.log($itemScope.file);
       vm.selectedFile = $itemScope.file;
     }
 
     function renameFn($itemScope) {
       console.log("Rename Selected File" + "\nfileID: " + $itemScope.file.id);
+      console.log($itemScope.file);
       vm.selectedFile = $itemScope.file;
     }
 
     function changeOwnerFn($itemScope) {
       console.log("Change Owner For Selected File" + "\nfileID: " + $itemScope.file.id);
+      console.log($itemScope.file);
       vm.selectedFile = $itemScope.file;
     }
 
     function deleteFn($itemScope) {
       console.log("Delete Selected File" + "\nfileID: " + $itemScope.file.id);
+      console.log($itemScope.file);
       vm.selectedFile = $itemScope.file;
     }
 
     function viewFn($itemScope) {
       console.log("View Selected File" + "\nfileID: " + $itemScope.file.id);
+      console.log($itemScope.file);
       vm.selectedFile = $itemScope.file;
     }
 
     function downloadFn($itemScope) {
       console.log("Download Selected File" + "\nfileID: " + $itemScope.file.id);
+      console.log($itemScope.file);
       vm.selectedFile = $itemScope.file;
     }
 
     function versionsFn($itemScope) {
       console.log("Version Control For Selected File" + "\nfileID: " + $itemScope.file.id);
+      console.log($itemScope.file);
       vm.selectedFile = $itemScope.file;
     }
 

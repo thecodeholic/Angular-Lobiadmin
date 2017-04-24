@@ -20,90 +20,21 @@
         <div class="view">
             <div class="upload-options">
                 <div class="btn-group" role="group" aria-label="AAA">
-                    <button type="button" class="btn btn-primary">{{'FILE_MANAGER.MENU.UPLOAD_FILE' | translate}}</button>
-                    <button type="button" class="btn btn-primary">{{'FILE_MANAGER.MENU.UPLOAD_FOLDER' | translate}}</button>
-                    <button type="button" class="btn btn-primary">{{'FILE_MANAGER.MENU.CREATE_FOLDER' | translate}}</button>
+                    <button type="button" class="btn btn-primary btn-upload" ng-click="vm.openFileUpload()">{{'FILE_MANAGER.MENU.UPLOAD_FILE' | translate}}
+                        <input onchange="angular.element(this).scope().vm.chooseFiles(this, event)" type="file" multiple=""/>
+                    </button>
+                    <button type="button" class="btn btn-primary btn-upload" ng-click="vm.openFolderUpload()">{{'FILE_MANAGER.MENU.UPLOAD_FOLDER' | translate}}
+                        <input type="file" onchange="angular.element(this).scope().vm.chooseFolder(this, event)" webkitdirectory="" mozdirectory="" msdirectory="" odirectory="" directory="" multiple=""/>
+                    </button>
+                    <button type="button" class="btn btn-primary btn-upload">{{'FILE_MANAGER.MENU.CREATE_FOLDER' | translate}}</button>
                 </div>
             </div>
-            <table class="files table table-bordered table-hover">
-                <thead>
-                <tr>
-                    <th><i class="fa fa-plus" aria-hidden="true"></i></th>
-                    <th ng-click="orderByField='name'; vm.defaultSort = !vm.defaultSort">
-                        {{'FILE_MANAGER.VIEW.NAME' | translate}}
-                        <span ng-show="orderByField == 'name'">
-                                <span ng-show="!vm.defaultSort">
-                                    <i class="fa fa-sort-asc" aria-hidden="true"></i>
-                                </span>
-                                <span ng-show="vm.defaultSort">
-                                    <i class="fa fa-sort-desc" aria-hidden="true"></i>
-                                </span>
-                            </span>
-                    </th>
-                    <th ng-click="orderByField='type'; vm.defaultSort = !vm.defaultSort">
-                        {{'FILE_MANAGER.VIEW.TYPE' | translate}}
-                        <span ng-show="orderByField == 'type'">
-                                <span ng-show="!vm.defaultSort">
-                                    <i class="fa fa-sort-asc" aria-hidden="true"></i>
-                                </span>
-                                <span ng-show="vm.defaultSort">
-                                    <i class="fa fa-sort-desc" aria-hidden="true"></i>
-                                </span>
-                            </span>
-                    </th>
-                    <th ng-click="orderByField='owner'; vm.defaultSort = !vm.defaultSort">
-                        {{'FILE_MANAGER.VIEW.OWNER' | translate}}
-                        <span ng-show="orderByField == 'owner'">
-                                <span ng-show="!vm.defaultSort">
-                                    <i
-                                            class="fa fa-sort-asc" aria-hidden="true"></i>
-                                </span>
-                                <span ng-show="vm.defaultSort">
-                                    <i
-                                            class="fa fa-sort-desc" aria-hidden="true"></i>
-                                </span>
-                            </span>
-                    </th>
-                    <th ng-click="orderByField='size'; vm.defaultSort = !vm.defaultSort">
-                        {{'FILE_MANAGER.VIEW.SIZE' | translate}}
-                        <span ng-show="orderByField == 'size'">
-                                <span ng-show="!vm.defaultSort">
-                                    <i
-                                            class="fa fa-sort-asc" aria-hidden="true"></i>
-                                </span>
-                                <span ng-show="vm.defaultSort">
-                                    <i
-                                            class="fa fa-sort-desc" aria-hidden="true"></i>
-                                </span>
-                            </span>
-                    </th>
-                    <th ng-click="orderByField='date'; vm.defaultSort = !vm.defaultSort">
-                        {{'FILE_MANAGER.VIEW.LAST_MODIFIED' | translate}}
-                        <span ng-show="orderByField == 'date'">
-                                <span ng-show="!vm.defaultSort">
-                                    <i class="fa fa-sort-asc" aria-hidden="true"></i>
-                                </span>
-                                <span ng-show="vm.defaultSort">
-                                    <i class="fa fa-sort-desc" aria-hidden="true"></i>
-                                </span>
-                            </span>
-                    </th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr ng-repeat="file in vm.files | orderBy:orderByField:vm.defaultSort"
-                    ng-click="vm.selectFile(file)"
-                    ng-right-click="vm.selectFile(file); vm.checkFileType(file)"
-                    context-menu="vm.menuOptions" ng-class="{'active': file == vm.selectedFile}">
-                    <td><i class='fa fa-{{file.type | typeToIcon}}' aria-hidden='true'></i></td>
-                    <td>{{file.name}}</td>
-                    <td>{{file.type}}</td>
-                    <td>{{file.owner}}</td>
-                    <td>{{file.size | bytes}}</td>
-                    <td>{{file.date | date:'HH:mm, dd/MM/yyyy'}}</td>
-                </tr>
-                </tbody>
-            </table>
+            <div ng-if="vm.currentView === 'grid-view'"
+                 ng-include="'app/main/apps/file-manager/view/grid.html'">
+            </div>
+            <div ng-if="vm.currentView === 'list-condensed'"
+                 ng-include="'app/main/apps/file-manager/view/list-condensed.html'">
+            </div>
         </div>
         <div class="selected">
             <div class="selected-actions">

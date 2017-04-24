@@ -42,30 +42,16 @@
       float: left;
       .upload-options{
         padding:16px;
-      }
-      .files{
-        width:100%;
-        >thead{
-          >tr{
-            >th{
-              text-align: center;
-              outline: 0;
-            }
+        .btn-upload{
+          position: relative;
+          input{
+            position: absolute;
+            opacity: 0;
+            left:0;
+            right:0;
+            top:0;
+            bottom:0;
           }
-        }
-        >tbody{
-          >tr{
-            outline: 0;
-          }
-        }
-        tr{
-          td:first-child{
-            font-size:20px;
-          }
-        }
-        td{
-          text-align: center;
-          vertical-align: middle;
         }
       }
       .context-menu{

@@ -1,0 +1,18 @@
+<div class="grid-view">
+    <div class="files row">
+        <div ng-repeat="file in vm.files | orderBy:orderByField:vm.defaultSort"
+             ng-click="vm.selectFile(file)"
+             ng-right-click="vm.selectFile(file); vm.checkFileType(file)"
+             context-menu="vm.menuOptions" ng-class="{'isSelected': vm.selectedFile == file}" class="col-md-3 item">
+            <div class="preview" >
+                <i class="fa fa-{{file.type | typeToIcon}}" aria-hidden="true"></i>
+            </div>
+
+            <div class="bottom" >
+                <div class="title">
+                    <span class="name">{{file.name}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
