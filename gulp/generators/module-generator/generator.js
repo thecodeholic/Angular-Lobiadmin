@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /**
  * Created by george on 4/18/17.
  */
@@ -5,8 +6,7 @@
 var gulp = require('gulp');
 var replace = require('gulp-replace');
 var rename = require('gulp-rename');
-var fs = require('fs');
-
+var colors = require('colors');
 
 function processArguments(args) {
   //Creating empty hash map
@@ -48,6 +48,7 @@ function processArguments(args) {
 function validateArgs(argsMap) {
   //Defining path value
   var path = argsMap["--path"];
+  var errorSuffix = "The path is relative to src/app folder";
 
   //Checking if there is '--path' argument in hashmap
   if (argsMap.hasOwnProperty("--path") != false) {
@@ -62,15 +63,15 @@ function validateArgs(argsMap) {
         return true;
       }
     }
-    //If no value is defined for path
+    //If no value is defined for --path
     else {
-      console.log("NO PATH VALUE DEFINED");
+      console.log(("--path argument requires full path (including module name). "+errorSuffix).red);
       return false;
     }
   }
-  //If no path argument is defined
+  //If no --path argument is defined
   else {
-    console.log("NO PATH ARGUMENT DEFINED");
+    console.log(("Please specify --path argument with full path (including module name). "+errorSuffix).red);
     return false;
   }
 }
@@ -97,7 +98,7 @@ function generateModule(params) {
     stream.pipe(rename(params.ModulePath.split("/").pop() + streams[s]))
       .pipe(gulp.dest('src/app/' + params.ModulePath + '/'));
 
-    console.log("src/app/"+params['ModulePath']+"/"+params['FolderName']+streams[s]+" Generated");
+    console.info("src/app/"+params['ModulePath']+"/"+params['FolderName']+streams[s]+" Generated");
   }
 }
 
