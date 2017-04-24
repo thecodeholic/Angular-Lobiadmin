@@ -25,52 +25,13 @@
     vm.selectFile = selectFile;
     vm.resetSelection = resetSelection;
     vm.toggleView = toggleView;
+    vm.CheckFileType = checkFileType;
 
     vm.selectedFile = null;
     vm.currentView = 'list-condensed';
     vm.orderByField = 'name';
     vm.defaultSort = true;
-    vm.menuOptions = [
-      /*
-       ['Menu item name', function ($itemScope, $event, modelValue, text, $li) {
-       vm.selected = $itemScope.item.name;
-       }]
-       */
-      ['Open', function ($itemScope) {
-        console.log("Open Selected File"+"\nfileID: "+ $itemScope.file.id);
-        vm.selectedFile = $itemScope.file;
-      }],
-      null, // Divider
-      ['Share', function ($itemScope) {
-        console.log("Share Selected File"+"\nfileID: "+ $itemScope.file.id);
-        vm.selectedFile = $itemScope.file;
-      }],
-      null, // Divider
-      ['Manage Tags', function ($itemScope) {
-        console.log("Manage Tags For Selected File"+"\nfileID: "+ $itemScope.file.id);
-        vm.selectedFile = $itemScope.file;
-      }],
-      null, // Divider
-      ['Cut', function ($itemScope) {
-        console.log("Cut Selected File"+"\nfileID: "+ $itemScope.file.id);
-        vm.selectedFile = $itemScope.file;
-      }],
-      null, // Divider
-      ['Rename', function ($itemScope) {
-        console.log("Rename Selected File"+"\nfileID: "+ $itemScope.file.id);
-        vm.selectedFile = $itemScope.file;
-      }],
-      null, // Divider
-      ['Change Owner', function ($itemScope) {
-        console.log("Change Owner For Selected File"+"\nfileID: "+ $itemScope.file.id);
-        vm.selectedFile = $itemScope.file;
-      }],
-      null, // Divider
-      ['Delete', function ($itemScope) {
-        console.log("Delete Selected File"+"\nfileID: "+ $itemScope.file.id);
-        vm.selectedFile = $itemScope.file;
-      }]
-    ];
+    vm.menuOptions = []; //menuOptions are assigned in function checkFileType to show right menu items
 
 
     // Methods
@@ -90,6 +51,95 @@
       vm.selectedFile = null;
     }
 
+    function checkFileType($itemScope){
+      console.log("selected file is : " + $itemScope.type + "\nAssigning menuOptions for " + $itemScope.type);
+      if($itemScope.type === 'Folder'){
+        vm.menuOptions = [
+          /*
+           ['Menu item name', function ($itemScope, $event, modelValue, text, $li) {
+           vm.selected = $itemScope.item.name;
+           }]
+          */
+          ['Open', openFn],
+          ['Share', shareFn],
+          ['Manage Tags', manageTagsFn],
+          ['Cut', cutFn],
+          ['Rename', renameFn],
+          null, // Divider
+          ['Change Owner', changeOwnerFn],
+          ['Delete', deleteFn]
+        ];
+      }else{
+        vm.menuOptions = [
+          /*
+           ['Menu item name', function ($itemScope, $event, modelValue, text, $li) {
+           vm.selected = $itemScope.item.name;
+           }]
+           */
+          ['View', viewFn],
+          ['Download', downloadFn],
+          ['Share', shareFn],
+          ['Manage Tags', manageTagsFn],
+          ['Cut', cutFn],
+          ['Rename', renameFn],
+          null, // Divider
+          ['Versions', versionsFn],
+          ['Change Owner', changeOwnerFn],
+          ['Delete', deleteFn]
+        ];
+      }
+    }
+
+    function openFn($itemScope) {
+      console.log("Open Selected File"+"\nfileID: "+ $itemScope.file.id);
+      vm.selectedFile = $itemScope.file;
+    }
+
+    function shareFn($itemScope) {
+      console.log("Share Selected File"+"\nfileID: "+ $itemScope.file.id);
+      vm.selectedFile = $itemScope.file;
+    }
+
+    function manageTagsFn($itemScope) {
+      console.log("Manage Tags For Selected File"+"\nfileID: "+ $itemScope.file.id);
+      vm.selectedFile = $itemScope.file;
+    }
+
+    function cutFn($itemScope) {
+      console.log("Cut Selected File"+"\nfileID: "+ $itemScope.file.id);
+      vm.selectedFile = $itemScope.file;
+    }
+
+    function renameFn($itemScope) {
+      console.log("Rename Selected File"+"\nfileID: "+ $itemScope.file.id);
+      vm.selectedFile = $itemScope.file;
+    }
+
+    function changeOwnerFn($itemScope) {
+      console.log("Change Owner For Selected File"+"\nfileID: "+ $itemScope.file.id);
+      vm.selectedFile = $itemScope.file;
+    }
+
+    function deleteFn($itemScope) {
+      console.log("Delete Selected File"+"\nfileID: "+ $itemScope.file.id);
+      vm.selectedFile = $itemScope.file;
+    }
+
+    function viewFn($itemScope){
+      console.log("View Selected File"+"\nfileID: "+ $itemScope.file.id);
+      vm.selectedFile = $itemScope.file;
+    }
+
+    function downloadFn($itemScope){
+      console.log("Download Selected File"+"\nfileID: "+ $itemScope.file.id);
+      vm.selectedFile = $itemScope.file;
+    }
+
+    function versionsFn($itemScope){
+      console.log("Version Control For Selected File"+"\nfileID: "+ $itemScope.file.id);
+      vm.selectedFile = $itemScope.file;
+    }
+
     init();
     function init() {
       // Data
@@ -100,7 +150,7 @@
           "name": "Adeline",
           "type": "Folder",
           "owner": "Public",
-          "size": 128832362,
+          "size": "",
           "date": 1288323623006
         },
         {
