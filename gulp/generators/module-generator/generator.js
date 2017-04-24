@@ -7,6 +7,7 @@ var gulp = require('gulp');
 var replace = require('gulp-replace');
 var rename = require('gulp-rename');
 var colors = require('colors');
+var fs = require('fs');
 
 function processArguments(args) {
   //Creating empty hash map
@@ -65,40 +66,45 @@ function validateArgs(argsMap) {
     }
     //If no value is defined for --path
     else {
-      console.log(("--path argument requires full path (including module name). "+errorSuffix).red);
+      console.log(("--path argument requires full path (including module name). " + errorSuffix).red);
       return false;
     }
   }
   //If no --path argument is defined
   else {
-    console.log(("Please specify --path argument with full path (including module name). "+errorSuffix).red);
+    console.log(("Please specify --path argument with full path (including module name). " + errorSuffix).red);
     return false;
   }
 }
 
 function generateModule(params) {
-  var streams = {
+  var fileSuffix = {
     'module.txt': ".module.js",
     'controller.txt': ".controller.js",
     'html.txt': ".html",
     'less.txt': ".less"
   };
 
-  for (var s in streams) {
+  for (var s in fileSuffix) {
 
     //Creating stream
-    var stream = gulp.src('gulp/generators/module-generator/template/'+s);
+    var stream = gulp.src('gulp/generators/module-generator/template/' + s);
 
     //Replacing all matching strings with custom strings
     for (var i in params) {
       stream.pipe(replace("{{" + i + "}}", params[i]));
     }
 
+    var filePath = 'src/app/' + params.ModulePath + '/' + params.FolderName + fileSuffix[s];
+    if (fs.existsSync(filePath)) {
+      console.log(("[Skipping] ".yellow + filePath).yellow);
+      continue;
+    }
     //Saving
-    stream.pipe(rename(params.ModulePath.split("/").pop() + streams[s]))
+    stream.pipe(rename(params.FolderName + '/' + fileSuffix[s]))
       .pipe(gulp.dest('src/app/' + params.ModulePath + '/'));
 
-    console.info("src/app/"+params['ModulePath']+"/"+params['FolderName']+streams[s]+" Generated");
+    console.log("[Creating] ".green + filePath);
   }
 }
 
