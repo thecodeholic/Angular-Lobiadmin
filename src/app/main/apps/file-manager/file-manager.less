@@ -1,4 +1,5 @@
 #fileManager{
+  height:100%;
   .top-menu{
     height:100px;
     width:100%;
@@ -33,14 +34,17 @@
   }
   .main{
     width: 100%;
+    height: calc(%(~"100% - %s", 100px));
     .view{
       width: 70%;
-      height: 440px;
-      overflow-y: auto;
+      height: 100%;
+      overflow-y: scroll;
       float: left;
+      .upload-options{
+        padding:16px;
+      }
       .files{
         width:100%;
-        border:0;
         >thead{
           >tr{
             >th{
@@ -80,12 +84,11 @@
     }
     .selected{
       width: 30%;
-      height: 440px;
-      overflow-y: auto;
+      height: 100%;
       float: right;
       background-color: #fdfdfd;
       .selected-description {
-        .title{
+        .title {
           width:100%;
           text-align: center;
         }

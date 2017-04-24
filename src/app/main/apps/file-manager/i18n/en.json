@@ -61,6 +61,21 @@
       "CREATED": "Created",
       "INFO": "Info",
       "EDITED": "Edited"
+    },
+    "MENU" : {
+      "OPEN" : "Open",
+      "SHARE" : "Share",
+      "MANAGE_TAGS" : "Manage Tags",
+      "CUT" : "Cut",
+      "RENAME" : "Rename",
+      "CHANGE_OWNER" : "Change Owner",
+      "DELETE" : "Delete",
+      "VIEW" : "View",
+      "DOWNLOAD" : "Download",
+      "VERSIONS" : "Versions",
+      "UPLOAD_FILE" : "Upload File",
+      "UPLOAD_FOLDER" : "Upload Folder",
+      "CREATE_FOLDER" : "Create Folder"
     }
   }
 }

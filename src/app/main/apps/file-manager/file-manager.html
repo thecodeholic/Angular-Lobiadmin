@@ -9,101 +9,101 @@
             <div ng-if="vm.currentView === 'list-condensed'"
                  ng-click="vm.toggleView()">
                 <i class="fa fa-th-list" aria-hidden="true"></i>
-                <span class="tool-tip">List View</span>
             </div>
             <div ng-if="vm.currentView === 'grid-view'"
                  ng-click="vm.toggleView()">
                 <i class="fa fa-th" aria-hidden="true"></i>
-                <span class="tool-tip">Grid View</span>
             </div>
         </div>
     </div>
-    <div class="main">
+    <div class="main clearfix">
         <div class="view">
-            <!--<div class="add-new-button">
-              <i class="fa fa-plus-circle" aria-hidden="true"></i>
-            </div>-->
-            <div class="view-content">
-                <table class="files table table-bordered table-hover">
-                    <thead>
-                    <tr>
-                        <th><i class="fa fa-plus" aria-hidden="true"></i></th>
-                        <th ng-click="orderByField='name'; vm.defaultSort = !vm.defaultSort">
-                            {{'FILE_MANAGER.VIEW.NAME' | translate}}
-                            <span ng-show="orderByField == 'name'">
-                                <span ng-show="!vm.defaultSort">
-                                    <i class="fa fa-sort-asc" aria-hidden="true"></i>
-                                </span>
-                                <span ng-show="vm.defaultSort">
-                                    <i class="fa fa-sort-desc" aria-hidden="true"></i>
-                                </span>
-                            </span>
-                        </th>
-                        <th ng-click="orderByField='type'; vm.defaultSort = !vm.defaultSort">
-                            {{'FILE_MANAGER.VIEW.TYPE' | translate}}
-                            <span ng-show="orderByField == 'type'">
-                                <span ng-show="!vm.defaultSort">
-                                    <i class="fa fa-sort-asc" aria-hidden="true"></i>
-                                </span>
-                                <span ng-show="vm.defaultSort">
-                                    <i class="fa fa-sort-desc" aria-hidden="true"></i>
-                                </span>
-                            </span>
-                        </th>
-                        <th ng-click="orderByField='owner'; vm.defaultSort = !vm.defaultSort">
-                            {{'FILE_MANAGER.VIEW.OWNER' | translate}}
-                            <span ng-show="orderByField == 'owner'">
-                                <span ng-show="!vm.defaultSort">
-                                    <i
-                                class="fa fa-sort-asc" aria-hidden="true"></i>
-                                </span>
-                                <span ng-show="vm.defaultSort">
-                                    <i
-                                class="fa fa-sort-desc" aria-hidden="true"></i>
-                                </span>
-                            </span>
-                        </th>
-                        <th ng-click="orderByField='size'; vm.defaultSort = !vm.defaultSort">
-                            {{'FILE_MANAGER.VIEW.SIZE' | translate}}
-                            <span ng-show="orderByField == 'size'">
-                                <span ng-show="!vm.defaultSort">
-                                    <i
-                                    class="fa fa-sort-asc" aria-hidden="true"></i>
-                                </span>
-                                <span ng-show="vm.defaultSort">
-                                    <i
-                                    class="fa fa-sort-desc" aria-hidden="true"></i>
-                                </span>
-                            </span>
-                        </th>
-                        <th ng-click="orderByField='date'; vm.defaultSort = !vm.defaultSort">
-                            {{'FILE_MANAGER.VIEW.LAST_MODIFIED' | translate}}
-                            <span ng-show="orderByField == 'date'">
-                                <span ng-show="!vm.defaultSort">
-                                    <i class="fa fa-sort-asc" aria-hidden="true"></i>
-                                </span>
-                                <span ng-show="vm.defaultSort">
-                                    <i class="fa fa-sort-desc" aria-hidden="true"></i>
-                                </span>
-                            </span>
-                        </th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr ng-repeat="file in vm.files | orderBy:orderByField:vm.defaultSort"
-                        ng-click="vm.selectFile(file)"
-                        ng-right-click="vm.selectFile(file); vm.CheckFileType(file)"
-                        context-menu="vm.menuOptions" ng-class="{'active': file == vm.selectedFile}">
-                        <td><i class='fa fa-{{file.type | typeToIcon}}' aria-hidden='true'></i></td>
-                        <td>{{file.name}}</td>
-                        <td>{{file.type}}</td>
-                        <td>{{file.owner}}</td>
-                        <td>{{file.size | bytes}}</td>
-                        <td>{{file.date | date:'HH:mm, dd/MM/yyyy'}}</td>
-                    </tr>
-                    </tbody>
-                </table>
+            <div class="upload-options">
+                <div class="btn-group" role="group" aria-label="AAA">
+                    <button type="button" class="btn btn-primary">{{'FILE_MANAGER.MENU.UPLOAD_FILE' | translate}}</button>
+                    <button type="button" class="btn btn-primary">{{'FILE_MANAGER.MENU.UPLOAD_FOLDER' | translate}}</button>
+                    <button type="button" class="btn btn-primary">{{'FILE_MANAGER.MENU.CREATE_FOLDER' | translate}}</button>
+                </div>
             </div>
+            <table class="files table table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th><i class="fa fa-plus" aria-hidden="true"></i></th>
+                    <th ng-click="orderByField='name'; vm.defaultSort = !vm.defaultSort">
+                        {{'FILE_MANAGER.VIEW.NAME' | translate}}
+                        <span ng-show="orderByField == 'name'">
+                                <span ng-show="!vm.defaultSort">
+                                    <i class="fa fa-sort-asc" aria-hidden="true"></i>
+                                </span>
+                                <span ng-show="vm.defaultSort">
+                                    <i class="fa fa-sort-desc" aria-hidden="true"></i>
+                                </span>
+                            </span>
+                    </th>
+                    <th ng-click="orderByField='type'; vm.defaultSort = !vm.defaultSort">
+                        {{'FILE_MANAGER.VIEW.TYPE' | translate}}
+                        <span ng-show="orderByField == 'type'">
+                                <span ng-show="!vm.defaultSort">
+                                    <i class="fa fa-sort-asc" aria-hidden="true"></i>
+                                </span>
+                                <span ng-show="vm.defaultSort">
+                                    <i class="fa fa-sort-desc" aria-hidden="true"></i>
+                                </span>
+                            </span>
+                    </th>
+                    <th ng-click="orderByField='owner'; vm.defaultSort = !vm.defaultSort">
+                        {{'FILE_MANAGER.VIEW.OWNER' | translate}}
+                        <span ng-show="orderByField == 'owner'">
+                                <span ng-show="!vm.defaultSort">
+                                    <i
+                                            class="fa fa-sort-asc" aria-hidden="true"></i>
+                                </span>
+                                <span ng-show="vm.defaultSort">
+                                    <i
+                                            class="fa fa-sort-desc" aria-hidden="true"></i>
+                                </span>
+                            </span>
+                    </th>
+                    <th ng-click="orderByField='size'; vm.defaultSort = !vm.defaultSort">
+                        {{'FILE_MANAGER.VIEW.SIZE' | translate}}
+                        <span ng-show="orderByField == 'size'">
+                                <span ng-show="!vm.defaultSort">
+                                    <i
+                                            class="fa fa-sort-asc" aria-hidden="true"></i>
+                                </span>
+                                <span ng-show="vm.defaultSort">
+                                    <i
+                                            class="fa fa-sort-desc" aria-hidden="true"></i>
+                                </span>
+                            </span>
+                    </th>
+                    <th ng-click="orderByField='date'; vm.defaultSort = !vm.defaultSort">
+                        {{'FILE_MANAGER.VIEW.LAST_MODIFIED' | translate}}
+                        <span ng-show="orderByField == 'date'">
+                                <span ng-show="!vm.defaultSort">
+                                    <i class="fa fa-sort-asc" aria-hidden="true"></i>
+                                </span>
+                                <span ng-show="vm.defaultSort">
+                                    <i class="fa fa-sort-desc" aria-hidden="true"></i>
+                                </span>
+                            </span>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="file in vm.files | orderBy:orderByField:vm.defaultSort"
+                    ng-click="vm.selectFile(file)"
+                    ng-right-click="vm.selectFile(file); vm.checkFileType(file)"
+                    context-menu="vm.menuOptions" ng-class="{'active': file == vm.selectedFile}">
+                    <td><i class='fa fa-{{file.type | typeToIcon}}' aria-hidden='true'></i></td>
+                    <td>{{file.name}}</td>
+                    <td>{{file.type}}</td>
+                    <td>{{file.owner}}</td>
+                    <td>{{file.size | bytes}}</td>
+                    <td>{{file.date | date:'HH:mm, dd/MM/yyyy'}}</td>
+                </tr>
+                </tbody>
+            </table>
         </div>
         <div class="selected">
             <div class="selected-actions">
@@ -113,26 +113,26 @@
                 <i class='fa fa-{{vm.selectedFile.type | typeToIcon}}' aria-hidden='true'></i>
             </div>
             <div class="selected-description" ng-show="vm.selectedFile != null">
-                <div class="title">Info</div>
+                <div class="title">{{'FILE_MANAGER.VIEW.INFO' | translate}}</div>
                 <table>
                     <tr class="name">
-                        <th>Name:</th>
+                        <th>{{'FILE_MANAGER.VIEW.NAME' | translate}}:</th>
                         <td>{{vm.selectedFile.name}}</td>
                     </tr>
                     <tr class="type">
-                        <th>Type:</th>
+                        <th>{{'FILE_MANAGER.VIEW.TYPE' | translate}}:</th>
                         <td>{{vm.selectedFile.type}}</td>
                     </tr>
                     <tr class="owner">
-                        <th>Owner:</th>
+                        <th>{{'FILE_MANAGER.VIEW.OWNER' | translate}}:</th>
                         <td>{{vm.selectedFile.owner}}</td>
                     </tr>
                     <tr class="size">
-                        <th>Size:</th>
+                        <th>{{'FILE_MANAGER.VIEW.SIZE' | translate}}:</th>
                         <td>{{vm.selectedFile.size === '' ? '-': vm.selectedFile.size | bytes}}</td>
                     </tr>
                     <tr class="date">
-                        <th>Last Modified:</th>
+                        <th>{{'FILE_MANAGER.VIEW.LAST_MODIFIED' | translate}}:</th>
                         <td>{{vm.selectedFile.date | date:'HH:mm, dd/MM/yyyy'}}</td>
                     </tr>
                 </table>
