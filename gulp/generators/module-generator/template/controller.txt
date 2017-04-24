@@ -7,20 +7,20 @@
 
   /** @ngInject */
   function {{ControllerName}}Fn(){
-      // var vm = this;
+    // var vm = this;
 
-      // Data
-
-
-      // Methods
+    // Data
 
 
-      init();
+    // Methods
 
-      ///////////
 
-      function init(){
+    init();
 
-      }
+    ///////////
+
+    function init(){
+
+    }
   }
 })();
