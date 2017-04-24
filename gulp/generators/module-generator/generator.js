@@ -101,7 +101,7 @@ function generateModule(params) {
       continue;
     }
     //Saving
-    stream.pipe(rename(params.FolderName + '/' + fileSuffix[s]))
+    stream.pipe(rename(params.FolderName + fileSuffix[s]))
       .pipe(gulp.dest('src/app/' + params.ModulePath + '/'));
 
     console.log("[Creating] ".green + filePath);
