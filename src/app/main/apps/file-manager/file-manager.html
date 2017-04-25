@@ -5,7 +5,11 @@
             <span class="path-to-file">My Files &gt; Documents</span>
         </div>
         <div class="menu-right">
-            <i class="fa fa-search" aria-hidden="true"></i>
+            <div>
+            <input ng-class="{ 'hidden': ! vm.toggleSearch }" type="text"
+                   ng-model="vm.searchValue" ng-change="vm.searchFn(vm.searchValue)">
+            <i class="fa fa-search" aria-hidden="true" ng-click="vm.toggleSearch = ! vm.toggleSearch; vm.clearSearchResultsFn();"></i>
+            </div>
             <div ng-if="vm.currentView === 'list-condensed'"
                  ng-click="vm.toggleView()">
                 <i class="fa fa-th-list" aria-hidden="true"></i>
@@ -19,7 +23,7 @@
     <div class="main clearfix">
         <div class="view">
             <div class="upload-options">
-                <div class="btn-group" role="group" aria-label="AAA">
+                <div class="btn-group" role="group">
                     <button type="button" class="btn btn-primary btn-upload" ng-click="vm.openFileUpload()">{{'FILE_MANAGER.MENU.UPLOAD_FILE' | translate}}
                         <input onchange="angular.element(this).scope().vm.chooseFiles(this, event)" type="file" multiple=""/>
                     </button>
@@ -44,12 +48,8 @@
                 <i class='fa fa-{{vm.selectedFile.type | typeToIcon}}' aria-hidden='true'></i>
             </div>
             <div class="selected-description" ng-show="vm.selectedFile != null">
-                <div class="title">{{'FILE_MANAGER.VIEW.INFO' | translate}}</div>
+                <div class="title">{{vm.selectedFile.name}}</div>
                 <table>
-                    <tr class="name">
-                        <th>{{'FILE_MANAGER.VIEW.NAME' | translate}}:</th>
-                        <td>{{vm.selectedFile.name}}</td>
-                    </tr>
                     <tr class="type">
                         <th>{{'FILE_MANAGER.VIEW.TYPE' | translate}}:</th>
                         <td>{{vm.selectedFile.type}}</td>
