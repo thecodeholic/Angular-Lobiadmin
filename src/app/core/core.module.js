@@ -9,6 +9,7 @@
       'pascalprecht.translate',
       'ngAnimate',
       'ngCookies',
+      'ngTouch',
       'ngSanitize',
       'ngMessages',
       'ngAria',

@@ -1,5 +1,22 @@
 #fileManager{
   height:100%;
+  position: relative;
+  .modalBack{
+    position: absolute;
+    width:100%;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+    #createFolderModal{
+      position: absolute;
+      width:30%;
+      z-index:1041;
+      .modal-body{
+        background-color: #fdfdfd;
+      }
+    }
+  }
   .top-menu{
     height:100px;
     width:100%;
@@ -49,6 +66,7 @@
           position: relative;
           input{
             position: absolute;
+            width:100%;
             opacity: 0;
             left:0;
             right:0;

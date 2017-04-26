@@ -4,11 +4,9 @@
   angular
     .module('app.fileManager')
     .controller('FileManagerController', FileManagerControllerFn)
-  ;
-
 
   /** @ngInject */
-  function FileManagerControllerFn($rootScope, $translate) {
+  function FileManagerControllerFn($rootScope, $translate, $uibModal) {
     var vm = this;
 
     vm.selectedFile = null;
@@ -21,16 +19,25 @@
     vm.searchResults = [];
     vm.toggleSearch = false;
 
-    // Methods
 
+    // Methods
+    // --File selections
     vm.selectFile = selectFile;
     vm.resetSelection = resetSelection;
+    // --File display
     vm.toggleView = toggleView;
+    // --File type check
     vm.checkFileType = checkFileType;
+    // --Upload buttons
     vm.chooseFiles = chooseFiles;
     vm.chooseFolder = chooseFolder;
+    // --Search
     vm.searchFn = searchFn;
     vm.clearSearchResultsFn = clearSearchResultsFn;
+    // --CreateFolderModal
+    vm.showCreateFolderDialog = showCreateFolderDialog;
+    vm.showRenameFolderDialog = showRenameFolderDialog;
+
 
     /////////////////////////
 
@@ -38,7 +45,7 @@
     init();
 
     function init() {
-      $rootScope.$on('App:languageChange', function(){
+      $rootScope.$on('App:languageChange', function () {
         translateMenu();
       });
 
@@ -169,7 +176,7 @@
           "owner": "Emily Bennet",
           "size": 88736,
           "date": 1288873623006
-        },{
+        }, {
           "id": 16,
           "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
           "name": "Adeline",
@@ -300,7 +307,7 @@
       vm.displayData = vm.files;
     }
 
-    function translateMenu(){
+    function translateMenu() {
 
       $translate(['FILE_MANAGER.MENU.OPEN', 'FILE_MANAGER.MENU.SHARE', 'FILE_MANAGER.MENU.MANAGE_TAGS', 'FILE_MANAGER.MENU.CUT',
         'FILE_MANAGER.MENU.RENAME', 'FILE_MANAGER.MENU.CHANGE_OWNER', 'FILE_MANAGER.MENU.DELETE', 'FILE_MANAGER.MENU.VIEW',
@@ -355,7 +362,7 @@
     function resetSelection() {
       vm.selectedFile = null;
     }
-    
+
     function chooseFiles(input) {
       console.log(input.files);
     }
@@ -400,6 +407,7 @@
       console.log("Rename Selected File" + "\nfileID: " + $itemScope.file.id);
       console.log($itemScope.file);
       vm.selectedFile = $itemScope.file;
+      vm.showRenameFolderDialog(vm.selectedFile);
     }
 
     function changeOwnerFn($itemScope) {
@@ -446,14 +454,41 @@
         }
         vm.displayData = vm.searchResults;
         console.log(vm.searchResults);
-      }else{
+      } else {
         vm.displayData = vm.files;
       }
     }
 
-    function clearSearchResultsFn(){
+    function clearSearchResultsFn() {
       vm.displayData = vm.files;
       vm.searchValue = "";
     }
+
+    function showCreateFolderDialog() {
+      $uibModal.open({
+        templateUrl: 'app/main/apps/file-manager/dialogs/create-rename-dialog/create-rename-dialog.html',
+        controller: 'CreateRenameDialogController',
+        controllerAs: 'vm',
+        size: 'sm',
+        resolve: {
+          CurrentFolder: null
+        }
+      });
+    }
+
+    function showRenameFolderDialog(renameTo) {
+      $uibModal.open({
+        templateUrl: 'app/main/apps/file-manager/dialogs/create-rename-dialog/create-rename-dialog.html',
+        controller: 'CreateRenameDialogController',
+        controllerAs: 'vm',
+        size: 'sm',
+        resolve: {
+          CurrentFolder: function () {
+            return { name: renameTo.name };
+          }
+        }
+      });
+    }
+
   }
 })();

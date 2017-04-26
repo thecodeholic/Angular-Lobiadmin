@@ -30,7 +30,7 @@
                     <button type="button" class="btn btn-primary btn-upload" ng-click="vm.openFolderUpload()">{{'FILE_MANAGER.MENU.UPLOAD_FOLDER' | translate}}
                         <input type="file" onchange="angular.element(this).scope().vm.chooseFolder(this, event)" webkitdirectory="" mozdirectory="" msdirectory="" odirectory="" directory="" multiple=""/>
                     </button>
-                    <button type="button" class="btn btn-primary btn-upload">{{'FILE_MANAGER.MENU.CREATE_FOLDER' | translate}}</button>
+                    <button type="button" class="btn btn-primary btn-upload" ng-click="vm.showCreateFolderDialog()">{{'FILE_MANAGER.MENU.CREATE_FOLDER' | translate}}</button>
                 </div>
             </div>
             <div ng-if="vm.currentView === 'grid-view'"
