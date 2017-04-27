@@ -24,7 +24,19 @@
         views: {
           'content@app': {
             templateUrl: 'app/main/apps/file-manager/file-manager.html',
-            controller: 'FileManagerController as vm'
+            controller: 'FileManagerController as vm',
+            resolve:{
+              files : function ($http) {
+                return $http.get('app/main/apps/file-manager/data/files.json')
+                  .then(function(response)
+                  {
+                    return response.data;
+                  }, function(error)
+                  {
+                    return 'There was an error getting data';
+                  });
+              }
+            }
           }
         },
         bodyClass: 'app-file-manager'

@@ -1,19 +1,18 @@
 /**
- * Created by george on 4/26/17.
+ * Created by george on 4/27/17.
  */
 (function () {
   'use strict';
 
   angular
     .module('app.fileManager')
-    .controller('CreateRenameDialogController', CreateRenameDialogControllerFn)
+    .controller('ManageTagsController', ManageTagsControllerFn)
 
   /** @ngInject */
-  function CreateRenameDialogControllerFn($uibModalInstance, CurrentEntry) {
+  function ManageTagsControllerFn($uibModalInstance, CurrentEntry) {
     var vm = this;
 
     // variables
-    vm.isRename = CurrentEntry != null;
     vm.currentEntry = CurrentEntry || {};
 
     // Methods

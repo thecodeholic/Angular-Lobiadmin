@@ -1,15 +1,14 @@
-<div id="create-rename-dialog">
+<div id="manage-tags-dialog">
     <div class="modal-header">
         <h3 class="modal-title" id="modal-title">
-            <span ng-if="vm.isRename"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;&nbsp;Rename Folder</span>
-            <span ng-if="!vm.isRename"><i class="fa fa-folder-open" aria-hidden="true"></i>&nbsp;&nbsp;Create Folder</span>
+            <span><i class="fa fa-tags" aria-hidden="true"></i>&nbsp;&nbsp;Manage Tags</span>
         </h3>
     </div>
     <div class="modal-body" id="modal-body">
         <pre>
             {{vm.currentEntry | json}}
         </pre>
-        <input type="text" class="form-control" ng-model="vm.currentEntry.name">
+        <input type="text" class="form-control" ng-model="vm.currentEntry.tags">
     </div>
     <div class="modal-footer">
         <button class="btn btn-primary" type="button" ng-click="vm.ok()">Rename</button>

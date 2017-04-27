@@ -3,22 +3,21 @@
 
   angular
     .module('app.fileManager')
-    .controller('FileManagerController', FileManagerControllerFn)
+    .controller('FileManagerController', FileManagerControllerFn);
 
   /** @ngInject */
-  function FileManagerControllerFn($rootScope, $translate, $uibModal) {
+  function FileManagerControllerFn($rootScope, $translate, $uibModal, files) {
     var vm = this;
 
     vm.selectedFile = null;
     vm.currentView = 'list-condensed';
     vm.orderByField = 'name';
     vm.defaultSort = true;
-    vm.displayData = [];
     vm.menuOptions = [];
     vm.searchValue = "";
     vm.searchResults = [];
     vm.toggleSearch = false;
-
+    vm.files = files;
 
     // Methods
     // --File selections
@@ -37,7 +36,8 @@
     // --CreateFolderModal
     vm.showCreateFolderDialog = showCreateFolderDialog;
     vm.showRenameFolderDialog = showRenameFolderDialog;
-
+    // --ManageTagsModal
+    vm.showManageTagsDialog = showManageTagsDialog;
 
     /////////////////////////
 
@@ -48,263 +48,6 @@
       $rootScope.$on('App:languageChange', function () {
         translateMenu();
       });
-
-      // Data
-      vm.files = [
-        {
-          "id": 1,
-          "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
-          "name": "Adeline",
-          "type": "Folder",
-          "owner": "Public",
-          "size": "",
-          "date": 1288323623006
-        },
-        {
-          "id": 2,
-          "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
-          "name": "Renee",
-          "type": "Image",
-          "owner": "Public",
-          "size": 2332300,
-          "date": 1288323323006
-        },
-        {
-          "id": 3,
-          "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
-          "name": "Mathis",
-          "type": "Word",
-          "owner": "Public",
-          "size": 233300,
-          "date": 1288323623306
-        },
-        {
-          "id": 4,
-          "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
-          "name": "Elizabeth",
-          "type": "Excel",
-          "owner": "Me",
-          "size": 23323,
-          "date": 1288343623006
-        },
-        {
-          "id": 5,
-          "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
-          "name": "Mcmahon",
-          "type": "Power Point",
-          "owner": "Public",
-          "size": 13623006,
-          "date": 1288313623006
-        },
-        {
-          "id": 6,
-          "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
-          "name": "Alisha",
-          "type": "Video",
-          "owner": "Public",
-          "size": 13623006,
-          "date": 1288323673006
-        },
-        {
-          "id": 7,
-          "icon": "<i class='fa fa-file-text' aria-hidden='true'></i>",
-          "name": "Consuelo",
-          "type": "Audio",
-          "owner": "Public",
-          "size": 2883936,
-          "date": 1288393623006
-        },
-        {
-          "id": 8,
-          "icon": "<i class='fa fa-file-text' aria-hidden='true'></i>",
-          "name": "Bobbie",
-          "type": "Folder",
-          "owner": "Emily Bennet",
-          "size": 87236,
-          "date": 1288723623006
-        },
-        {
-          "id": 9,
-          "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
-          "name": "Berg",
-          "type": "Css",
-          "owner": "Me",
-          "size": 28832,
-          "date": 1288323645006
-        },
-        {
-          "id": 10,
-          "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
-          "name": "Nina",
-          "type": "Code",
-          "owner": "Emily Bennet",
-          "size": 23673,
-          "date": 1288323673006
-        },
-        {
-          "id": 11,
-          "icon": "<i class='fa fa-file-text' aria-hidden='true'></i>",
-          "name": "Loretta",
-          "type": "Archive",
-          "owner": "Public",
-          "size": 2883237,
-          "date": 1288323723006
-        },
-        {
-          "id": 12,
-          "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
-          "name": "Newman",
-          "type": "Other",
-          "owner": "Public",
-          "size": 83236230,
-          "date": 1288323623044
-        },
-        {
-          "id": 13,
-          "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
-          "name": "Yvette",
-          "type": "Document",
-          "owner": "Emily Bennet",
-          "size": 28838362,
-          "date": 1288383623006
-        },
-        {
-          "id": 14,
-          "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
-          "name": "Polly",
-          "type": "Document",
-          "owner": "Emily Bennet",
-          "size": 88736,
-          "date": 1288873623006
-        }, {
-          "id": 16,
-          "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
-          "name": "Adeline",
-          "type": "Folder",
-          "owner": "Public",
-          "size": "",
-          "date": 1288323623006
-        },
-        {
-          "id": 17,
-          "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
-          "name": "Renee",
-          "type": "Image",
-          "owner": "Public",
-          "size": 2332300,
-          "date": 1288323323006
-        },
-        {
-          "id": 18,
-          "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
-          "name": "Mathis",
-          "type": "Word",
-          "owner": "Public",
-          "size": 233300,
-          "date": 1288323623306
-        },
-        {
-          "id": 19,
-          "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
-          "name": "Elizabeth",
-          "type": "Excel",
-          "owner": "Me",
-          "size": 23323,
-          "date": 1288343623006
-        },
-        {
-          "id": 20,
-          "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
-          "name": "Mcmahon",
-          "type": "Power Point",
-          "owner": "Public",
-          "size": 13623006,
-          "date": 1288313623006
-        },
-        {
-          "id": 21,
-          "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
-          "name": "Alisha",
-          "type": "Video",
-          "owner": "Public",
-          "size": 13623006,
-          "date": 1288323673006
-        },
-        {
-          "id": 22,
-          "icon": "<i class='fa fa-file-text' aria-hidden='true'></i>",
-          "name": "Consuelo",
-          "type": "Audio",
-          "owner": "Public",
-          "size": 2883936,
-          "date": 1288393623006
-        },
-        {
-          "id": 23,
-          "icon": "<i class='fa fa-file-text' aria-hidden='true'></i>",
-          "name": "Bobbie",
-          "type": "Folder",
-          "owner": "Emily Bennet",
-          "size": 87236,
-          "date": 1288723623006
-        },
-        {
-          "id": 24,
-          "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
-          "name": "Berg",
-          "type": "Css",
-          "owner": "Me",
-          "size": 28832,
-          "date": 1288323645006
-        },
-        {
-          "id": 25,
-          "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
-          "name": "Nina",
-          "type": "Code",
-          "owner": "Emily Bennet",
-          "size": 23673,
-          "date": 1288323673006
-        },
-        {
-          "id": 26,
-          "icon": "<i class='fa fa-file-text' aria-hidden='true'></i>",
-          "name": "Loretta",
-          "type": "Archive",
-          "owner": "Public",
-          "size": 2883237,
-          "date": 1288323723006
-        },
-        {
-          "id": 27,
-          "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
-          "name": "Newman",
-          "type": "Other",
-          "owner": "Public",
-          "size": 83236230,
-          "date": 1288323623044
-        },
-        {
-          "id": 28,
-          "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
-          "name": "Yvette",
-          "type": "Document",
-          "owner": "Emily Bennet",
-          "size": 28838362,
-          "date": 1288383623006
-        },
-        {
-          "id": 29,
-          "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
-          "name": "Polly",
-          "type": "Document",
-          "owner": "Emily Bennet",
-          "size": 88736,
-          "date": 1288873623006
-        }
-      ];
-
-      vm.displayData = vm.files;
     }
 
     function translateMenu() {
@@ -395,6 +138,8 @@
       console.log("Manage Tags For Selected File" + "\nfileID: " + $itemScope.file.id);
       console.log($itemScope.file);
       vm.selectedFile = $itemScope.file;
+      vm.showManageTagsDialog(vm.selectedFile);
+
     }
 
     function cutFn($itemScope) {
@@ -449,13 +194,9 @@
               id: vm.files[i].id, icon: vm.files[i].icon, name: vm.files[i].name, type: vm.files[i].type,
               owner: vm.files[i].owner, size: vm.files[i].size, date: vm.files[i].date
             });
-            console.log(vm.files[i]);
           }
         }
-        vm.displayData = vm.searchResults;
         console.log(vm.searchResults);
-      } else {
-        vm.displayData = vm.files;
       }
     }
 
@@ -471,24 +212,37 @@
         controllerAs: 'vm',
         size: 'sm',
         resolve: {
-          CurrentFolder: null
+          currentEntry: null
         }
       });
     }
 
-    function showRenameFolderDialog(renameTo) {
+    function showRenameFolderDialog(renameTarget) {
       $uibModal.open({
         templateUrl: 'app/main/apps/file-manager/dialogs/create-rename-dialog/create-rename-dialog.html',
         controller: 'CreateRenameDialogController',
         controllerAs: 'vm',
         size: 'sm',
         resolve: {
-          CurrentFolder: function () {
-            return { name: renameTo.name };
+          currentEntry: function () {
+            return { name: renameTarget.name };
           }
         }
       });
     }
 
+    function showManageTagsDialog(manageTagsTarget) {
+      $uibModal.open({
+        templateUrl: 'app/main/apps/file-manager/dialogs/manage-tags-dialog/manage-tags-dialog.html',
+        controller: 'ManageTagsController',
+        controllerAs: 'vm',
+        size: 'sm',
+        resolve: {
+          currentEntry: function () {
+            return { tags: manageTagsTarget.tags };
+          }
+        }
+      });
+    }
   }
 })();

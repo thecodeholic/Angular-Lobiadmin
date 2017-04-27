@@ -64,7 +64,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr ng-repeat="file in vm.displayData | orderBy:orderByField:vm.defaultSort"
+    <tr ng-repeat="file in vm.files | orderBy:orderByField:vm.defaultSort"
         ng-click="vm.selectFile(file)"
         ng-right-click="vm.selectFile(file); vm.checkFileType(file)"
         context-menu="vm.menuOptions" ng-class="{'active': file == vm.selectedFile}">

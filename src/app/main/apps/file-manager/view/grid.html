@@ -1,6 +1,6 @@
 <div class="grid-view">
     <div class="files row">
-        <div ng-repeat="file in vm.displayData | orderBy:orderByField:vm.defaultSort"
+        <div ng-repeat="file in vm.files | orderBy:orderByField:vm.defaultSort"
              context-menu="vm.menuOptions" class="col-sm-4 col-md-3">
             <div ng-click="vm.selectFile(file)"
                  ng-right-click="vm.selectFile(file); vm.checkFileType(file)"
