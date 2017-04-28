@@ -6,7 +6,7 @@
 
   angular
     .module('app.fileManager')
-    .controller('CreateRenameDialogController', CreateRenameDialogControllerFn)
+    .controller('CreateRenameDialogController', CreateRenameDialogControllerFn);
 
   /** @ngInject */
   function CreateRenameDialogControllerFn($uibModalInstance, CurrentEntry) {
@@ -22,6 +22,7 @@
 
 
     function ok(){
+      console.log(vm.currentEntry.name);
       $uibModalInstance.close();
     }
 

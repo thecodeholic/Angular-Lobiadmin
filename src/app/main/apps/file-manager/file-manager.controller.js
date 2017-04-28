@@ -33,11 +33,12 @@
     // --Search
     vm.searchFn = searchFn;
     vm.clearSearchResultsFn = clearSearchResultsFn;
-    // --CreateFolderModal
+    // --Create/Rename Folder Modal
     vm.showCreateFolderDialog = showCreateFolderDialog;
     vm.showRenameFolderDialog = showRenameFolderDialog;
-    // --ManageTagsModal
+    // --Manage Tags Modal
     vm.showManageTagsDialog = showManageTagsDialog;
+    // --Side Menu
 
     /////////////////////////
 
@@ -212,7 +213,7 @@
         controllerAs: 'vm',
         size: 'sm',
         resolve: {
-          currentEntry: null
+          CurrentEntry: null
         }
       });
     }
@@ -224,24 +225,28 @@
         controllerAs: 'vm',
         size: 'sm',
         resolve: {
-          currentEntry: function () {
+          CurrentEntry: function () {
             return { name: renameTarget.name };
           }
         }
       });
     }
 
-    function showManageTagsDialog(manageTagsTarget) {
+    function showManageTagsDialog() {
       $uibModal.open({
         templateUrl: 'app/main/apps/file-manager/dialogs/manage-tags-dialog/manage-tags-dialog.html',
         controller: 'ManageTagsController',
         controllerAs: 'vm',
         size: 'sm',
         resolve: {
-          currentEntry: function () {
-            return { tags: manageTagsTarget.tags };
+          CurrentTags: function () {
+            return vm.selectedFile.tags;
           }
         }
+      }).result.then(function(){
+        console.log("resolve", arguments);
+      }, function(){
+        console.log("reject")
       });
     }
   }

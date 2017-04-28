@@ -1,7 +1,7 @@
 <div id="fileManager">
     <div class="top-menu">
         <div class="menu-left">
-            <i class="fa fa-bars" aria-hidden="true"></i>
+            <i class="fa fa-bars" aria-hidden="true" ng-click="vm.asideInstance"></i>
             <span class="path-to-file">My Files &gt; Documents</span>
         </div>
         <div class="menu-right">
@@ -61,6 +61,10 @@
                     <tr class="size">
                         <th>{{'FILE_MANAGER.VIEW.SIZE' | translate}}:</th>
                         <td>{{vm.selectedFile.size === '' ? '-': vm.selectedFile.size | bytes}}</td>
+                    </tr>
+                    <tr class="tags">
+                        <th>{{'FILE_MANAGER.VIEW.TAGS' | translate}}:</th>
+                        <td><div ng-repeat="tag in vm.selectedFile.tags">{{tag.text}}</div></td>
                     </tr>
                     <tr class="date">
                         <th>{{'FILE_MANAGER.VIEW.LAST_MODIFIED' | translate}}:</th>

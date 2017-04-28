@@ -14,6 +14,7 @@
       'ngMessages',
       'ngAria',
       'ngResource',
+      'ngTagsInput',
       'ui.router',
       'toastr',
       'ui.bootstrap',

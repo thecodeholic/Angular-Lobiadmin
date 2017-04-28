@@ -6,14 +6,14 @@
 
   angular
     .module('app.fileManager')
-    .controller('ManageTagsController', ManageTagsControllerFn)
+    .controller('ManageTagsController', ManageTagsControllerFn);
 
   /** @ngInject */
-  function ManageTagsControllerFn($uibModalInstance, CurrentEntry) {
+  function ManageTagsControllerFn($uibModalInstance, CurrentTags) {
     var vm = this;
 
     // variables
-    vm.currentEntry = CurrentEntry || {};
+    vm.currentTags = CurrentTags || [];
 
     // Methods
     vm.ok = ok;
@@ -21,7 +21,9 @@
 
 
     function ok(){
-      $uibModalInstance.close();
+
+      console.log(vm.currentTags);
+      $uibModalInstance.close(vm.currentTags);
     }
 
     function cancel(){

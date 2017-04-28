@@ -33,7 +33,7 @@
                     return response.data;
                   }, function(error)
                   {
-                    return 'There was an error getting data';
+                    return 'There was an error getting data' + error;
                   });
               }
             }
@@ -46,8 +46,8 @@
     lobiNavigationServiceProvider.saveItem('app.fileManager', {
       text: 'File Manager',
       state: 'app.fileManager',
-      weight: 1
-      // icon: 'fa fa-table'
+      weight: 1,
+      //icon: 'fa fa-table'
     });
   }
 })();

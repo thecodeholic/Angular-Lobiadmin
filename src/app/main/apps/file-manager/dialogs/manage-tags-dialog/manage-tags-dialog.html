@@ -6,12 +6,14 @@
     </div>
     <div class="modal-body" id="modal-body">
         <pre>
-            {{vm.currentEntry | json}}
+            {{vm.currentTags | json}}
         </pre>
-        <input type="text" class="form-control" ng-model="vm.currentEntry.tags">
+
+        <input om-tagsinput ng-model="vm.currentTags">
+
     </div>
     <div class="modal-footer">
-        <button class="btn btn-primary" type="button" ng-click="vm.ok()">Rename</button>
+        <button class="btn btn-primary" type="button" ng-click="vm.ok()">OK</button>
         <button class="btn btn-default" type="button" ng-click="vm.cancel()">Cancel</button>
     </div>
 </div>

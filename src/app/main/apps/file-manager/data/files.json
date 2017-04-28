@@ -5,7 +5,7 @@
     "type": "Folder",
     "owner": "Public",
     "size": "",
-    "tags": "myFolderTag",
+    "tags": [],
     "date": 1288323623006
   },
   {
@@ -15,7 +15,7 @@
     "type": "Image",
     "owner": "Public",
     "size": 2332300,
-    "tags": "",
+    "tags": [],
     "date": 1288323323006
   },
   {
@@ -25,7 +25,7 @@
     "type": "Word",
     "owner": "Public",
     "size": 233300,
-    "tags": "",
+    "tags": [],
     "date": 1288323623306
   },
   {
@@ -35,7 +35,7 @@
     "type": "Excel",
     "owner": "Me",
     "size": 23323,
-    "tags": "",
+    "tags": [],
     "date": 1288343623006
   },
   {
@@ -45,7 +45,7 @@
     "type": "Power Point",
     "owner": "Public",
     "size": 13623006,
-    "tags": "",
+    "tags": [],
     "date": 1288313623006
   },
   {
@@ -55,7 +55,7 @@
     "type": "Video",
     "owner": "Public",
     "size": 13623006,
-    "tags": "",
+    "tags": [],
     "date": 1288323673006
   },
   {
@@ -65,7 +65,7 @@
     "type": "Audio",
     "owner": "Public",
     "size": 2883936,
-    "tags": "",
+    "tags": [],
     "date": 1288393623006
   },
   {
@@ -75,7 +75,7 @@
     "type": "Folder",
     "owner": "Emily Bennet",
     "size": 87236,
-    "tags": "",
+    "tags": [],
     "date": 1288723623006
   },
   {
@@ -85,7 +85,7 @@
     "type": "Css",
     "owner": "Me",
     "size": 28832,
-    "tags": "",
+    "tags": [],
     "date": 1288323645006
   },
   {
@@ -95,7 +95,7 @@
     "type": "Code",
     "owner": "Emily Bennet",
     "size": 23673,
-    "tags": "",
+    "tags": ["family"],
     "date": 1288323673006
   },
   {
@@ -105,7 +105,7 @@
     "type": "Archive",
     "owner": "Public",
     "size": 2883237,
-    "tags": "",
+    "tags": ["favourites"],
     "date": 1288323723006
   },
   {
@@ -115,7 +115,7 @@
     "type": "Other",
     "owner": "Public",
     "size": 83236230,
-    "tags": "",
+    "tags": [],
     "date": 1288323623044
   },
   {
@@ -125,7 +125,7 @@
     "type": "Document",
     "owner": "Emily Bennet",
     "size": 28838362,
-    "tags": "",
+    "tags": [],
     "date": 1288383623006
   },
   {
@@ -135,7 +135,7 @@
     "type": "Document",
     "owner": "Emily Bennet",
     "size": 88736,
-    "tags": "",
+    "tags": [],
     "date": 1288873623006
   },
   {
@@ -145,7 +145,7 @@
     "type": "Folder",
     "owner": "Public",
     "size": "",
-    "tags": "myFolderTag",
+    "tags": [],
     "date": 1288323623006
   },
   {
@@ -155,7 +155,7 @@
     "type": "Image",
     "owner": "Public",
     "size": 2332300,
-    "tags": "",
+    "tags": [],
     "date": 1288323323006
   },
   {
@@ -165,7 +165,7 @@
     "type": "Word",
     "owner": "Public",
     "size": 233300,
-    "tags": "",
+    "tags": [],
     "date": 1288323623306
   },
   {
@@ -175,7 +175,7 @@
     "type": "Excel",
     "owner": "Me",
     "size": 23323,
-    "tags": "",
+    "tags": [],
     "date": 1288343623006
   },
   {
@@ -185,7 +185,7 @@
     "type": "Power Point",
     "owner": "Public",
     "size": 13623006,
-    "tags": "",
+    "tags": [],
     "date": 1288313623006
   },
   {
@@ -195,7 +195,7 @@
     "type": "Video",
     "owner": "Public",
     "size": 13623006,
-    "tags": "",
+    "tags": [],
     "date": 1288323673006
   },
   {
@@ -205,7 +205,7 @@
     "type": "Audio",
     "owner": "Public",
     "size": 2883936,
-    "tags": "",
+    "tags": [],
     "date": 1288393623006
   },
   {
@@ -215,7 +215,7 @@
     "type": "Folder",
     "owner": "Emily Bennet",
     "size": 87236,
-    "tags": "",
+    "tags": [],
     "date": 1288723623006
   },
   {
@@ -225,7 +225,7 @@
     "type": "Css",
     "owner": "Me",
     "size": 28832,
-    "tags": "",
+    "tags": [],
     "date": 1288323645006
   },
   {
@@ -235,7 +235,7 @@
     "type": "Code",
     "owner": "Emily Bennet",
     "size": 23673,
-    "tags": "",
+    "tags": [],
     "date": 1288323673006
   },
   {
@@ -245,7 +245,7 @@
     "type": "Archive",
     "owner": "Public",
     "size": 2883237,
-    "tags": "",
+    "tags": [],
     "date": 1288323723006
   },
   {
@@ -255,7 +255,7 @@
     "type": "Other",
     "owner": "Public",
     "size": 83236230,
-    "tags": "",
+    "tags": [],
     "date": 1288323623044
   },
   {
@@ -265,7 +265,7 @@
     "type": "Document",
     "owner": "Emily Bennet",
     "size": 28838362,
-    "tags": "",
+    "tags": [],
     "date": 1288383623006
   },
   {
@@ -275,6 +275,6 @@
     "type": "Document",
     "owner": "Emily Bennet",
     "size": 88736,
-    "tags": "",
+    "tags": [],
     "date": 1288873623006
   }]
