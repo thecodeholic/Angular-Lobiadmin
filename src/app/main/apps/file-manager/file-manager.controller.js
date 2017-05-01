@@ -6,7 +6,7 @@
     .controller('FileManagerController', FileManagerControllerFn);
 
   /** @ngInject */
-  function FileManagerControllerFn($rootScope, $translate, $uibModal, files) {
+  function FileManagerControllerFn($rootScope, $translate, $uibModal, files, offCanvas) {
     var vm = this;
 
     vm.selectedFile = null;
@@ -18,6 +18,7 @@
     vm.searchResults = [];
     vm.toggleSearch = false;
     vm.files = files;
+    vm.currentUser = {};
 
     // Methods
     // --File selections
@@ -39,7 +40,7 @@
     // --Manage Tags Modal
     vm.showManageTagsDialog = showManageTagsDialog;
     // --Side Menu
-
+    vm.toggle = toggle;
     /////////////////////////
 
     translateMenu();
@@ -248,6 +249,10 @@
       }, function(){
         console.log("reject")
       });
+    }
+ 
+    function toggle() {
+      angular.element(".off-canvas__nav").toggleClass('nav-opened');
     }
   }
 })();

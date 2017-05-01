@@ -1,0 +1,39 @@
+.off-canvas__container {
+  height:100%;
+  position: relative;
+  overflow-y: hidden;
+}
+
+.off-canvas__nav {
+  border-top: 2px solid rgba(0,0,0,0.2);
+  border-right: 2px solid rgba(0,0,0,0.2);
+  border-bottom: 2px solid rgba(0,0,0,0.2);
+  background-color: white;
+  margin-left:-250px;
+  width: 250px;
+  float:left;
+  position: absolute;
+  height: 100%;
+  z-index:100;
+  -webkit-user-drag: none;
+  transition: 0.5s ease;
+  .heading{
+    text-align: center;
+    font-size: 24px;
+    margin: 25px 12.5px;
+  }
+  .user-select{
+    margin: 25px 12.5px 25px 35px;
+    text-align: left;
+  }
+  .list-group{
+    margin: 25px 0;
+    a{
+      border:0;
+      padding-left: 35px;
+    }
+  }
+}
+.nav-opened {
+  margin-left: 0;
+}

@@ -67,7 +67,8 @@
     <tr ng-repeat="file in vm.files | orderBy:orderByField:vm.defaultSort"
         ng-click="vm.selectFile(file)"
         ng-right-click="vm.selectFile(file); vm.checkFileType(file)"
-        context-menu="vm.menuOptions" ng-class="{'active': file == vm.selectedFile}">
+        context-menu="vm.menuOptions" ng-class="{'active': file == vm.selectedFile}" uib-tooltip="Right Click for options"
+        tooltip-placement="bottom" tooltip-popup-delay="1500">
         <td><i class='fa fa-{{file.type | typeToIcon}}' aria-hidden='true'></i></td>
         <td>{{file.name}}</td>
         <td>{{file.type}}</td>
