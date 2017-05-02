@@ -3,8 +3,7 @@
 
   angular
     .module('app.fileManager', [
-      'pascalprecht.translate',
-      'cn.offCanvas'
+      'pascalprecht.translate'
     ])
     .config(Config);
 

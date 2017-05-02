@@ -1,7 +1,9 @@
 <div id="fileManager">
     <div class="top-menu">
         <div class="menu-left">
-            <i class="fa fa-bars" aria-hidden="true" ng-click="vm.toggle()" uib-tooltip="Menu" tooltip-placement="bottom"></i>
+            <i class="fa fa-bars" aria-hidden="true" ng-click="vm.toggleFileManagerAside('fileManagerAside')"
+               uib-tooltip="Menu"
+               tooltip-placement="bottom"></i>
             <span class="path-to-file">My Files &gt; Documents</span>
         </div>
         <div class="menu-right">
@@ -13,7 +15,8 @@
             </div>
             <div ng-if="vm.currentView === 'list-condensed'"
                  ng-click="vm.toggleView()">
-                <i class="fa fa-th-list" aria-hidden="true" uib-tooltip="Switch to Grid View" tooltip-placement="bottom"></i>
+                <i class="fa fa-th-list" aria-hidden="true" uib-tooltip="Switch to Grid View"
+                   tooltip-placement="bottom"></i>
             </div>
             <div ng-if="vm.currentView === 'grid-view'"
                  ng-click="vm.toggleView()">
@@ -24,6 +27,31 @@
 
     <div class="main clearfix">
         <div class="off-canvas__container off-canvas__content clearfix">
+            <div om-aside om-slide-direction="left" id="fileManagerAside" class="off-canvas__nav">
+                <div class="heading"><i class="fa fa-folder" aria-hidden="true"></i>&nbsp;&nbsp;File Manager</div>
+                <div class="user-select" uib-dropdown on-toggle="toggled(open)">
+                    <a href id="user-select" uib-dropdown-toggle class="current-user">
+                        <div> {{vm.currentUser.name}} <br> {{vm.currentUser.email}} <i class="fa fa-caret-down"
+                                                                                       aria-hidden="true"></i></div>
+                    </a>
+                    <ul class="dropdown-menu" uib-dropdown-menu aria-labelledby="user-select">
+                        <li class="user" ng-repeat="user in vm.users" ng-click="vm.currentUser=user"><a>
+                            <div> {{user.name}} <br> {{user.email}}</div>
+                        </a></li>
+                    </ul>
+                </div>
+                <hr>
+                <div class="list-group">
+                    <a href="#" class="list-group-item"><i class="fa fa-folder" aria-hidden="true"></i>&nbsp;&nbsp;My
+                        Files</a>
+                    <a href="#" class="list-group-item"><i class="fa fa-star" aria-hidden="true"></i>&nbsp;&nbsp;Starred</a>
+                    <a href="#" class="list-group-item"><i class="fa fa-share" aria-hidden="true"></i>&nbsp;&nbsp;Shared
+                        with me</a>
+                    <a href="#" class="list-group-item"><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;&nbsp;Recent</a>
+                    <a href="#" class="list-group-item"><i class="fa fa-download" aria-hidden="true"></i>&nbsp;&nbsp;My
+                        Files</a>
+                </div>
+            </div>
             <div class="view">
                 <div class="upload-options">
                     <div class="btn-group" role="group">

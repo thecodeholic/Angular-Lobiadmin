@@ -6,7 +6,7 @@
     .controller('FileManagerController', FileManagerControllerFn);
 
   /** @ngInject */
-  function FileManagerControllerFn($rootScope, $translate, $uibModal, files, offCanvas) {
+  function FileManagerControllerFn($rootScope, $translate, $uibModal, files, omAside) {
     var vm = this;
 
     vm.selectedFile = null;
@@ -18,7 +18,8 @@
     vm.searchResults = [];
     vm.toggleSearch = false;
     vm.files = files;
-    vm.currentUser = {};
+    vm.users = [{"name":"John Doe", "email":"JohnDoe@example.com"}, {"name":"Jane Doe", "email":"JaneDoe@examle.com"}, {"name":"user name", "email":"userEmail@example.com"}];
+    vm.currentUser = vm.users[0];
 
     // Methods
     // --File selections
@@ -40,7 +41,8 @@
     // --Manage Tags Modal
     vm.showManageTagsDialog = showManageTagsDialog;
     // --Side Menu
-    vm.toggle = toggle;
+    vm.toggleFileManagerAside = toggleFileManagerAside;
+
     /////////////////////////
 
     translateMenu();
@@ -251,8 +253,8 @@
       });
     }
  
-    function toggle() {
-      angular.element(".off-canvas__nav").toggleClass('nav-opened');
+    function toggleFileManagerAside(id) {
+      omAside.toggle(id);
     }
   }
 })();
