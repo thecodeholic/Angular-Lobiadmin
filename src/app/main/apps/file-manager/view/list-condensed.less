@@ -17,9 +17,15 @@
           }
         }
         tr {
-          td:first-child {
-            font-size: 20px;
-          }
+          td{
+            > img{
+              height: @fm-list-thumb-size;
+              width: @fm-list-thumb-size;
+            }
+            > i {
+            font-size: @fm-list-thumb-size;
+            }
+            }
         }
         td {
           text-align: center;

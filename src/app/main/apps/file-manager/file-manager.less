@@ -1,30 +1,11 @@
-i.fa{
-  outline: 0;
-}
 #fileManager{
   height:100%;
   position: relative;
-  .modalBack{
-    position: absolute;
-    width:100%;
-    left:0;
-    right:0;
-    top:0;
-    bottom:0;
-    #createFolderModal{
-      position: absolute;
-      width:30%;
-      z-index:1041;
-      .modal-body{
-        background-color: #fdfdfd;
-      }
-    }
-  }
   .top-menu{
     height:100px;
     width:100%;
     padding:35px;
-    background-color:darkslategrey;
+    background-color: @brand-primary;
     .menu{
       &-left{
         float:left;
@@ -33,9 +14,16 @@ i.fa{
           font-size:20px;
           margin: 5px;
         }
-        .path-to-file{
+        ol.breadcrumb{
           font-size: 20px;
-          margin: 5px 15px;
+          display: inline-block;
+          background-color: transparent;
+          li{
+            outline: 0;
+            &:hover{
+              color: darken(white,25%);
+            }
+          }
         }
       }
       &-right{
@@ -63,7 +51,7 @@ i.fa{
       height: 100%;
       overflow-y: scroll;
       float: left;
-      .upload-options{
+      .button-group-top{
         padding:16px;
         .btn-upload{
           position: relative;
@@ -76,6 +64,10 @@ i.fa{
             top:0;
             bottom:0;
           }
+        }
+        #filteredBy{
+          margin-bottom: 20px;
+          display: none;
         }
       }
       .context-menu{
@@ -118,6 +110,11 @@ i.fa{
             td {
               padding-left: 10px;
               text-align: left;
+              white-space: normal;
+              .label{
+                display: inline-block;
+                margin-left: 5px;
+              }
             }
           }
         }
@@ -125,6 +122,9 @@ i.fa{
       .selected-image{
         width:100%;
         text-align: center;
+        img{
+          margin: 30px 10px;
+        }
         i{
           font-size: 48px;
           padding: 50px 20px;

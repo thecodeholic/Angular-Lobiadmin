@@ -1,6 +1,3 @@
-@nav-height: 100%;
-@nav-width: 250px;
-
 .off-canvas__container {
   height:100%;
   position: relative;
@@ -11,12 +8,12 @@
   border: 2px solid rgba(0,0,0,0.2);
   background-color: white;
   margin:0;
-  width: @nav-width;
-  height: @nav-height;
+  width: @fm-aside-width;
+  height: @fm-aside-height;
   position: absolute;
   z-index: 100;
   opacity: 1;
-  transition: 0.5s ease;
+  transition: @fm-aside-transition;
 
   .heading{
     text-align: center;
@@ -44,21 +41,21 @@
 
 .nav-closed {
   opacity:0;
-  margin-left:-@nav-width;
+  margin-left:-@fm-aside-width;
 }
 .nav-closed-top{
   opacity:0;
-  margin-top:-@nav-height;
+  margin-top:-@fm-aside-height;
 }
 .nav-closed-right{
   opacity:0;
-  margin-left:@nav-width;
+  margin-left:@fm-aside-width;
 }
 .nav-closed-bottom{
   opacity:0;
-  margin-top:@nav-height;
+  margin-top:@fm-aside-height;
 }
 .nav-closed-left{
   opacity:0;
-  margin-left:-@nav-width;
+  margin-left:-@fm-aside-width;
 }

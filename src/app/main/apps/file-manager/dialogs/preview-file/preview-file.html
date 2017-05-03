@@ -1,0 +1,14 @@
+<div id="preview-file-dialog">
+    <div class="modal-header">
+        <h3 class="modal-title" id="modal-title">
+            <span><i class="fa fa-{{vm.fileType | typeToIcon}}" aria-hidden="true"></i>&nbsp;&nbsp;{{vm.fileName}}</span><i class="fa fa-times pull-right" aria-hidden="true" ng-click="vm.ok()"></i>
+        </h3>
+    </div>
+    <div class="modal-body text-center" id="modal-body">
+        <img ng-if="vm.previewLink != ''" src="{{vm.previewLink}}" height="90%" width="90%">
+        <p ng-if="vm.previewLink == '' && vm.thumbLink != ''" class="text-center">Thumbnail Preview ! (no preview link provided)</p>
+        <img ng-if="vm.previewLink == '' && vm.thumbLink != ''" src="{{vm.thumbLink}}" height="40%" width="40%">
+        <p ng-if="vm.previewLink == '' && vm.thumbLink == ''" class="text-center">Icon Preview ! (no preview and thumbnail link provided)</p>
+        <i ng-if="vm.previewLink == '' && vm.thumbLink == ''" class="fa fa-{{vm.fileType | typeToIcon}}" aria-hidden="true" style="font-size: 48px"></i>
+    </div>
+</div>

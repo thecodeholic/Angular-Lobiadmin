@@ -4,7 +4,9 @@
             <i class="fa fa-bars" aria-hidden="true" ng-click="vm.toggleFileManagerAside('fileManagerAside')"
                uib-tooltip="Menu"
                tooltip-placement="bottom"></i>
-            <span class="path-to-file">My Files &gt; Documents</span>
+            <ol class="breadcrumb">
+                <li ng-repeat="crumb in vm.breadcrumbs" id="{{crumb.id}}" class="path-to-file" ng-click="vm.changeDirectory(crumb)">{{crumb.name}}</li>
+            </ol>
         </div>
         <div class="menu-right">
             <div>
@@ -53,7 +55,7 @@
                 </div>
             </div>
             <div class="view">
-                <div class="upload-options">
+                <div class="button-group-top">
                     <div class="btn-group" role="group">
                         <button type="button" class="btn btn-primary btn-upload" ng-click="vm.openFileUpload()">
                             {{'FILE_MANAGER.MENU.UPLOAD_FILE' | translate}}
@@ -70,6 +72,9 @@
                             {{'FILE_MANAGER.MENU.CREATE_FOLDER' | translate}}
                         </button>
                     </div>
+                    <button id="filteredBy" type="button" class="btn btn-default pull-right" ng-click="vm.filterListByTag(null)">
+                        {{vm.filterBy}}&nbsp;&nbsp;<i class="fa fa-times" aria-hidden="true"></i>
+                    </button>
                 </div>
                 <div ng-if="vm.currentView === 'grid-view'"
                      ng-include="'app/main/apps/file-manager/view/grid.html'">
@@ -82,12 +87,13 @@
                 <div class="selected-actions">
 
                 </div>
-                <div class="selected-image">
-                    <i class='fa fa-{{vm.selectedFile.type | typeToIcon}}' aria-hidden='true'></i>
+                <div class="selected-image" ng-show="vm.selectedFile != null">
+                    <img ng-if="vm.selectedFile.thumb != ''" src="{{vm.selectedFile.thumb}}" height="180" width="180">
+                    <i ng-if="vm.selectedFile.thumb == ''" class="fa fa-{{vm.selectedFile.type | typeToIcon}}" aria-hidden="true"></i>
                 </div>
                 <div class="selected-description" ng-show="vm.selectedFile != null">
                     <div class="title">{{vm.selectedFile.name}}</div>
-                    <table>
+                    <table class="table">
                         <tr class="type">
                             <th>{{'FILE_MANAGER.VIEW.TYPE' | translate}}:</th>
                             <td>{{vm.selectedFile.type}}</td>
@@ -103,7 +109,7 @@
                         <tr class="tags">
                             <th>{{'FILE_MANAGER.VIEW.TAGS' | translate}}:</th>
                             <td>
-                                <div ng-repeat="tag in vm.selectedFile.tags">{{tag.text}}</div>
+                                <span class="label label-primary" ng-repeat="tag in vm.selectedFile.tags" ng-click="vm.filterListByTag(tag)">{{tag}}</span>
                             </td>
                         </tr>
                         <tr class="date">

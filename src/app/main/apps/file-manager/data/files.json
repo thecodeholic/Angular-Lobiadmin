@@ -1,280 +1,410 @@
-[{
-    "id": 1,
-    "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
-    "name": "Adeline",
-    "type": "Folder",
-    "owner": "Public",
-    "size": "",
-    "tags": [],
-    "date": 1288323623006
-  },
-  {
-    "id": 2,
-    "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
-    "name": "Renee",
-    "type": "Image",
-    "owner": "Public",
-    "size": 2332300,
-    "tags": [],
-    "date": 1288323323006
-  },
-  {
-    "id": 3,
-    "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
-    "name": "Mathis",
-    "type": "Word",
-    "owner": "Public",
-    "size": 233300,
-    "tags": [],
-    "date": 1288323623306
-  },
-  {
-    "id": 4,
-    "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
-    "name": "Elizabeth",
-    "type": "Excel",
-    "owner": "Me",
-    "size": 23323,
-    "tags": [],
-    "date": 1288343623006
-  },
-  {
-    "id": 5,
-    "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
-    "name": "Mcmahon",
-    "type": "Power Point",
-    "owner": "Public",
-    "size": 13623006,
-    "tags": [],
-    "date": 1288313623006
-  },
-  {
-    "id": 6,
-    "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
-    "name": "Alisha",
-    "type": "Video",
-    "owner": "Public",
-    "size": 13623006,
-    "tags": [],
-    "date": 1288323673006
-  },
-  {
-    "id": 7,
-    "icon": "<i class='fa fa-file-text' aria-hidden='true'></i>",
-    "name": "Consuelo",
-    "type": "Audio",
-    "owner": "Public",
-    "size": 2883936,
-    "tags": [],
-    "date": 1288393623006
-  },
-  {
-    "id": 8,
-    "icon": "<i class='fa fa-file-text' aria-hidden='true'></i>",
-    "name": "Bobbie",
-    "type": "Folder",
-    "owner": "Emily Bennet",
-    "size": 87236,
-    "tags": [],
-    "date": 1288723623006
-  },
-  {
-    "id": 9,
-    "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
-    "name": "Berg",
-    "type": "Css",
-    "owner": "Me",
-    "size": 28832,
-    "tags": [],
-    "date": 1288323645006
-  },
-  {
-    "id": 10,
-    "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
-    "name": "Nina",
-    "type": "Code",
-    "owner": "Emily Bennet",
-    "size": 23673,
-    "tags": ["family"],
-    "date": 1288323673006
-  },
-  {
-    "id": 11,
-    "icon": "<i class='fa fa-file-text' aria-hidden='true'></i>",
-    "name": "Loretta",
-    "type": "Archive",
-    "owner": "Public",
-    "size": 2883237,
-    "tags": ["favourites"],
-    "date": 1288323723006
-  },
-  {
-    "id": 12,
-    "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
-    "name": "Newman",
-    "type": "Other",
-    "owner": "Public",
-    "size": 83236230,
-    "tags": [],
-    "date": 1288323623044
-  },
-  {
-    "id": 13,
-    "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
-    "name": "Yvette",
-    "type": "Document",
-    "owner": "Emily Bennet",
-    "size": 28838362,
-    "tags": [],
-    "date": 1288383623006
-  },
-  {
-    "id": 14,
-    "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
-    "name": "Polly",
-    "type": "Document",
-    "owner": "Emily Bennet",
-    "size": 88736,
-    "tags": [],
-    "date": 1288873623006
-  },
-  {
-    "id": 16,
-    "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
-    "name": "Adeline",
-    "type": "Folder",
-    "owner": "Public",
-    "size": "",
-    "tags": [],
-    "date": 1288323623006
-  },
-  {
-    "id": 17,
-    "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
-    "name": "Renee",
-    "type": "Image",
-    "owner": "Public",
-    "size": 2332300,
-    "tags": [],
-    "date": 1288323323006
-  },
-  {
-    "id": 18,
-    "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
-    "name": "Mathis",
-    "type": "Word",
-    "owner": "Public",
-    "size": 233300,
-    "tags": [],
-    "date": 1288323623306
-  },
-  {
-    "id": 19,
-    "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
-    "name": "Elizabeth",
-    "type": "Excel",
-    "owner": "Me",
-    "size": 23323,
-    "tags": [],
-    "date": 1288343623006
-  },
-  {
-    "id": 20,
-    "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
-    "name": "Mcmahon",
-    "type": "Power Point",
-    "owner": "Public",
-    "size": 13623006,
-    "tags": [],
-    "date": 1288313623006
-  },
-  {
-    "id": 21,
-    "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
-    "name": "Alisha",
-    "type": "Video",
-    "owner": "Public",
-    "size": 13623006,
-    "tags": [],
-    "date": 1288323673006
-  },
-  {
-    "id": 22,
-    "icon": "<i class='fa fa-file-text' aria-hidden='true'></i>",
-    "name": "Consuelo",
-    "type": "Audio",
-    "owner": "Public",
-    "size": 2883936,
-    "tags": [],
-    "date": 1288393623006
-  },
-  {
-    "id": 23,
-    "icon": "<i class='fa fa-file-text' aria-hidden='true'></i>",
-    "name": "Bobbie",
-    "type": "Folder",
-    "owner": "Emily Bennet",
-    "size": 87236,
-    "tags": [],
-    "date": 1288723623006
-  },
-  {
-    "id": 24,
-    "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
-    "name": "Berg",
-    "type": "Css",
-    "owner": "Me",
-    "size": 28832,
-    "tags": [],
-    "date": 1288323645006
-  },
-  {
-    "id": 25,
-    "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
-    "name": "Nina",
-    "type": "Code",
-    "owner": "Emily Bennet",
-    "size": 23673,
-    "tags": [],
-    "date": 1288323673006
-  },
-  {
-    "id": 26,
-    "icon": "<i class='fa fa-file-text' aria-hidden='true'></i>",
-    "name": "Loretta",
-    "type": "Archive",
-    "owner": "Public",
-    "size": 2883237,
-    "tags": [],
-    "date": 1288323723006
-  },
-  {
-    "id": 27,
-    "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
-    "name": "Newman",
-    "type": "Other",
-    "owner": "Public",
-    "size": 83236230,
-    "tags": [],
-    "date": 1288323623044
-  },
-  {
-    "id": 28,
-    "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
-    "name": "Yvette",
-    "type": "Document",
-    "owner": "Emily Bennet",
-    "size": 28838362,
-    "tags": [],
-    "date": 1288383623006
-  },
-  {
-    "id": 29,
-    "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
-    "name": "Polly",
-    "type": "Document",
-    "owner": "Emily Bennet",
-    "size": 88736,
-    "tags": [],
-    "date": 1288873623006
-  }]
+{
+  "fileList": [
+    {
+      "id": 1,
+      "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
+      "name": "Adeline",
+      "type": "Folder",
+      "thumb": "",
+      "preview": "",
+      "owner": "Public",
+      "size": "",
+      "tags": [],
+      "date": 1288323623006
+    },
+    {
+      "id": 2,
+      "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
+      "name": "Image.gif",
+      "type": "Image",
+      "thumb": "http://solar-center.stanford.edu/latestimg/latest_eit_171_thumbnail.gif",
+      "preview": "http://solar-center.stanford.edu/latestimg/latest_eit_171_thumbnail.gif",
+      "owner": "Public",
+      "size": 2332300,
+      "tags": [],
+      "date": 1288323323006
+    },
+    {
+      "id": 3,
+      "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
+      "name": "Mathis",
+      "type": "Word",
+      "thumb": "",
+      "preview": "",
+      "owner": "Public",
+      "size": 233300,
+      "tags": [],
+      "date": 1288323623306
+    },
+    {
+      "id": 4,
+      "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
+      "name": "Elizabeth",
+      "type": "Excel",
+      "thumb": "",
+      "preview": "",
+      "owner": "Me",
+      "size": 23323,
+      "tags": [],
+      "date": 1288343623006
+    },
+    {
+      "id": 5,
+      "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
+      "name": "Mcmahon",
+      "type": "Power Point",
+      "thumb": "",
+      "preview": "",
+      "owner": "Public",
+      "size": 13623006,
+      "tags": [],
+      "date": 1288313623006
+    },
+    {
+      "id": 6,
+      "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
+      "name": "Alisha",
+      "type": "Video",
+      "thumb": "",
+      "preview": "",
+      "owner": "Public",
+      "size": 13623006,
+      "tags": [],
+      "date": 1288323673006
+    },
+    {
+      "id": 7,
+      "icon": "<i class='fa fa-file-text' aria-hidden='true'></i>",
+      "name": "Consuelo",
+      "type": "Audio",
+      "thumb": "",
+      "preview": "",
+      "owner": "Public",
+      "size": 2883936,
+      "tags": [],
+      "date": 1288393623006
+    },
+    {
+      "id": 8,
+      "icon": "<i class='fa fa-file-text' aria-hidden='true'></i>",
+      "name": "Bobbie",
+      "type": "Folder",
+      "thumb": "",
+      "preview": "",
+      "owner": "Emily Bennet",
+      "size": 87236,
+      "tags": [],
+      "date": 1288723623006
+    },
+    {
+      "id": 9,
+      "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
+      "name": "Berg",
+      "type": "Css",
+      "thumb": "",
+      "preview": "",
+      "owner": "Me",
+      "size": 28832,
+      "tags": [
+        "family"
+      ],
+      "date": 1288323645006
+    },
+    {
+      "id": 10,
+      "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
+      "name": "Nina",
+      "type": "Code",
+      "thumb": "",
+      "preview": "",
+      "owner": "Emily Bennet",
+      "size": 23673,
+      "tags": [
+        "family"
+      ],
+      "date": 1288323673006
+    },
+    {
+      "id": 11,
+      "icon": "<i class='fa fa-file-text' aria-hidden='true'></i>",
+      "name": "Loretta",
+      "type": "Archive",
+      "thumb": "",
+      "preview": "",
+      "owner": "Public",
+      "size": 2883237,
+      "tags": [
+        "favourites"
+      ],
+      "date": 1288323723006
+    },
+    {
+      "id": 12,
+      "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
+      "name": "Newman",
+      "type": "Other",
+      "thumb": "",
+      "preview": "",
+      "owner": "Public",
+      "size": 83236230,
+      "tags": [
+        "favourites"
+      ],
+      "date": 1288323623044
+    },
+    {
+      "id": 13,
+      "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
+      "name": "Yvette",
+      "type": "Document",
+      "thumb": "",
+      "preview": "",
+      "owner": "Emily Bennet",
+      "size": 28838362,
+      "tags": [],
+      "date": 1288383623006
+    },
+    {
+      "id": 14,
+      "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
+      "name": "Polly",
+      "type": "Document",
+      "thumb": "",
+      "preview": "",
+      "owner": "Emily Bennet",
+      "size": 88736,
+      "tags": [],
+      "date": 1288873623006
+    },
+    {
+      "id": 16,
+      "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
+      "name": "Adeline",
+      "type": "Folder",
+      "thumb": "",
+      "preview": "",
+      "owner": "Public",
+      "size": "",
+      "tags": [],
+      "date": 1288323623006
+    },
+    {
+      "id": 17,
+      "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
+      "name": "thumb.png",
+      "type": "Image",
+      "thumb": "https://www.w3schools.com/w3css/img_avatar3.png",
+      "preview": "",
+      "owner": "Public",
+      "size": 2332300,
+      "tags": [],
+      "date": 1288323323006
+    },
+    {
+      "id": 18,
+      "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
+      "name": "Mathis",
+      "type": "Word",
+      "thumb": "",
+      "preview": "",
+      "owner": "Public",
+      "size": 233300,
+      "tags": [],
+      "date": 1288323623306
+    },
+    {
+      "id": 19,
+      "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
+      "name": "Elizabeth",
+      "type": "Excel",
+      "thumb": "",
+      "preview": "",
+      "owner": "Me",
+      "size": 23323,
+      "tags": [],
+      "date": 1288343623006
+    },
+    {
+      "id": 20,
+      "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
+      "name": "Mcmahon",
+      "type": "Power Point",
+      "thumb": "",
+      "preview": "",
+      "owner": "Public",
+      "size": 13623006,
+      "tags": [],
+      "date": 1288313623006
+    },
+    {
+      "id": 21,
+      "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
+      "name": "Alisha",
+      "type": "Video",
+      "thumb": "",
+      "preview": "",
+      "owner": "Public",
+      "size": 13623006,
+      "tags": [],
+      "date": 1288323673006
+    },
+    {
+      "id": 22,
+      "icon": "<i class='fa fa-file-text' aria-hidden='true'></i>",
+      "name": "Consuelo",
+      "type": "Audio",
+      "thumb": "",
+      "preview": "",
+      "owner": "Public",
+      "size": 2883936,
+      "tags": [],
+      "date": 1288393623006
+    },
+    {
+      "id": 23,
+      "icon": "<i class='fa fa-file-text' aria-hidden='true'></i>",
+      "name": "Bobbie",
+      "type": "Folder",
+      "thumb": "",
+      "preview": "",
+      "owner": "Emily Bennet",
+      "size": 87236,
+      "tags": [],
+      "date": 1288723623006
+    },
+    {
+      "id": 24,
+      "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
+      "name": "Berg",
+      "type": "Css",
+      "thumb": "",
+      "preview": "",
+      "owner": "Me",
+      "size": 28832,
+      "tags": [],
+      "date": 1288323645006
+    },
+    {
+      "id": 25,
+      "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
+      "name": "Nina",
+      "type": "Code",
+      "thumb": "",
+      "preview": "",
+      "owner": "Emily Bennet",
+      "size": 23673,
+      "tags": [],
+      "date": 1288323673006
+    },
+    {
+      "id": 26,
+      "icon": "<i class='fa fa-file-text' aria-hidden='true'></i>",
+      "name": "Loretta",
+      "type": "Archive",
+      "thumb": "",
+      "preview": "",
+      "owner": "Public",
+      "size": 2883237,
+      "tags": [],
+      "date": 1288323723006
+    },
+    {
+      "id": 27,
+      "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
+      "name": "Newman",
+      "type": "Other",
+      "thumb": "",
+      "preview": "",
+      "owner": "Public",
+      "size": 83236230,
+      "tags": [],
+      "date": 1288323623044
+    },
+    {
+      "id": 28,
+      "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
+      "name": "Yvette",
+      "type": "Document",
+      "thumb": "",
+      "preview": "",
+      "owner": "Emily Bennet",
+      "size": 28838362,
+      "tags": [],
+      "date": 1288383623006
+    },
+    {
+      "id": 29,
+      "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
+      "name": "Polly",
+      "type": "Document",
+      "thumb": "",
+      "preview": "",
+      "owner": "Emily Bennet",
+      "size": 88736,
+      "tags": [],
+      "date": 1288873623006
+    },
+    {
+      "id": 30,
+      "icon": "<i class='fa fa-image' aria-hidden='true'></i>",
+      "name": "Icon.fa",
+      "type": "Image",
+      "thumb": "",
+      "preview": "",
+      "owner": "Emily Bennet",
+      "size": 88736,
+      "tags": [],
+      "date": 1288873623006
+    }
+  ],
+  "breadcrumbs": [
+    {
+      "id": 10001,
+      "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
+      "name": "My Files",
+      "type": "Folder",
+      "thumb": "",
+      "preview": "",
+      "owner": "Public",
+      "size": "",
+      "tags": [],
+      "date": 1288323623006
+    },
+    {
+      "id": 10002,
+      "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
+      "name": "Documents",
+      "type": "Folder",
+      "thumb": "",
+      "preview": "",
+      "owner": "Public",
+      "size": "",
+      "tags": [],
+      "date": 1288323323006
+    },
+    {
+      "id": 10003,
+      "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
+      "name": "Private Documents",
+      "type": "Folder",
+      "thumb": "",
+      "preview": "",
+      "owner": "Public",
+      "size": "",
+      "tags": [],
+      "date": 1288323323006
+    },
+    {
+      "id": 10004,
+      "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
+      "name": "Really Private Documents",
+      "type": "Folder",
+      "thumb": "",
+      "preview": "",
+      "owner": "Public",
+      "size": "",
+      "tags": [],
+      "date": 1288323323006
+    }
+  ]
+}
