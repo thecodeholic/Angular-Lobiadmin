@@ -23,12 +23,19 @@
       if (!User.current) {
         return "";
       }
-      return User.current.avatar;
+      return User.current.avatar || 'assets/images/avatar.jpg';
     }
 
     function getDisplayName() {
       if (!User.current) {
         return "";
+      }
+      if (!User.current.displayName) {
+        if (User.current.firstname && User.current.lastname) {
+          User.current.displayName = User.current.firstname + " " + User.current.lastname;
+        } else if (User.current.username || User.current.email) {
+          User.current.displayName = User.current.username || User.current.email;
+        }
       }
 
       return User.current.displayName;
