@@ -25,14 +25,44 @@
           'content@app': {
             templateUrl: 'app/main/apps/file-manager/file-manager.html',
             controller: 'FileManagerController as vm',
-            resolve:{
-              files : function ($http) {
-                return $http.get('app/main/apps/file-manager/data/files.json')
-                  .then(function(response)
-                  {
+            resolve: {
+              myFiles: function ($http) {
+                return $http.get('app/main/apps/file-manager/data/myFiles.json')
+                  .then(function (response) {
                     return response.data;
-                  }, function(error)
-                  {
+                  }, function (error) {
+                    return 'There was an error getting data' + error;
+                  });
+              },
+              starredFiles: function ($http) {
+                return $http.get('app/main/apps/file-manager/data/starredFiles.json')
+                  .then(function (response) {
+                    return response.data;
+                  }, function (error) {
+                    return 'There was an error getting data' + error;
+                  });
+              },
+              sharedFiles: function ($http) {
+                return $http.get('app/main/apps/file-manager/data/sharedFiles.json')
+                  .then(function (response) {
+                    return response.data;
+                  }, function (error) {
+                    return 'There was an error getting data' + error;
+                  });
+              },
+              recentFiles: function ($http) {
+                return $http.get('app/main/apps/file-manager/data/recentFiles.json')
+                  .then(function (response) {
+                    return response.data;
+                  }, function (error) {
+                    return 'There was an error getting data' + error;
+                  });
+              },
+              offlineFiles: function ($http) {
+                return $http.get('app/main/apps/file-manager/data/offlineFiles.json')
+                  .then(function (response) {
+                    return response.data;
+                  }, function (error) {
                     return 'There was an error getting data' + error;
                   });
               }

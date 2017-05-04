@@ -10,7 +10,7 @@
                 <img ng-if="file.thumb != ''" src="{{file.thumb}}" height="72" width="72">
                 <i ng-if="file.thumb == ''" class="fa fa-{{file.type | typeToIcon}}" aria-hidden="true"></i>
                 <div class="caption">
-                    <h3>{{file.name}}</h3>
+                    <h5>{{file.name}}</h5>
                     <p>{{file.size | bytes}}</p>
                     <p>{{file.type}}</p>
                 </div>

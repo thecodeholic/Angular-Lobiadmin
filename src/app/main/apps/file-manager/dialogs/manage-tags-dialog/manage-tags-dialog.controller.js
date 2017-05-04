@@ -21,7 +21,6 @@
 
 
     function ok(){
-
       console.log(vm.currentTags);
       $uibModalInstance.close(vm.currentTags);
     }

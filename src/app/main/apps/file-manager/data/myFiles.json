@@ -1,9 +1,9 @@
 {
   "fileList": [
     {
-      "id": 1,
+      "id": 0,
       "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
-      "name": "Adeline",
+      "name": "New Folder",
       "type": "Folder",
       "thumb": "",
       "preview": "",
@@ -13,9 +13,9 @@
       "date": 1288323623006
     },
     {
-      "id": 2,
+      "id": 1,
       "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
-      "name": "Image.gif",
+      "name": "solar-center-stanford.gif",
       "type": "Image",
       "thumb": "http://solar-center.stanford.edu/latestimg/latest_eit_171_thumbnail.gif",
       "preview": "http://solar-center.stanford.edu/latestimg/latest_eit_171_thumbnail.gif",
@@ -25,9 +25,9 @@
       "date": 1288323323006
     },
     {
-      "id": 3,
+      "id": 2,
       "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
-      "name": "Mathis",
+      "name": "Nature.docx",
       "type": "Word",
       "thumb": "",
       "preview": "",
@@ -37,9 +37,9 @@
       "date": 1288323623306
     },
     {
-      "id": 4,
+      "id": 3,
       "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
-      "name": "Elizabeth",
+      "name": "Marketing.xls",
       "type": "Excel",
       "thumb": "",
       "preview": "",
@@ -49,9 +49,9 @@
       "date": 1288343623006
     },
     {
-      "id": 5,
+      "id": 4,
       "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
-      "name": "Mcmahon",
+      "name": "Famous Museums.pptx",
       "type": "Power Point",
       "thumb": "",
       "preview": "",
@@ -61,9 +61,9 @@
       "date": 1288313623006
     },
     {
-      "id": 6,
+      "id": 5,
       "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
-      "name": "Alisha",
+      "name": "Birthday.mp4",
       "type": "Video",
       "thumb": "",
       "preview": "",
@@ -73,9 +73,9 @@
       "date": 1288323673006
     },
     {
-      "id": 7,
+      "id": 6,
       "icon": "<i class='fa fa-file-text' aria-hidden='true'></i>",
-      "name": "Consuelo",
+      "name": "We Rock (Official audio).mp3",
       "type": "Audio",
       "thumb": "",
       "preview": "",
@@ -85,9 +85,9 @@
       "date": 1288393623006
     },
     {
-      "id": 8,
+      "id": 7,
       "icon": "<i class='fa fa-file-text' aria-hidden='true'></i>",
-      "name": "Bobbie",
+      "name": "MUSIC",
       "type": "Folder",
       "thumb": "",
       "preview": "",
@@ -97,9 +97,9 @@
       "date": 1288723623006
     },
     {
-      "id": 9,
+      "id": 8,
       "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
-      "name": "Berg",
+      "name": "fm-styles.css",
       "type": "Css",
       "thumb": "",
       "preview": "",
@@ -111,9 +111,9 @@
       "date": 1288323645006
     },
     {
-      "id": 10,
+      "id": 9,
       "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
-      "name": "Nina",
+      "name": "solar-system.cs",
       "type": "Code",
       "thumb": "",
       "preview": "",
@@ -125,23 +125,23 @@
       "date": 1288323673006
     },
     {
-      "id": 11,
+      "id": 10,
       "icon": "<i class='fa fa-file-text' aria-hidden='true'></i>",
-      "name": "Loretta",
+      "name": "Windows-7_x64.zip",
       "type": "Archive",
       "thumb": "",
       "preview": "",
       "owner": "Public",
-      "size": 2883237,
+      "size": 288323722,
       "tags": [
         "favourites"
       ],
       "date": 1288323723006
     },
     {
-      "id": 12,
+      "id": 11,
       "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
-      "name": "Newman",
+      "name": "log-file-b772.log",
       "type": "Other",
       "thumb": "",
       "preview": "",
@@ -153,9 +153,9 @@
       "date": 1288323623044
     },
     {
-      "id": 13,
+      "id": 12,
       "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
-      "name": "Yvette",
+      "name": "salaries.doc",
       "type": "Document",
       "thumb": "",
       "preview": "",
@@ -165,9 +165,9 @@
       "date": 1288383623006
     },
     {
-      "id": 14,
+      "id": 13,
       "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
-      "name": "Polly",
+      "name": "salaries(1).doc",
       "type": "Document",
       "thumb": "",
       "preview": "",
@@ -177,9 +177,9 @@
       "date": 1288873623006
     },
     {
-      "id": 16,
+      "id": 14,
       "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
-      "name": "Adeline",
+      "name": "GAMES",
       "type": "Folder",
       "thumb": "",
       "preview": "",
@@ -189,9 +189,9 @@
       "date": 1288323623006
     },
     {
-      "id": 17,
+      "id": 15,
       "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
-      "name": "thumb.png",
+      "name": "avatar-user.png",
       "type": "Image",
       "thumb": "https://www.w3schools.com/w3css/img_avatar3.png",
       "preview": "",
@@ -201,9 +201,9 @@
       "date": 1288323323006
     },
     {
-      "id": 18,
+      "id": 16,
       "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
-      "name": "Mathis",
+      "name": "Essay.docx",
       "type": "Word",
       "thumb": "",
       "preview": "",
@@ -213,9 +213,9 @@
       "date": 1288323623306
     },
     {
-      "id": 19,
+      "id": 17,
       "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
-      "name": "Elizabeth",
+      "name": "Financical-research.xls",
       "type": "Excel",
       "thumb": "",
       "preview": "",
@@ -225,9 +225,9 @@
       "date": 1288343623006
     },
     {
-      "id": 20,
+      "id": 18,
       "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
-      "name": "Mcmahon",
+      "name": "Planet Earth.pptx",
       "type": "Power Point",
       "thumb": "",
       "preview": "",
@@ -237,9 +237,9 @@
       "date": 1288313623006
     },
     {
-      "id": 21,
+      "id": 19,
       "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
-      "name": "Alisha",
+      "name": "Kung Fu Panda (ENG).mp4",
       "type": "Video",
       "thumb": "",
       "preview": "",
@@ -249,9 +249,9 @@
       "date": 1288323673006
     },
     {
-      "id": 22,
+      "id": 20,
       "icon": "<i class='fa fa-file-text' aria-hidden='true'></i>",
-      "name": "Consuelo",
+      "name": "Nokia Ringtone.mp3",
       "type": "Audio",
       "thumb": "",
       "preview": "",
@@ -261,9 +261,9 @@
       "date": 1288393623006
     },
     {
-      "id": 23,
+      "id": 21,
       "icon": "<i class='fa fa-file-text' aria-hidden='true'></i>",
-      "name": "Bobbie",
+      "name": "PRIVATE",
       "type": "Folder",
       "thumb": "",
       "preview": "",
@@ -273,9 +273,9 @@
       "date": 1288723623006
     },
     {
-      "id": 24,
+      "id": 22,
       "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
-      "name": "Berg",
+      "name": "fm-styles(1).css",
       "type": "Css",
       "thumb": "",
       "preview": "",
@@ -285,9 +285,9 @@
       "date": 1288323645006
     },
     {
-      "id": 25,
+      "id": 23,
       "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
-      "name": "Nina",
+      "name": "Problem-312.cs",
       "type": "Code",
       "thumb": "",
       "preview": "",
@@ -297,9 +297,9 @@
       "date": 1288323673006
     },
     {
-      "id": 26,
+      "id": 24,
       "icon": "<i class='fa fa-file-text' aria-hidden='true'></i>",
-      "name": "Loretta",
+      "name": "Windows-7_x86.zip",
       "type": "Archive",
       "thumb": "",
       "preview": "",
@@ -309,9 +309,9 @@
       "date": 1288323723006
     },
     {
-      "id": 27,
+      "id": 25,
       "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
-      "name": "Newman",
+      "name": "another-log.lgg",
       "type": "Other",
       "thumb": "",
       "preview": "",
@@ -321,9 +321,9 @@
       "date": 1288323623044
     },
     {
-      "id": 28,
+      "id": 26,
       "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
-      "name": "Yvette",
+      "name": "Examination Answers Databases.doc",
       "type": "Document",
       "thumb": "",
       "preview": "",
@@ -333,9 +333,9 @@
       "date": 1288383623006
     },
     {
-      "id": 29,
+      "id": 27,
       "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
-      "name": "Polly",
+      "name": "Examination Answers Web.doc",
       "type": "Document",
       "thumb": "",
       "preview": "",
@@ -345,9 +345,9 @@
       "date": 1288873623006
     },
     {
-      "id": 30,
+      "id": 28,
       "icon": "<i class='fa fa-image' aria-hidden='true'></i>",
-      "name": "Icon.fa",
+      "name": "fa-fa-image.fa",
       "type": "Image",
       "thumb": "",
       "preview": "",
@@ -374,30 +374,6 @@
       "id": 10002,
       "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
       "name": "Documents",
-      "type": "Folder",
-      "thumb": "",
-      "preview": "",
-      "owner": "Public",
-      "size": "",
-      "tags": [],
-      "date": 1288323323006
-    },
-    {
-      "id": 10003,
-      "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
-      "name": "Private Documents",
-      "type": "Folder",
-      "thumb": "",
-      "preview": "",
-      "owner": "Public",
-      "size": "",
-      "tags": [],
-      "date": 1288323323006
-    },
-    {
-      "id": 10004,
-      "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
-      "name": "Really Private Documents",
       "type": "Folder",
       "thumb": "",
       "preview": "",

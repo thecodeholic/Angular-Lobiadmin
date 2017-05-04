@@ -69,13 +69,13 @@
         ng-right-click="vm.selectFile(file); vm.checkFileType(file)"
         context-menu="vm.menuOptions" ng-class="{'active': file == vm.selectedFile}" uib-tooltip="Right Click for options"
         tooltip-placement="bottom" tooltip-popup-delay="1500">
-        <td><img ng-if="file.thumb != ''" src="{{file.thumb}}" height="20" width="20">
+        <td class="text-center"><img ng-if="file.thumb != ''" src="{{file.thumb}}">
             <i ng-if="file.thumb == ''" class="fa fa-{{file.type | typeToIcon}}" aria-hidden="true"></i></td>
-        <td>{{file.name}}</td>
-        <td>{{file.type}}</td>
-        <td>{{file.owner}}</td>
-        <td>{{file.size | bytes}}</td>
-        <td>{{file.date | date:'HH:mm, dd/MM/yyyy'}}</td>
+        <td class="text-left">{{file.name}}</td>
+        <td class="text-center">{{file.type}}</td>
+        <td class="text-center">{{file.owner}}</td>
+        <td class="text-center">{{file.size | bytes}}</td>
+        <td class="text-center">{{file.date | date:'HH:mm, dd/MM/yyyy'}}</td>
     </tr>
     </tbody>
 </table>

@@ -9,24 +9,34 @@
     .controller('CreateRenameDialogController', CreateRenameDialogControllerFn);
 
   /** @ngInject */
-  function CreateRenameDialogControllerFn($uibModalInstance, CurrentEntry) {
+  function CreateRenameDialogControllerFn($uibModalInstance, CurrentEntry, FileId) {
     var vm = this;
-
     // variables
     vm.isRename = CurrentEntry != null;
-    vm.currentEntry = CurrentEntry || {};
+    vm.currentEntry = CurrentEntry || {
+      "id": FileId,
+      "icon": "<i class='fa fa-folder-open' aria-hidden='true'></i>",
+      "name": "",
+      "type": "Folder",
+      "thumb": "",
+      "preview": "",
+      "owner": "Public",
+      "size": "",
+      "tags": [],
+      "date": new Date()
+      };
 
     // Methods
     vm.ok = ok;
     vm.cancel = cancel;
 
 
-    function ok(){
-      console.log(vm.currentEntry.name);
-      $uibModalInstance.close();
+    function ok() {
+      console.log(vm.currentEntry);
+      $uibModalInstance.close(vm.currentEntry);
     }
 
-    function cancel(){
+    function cancel() {
       $uibModalInstance.dismiss('cancel');
     }
   }

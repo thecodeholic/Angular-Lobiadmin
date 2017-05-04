@@ -44,14 +44,13 @@
                 </div>
                 <hr>
                 <div class="list-group">
-                    <a href="#" class="list-group-item"><i class="fa fa-folder" aria-hidden="true"></i>&nbsp;&nbsp;My
+                    <a ng-click="vm.switchDirectory(vm.myFiles)" class="list-group-item"><i class="fa fa-folder" aria-hidden="true"></i>&nbsp;&nbsp;My
                         Files</a>
-                    <a href="#" class="list-group-item"><i class="fa fa-star" aria-hidden="true"></i>&nbsp;&nbsp;Starred</a>
-                    <a href="#" class="list-group-item"><i class="fa fa-share" aria-hidden="true"></i>&nbsp;&nbsp;Shared
+                    <a ng-click="vm.switchDirectory(vm.starredFiles)" class="list-group-item"><i class="fa fa-star" aria-hidden="true"></i>&nbsp;&nbsp;Starred</a>
+                    <a ng-click="vm.switchDirectory(vm.sharedFiles)" class="list-group-item"><i class="fa fa-share" aria-hidden="true"></i>&nbsp;&nbsp;Shared
                         with me</a>
-                    <a href="#" class="list-group-item"><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;&nbsp;Recent</a>
-                    <a href="#" class="list-group-item"><i class="fa fa-download" aria-hidden="true"></i>&nbsp;&nbsp;My
-                        Files</a>
+                    <a ng-click="vm.switchDirectory(vm.recentFiles)" class="list-group-item"><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;&nbsp;Recent</a>
+                    <a ng-click="vm.switchDirectory(vm.offlineFiles)" class="list-group-item"><i class="fa fa-download" aria-hidden="true"></i>&nbsp;&nbsp;Offline Files</a>
                 </div>
             </div>
             <div class="view">

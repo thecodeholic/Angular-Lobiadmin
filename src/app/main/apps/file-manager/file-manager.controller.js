@@ -6,20 +6,31 @@
     .controller('FileManagerController', FileManagerControllerFn);
 
   /** @ngInject */
-  function FileManagerControllerFn($rootScope, $translate, $uibModal, files, omAside) {
+  function FileManagerControllerFn($rootScope, $translate, $uibModal, omAside, myFiles, starredFiles, sharedFiles, recentFiles, offlineFiles) {
     var vm = this;
 
+    vm.myFiles = myFiles;
+    vm.starredFiles = starredFiles;
+    vm.sharedFiles = sharedFiles;
+    vm.recentFiles = recentFiles;
+    vm.offlineFiles = offlineFiles;
+
+    vm.files = myFiles.fileList;
+    vm.breadcrumbs = myFiles.breadcrumbs;
+
     vm.selectedFile = null;
+
     vm.currentView = 'list-condensed';
     vm.orderByField = 'name';
     vm.defaultSort = true;
     vm.filterBy = "";
+
     vm.menuOptions = [];
+
     vm.searchValue = "";
     vm.searchResults = [];
     vm.toggleSearch = false;
-    vm.files = files.fileList;
-    vm.breadcrumbs = files.breadcrumbs;
+
     vm.canPreview = ["Image", "Video", "Audio"];
     vm.users = [{"name": "John Doe", "email": "JohnDoe@example.com"}, {
       "name": "Jane Doe",
@@ -28,15 +39,17 @@
     vm.currentUser = vm.users[0];
 
     // Methods
-    // --File selections
+    // --File Directory
+    vm.switchDirectory = switchDirectory;
+    // --File Selections
     vm.selectFile = selectFile;
     vm.resetSelection = resetSelection;
     vm.isAvailableForPreview = isAvailableForPreview;
-    // --File display
+    // --File Display
     vm.toggleView = toggleView;
-    // --File type check
+    // --File Type Check
     vm.checkFileType = checkFileType;
-    // --Upload buttons
+    // --Upload Buttons
     vm.chooseFiles = chooseFiles;
     vm.chooseFolder = chooseFolder;
     // --Search
@@ -50,6 +63,8 @@
     vm.filterListByTag = filterListByTag;
     // --Preview File Modal
     vm.showPreviewFileDialog = showPreviewFileDialog;
+    // --Delete Modal
+    vm.showDeleteDialog = showDeleteDialog;
     // --Side Menu
     vm.toggleFileManagerAside = toggleFileManagerAside;
     // --Breadcrumbs click
@@ -148,8 +163,6 @@
     }
 
     function manageTagsFn($itemScope) {
-      console.log("Manage Tags For Selected File" + "\nfileID: " + $itemScope.file.id);
-      console.log($itemScope.file);
       vm.selectedFile = $itemScope.file;
       vm.showManageTagsDialog(vm.selectedFile);
 
@@ -172,21 +185,16 @@
     }
 
     function renameFn($itemScope) {
-      console.log("Rename Selected File" + "\nfileID: " + $itemScope.file.id);
-      console.log($itemScope.file);
       vm.selectedFile = $itemScope.file;
       vm.showRenameFolderDialog(vm.selectedFile);
     }
 
     function deleteFn($itemScope) {
-      console.log("Delete Selected File" + "\nfileID: " + $itemScope.file.id);
-      console.log($itemScope.file);
       vm.selectedFile = $itemScope.file;
+      vm.showDeleteDialog(vm.selectedFile);
     }
 
     function viewFn($itemScope) {
-      console.log("View Selected File" + "\nfileID: " + $itemScope.file.id);
-      console.log($itemScope.file);
       vm.selectedFile = $itemScope.file;
       vm.showPreviewFileDialog(vm.selectedFile);
     }
@@ -224,8 +232,14 @@
         controllerAs: 'vm',
         size: 'sm',
         resolve: {
-          CurrentEntry: null
+          CurrentEntry: null,
+          FileId: vm.files[vm.files.length-1].id + 1
         }
+      }).result.then(function (newFolder) {
+        vm.files.push(newFolder);
+        console.log("resolve", arguments);
+      }, function () {
+        console.log("reject")
       });
     }
 
@@ -238,8 +252,14 @@
         resolve: {
           CurrentEntry: function () {
             return {name: renameTarget.name};
-          }
+          },
+          FileId: vm.selectedFile.id
         }
+      }).result.then(function (newName) {
+        vm.selectedFile.name = newName.name;
+        console.log("resolve", arguments);
+      }, function () {
+        console.log("reject")
       });
     }
 
@@ -280,12 +300,38 @@
       }
     }
 
+    function showDeleteDialog(file) {
+      $uibModal.open({
+        templateUrl: 'app/main/apps/file-manager/dialogs/delete-dialog/delete-dialog.html',
+        controller: 'DeleteDialogController',
+        controllerAs: 'vm',
+        size: 'md',
+        resolve: {
+          CurrentEntry: vm.selectedFile
+        }
+      }).result.then(function (newFolder) {
+        vm.files.splice(file.id,1);
+        for(var i = 0; i < vm.files.length; i++){
+          vm.files[i].id = i; //ID UPDATE
+        }
+        console.log("resolve", arguments);
+      }, function () {
+        console.log("reject")
+      });
+    }
+
     function toggleFileManagerAside(id) {
       omAside.toggle(id);
     }
 
     function changeDirectory(crumb) {
       vm.breadcrumbs = vm.breadcrumbs.slice(0, vm.breadcrumbs.indexOf(crumb)+1);
+    }
+
+    function switchDirectory(switchTo){
+      vm.files = switchTo.fileList;
+      vm.breadcrumbs = switchTo.breadcrumbs;
+      vm.toggleFileManagerAside('fileManagerAside');
     }
   }
 })();
