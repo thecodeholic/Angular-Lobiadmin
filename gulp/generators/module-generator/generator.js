@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /**
  * Created by george on 4/18/17.
  */
@@ -5,8 +6,8 @@
 var gulp = require('gulp');
 var replace = require('gulp-replace');
 var rename = require('gulp-rename');
+var colors = require('colors');
 var fs = require('fs');
-
 
 function processArguments(args) {
   //Creating empty hash map
@@ -48,6 +49,7 @@ function processArguments(args) {
 function validateArgs(argsMap) {
   //Defining path value
   var path = argsMap["--path"];
+  var errorSuffix = "The path is relative to src/app folder";
 
   //Checking if there is '--path' argument in hashmap
   if (argsMap.hasOwnProperty("--path") != false) {
@@ -62,42 +64,47 @@ function validateArgs(argsMap) {
         return true;
       }
     }
-    //If no value is defined for path
+    //If no value is defined for --path
     else {
-      console.log("NO PATH VALUE DEFINED");
+      console.log(("--path argument requires full path (including module name). " + errorSuffix).red);
       return false;
     }
   }
-  //If no path argument is defined
+  //If no --path argument is defined
   else {
-    console.log("NO PATH ARGUMENT DEFINED");
+    console.log(("Please specify --path argument with full path (including module name). " + errorSuffix).red);
     return false;
   }
 }
 
 function generateModule(params) {
-  var streams = {
+  var fileSuffix = {
     'module.txt': ".module.js",
     'controller.txt': ".controller.js",
     'html.txt': ".html",
     'less.txt': ".less"
   };
 
-  for (var s in streams) {
+  for (var s in fileSuffix) {
 
     //Creating stream
-    var stream = gulp.src('gulp/generators/module-generator/template/'+s);
+    var stream = gulp.src('gulp/generators/module-generator/template/' + s);
 
     //Replacing all matching strings with custom strings
     for (var i in params) {
       stream.pipe(replace("{{" + i + "}}", params[i]));
     }
 
+    var filePath = 'src/app/' + params.ModulePath + '/' + params.FolderName + fileSuffix[s];
+    if (fs.existsSync(filePath)) {
+      console.log(("[Skipping] ".yellow + filePath).yellow);
+      continue;
+    }
     //Saving
-    stream.pipe(rename(params.ModulePath.split("/").pop() + streams[s]))
+    stream.pipe(rename(params.FolderName + fileSuffix[s]))
       .pipe(gulp.dest('src/app/' + params.ModulePath + '/'));
 
-    console.log("src/app/"+params['ModulePath']+"/"+params['FolderName']+streams[s]+" Generated");
+    console.log("[Creating] ".green + filePath);
   }
 }
 

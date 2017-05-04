@@ -25,7 +25,6 @@
       text: '{{ModuleDisplayName}}',
       state: 'app.{{ModuleName}}',
       weight: 1
-      // icon: 'fa fa-table'
     });
   }
 })();
