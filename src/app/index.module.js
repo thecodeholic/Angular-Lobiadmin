@@ -19,7 +19,9 @@
 
       'app.pages',
 
-      'app.dashboard'
+      'app.dashboard',
+
+      'app.calendar'
     ]);
 
 })();

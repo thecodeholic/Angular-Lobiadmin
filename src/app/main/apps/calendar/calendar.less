@@ -1,3 +1,58 @@
-#calendar{
+#calendar {
+  height: 100%;
+  position: relative;
+  .top-menu {
+    height: 100px;
+    width: 100%;
+    padding: 35px;
+    background-color: @brand-primary;
+    .menu {
+      &-left {
+        float: left;
+        color: white;
+        i {
+          font-size: 20px;
+          margin: 5px;
+        }
+      }
+      &-right {
+        float: right;
+        user-select: none;
+        input {
+          color: black;
+        }
+        > div {
+          display: inline-block;
+        }
+        i {
+          font-size: 20px;
+          margin: 5px;
+          color: white;
+        }
+      }
+    }
+  }
+  .main {
+    width: 100%;
+    height: calc(%(~"100% - %s", 100px));
+    .view {
+      height: 100%;
+      .button-group-top {
+        padding: 16px;
+      }
+      .context-menu {
+        position: absolute;
+        .menu {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          width: 150px;
+          li {
+            height: 30px;
 
+          }
+        }
+      }
+    }
+  }
 }
