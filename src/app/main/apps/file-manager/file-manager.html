@@ -1,9 +1,11 @@
 <div id="fileManager">
     <div class="top-menu">
         <div class="menu-left">
-            <i class="fa fa-bars" aria-hidden="true" ng-click="vm.toggleFileManagerAside('fileManagerAside')"
-               uib-tooltip="Menu"
-               tooltip-placement="bottom"></i>
+            <button class="btn btn-lg btn-circle btn-primary"
+                    ng-click="vm.toggleFileManagerAside('fileManagerAside')"
+                    uib-tooltip="Menu" tooltip-append-to-body=true>
+              <i class="fa fa-bars" aria-hidden="true"></i>
+            </button>
             <ol class="breadcrumb">
                 <li ng-repeat="crumb in vm.breadcrumbs" id="{{crumb.id}}" class="path-to-file" ng-click="vm.changeDirectory(crumb)">{{crumb.name}}</li>
             </ol>
@@ -12,17 +14,24 @@
             <div>
                 <input ng-class="{ 'hidden': ! vm.toggleSearch }" type="text"
                        ng-model="vm.searchValue" ng-change="vm.searchFn(vm.searchValue)">
-                <i class="fa fa-search" aria-hidden="true" uib-tooltip="Search" tooltip-placement="bottom"
-                   ng-click="vm.toggleSearch = ! vm.toggleSearch; vm.clearSearchResultsFn();"></i>
+                <button class="btn btn-lg btn-circle btn-primary"
+                        uib-tooltip="Search"
+                        tooltip-append-to-body=true
+                        ng-click="vm.toggleSearch = ! vm.toggleSearch; vm.clearSearchResultsFn();">
+                  <i class="fa fa-search" aria-hidden="true"></i>
+                </button>
             </div>
             <div ng-if="vm.currentView === 'list-condensed'"
                  ng-click="vm.toggleView()">
-                <i class="fa fa-th-list" aria-hidden="true" uib-tooltip="Switch to Grid View"
-                   tooltip-placement="bottom"></i>
+                <button class="btn btn-lg btn-circle btn-primary"  uib-tooltip="Switch to Grid View" tooltip-append-to-body=true>
+                  <i class="fa fa-th-list" aria-hidden="true"></i>
+                </button>
             </div>
             <div ng-if="vm.currentView === 'grid-view'"
                  ng-click="vm.toggleView()">
-                <i class="fa fa-th" aria-hidden="true" uib-tooltip="Switch to List View" tooltip-placement="bottom"></i>
+                <button class="btn btn-lg btn-circle btn-primary" uib-tooltip="Switch to List View" tooltip-append-to-body=true>
+                  <i class="fa fa-th" aria-hidden="true" ></i>
+                </button>
             </div>
         </div>
     </div>
@@ -75,6 +84,7 @@
                         {{vm.filterBy}}&nbsp;&nbsp;<i class="fa fa-times" aria-hidden="true"></i>
                     </button>
                 </div>
+                <hr>
                 <div ng-if="vm.currentView === 'grid-view'"
                      ng-include="'app/main/apps/file-manager/view/grid.html'">
                 </div>
