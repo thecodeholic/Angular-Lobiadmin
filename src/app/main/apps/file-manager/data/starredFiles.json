@@ -1,0 +1,86 @@
+{
+  "fileList": [
+    {
+      "id": 0,
+      "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
+      "name": "fm-styles.css",
+      "type": "Css",
+      "thumb": "",
+      "preview": "",
+      "owner": "Me",
+      "size": 28832,
+      "tags": [
+        "family"
+      ],
+      "date": 1288323645006
+    },
+    {
+      "id": 1,
+      "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
+      "name": "solar-system.cs",
+      "type": "Code",
+      "thumb": "",
+      "preview": "",
+      "owner": "Emily Bennet",
+      "size": 23673,
+      "tags": [
+        "family"
+      ],
+      "date": 1288323673006
+    },
+    {
+      "id": 2,
+      "icon": "<i class='fa fa-file-text' aria-hidden='true'></i>",
+      "name": "Windows-7_x64.zip",
+      "type": "Archive",
+      "thumb": "",
+      "preview": "",
+      "owner": "Public",
+      "size": 288323722,
+      "tags": [
+        "favourites"
+      ],
+      "date": 1288323723006
+    },
+    {
+      "id": 3,
+      "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
+      "name": "log-file-b772.log",
+      "type": "Other",
+      "thumb": "",
+      "preview": "",
+      "owner": "Public",
+      "size": 83236230,
+      "tags": [
+        "favourites"
+      ],
+      "date": 1288323623044
+    }
+  ],
+  "breadcrumbs": [
+    {
+      "id": 10001,
+      "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
+      "name": "Starred",
+      "type": "Folder",
+      "thumb": "",
+      "preview": "",
+      "owner": "Public",
+      "size": "",
+      "tags": [],
+      "date": 1288323623006
+    },
+    {
+      "id": 10002,
+      "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
+      "name": "Documents",
+      "type": "Folder",
+      "thumb": "",
+      "preview": "",
+      "owner": "Public",
+      "size": "",
+      "tags": [],
+      "date": 1288323323006
+    }
+  ]
+}
