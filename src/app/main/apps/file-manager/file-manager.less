@@ -8,13 +8,12 @@
     padding: 0 35px;
     background-color: @brand-primary;
     .menu {
+      display: table;
       &-left {
         float: left;
         color: white;
-        //i{
-        //  font-size:20px;
-        //  margin: 5px;
-        //}
+        display: table-cell;
+        vertical-align: middle;
         ol.breadcrumb {
           padding-top: 0;
           padding-bottom: 0;
@@ -35,8 +34,21 @@
       &-right {
         float: right;
         user-select: none;
-        input {
-          color: black;
+        display: table-cell;
+        vertical-align: middle;
+        .search{
+          input {
+            text-align: right;
+            height: 30px;
+            line-height: 30px;
+            font-size: 18px;
+            color: white;
+            background-color: transparent;
+            margin-right: 10px;
+            outline: 0;
+            border:0;
+            border-bottom: 2px solid white;
+          }
         }
         > div {
           display: inline-block;
@@ -53,10 +65,11 @@
     width: 100%;
     height: calc(%(~"100% - %s", 100px));
     .view {
-      width: 70%;
+      width: 100%;
       height: 100%;
-      overflow-y: scroll;
+      overflow-y: auto;
       float: left;
+      transition: 0.5s ease;
       .button-group-top {
         padding: 8px;
         padding-bottom: 0;
@@ -90,13 +103,16 @@
           }
         }
       }
+      &.is-off-canvas-menu-opened{
+        width:calc(%(~"100% - %s", @fm-selected-width));
+      }
     }
     .selected {
-      width: 30%;
+      width: @fm-selected-width;
       height: 100%;
       float: right;
       background-color: #fdfdfd;
-      overflow-y: scroll;
+      overflow-y: auto;
       .selected-description {
         .title {
           width: 100%;

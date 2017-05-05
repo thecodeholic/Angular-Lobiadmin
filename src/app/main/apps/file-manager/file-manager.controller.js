@@ -14,6 +14,7 @@
     vm.sharedFiles = sharedFiles;
     vm.recentFiles = recentFiles;
     vm.offlineFiles = offlineFiles;
+    vm.selectedDirectory = myFiles;
 
     vm.files = myFiles.fileList;
     vm.breadcrumbs = myFiles.breadcrumbs;
@@ -37,6 +38,7 @@
       "email": "JaneDoe@examle.com"
     }, {"name": "user name", "email": "userEmail@example.com"}];
     vm.currentUser = vm.users[0];
+    vm.isOffCanvasMenuOpened = false;
 
     // Methods
     // --File Directory
@@ -66,7 +68,8 @@
     // --Delete Modal
     vm.showDeleteDialog = showDeleteDialog;
     // --Side Menu
-    vm.toggleFileManagerAside = toggleFileManagerAside;
+    vm.toggleAside = toggleAside;
+    vm.hasOffCanvasClass = hasOffCanvasClass;
     // --Breadcrumbs click
     vm.changeDirectory = changeDirectory;
 
@@ -108,17 +111,26 @@
     function toggleView() {
       if (vm.currentView === 'list-condensed') {
         vm.currentView = 'grid-view';
-      } else if (vm.currentView === 'grid-view') {
+      }else{
         vm.currentView = 'list-condensed';
       }
     }
 
-    function selectFile(x) {
-      vm.selectedFile = x;
+    function selectFile(file, isLeftClick) {
+      if (vm.selectedFile === file && isLeftClick){
+        resetSelection();
+      }else{
+        vm.selectedFile = file;
+        omAside.open("selectedFileAside");
+        vm.hasOffCanvasClass("selectedFileAside");
+      }
     }
 
     function resetSelection() {
       vm.selectedFile = null;
+      omAside.close("selectedFileAside");
+      if(vm.isOffCanvasMenuOpened)
+      vm.isOffCanvasMenuOpened = false;
     }
 
     function isAvailableForPreview(file) {
@@ -206,22 +218,23 @@
     }
 
     function searchFn(searchValue) {
+      vm.files = vm.selectedDirectory.fileList;
       vm.searchResults = [];
       if (searchValue != "") {
         for (var i = 0; i < vm.files.length; i++) {
           if (vm.files[i].name.indexOf(searchValue) != -1) {
-            vm.searchResults.push({
-              id: vm.files[i].id, icon: vm.files[i].icon, name: vm.files[i].name, type: vm.files[i].type,
-              owner: vm.files[i].owner, size: vm.files[i].size, date: vm.files[i].date
-            });
+            vm.searchResults.push(vm.files[i]);
           }
         }
+        vm.files = vm.searchResults;
         console.log(vm.searchResults);
+      }else{
+        vm.files = vm.selectedDirectory.fileList;
       }
     }
 
     function clearSearchResultsFn() {
-      vm.displayData = vm.files;
+      vm.files = vm.selectedDirectory.fileList;
       vm.searchValue = "";
     }
 
@@ -314,14 +327,25 @@
         for(var i = 0; i < vm.files.length; i++){
           vm.files[i].id = i; //ID UPDATE
         }
+        resetSelection();
         console.log("resolve", arguments);
       }, function () {
         console.log("reject")
       });
     }
 
-    function toggleFileManagerAside(id) {
+    function toggleAside(id) {
       omAside.toggle(id);
+      vm.hasOffCanvasClass(id);
+    }
+
+    function hasOffCanvasClass(id) {
+      if(angular.element('#'+id).hasClass('is-off-canvas')){
+        vm.isOffCanvasMenuOpened = true;
+      }else{
+        vm.isOffCanvasMenuOpened = false;
+      }
+      console.log(vm.isOffCanvasMenuOpened);
     }
 
     function changeDirectory(crumb) {
@@ -331,7 +355,8 @@
     function switchDirectory(switchTo){
       vm.files = switchTo.fileList;
       vm.breadcrumbs = switchTo.breadcrumbs;
-      vm.toggleFileManagerAside('fileManagerAside');
+      vm.selectedDirectory = switchTo;
+      vm.toggleAside('fileManagerAside');
     }
   }
 })();
