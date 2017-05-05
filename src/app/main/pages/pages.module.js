@@ -6,6 +6,8 @@
 
   angular
     .module('app.pages', [
+      'app.pages.auth',
+
       'app.pages.errors.error401',
       'app.pages.errors.error404'
     ])

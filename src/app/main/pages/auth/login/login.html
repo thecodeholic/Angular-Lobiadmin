@@ -1,0 +1,161 @@
+<div id="login">
+    <div class="login-wrapper fadeInDown animated">
+            <form name="loginForm"
+                  class="lobi-form login-form"
+                  ng-class="{'visible': vm.showForm === 'login'}"
+                  novalidate
+                  ng-submit="vm.login()">
+                <div class="login-header">
+                    {{'LOGIN.LOGIN_TO_YOUR_ACCOUNT' | translate}}
+                </div>
+                <div class="login-body no-padding">
+                    <fieldset>
+                        <div class="form-group" ng-class="{'has-error': loginForm.username.$touched && loginForm.username.$invalid}">
+                            <label>{{'LOGIN.USERNAME' | translate}}</label>
+                            <label class="input">
+                                <span class="input-icon input-icon-prepend fa fa-user"></span>
+                                <input
+                                  type="text"
+                                  name="username"
+                                  ng-model="vm.data.username"
+                                  placeholder="{{'LOGIN.USERNAME' | translate}}"
+                                  required>
+                                <span class="tooltip tooltip-top-left"><i class="fa fa-user text-cyan-dark"></i> {{'LOGIN.PLEASE_ENTER_USERNAME' | translate}}</span>
+                            </label>
+                            <div class="help-block" ng-messages="loginForm.username.$touched && loginForm.username.$error" role="alert" multiple>
+                                <p ng-message="required">{{'LOGIN.USERNAME_REQUIRED' | translate}}</p>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-class="{'has-error': loginForm.password.$touched && loginForm.password.$invalid}">
+                            <label>{{'LOGIN.PASSWORD' | translate}}</label>
+                            <label class="input">
+                                <span class="input-icon input-icon-prepend fa fa-key"></span>
+                                <input
+                                  type="password"
+                                  name="password"
+                                  ng-model="vm.data.password"
+                                  placeholder="{{'LOGIN.PASSWORD' | translate}}"
+                                  required>
+                                <span class="tooltip tooltip-top-left"><i class="fa fa-key text-cyan-dark"></i> {{'LOGIN.PLEASE_ENTER_PASSWORD' | translate}}</span>
+                            </label>
+
+                            <div class="help-block" ng-messages="loginForm.password.$touched && loginForm.password.$error" role="alert" multiple>
+                                <p ng-message="required">{{'LOGIN.PASSWORD_REQUIRED' | translate}}</p>
+                            </div>
+                            <button type="button" class="btn-link btn-forgot-password" ng-click="vm.showForm = 'reset'">{{'LOGIN.FORGOT_PASSWORD' | translate}}</button>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-8">
+                                <label class="checkbox lobicheck lobicheck-info lobicheck-inversed lobicheck-lg">
+                                    <input type="checkbox" ng-model="vm.data.remember_me">
+                                    <i></i> {{'LOGIN.REMEMBER_ME' | translate}}
+                                </label>
+                            </div>
+                            <div class="col-xs-4">
+                                <button ng-disabled="loginForm.$invalid" type="submit" class="btn btn-info btn-block"><span class="glyphicon glyphicon-log-in"></span> {{'LOGIN.LOGIN' | translate}}</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="login-footer">
+                    {{'LOGIN.NEW_USER' | translate}}?
+                  <button type="button" class="btn btn-xs btn-info pull-right" ng-click="vm.showForm = 'signup'">{{'LOGIN.SIGNUP' | translate}}</button>
+                </div>
+            </form>
+            <!--Sign up form-->
+            <form action class="lobi-form signup-form" ng-class="{'visible': vm.showForm === 'signup'}" ng-submit="vm.signup()">
+                <div class="login-header">
+                    {{'LOGIN.NEW_USER_SIGN_UP' | translate}}
+                </div>
+                <div class="login-body no-padding">
+                    <fieldset>
+                        <div class="row">
+                            <div class="col-xxs-12 col-xs-6">
+                                <label>{{'LOGIN.FIRSTNAME' | translate}}</label>
+                                <label class="input">
+                                    <span class="input-icon input-icon-prepend fa fa-user"></span>
+                                    <input type="text" name="firstname" placeholder="{{'LOGIN.FIRSTNAME' | translate}}">
+                                </label>
+                            </div>
+                            <div class="col-xxs-12 col-xs-6">
+                                <label>{{'LOGIN.LASTNAME' | translate}}</label>
+                                <label class="input">
+                                    <span class="input-icon input-icon-prepend fa fa-user"></span>
+                                    <input type="text" name="lastname" placeholder="{{'LOGIN.LASTNAME' | translate}}">
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>{{'LOGIN.USERNAME' | translate}}</label>
+                            <label class="input">
+                                <span class="input-icon input-icon-prepend fa fa-user"></span>
+                                <input type="text" name="username" placeholder="{{'LOGIN.USERNAME' | translate}}">
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label>{{'LOGIN.EMAIL' | translate}}</label>
+                            <label class="input">
+                                <span class="input-icon input-icon-prepend fa fa-envelope"></span>
+                                <input type="text" name="email" placeholder="{{'LOGIN.EMAIL' | translate}}">
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label>{{'LOGIN.PASSWORD' | translate}}</label>
+                            <label class="input">
+                                <span class="input-icon input-icon-prepend fa fa-key"></span>
+                                <input type="password" name="password" placeholder="{{'LOGIN.PASSWORD' | translate}}">
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label>{{'LOGIN.CONFIRM_PASSWORD' | translate}}</label>
+                            <label class="input">
+                                <span class="input-icon input-icon-prepend fa fa-key"></span>
+                                <input type="password" name="confirm_password" placeholder="{{'LOGIN.CONFIRM_PASSWORD' | translate}}">
+                            </label>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-4 col-xs-offset-8">
+                                <button type="submit" class="btn btn-info btn-block">{{'LOGIN.REGISTER' | translate}}</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="login-footer">
+                    {{'LOGIN.DID_YOU_ALREADY_HAVE_ACCOUNT' | translate}}?
+                    <button type="button" class="btn btn-xs btn-info pull-right" ng-click="vm.showForm = 'login'">
+                      {{'LOGIN.SIGNIN' | translate}}
+                    </button>
+                </div>
+            </form>
+            <!--Forgot password form-->
+            <form action class="lobi-form pass-forgot-form" ng-class="{'visible': vm.showForm === 'reset'}" ng-submit="vm.signup()">
+                <div class="login-header">
+                    {{'LOGIN.FORGOT_YOUR_PASSWORD' | translate}}?
+                </div>
+                <div class="login-body">
+                    <fieldset>
+                        <div class="form-group">
+                            <label>{{'LOGIN.EMAIL_OR_USERNAME' | translate}}</label>
+                            <label class="input">
+                                <span class="input-icon input-icon-prepend fa fa-envelope"></span>
+                                <span class="input-icon input-icon-append fa fa-user"></span>
+                                <input type="text" name="username" placeholder="{{'LOGIN.EMAIL_OR_USERNAME' | translate}}">
+                                <span class="tooltip tooltip-bottom-right">{{'LOGIN.TYPE_YOUR_EMAIL_OR_USERNAME' | translate}}</span>
+                            </label>
+                            <button type="button" class="btn-link" ng-click="vm.showForm = 'login'">{{'LOGIN.REMEMBER_YOUR_PASSWORD' | translate}}?</button>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 text-right">
+                                <button type="submit" class="btn btn-info btn-block"><i class="fa fa-refresh"></i> {{'LOGIN.RESTORE_PASSWORD' | translate}}</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="login-footer">
+                    {{'LOGIN.NEW_USER' | translate}}?
+                  <button type="button" class="btn btn-xs btn-info pull-right" ng-click="vm.showForm = 'signup'">{{'LOGIN.SIGNUP' | translate}}</button>
+                </div>
+            </form>
+        </div>
+</div>
