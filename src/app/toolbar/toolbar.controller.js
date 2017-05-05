@@ -9,7 +9,7 @@
     .controller('ToolbarController', ToolbarController);
 
   /** @ngInject */
-  function ToolbarController($state, Auth, $translate) {
+  function ToolbarController($state, $rootScope, $translate) {
     var vm = this;
 
     // Data
@@ -63,7 +63,9 @@
     function changeLanguage(lang) {
       vm.selectedLanguage = lang;
       // Change the language
-      $translate.use(lang.code);
+      $translate.use(lang.code).then(function () {
+        $rootScope.$emit('App:languageChange', lang);
+      })
     }
   }
 })();

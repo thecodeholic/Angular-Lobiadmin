@@ -1,0 +1,78 @@
+{
+  "fileList": [
+    {
+      "id": 0,
+      "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
+      "name": "another-log.lgg",
+      "type": "Other",
+      "thumb": "",
+      "preview": "",
+      "owner": "Public",
+      "size": 83236230,
+      "tags": [],
+      "date": 1288323623044
+    },
+    {
+      "id": 1,
+      "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
+      "name": "Examination Answers Databases.doc",
+      "type": "Document",
+      "thumb": "",
+      "preview": "",
+      "owner": "Emily Bennet",
+      "size": 28838362,
+      "tags": [],
+      "date": 1288383623006
+    },
+    {
+      "id": 2,
+      "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
+      "name": "Examination Answers Web.doc",
+      "type": "Document",
+      "thumb": "",
+      "preview": "",
+      "owner": "Emily Bennet",
+      "size": 88736,
+      "tags": [],
+      "date": 1288873623006
+    },
+    {
+      "id": 3,
+      "icon": "<i class='fa fa-image' aria-hidden='true'></i>",
+      "name": "fa-fa-image.fa",
+      "type": "Image",
+      "thumb": "",
+      "preview": "",
+      "owner": "Emily Bennet",
+      "size": 88736,
+      "tags": [],
+      "date": 1288873623006
+    }
+  ],
+  "breadcrumbs": [
+    {
+      "id": 10001,
+      "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
+      "name": "Recent",
+      "type": "Folder",
+      "thumb": "",
+      "preview": "",
+      "owner": "Public",
+      "size": "",
+      "tags": [],
+      "date": 1288323623006
+    },
+    {
+      "id": 10002,
+      "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
+      "name": "Documents",
+      "type": "Folder",
+      "thumb": "",
+      "preview": "",
+      "owner": "Public",
+      "size": "",
+      "tags": [],
+      "date": 1288323323006
+     }
+  ]
+}

@@ -16,7 +16,7 @@
 
 
       loginState: 'auth.login',
-      mainState: 'app.reports',
+      mainState: 'app.dashboard',
       isLoggedIn: isLoggedIn,
       login: login,
       logout: logout,
@@ -27,13 +27,12 @@
     return Auth;
 
     function isLoggedIn() {
-      return $http.get(Util.formatUrl('user/is-logged-in'))
+      return $http.get(Util.formatUrl('main/pages/auth/login/data/is-logged-in.json'))
         .then(function (response) {
           var result = response.data;
 
           if (result.success){
             User.assignCurrentUser(result.user);
-            delete result.user.team;
           }
 
           return result;
@@ -42,14 +41,14 @@
 
     function login(data) {
 
-      return $http.post(Util.formatUrl('user/login'), data)
+      // Update the .get method into .post and change the url
+      return $http.get(Util.formatUrl('main/pages/auth/login/data/login.json'), data)
         .then(function(response){
           var result = response.data;
 
           if (result.success){
             $window.sessionStorage.accessToken = result.accessToken;
             User.assignCurrentUser(result.user);
-            delete result.user.team;
           }
           return result;
         });

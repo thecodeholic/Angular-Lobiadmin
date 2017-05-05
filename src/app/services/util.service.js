@@ -9,17 +9,14 @@
     .factory('Util', UtilService);
 
   /** @ngInject */
-  function UtilService() {
-    var Util = {
-      baseUrl: '/_vacancy/',
+  function UtilService($window) {
+    return {
       // baseUrl: 'app/data/',
       formatUrl: formatUrl
     };
 
-    return Util;
-
     function formatUrl(url) {
-      return Util.baseUrl + url;
+      return $window.__env.apiUrl + url;
     }
   }
 })();

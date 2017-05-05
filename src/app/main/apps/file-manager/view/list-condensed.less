@@ -1,0 +1,36 @@
+#fileManager{
+  .main{
+    .view{
+      .files {
+        width: 100%;
+        > thead {
+          > tr {
+            > th {
+              text-align: center;
+              outline: 0;
+            }
+          }
+        }
+        > tbody {
+          > tr {
+            outline: 0;
+          }
+        }
+        tr {
+          td{
+            > img{
+              height: @fm-list-thumb-size;
+              width: @fm-list-thumb-size;
+            }
+            > i {
+            font-size: @fm-list-thumb-size;
+            }
+            }
+        }
+        td {
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,140 @@
+{
+  "fileList": [
+    {
+      "id": 0,
+      "icon": "<i class='fa fa-file-text' aria-hidden='true'></i>",
+      "name": "MUSIC",
+      "type": "Folder",
+      "thumb": "",
+      "preview": "",
+      "owner": "Emily Bennet",
+      "size": 87236,
+      "tags": [],
+      "date": 1288723623006
+    },
+    {
+      "id": 1,
+      "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
+      "name": "solar-system.cs",
+      "type": "Code",
+      "thumb": "",
+      "preview": "",
+      "owner": "Emily Bennet",
+      "size": 23673,
+      "tags": [
+        "family"
+      ],
+      "date": 1288323673006
+    },
+    {
+      "id": 2,
+      "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
+      "name": "salaries.doc",
+      "type": "Document",
+      "thumb": "",
+      "preview": "",
+      "owner": "Emily Bennet",
+      "size": 28838362,
+      "tags": [],
+      "date": 1288383623006
+    },
+    {
+      "id": 3,
+      "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
+      "name": "salaries(1).doc",
+      "type": "Document",
+      "thumb": "",
+      "preview": "",
+      "owner": "Emily Bennet",
+      "size": 88736,
+      "tags": [],
+      "date": 1288873623006
+    },
+    {
+      "id": 4,
+      "icon": "<i class='fa fa-file-text' aria-hidden='true'></i>",
+      "name": "PRIVATE",
+      "type": "Folder",
+      "thumb": "",
+      "preview": "",
+      "owner": "Emily Bennet",
+      "size": 87236,
+      "tags": [],
+      "date": 1288723623006
+    },
+    {
+      "id": 5,
+      "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
+      "name": "Problem-312.cs",
+      "type": "Code",
+      "thumb": "",
+      "preview": "",
+      "owner": "Emily Bennet",
+      "size": 23673,
+      "tags": [],
+      "date": 1288323673006
+    },
+    {
+      "id": 6,
+      "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
+      "name": "Examination Answers Databases.doc",
+      "type": "Document",
+      "thumb": "",
+      "preview": "",
+      "owner": "Emily Bennet",
+      "size": 28838362,
+      "tags": [],
+      "date": 1288383623006
+    },
+    {
+      "id": 7,
+      "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
+      "name": "Examination Answers Web.doc",
+      "type": "Document",
+      "thumb": "",
+      "preview": "",
+      "owner": "Emily Bennet",
+      "size": 88736,
+      "tags": [],
+      "date": 1288873623006
+    },
+    {
+      "id": 8,
+      "icon": "<i class='fa fa-image' aria-hidden='true'></i>",
+      "name": "fa-fa-image.fa",
+      "type": "Image",
+      "thumb": "",
+      "preview": "",
+      "owner": "Emily Bennet",
+      "size": 88736,
+      "tags": [],
+      "date": 1288873623006
+    }
+  ],
+  "breadcrumbs": [
+    {
+      "id": 10001,
+      "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
+      "name": "Shared with me",
+      "type": "Folder",
+      "thumb": "",
+      "preview": "",
+      "owner": "Public",
+      "size": "",
+      "tags": [],
+      "date": 1288323623006
+    },
+    {
+      "id": 10002,
+      "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
+      "name": "Documents",
+      "type": "Folder",
+      "thumb": "",
+      "preview": "",
+      "owner": "Public",
+      "size": "",
+      "tags": [],
+      "date": 1288323323006
+    }
+  ]
+}
