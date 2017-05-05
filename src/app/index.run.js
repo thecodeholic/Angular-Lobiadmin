@@ -6,8 +6,11 @@
     .run(runBlock);
 
   /** @ngInject */
-  function runBlock($rootScope, $state, $log) {
+  function runBlock($rootScope, $state, $log, Auth, User) {
 
+    // Store state in the root scope for easy access
+    $rootScope.state = $state;
+    $rootScope.user = User;
 
     var onStateChangeStart = $rootScope.$on('$stateChangeStart', function (event, toState) {
       $rootScope.showPageLoader = true;
@@ -39,16 +42,17 @@
       $rootScope.showPageLoader = false;
       var currentState = toState.name;
 
-      if (!$state.get(currentState)) {
+      if (!$state.get(currentState) || error) {
         event.preventDefault();
       }
 
 
-      // if (error == "AUTH_REQUIRED") {
-      //   $state.go(loginState);
-      // }
+      if (error === Auth.AUTH_REQUIRED) {
+        $state.go(Auth.loginState);
+      } else if (error === Auth.ALREADY_AUTHENTICATED){
+        $state.go(Auth.mainState);
+      }
     });
-
 
 
     $rootScope.$on('$destroy', function () {
