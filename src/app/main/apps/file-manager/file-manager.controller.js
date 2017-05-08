@@ -342,8 +342,6 @@
     function hasOffCanvasClass(id) {
       if(angular.element('#'+id).hasClass('is-off-canvas')){
         vm.isOffCanvasMenuOpened = true;
-      }else{
-        vm.isOffCanvasMenuOpened = false;
       }
       console.log(vm.isOffCanvasMenuOpened);
     }
