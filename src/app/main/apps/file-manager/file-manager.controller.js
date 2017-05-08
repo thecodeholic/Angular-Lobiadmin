@@ -33,10 +33,9 @@
     vm.toggleSearch = false;
 
     vm.canPreview = ["Image", "Video", "Audio"];
-    vm.users = [{"name": "John Doe", "email": "JohnDoe@example.com"}, {
-      "name": "Jane Doe",
-      "email": "JaneDoe@examle.com"
-    }, {"name": "user name", "email": "userEmail@example.com"}];
+    vm.users = [{"name": "John Doe", "email": "JohnDoe@example.com"},
+      {"name": "Jane Doe", "email": "JaneDoe@examle.com"},
+      {"name": "user name", "email": "userEmail@example.com"}];
     vm.currentUser = vm.users[0];
     vm.isOffCanvasMenuOpened = false;
 
@@ -111,15 +110,15 @@
     function toggleView() {
       if (vm.currentView === 'list-condensed') {
         vm.currentView = 'grid-view';
-      }else{
+      } else {
         vm.currentView = 'list-condensed';
       }
     }
 
     function selectFile(file, isLeftClick) {
-      if (vm.selectedFile === file && isLeftClick){
+      if (vm.selectedFile === file && isLeftClick) {
         resetSelection();
-      }else{
+      } else {
         vm.selectedFile = file;
         omAside.open("selectedFileAside");
         vm.hasOffCanvasClass("selectedFileAside");
@@ -129,8 +128,8 @@
     function resetSelection() {
       vm.selectedFile = null;
       omAside.close("selectedFileAside");
-      if(vm.isOffCanvasMenuOpened)
-      vm.isOffCanvasMenuOpened = false;
+      if (vm.isOffCanvasMenuOpened)
+        vm.isOffCanvasMenuOpened = false;
     }
 
     function isAvailableForPreview(file) {
@@ -151,12 +150,12 @@
     function checkFileType($itemScope) {
       vm.menuOptions = [];
       vm.menuOptionsClone = angular.copy(vm.AllMenuOptions);
-      angular.forEach(vm.menuOptionsClone, function(value, key){
-        if (vm.selectedFile.type === 'Folder' && !(key === 'view' || key === 'download')){
+      angular.forEach(vm.menuOptionsClone, function (value, key) {
+        if (vm.selectedFile.type === 'Folder' && !(key === 'view' || key === 'download')) {
           vm.menuOptions.push(value);
-        }else if(!(vm.selectedFile.type === 'Folder') && vm.isAvailableForPreview($itemScope) && !(key === 'open')){
+        } else if (!(vm.selectedFile.type === 'Folder') && vm.isAvailableForPreview($itemScope) && !(key === 'open')) {
           vm.menuOptions.push(value);
-        }else if(!(vm.selectedFile.type === 'Folder') && !vm.isAvailableForPreview($itemScope) && !(key === 'open' || key === 'view')){
+        } else if (!(vm.selectedFile.type === 'Folder') && !vm.isAvailableForPreview($itemScope) && !(key === 'open' || key === 'view')) {
           vm.menuOptions.push(value);
         }
       });
@@ -183,10 +182,10 @@
     function filterListByTag(tag) {
       if (tag != null) {
         vm.filterBy = tag;
-        angular.element("#filteredBy").css("display","inline-block");
-      }else {
+        angular.element("#filteredBy").css("display", "inline-block");
+      } else {
         vm.filterBy = "";
-        angular.element("#filteredBy").css("display","none");
+        angular.element("#filteredBy").css("display", "none");
       }
     }
 
@@ -228,7 +227,7 @@
         }
         vm.files = vm.searchResults;
         console.log(vm.searchResults);
-      }else{
+      } else {
         vm.files = vm.selectedDirectory.fileList;
       }
     }
@@ -246,7 +245,7 @@
         size: 'sm',
         resolve: {
           CurrentEntry: null,
-          FileId: vm.files[vm.files.length-1].id + 1
+          FileId: vm.files[vm.files.length - 1].id + 1
         }
       }).result.then(function (newFolder) {
         vm.files.push(newFolder);
@@ -323,8 +322,8 @@
           CurrentEntry: vm.selectedFile
         }
       }).result.then(function (newFolder) {
-        vm.files.splice(file.id,1);
-        for(var i = 0; i < vm.files.length; i++){
+        vm.files.splice(file.id, 1);
+        for (var i = 0; i < vm.files.length; i++) {
           vm.files[i].id = i; //ID UPDATE
         }
         resetSelection();
@@ -340,17 +339,17 @@
     }
 
     function hasOffCanvasClass(id) {
-      if(angular.element('#'+id).hasClass('is-off-canvas')){
+      if (angular.element('#' + id).hasClass('is-off-canvas')) {
         vm.isOffCanvasMenuOpened = true;
       }
       console.log(vm.isOffCanvasMenuOpened);
     }
 
     function changeDirectory(crumb) {
-      vm.breadcrumbs = vm.breadcrumbs.slice(0, vm.breadcrumbs.indexOf(crumb)+1);
+      vm.breadcrumbs = vm.breadcrumbs.slice(0, vm.breadcrumbs.indexOf(crumb) + 1);
     }
 
-    function switchDirectory(switchTo){
+    function switchDirectory(switchTo) {
       vm.files = switchTo.fileList;
       vm.breadcrumbs = switchTo.breadcrumbs;
       vm.selectedDirectory = switchTo;
