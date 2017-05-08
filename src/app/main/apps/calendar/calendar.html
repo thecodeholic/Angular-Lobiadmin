@@ -18,23 +18,7 @@
 
     <div class="main clearfix">
         <div class="view">
-            <div class="button-group-top">
-                <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-primary btn-upload">
-                        Add Event
-                    </button>
-                </div>
                 <div class="om-calendar"></div>
-                <div ng-if="vm.currentView === 'day'"
-                     ng-include="'app/main/apps/calendar/view/day.html'">
-                </div>
-                <div ng-if="vm.currentView === 'week'"
-                     ng-include="'app/main/apps/calendar/view/week.html'">
-                </div>
-                <div ng-if="vm.currentView === 'month'"
-                     ng-include="'app/main/apps/calendar/view/month.html'">
-                </div>
-            </div>
         </div>
     </div>
 </div>
