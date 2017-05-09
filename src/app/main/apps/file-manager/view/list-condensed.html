@@ -3,7 +3,7 @@
     <tr>
         <th class="column-checkbox">
           <label class="checkbox lobicheck lobicheck-inverse" ng-click="$event.stopPropagation()">
-              <input type="checkbox" ng-click="vm.selectAll()" ng-checked="!!vm.selectedFiles[file.id]">
+              <input type="checkbox" ng-click="vm.selectAll()" ng-checked="vm.allSelected">
               <i></i>
           </label>
         </th>
@@ -73,7 +73,7 @@
     <tr ng-repeat="file in vm.files | filter:vm.filterBy |orderBy:orderByField:vm.defaultSort"
         ng-click="vm.selectFile(file, true)"
         ng-right-click="vm.selectFile(file,false); vm.checkFileType(file)"
-        context-menu="vm.menuOptions" ng-class="{'active': file == vm.selectedFile}">
+        context-menu="vm.menuOptions" ng-class="{'active': !!vm.selectedFiles[file.id]}">
         <td class="column-checkbox">
           <label class="checkbox lobicheck lobicheck-inverse" ng-click="$event.stopPropagation()">
               <input type="checkbox" ng-click="vm.selectMultiple(file)" ng-checked="!!vm.selectedFiles[file.id]">

@@ -6,7 +6,8 @@
     .controller('FileManagerController', FileManagerControllerFn);
 
   /** @ngInject */
-  function FileManagerControllerFn($rootScope, $translate, $uibModal, $log, omAside, myFiles, starredFiles, sharedFiles, recentFiles, offlineFiles) {
+  function FileManagerControllerFn($rootScope, $translate, $uibModal, $log, $scope,
+                                   omAside, myFiles, starredFiles, sharedFiles, recentFiles, offlineFiles) {
     var vm = this;
 
     vm.myFiles = myFiles;
@@ -39,6 +40,7 @@
       {"name": "user name", "email": "userEmail@example.com"}];
     vm.currentUser = vm.users[0];
     vm.isOffCanvasMenuOpened = false;
+    vm.allSelected = false;
 
     // Methods
     // --File Directory
@@ -137,6 +139,7 @@
       makeSelection(file);
       if (vm.selectedFiles[file.id]) {
         delete vm.selectedFiles[file.id];
+        vm.allSelected = false;
       } else {
         vm.selectedFiles[file.id] = file;
       }
@@ -146,13 +149,18 @@
     }
 
     function selectAll() {
-      vm.selectedFiles = {};
-      if (vm.files.length > 0){
-        vm.selectedFile = vm.files[0];
+      if (!vm.allSelected) {
+        vm.selectedFiles = {};
+        if (vm.files.length > 0) {
+          vm.selectedFile = vm.files[0];
+        }
+        angular.forEach(vm.files, function (file, ind) {
+          vm.selectedFiles[file.id] = file;
+        });
+      } else {
+        vm.selectedFiles = {};
       }
-      angular.forEach(vm.files, function(file, ind){
-        vm.selectedFiles[file.id] = file;
-      });
+      vm.allSelected = !vm.allSelected;
     }
 
     function makeSelection(file) {
