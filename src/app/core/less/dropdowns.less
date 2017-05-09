@@ -4,12 +4,20 @@
 .dropdown-menu {
   border-radius: @dropdown-menu-border-radius;
   padding: @dropdown-menu-padding;
+  min-width: 180px;
   .divider {
     margin: @dropdown-devider-margin-vertical 0;
   }
 
   > li > a {
-    padding: 6px 20px;
+    padding: 10px 24px;
+    .glyphicon,
+    .fa{
+      font-size: 14px;
+      text-align: center;
+      width: 16px;
+      margin-right: 6px;
+    }
   }
 
   &.reduced-padding {
