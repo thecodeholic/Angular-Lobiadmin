@@ -9,7 +9,7 @@
     .factory('LoginResource', LoginResource);
 
   /** @ngInject */
-  function LoginResource(apiService) {
+  function LoginResource() {
     // var ServiceName = apiService('/book/:bookId',
     //   {bookId: '@bookId'}, {
     //     loan: {

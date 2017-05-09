@@ -6,7 +6,7 @@
     .controller('FileManagerController', FileManagerControllerFn);
 
   /** @ngInject */
-  function FileManagerControllerFn($rootScope, $translate, $uibModal, omAside, myFiles, starredFiles, sharedFiles, recentFiles, offlineFiles) {
+  function FileManagerControllerFn($rootScope, $translate, $uibModal, $log, omAside, myFiles, starredFiles, sharedFiles, recentFiles, offlineFiles) {
     var vm = this;
 
     vm.myFiles = myFiles;
@@ -78,9 +78,11 @@
     init();
 
     function init() {
-      $rootScope.$on('App:languageChange', function () {
+      var languageChange = $rootScope.$on('App:languageChange', function () {
         translateMenu();
       });
+
+      $rootScope.$on('destroy', languageChange)
     }
 
     function translateMenu() {
@@ -133,18 +135,15 @@
     }
 
     function isAvailableForPreview(file) {
-      if (vm.canPreview.indexOf(file.type) != -1 && (file.preview != "" || file.thumb != "")) {
-        return true;
-      } else
-        return false;
+      return vm.canPreview.indexOf(file.type) !== -1 && (file.preview !== "" || file.thumb !== "");
     }
 
     function chooseFiles(input) {
-      console.log(input.files);
+      $log.debug(input.files);
     }
 
     function chooseFolder(input) {
-      console.log(input.files);
+      $log.debug(input.files);
     }
 
     function checkFileType($itemScope) {
@@ -162,14 +161,14 @@
     }
 
     function openFn($itemScope) {
-      console.log("Open Selected File" + "\nfileID: " + $itemScope.file.id);
-      console.log($itemScope.file);
+      $log.debug("Open Selected File" + "\nfileID: " + $itemScope.file.id);
+      $log.debug($itemScope.file);
       vm.selectedFile = $itemScope.file;
     }
 
     function shareFn($itemScope) {
-      console.log("Share Selected File" + "\nfileID: " + $itemScope.file.id);
-      console.log($itemScope.file);
+      $log.debug("Share Selected File" + "\nfileID: " + $itemScope.file.id);
+      $log.debug($itemScope.file);
       vm.selectedFile = $itemScope.file;
     }
 
@@ -190,8 +189,8 @@
     }
 
     function cutFn($itemScope) {
-      console.log("Cut Selected File" + "\nfileID: " + $itemScope.file.id);
-      console.log($itemScope.file);
+      $log.debug("Cut Selected File" + "\nfileID: " + $itemScope.file.id);
+      $log.debug($itemScope.file);
       vm.selectedFile = $itemScope.file;
     }
 
@@ -211,8 +210,8 @@
     }
 
     function downloadFn($itemScope) {
-      console.log("Download Selected File" + "\nfileID: " + $itemScope.file.id);
-      console.log($itemScope.file);
+      $log.debug("Download Selected File" + "\nfileID: " + $itemScope.file.id);
+      $log.debug($itemScope.file);
       vm.selectedFile = $itemScope.file;
     }
 
@@ -226,7 +225,7 @@
           }
         }
         vm.files = vm.searchResults;
-        console.log(vm.searchResults);
+        $log.debug(vm.searchResults);
       } else {
         vm.files = vm.selectedDirectory.fileList;
       }
@@ -249,9 +248,9 @@
         }
       }).result.then(function (newFolder) {
         vm.files.push(newFolder);
-        console.log("resolve", arguments);
+        $log.debug("resolve", arguments);
       }, function () {
-        console.log("reject")
+        $log.debug("reject")
       });
     }
 
@@ -269,9 +268,9 @@
         }
       }).result.then(function (newName) {
         vm.selectedFile.name = newName.name;
-        console.log("resolve", arguments);
+        $log.debug("resolve", arguments);
       }, function () {
-        console.log("reject")
+        $log.debug("reject")
       });
     }
 
@@ -288,14 +287,14 @@
         }
       }).result.then(function (tags) {
         vm.selectedFile.tags = tags;
-        console.log("resolve", arguments);
+        $log.debug("resolve", arguments);
       }, function () {
-        console.log("reject")
+        $log.debug("reject")
       });
     }
 
     function showPreviewFileDialog(file) {
-      if (vm.canPreview.indexOf(file.type) != -1) {
+      if (vm.canPreview.indexOf(file.type) !== -1) {
         $uibModal.open({
           templateUrl: 'app/main/apps/file-manager/dialogs/preview-file/preview-file.html',
           controller: 'PreviewFileController',
@@ -308,7 +307,7 @@
           }
         });
       } else {
-        window.alert("not a valid type");
+        $log.error("Not a valid type");
       }
     }
 
@@ -321,15 +320,15 @@
         resolve: {
           CurrentEntry: vm.selectedFile
         }
-      }).result.then(function (newFolder) {
+      }).result.then(function () {
         vm.files.splice(file.id, 1);
         for (var i = 0; i < vm.files.length; i++) {
           vm.files[i].id = i; //ID UPDATE
         }
         resetSelection();
-        console.log("resolve", arguments);
+        $log.debug("resolve", arguments);
       }, function () {
-        console.log("reject")
+        $log.debug("reject")
       });
     }
 
@@ -342,7 +341,7 @@
       if (angular.element('#' + id).hasClass('is-off-canvas')) {
         vm.isOffCanvasMenuOpened = true;
       }
-      console.log(vm.isOffCanvasMenuOpened);
+      $log.debug(vm.isOffCanvasMenuOpened);
     }
 
     function changeDirectory(crumb) {

@@ -32,7 +32,6 @@
 
 
     function ok() {
-      console.log(vm.currentEntry);
       $uibModalInstance.close(vm.currentEntry);
     }
 
