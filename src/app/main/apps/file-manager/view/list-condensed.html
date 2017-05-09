@@ -5,24 +5,24 @@
         <th ng-click="orderByField='name'; vm.defaultSort = !vm.defaultSort">
             {{'FILE_MANAGER.VIEW.NAME' | translate}}
             <span ng-show="orderByField == 'name'">
-                                <span ng-show="!vm.defaultSort">
-                                    <i class="fa fa-sort-asc" aria-hidden="true"></i>
-                                </span>
-                                <span ng-show="vm.defaultSort">
-                                    <i class="fa fa-sort-desc" aria-hidden="true"></i>
-                                </span>
-                            </span>
+                <span ng-show="!vm.defaultSort">
+                    <i class="fa fa-sort-asc" aria-hidden="true"></i>
+                </span>
+                <span ng-show="vm.defaultSort">
+                    <i class="fa fa-sort-desc" aria-hidden="true"></i>
+                </span>
+            </span>
         </th>
         <th ng-click="orderByField='type'; vm.defaultSort = !vm.defaultSort">
             {{'FILE_MANAGER.VIEW.TYPE' | translate}}
             <span ng-show="orderByField == 'type'">
-                                <span ng-show="!vm.defaultSort">
-                                    <i class="fa fa-sort-asc" aria-hidden="true"></i>
-                                </span>
-                                <span ng-show="vm.defaultSort">
-                                    <i class="fa fa-sort-desc" aria-hidden="true"></i>
-                                </span>
-                            </span>
+                <span ng-show="!vm.defaultSort">
+                    <i class="fa fa-sort-asc" aria-hidden="true"></i>
+                </span>
+                <span ng-show="vm.defaultSort">
+                    <i class="fa fa-sort-desc" aria-hidden="true"></i>
+                </span>
+            </span>
         </th>
         <th ng-click="orderByField='owner'; vm.defaultSort = !vm.defaultSort">
             {{'FILE_MANAGER.VIEW.OWNER' | translate}}
@@ -67,8 +67,7 @@
     <tr ng-repeat="file in vm.files | filter:vm.filterBy |orderBy:orderByField:vm.defaultSort"
         ng-click="vm.selectFile(file,true)"
         ng-right-click="vm.selectFile(file,false); vm.checkFileType(file)"
-        context-menu="vm.menuOptions" ng-class="{'active': file == vm.selectedFile}" uib-tooltip="Right Click for options"
-        tooltip-placement="bottom" tooltip-popup-delay="1500">
+        context-menu="vm.menuOptions" ng-class="{'active': file == vm.selectedFile}">
         <td class="text-center">
             <img ng-if="file.thumb != ''" src="{{file.thumb}}">
             <i ng-if="file.thumb == ''" class="fa fa-{{file.type | typeToIcon}}" aria-hidden="true"></i>
