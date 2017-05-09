@@ -15,21 +15,21 @@
 
     vm.events = [
       {
-        id: 0,
+        id: 1,
         title: "event1",
         start: "2017-05-04",
         className: "event_primary",
         description: "Hello World"
       },
       {
-        id: 1,
+        id: 2,
         title: "event2",
         start: "2017-05-04",
         end: "2017-05-09",
         className: "event_danger"
       },
       {
-        id: 2,
+        id: 3,
         title: "event3",
         start: "2017-05-10T12:30:00",
         allDay: false,
@@ -61,23 +61,20 @@
     }
 
     function addNewEvent(date) {
-      debugger;
       $uibModal.open({
         templateUrl: 'app/main/apps/calendar/dialogs/event-dialog/event-dialog.html',
         controller: 'EventDialogController',
         controllerAs: 'vm',
         size: 'md',
         resolve: {
-          Event: {start:date}
+          Event: {start:date,end:date}
         }
       }).result.then(function (EVENT) {
 
         vm.events.push(EVENT);
         $('.om-calendar').fullCalendar('renderEvent', EVENT);
 
-        console.log("resolve", arguments);
       }, function () {
-        console.log("reject")
       });
     }
 
@@ -95,9 +92,7 @@
         event = EVENT;
         $('.om-calendar').fullCalendar('updateEvent', event);
 
-        console.log("resolve", arguments);
       }, function () {
-        console.log("reject")
       });
     }
 

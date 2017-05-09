@@ -6,20 +6,24 @@
         </h3>
     </div>
     <div class="modal-body" id="modal-body">
-        <pre>{{vm.currentEvent | json}}</pre>
+        <pre>{{vm.event | json}}</pre>
         <form action="">
             <div class="form-group">
                 <label class="control-label">Event style</label>
                 <div class="btn-group btn-group-justified btn-group-event-style" data-toggle="buttons">
                     <label ng-repeat="style in vm.eventStyles" class="btn bg-{{style}} text-white">
-                        <input type="radio" ng-model="vm.event.className" value="{{style}}"> <i class="fa fa-check"></i>
+                        <input type="radio" ng-model="vm.event.className[0]" value="event_{{style}}">
+                        <i class="fa fa-check" ng-show="vm.event.className=='event_'+style"></i>
                     </label>
                 </div>
             </div>
 
             <div class="form-group">
                 <label class="control-label">Event date</label>
-                <input type="text" name="date-period" class="form-control" ng-model="vm.event.start">
+                {{vm.eventDate}}
+                <input date-range-picker type="text" name="date-period" class="form-control date-picker"
+                       ng-model="vm.eventDate"
+                       options="{singleDatePicker:vm.event.allDay}">
             </div>
 
             <div class="form-group">
