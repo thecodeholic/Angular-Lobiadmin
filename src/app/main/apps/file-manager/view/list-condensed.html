@@ -1,6 +1,12 @@
 <table class="files table table-bordered table-hover">
     <thead>
     <tr>
+        <th class="column-checkbox">
+          <label class="checkbox lobicheck lobicheck-inverse" ng-click="$event.stopPropagation()">
+              <input type="checkbox" ng-click="vm.selectAll()" ng-checked="!!vm.selectedFiles[file.id]">
+              <i></i>
+          </label>
+        </th>
         <th></th>
         <th ng-click="orderByField='name'; vm.defaultSort = !vm.defaultSort">
             {{'FILE_MANAGER.VIEW.NAME' | translate}}
@@ -65,9 +71,15 @@
     </thead>
     <tbody>
     <tr ng-repeat="file in vm.files | filter:vm.filterBy |orderBy:orderByField:vm.defaultSort"
-        ng-click="vm.selectFile(file,true)"
+        ng-click="vm.selectFile(file, true)"
         ng-right-click="vm.selectFile(file,false); vm.checkFileType(file)"
         context-menu="vm.menuOptions" ng-class="{'active': file == vm.selectedFile}">
+        <td class="column-checkbox">
+          <label class="checkbox lobicheck lobicheck-inverse" ng-click="$event.stopPropagation()">
+              <input type="checkbox" ng-click="vm.selectMultiple(file)" ng-checked="!!vm.selectedFiles[file.id]">
+              <i></i>
+          </label>
+        </td>
         <td class="text-center">
             <img ng-if="file.thumb != ''" src="{{file.thumb}}">
             <i ng-if="file.thumb == ''" class="fa fa-{{file.type | typeToIcon}}" aria-hidden="true"></i>

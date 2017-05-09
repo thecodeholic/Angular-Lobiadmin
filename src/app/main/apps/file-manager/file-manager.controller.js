@@ -20,6 +20,7 @@
     vm.breadcrumbs = myFiles.breadcrumbs;
 
     vm.selectedFile = null;
+    vm.selectedFiles = {};
 
     vm.currentView = 'list-condensed';
     vm.orderByField = 'name';
@@ -46,6 +47,8 @@
     vm.selectFile = selectFile;
     vm.resetSelection = resetSelection;
     vm.isAvailableForPreview = isAvailableForPreview;
+    vm.selectMultiple = selectMultiple;
+    vm.selectAll = selectAll;
     // --File Display
     vm.toggleView = toggleView;
     // --File Type Check
@@ -118,13 +121,44 @@
     }
 
     function selectFile(file, isLeftClick) {
+
+      vm.selectedFiles = {};
+      selectMultiple(file, null);
       if (vm.selectedFile === file && isLeftClick) {
-        resetSelection();
+        // resetSelection();
       } else {
-        vm.selectedFile = file;
-        omAside.open("selectedFileAside");
-        vm.hasOffCanvasClass("selectedFileAside");
+        makeSelection(file);
       }
+    }
+
+    function selectMultiple(file) {
+      // vm.selectedFile = file;
+
+      makeSelection(file);
+      if (vm.selectedFiles[file.id]) {
+        delete vm.selectedFiles[file.id];
+      } else {
+        vm.selectedFiles[file.id] = file;
+      }
+      if (Object.keys(vm.selectedFiles).length === 0) {
+        resetSelection();
+      }
+    }
+
+    function selectAll() {
+      vm.selectedFiles = {};
+      if (vm.files.length > 0){
+        vm.selectedFile = vm.files[0];
+      }
+      angular.forEach(vm.files, function(file, ind){
+        vm.selectedFiles[file.id] = file;
+      });
+    }
+
+    function makeSelection(file) {
+      vm.selectedFile = file;
+      omAside.open("selectedFileAside");
+      vm.hasOffCanvasClass("selectedFileAside");
     }
 
     function resetSelection() {

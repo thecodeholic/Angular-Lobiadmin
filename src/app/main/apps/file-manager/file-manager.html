@@ -72,36 +72,37 @@
                         Files</a>
                 </div>
             </div>
-            <div class="clearfix">
+            <div class="clearfix h-full">
                 <div ng-class="{'is-off-canvas-menu-opened' : vm.isOffCanvasMenuOpened}" class="view">
-                    <div class="button-group-top">
-                        <div class="btn-group" role="group">
-                            <button type="button" class="btn btn-primary btn-upload" ng-click="vm.openFileUpload()">
-                                {{'FILE_MANAGER.MENU.UPLOAD_FILE' | translate}}
-                                <input onchange="angular.element(this).scope().vm.chooseFiles(this, event)" type="file"
-                                       multiple=""/>
-                            </button>
-                            <button type="button" class="btn btn-primary btn-upload" ng-click="vm.openFolderUpload()">
-                                {{'FILE_MANAGER.MENU.UPLOAD_FOLDER' | translate}}
-                                <input type="file" onchange="angular.element(this).scope().vm.chooseFolder(this, event)"
-                                       webkitdirectory="" mozdirectory="" msdirectory="" odirectory="" directory=""
-                                       multiple=""/>
-                            </button>
-                            <button type="button" class="btn btn-primary btn-upload"
-                                    ng-click="vm.showCreateFolderDialog()">
-                                {{'FILE_MANAGER.MENU.CREATE_FOLDER' | translate}}
+                    <div class="actions-toolbar display-table w-full">
+                        <div class="vertical-align-middle">
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-primary btn-upload" ng-click="vm.openFileUpload()">
+                                    {{'FILE_MANAGER.MENU.UPLOAD_FILE' | translate}}
+                                    <input onchange="angular.element(this).scope().vm.chooseFiles(this, event)" type="file"
+                                           multiple=""/>
+                                </button>
+                                <button type="button" class="btn btn-primary btn-upload" ng-click="vm.openFolderUpload()">
+                                    {{'FILE_MANAGER.MENU.UPLOAD_FOLDER' | translate}}
+                                    <input type="file" onchange="angular.element(this).scope().vm.chooseFolder(this, event)"
+                                           webkitdirectory="" mozdirectory="" msdirectory="" odirectory="" directory=""
+                                           multiple=""/>
+                                </button>
+                                <button type="button" class="btn btn-primary btn-upload"
+                                        ng-click="vm.showCreateFolderDialog()">
+                                    {{'FILE_MANAGER.MENU.CREATE_FOLDER' | translate}}
+                                </button>
+                            </div>
+                            <button id="filteredBy" type="button" class="btn btn-default pull-right"
+                                    ng-click="vm.filterListByTag(null)">
+                                {{vm.filterBy}}&nbsp;&nbsp;<i class="fa fa-times" aria-hidden="true"></i>
                             </button>
                         </div>
-                        <button id="filteredBy" type="button" class="btn btn-default pull-right"
-                                ng-click="vm.filterListByTag(null)">
-                            {{vm.filterBy}}&nbsp;&nbsp;<i class="fa fa-times" aria-hidden="true"></i>
-                        </button>
                     </div>
-                    <hr>
-                    <div ng-if="vm.currentView === 'grid-view'"
+                    <div class="files-wrapper" ng-if="vm.currentView === 'grid-view'"
                          ng-include="'app/main/apps/file-manager/view/grid.html'">
                     </div>
-                    <div ng-if="vm.currentView === 'list-condensed'"
+                    <div class="files-wrapper" ng-if="vm.currentView === 'list-condensed'"
                          ng-include="'app/main/apps/file-manager/view/list-condensed.html'">
                     </div>
                 </div>

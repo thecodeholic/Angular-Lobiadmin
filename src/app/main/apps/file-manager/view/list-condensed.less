@@ -1,6 +1,6 @@
-#fileManager{
-  .main{
-    .view{
+#fileManager {
+  .main {
+    .view {
       .files {
         width: 100%;
         > thead {
@@ -17,15 +17,33 @@
           }
         }
         tr {
-          td{
-            > img{
+          >th,
+          >td{
+            &.column-checkbox {
+              text-align: center;
+              width: 40px;
+              .lobicheck{
+                display: block;
+                margin: 0 auto;
+                padding-left: 0;
+                width: @checkbox-base-size;
+              }
+            }
+            > img {
               height: @fm-list-thumb-size;
               width: @fm-list-thumb-size;
             }
+          }
+          >td {
             > i {
-            font-size: @fm-list-thumb-size;
+              font-size: @fm-list-thumb-size;
             }
+          }
+          &.active{
+            >td{
+              background-color: rgba(0, 68, 132, 0.13);
             }
+          }
         }
         td {
           vertical-align: middle;
