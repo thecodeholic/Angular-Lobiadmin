@@ -47,6 +47,7 @@
     vm.switchDirectory = switchDirectory;
     // --File Selections
     vm.selectFile = selectFile;
+    vm.makeSelection = makeSelection;
     vm.resetSelection = resetSelection;
     vm.isAvailableForPreview = isAvailableForPreview;
     vm.selectMultiple = selectMultiple;
@@ -126,23 +127,21 @@
 
       vm.selectedFiles = {};
       selectMultiple(file, null);
-      if (vm.selectedFile === file && isLeftClick) {
-        // resetSelection();
-      } else {
-        makeSelection(file);
-      }
+      openDetailAside();
+      // if (vm.selectedFile === file && isLeftClick) {
+      //   // resetSelection();
+      // } else {
+      //   makeSelection(file);
+      // }
+
+      // vm.checkFileType(file);
     }
 
     function selectMultiple(file) {
       // vm.selectedFile = file;
 
       makeSelection(file);
-      if (vm.selectedFiles[file.id]) {
-        delete vm.selectedFiles[file.id];
-        vm.allSelected = false;
-      } else {
-        vm.selectedFiles[file.id] = file;
-      }
+
       if (Object.keys(vm.selectedFiles).length === 0) {
         resetSelection();
       }
@@ -165,6 +164,15 @@
 
     function makeSelection(file) {
       vm.selectedFile = file;
+      if (vm.selectedFiles[file.id]) {
+        delete vm.selectedFiles[file.id];
+        vm.allSelected = false;
+      } else {
+        vm.selectedFiles[file.id] = file;
+      }
+    }
+
+    function openDetailAside(){
       omAside.open("selectedFileAside");
       vm.hasOffCanvasClass("selectedFileAside");
     }
@@ -188,15 +196,15 @@
       $log.debug(input.files);
     }
 
-    function checkFileType($itemScope) {
+    function checkFileType(file) {
       vm.menuOptions = [];
       vm.menuOptionsClone = angular.copy(vm.AllMenuOptions);
       angular.forEach(vm.menuOptionsClone, function (value, key) {
-        if (vm.selectedFile.type === 'Folder' && !(key === 'view' || key === 'download')) {
+        if (file.type === 'Folder' && !(key === 'view' || key === 'download')) {
           vm.menuOptions.push(value);
-        } else if (!(vm.selectedFile.type === 'Folder') && vm.isAvailableForPreview($itemScope) && !(key === 'open')) {
+        } else if (!(file.type === 'Folder') && vm.isAvailableForPreview(file) && !(key === 'open')) {
           vm.menuOptions.push(value);
-        } else if (!(vm.selectedFile.type === 'Folder') && !vm.isAvailableForPreview($itemScope) && !(key === 'open' || key === 'view')) {
+        } else if (!(file.type === 'Folder') && !vm.isAvailableForPreview(file) && !(key === 'open' || key === 'view')) {
           vm.menuOptions.push(value);
         }
       });
