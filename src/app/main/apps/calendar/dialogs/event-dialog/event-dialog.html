@@ -6,8 +6,7 @@
         </h3>
     </div>
     <div class="modal-body" id="modal-body">
-        <pre>{{vm.event | json}}</pre>
-        <form action="">
+        <form name="eventForm" action="">
             <div class="form-group">
                 <label class="control-label">Event style</label>
                 <div class="btn-group btn-group-justified btn-group-event-style" data-toggle="buttons">
@@ -20,10 +19,10 @@
 
             <div class="form-group">
                 <label class="control-label">Event date</label>
-                {{vm.eventDate}}
-                <input date-range-picker type="text" name="date-period" class="form-control date-picker"
-                       ng-model="vm.eventDate"
-                       options="{singleDatePicker:vm.event.allDay}">
+                <input ng-class="{'hide':!vm.event.allDay}" date-range-picker type="text" name="date-period"
+                       class="form-control date-picker" ng-model="vm.eventDate.startDate" options="{singleDatePicker:true}">
+                <input ng-class="{'hide':vm.event.allDay}" date-range-picker type="text" name="date-period"
+                       class="form-control date-picker" ng-model="vm.eventDate">
             </div>
 
             <div class="form-group">
@@ -32,19 +31,26 @@
                 </label>
             </div>
 
-            <div class="form-group">
+            <div class="form-group" ng-class="{'has-error': eventForm.title.$touched && eventForm.title.$invalid}">
                 <label class="control-label">Event title</label>
-                <input type="text" class="form-control" name="title" ng-model="vm.event.title">
+                <input type="text" class="form-control" name="title" ng-model="vm.event.title" required>
+                <div class="help-block" ng-messages="eventForm.title.$touched && eventForm.title.$error" role="alert" multiple>
+                    <p ng-message="required">Please enter valid event title !</p>
+                </div>
             </div>
 
             <div class="form-group">
                 <label class="control-label">Event description</label>
                 <textarea rows="3" class="form-control" name="desc" ng-model="vm.event.description"></textarea>
             </div>
+            <button type="button" class="btn btn-primary btn-upload" ng-click="vm.openFolderUpload()">
+                Upload Attachments
+                <input type="file" onchange="angular.element(this).scope().vm.chooseFolder(this, event)" multiple/>
+            </button>
         </form>
     </div>
     <div class="modal-footer">
-        <button class="btn btn-primary" type="button" ng-click="vm.ok()">OK</button>
+        <button class="btn btn-primary" type="button" ng-click="vm.ok()" ng-disabled="eventForm.$invalid">OK</button>
         <button class="btn btn-default" type="button" ng-click="vm.cancel()">Cancel</button>
     </div>
 </div>

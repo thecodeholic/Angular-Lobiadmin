@@ -9,12 +9,11 @@
     .controller('EventDialogController', EventDialogControllerFn);
 
   /** @ngInject */
-  function EventDialogControllerFn($uibModalInstance, Event, $scope) {
+  function EventDialogControllerFn($uibModalInstance, Event, $scope, $log) {
     var vm = this;
     // variables
     vm.isEdit = !!Event.id;
     vm.eventStyles = ["primary", "success", "danger", "info", "warning", "gray", "cyan", "purple", "pink"];
-    debugger;
     vm.eventDate = {startDate: Event.start, endDate: Event.end};
     vm.event = vm.isEdit ? Event : {
         id: Math.round(Math.random() * 1000000),
@@ -25,28 +24,41 @@
         title: "",
         description: ""
       };
-
+    console.log(vm.event.allDay);
     // Methods
+    vm.chooseFolder = chooseFolder;
     vm.ok = ok;
     vm.cancel = cancel;
 
     init();
-    function init(){
-      $scope.$watch("vm.eventDate",function (newValue) {
-        if(newValue.endDate == undefined){
+    function init() {
+      $scope.$watch("vm.eventDate", function (newValue) {
+        if (newValue.endDate == undefined) {
           vm.event.start = newValue;
           vm.event.end = newValue;
-        }else{
+        } else {
           vm.event.start = newValue.startDate;
           vm.event.end = newValue.endDate;
         }
       });
-      $scope.$watch("vm.allDay", function (newValue) {
-
+      $scope.$watch("vm.event.allDay", function (newValue) {
       });
     }
 
+    function chooseFolder(input) {
+      $log.debug(input.files);
+    }
+
     function ok() {
+      var isAnagram = true;
+      for (var i = 0; i < vm.event.title.length / 2; i++) {
+        console.log(vm.event.title[i], "----", vm.event.title[vm.event.title.length - 1 - i]);
+        if (vm.event.title[i] != vm.event.title[vm.event.title.length - 1 - i]) {
+          isAnagram = false;
+        }
+      }
+      console.log("is anagram : ", isAnagram);
+
       console.log(vm.event);
       $uibModalInstance.close(vm.event);
     }
