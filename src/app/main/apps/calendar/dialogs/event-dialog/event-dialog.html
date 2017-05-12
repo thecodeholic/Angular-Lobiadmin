@@ -20,7 +20,8 @@
             <div class="form-group">
                 <label class="control-label">Event date</label>
                 <input ng-class="{'hide':!vm.event.allDay}" date-range-picker type="text" name="date-period"
-                       class="form-control date-picker" ng-model="vm.eventDate.startDate" options="{singleDatePicker:true}">
+                       class="form-control date-picker" ng-model="vm.eventDate.startDate"
+                       options="{singleDatePicker:true}">
                 <input ng-class="{'hide':vm.event.allDay}" date-range-picker type="text" name="date-period"
                        class="form-control date-picker" ng-model="vm.eventDate">
             </div>
@@ -34,7 +35,8 @@
             <div class="form-group" ng-class="{'has-error': eventForm.title.$touched && eventForm.title.$invalid}">
                 <label class="control-label">Event title</label>
                 <input type="text" class="form-control" name="title" ng-model="vm.event.title" required>
-                <div class="help-block" ng-messages="eventForm.title.$touched && eventForm.title.$error" role="alert" multiple>
+                <div class="help-block" ng-messages="eventForm.title.$touched && eventForm.title.$error" role="alert"
+                     multiple>
                     <p ng-message="required">Please enter valid event title !</p>
                 </div>
             </div>
@@ -43,10 +45,18 @@
                 <label class="control-label">Event description</label>
                 <textarea rows="3" class="form-control" name="desc" ng-model="vm.event.description"></textarea>
             </div>
-            <button type="button" class="btn btn-primary btn-upload" ng-click="vm.openFolderUpload()">
-                Upload Attachments
-                <input type="file" onchange="angular.element(this).scope().vm.chooseFolder(this, event)" multiple/>
+            <button type="button" class="btn btn-primary btn-upload">
+                Add Attachments
+                <input id="uploader" type="file" nv-file-select uploader="vm.uploader" multiple/>
             </button>
+            <button type="button" class="btn btn-primary btn-upload" ng-click="vm.uploader.uploadAll()">Upload</button>
+            <div class="attachments row bordered">
+                <div class="col-md-3" ng-repeat="fileToUpload in vm.filesToUpload">
+                    <i class="fa fa-times close" aria-hidden="true" ng-click="vm.removeAttachment(vm.filesToUpload, $index)"></i>
+                    <img class="thumb" ng-src="{{fileToUpload.base}}">
+                    <span ng-bind="fileToUpload.file.name"></span>
+                </div>
+            </div>
         </form>
     </div>
     <div class="modal-footer">

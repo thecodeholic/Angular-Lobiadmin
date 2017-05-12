@@ -9,7 +9,7 @@
     .controller('EventDialogController', EventDialogControllerFn);
 
   /** @ngInject */
-  function EventDialogControllerFn($uibModalInstance, Event, $scope, $log) {
+  function EventDialogControllerFn($uibModalInstance, Event, $scope, FileUploader, $timeout) {
     var vm = this;
     // variables
     vm.isEdit = !!Event.id;
@@ -24,11 +24,30 @@
         title: "",
         description: ""
       };
-    console.log(vm.event.allDay);
+
+    vm.filesToUpload = [];
+    vm.uploader = new FileUploader();
+
+    /*vm.uploader.filters.push({
+      name: 'imageFilter',
+      fn: function(item /!*{File|FileLikeObject}*!/, options) {
+        var type = '|' + item.type.slice(item.type.lastIndexOf('/') + 1) + '|';
+        return '|jpg|png|jpeg|bmp|gif|'.indexOf(type) !== -1;
+      }
+    });*/
+
+    // CALLBACKS
+    vm.uploader.onAfterAddingFile = addAttachment;
+    vm.uploader.onCompleteItem = fileUploadComplete;
+    vm.uploader.onCompleteAll = allFilesUploaded;
+
     // Methods
-    vm.chooseFolder = chooseFolder;
     vm.ok = ok;
     vm.cancel = cancel;
+    vm.addAttacment = addAttachment;
+    vm.fileUploadComplete = fileUploadComplete;
+    vm.allFilesUploaded = allFilesUploaded;
+    vm.removeAttachment = removeAttachment;
 
     init();
     function init() {
@@ -45,26 +64,36 @@
       });
     }
 
-    function chooseFolder(input) {
-      $log.debug(input.files);
-    }
-
     function ok() {
-      var isAnagram = true;
-      for (var i = 0; i < vm.event.title.length / 2; i++) {
-        console.log(vm.event.title[i], "----", vm.event.title[vm.event.title.length - 1 - i]);
-        if (vm.event.title[i] != vm.event.title[vm.event.title.length - 1 - i]) {
-          isAnagram = false;
-        }
-      }
-      console.log("is anagram : ", isAnagram);
-
       console.log(vm.event);
       $uibModalInstance.close(vm.event);
     }
 
     function cancel() {
       $uibModalInstance.dismiss('cancel');
+    }
+
+    function addAttachment(fileItem) {
+      var reader = new FileReader();
+
+      reader.onload = function (e) {;
+        console.info('File '+fileItem._file.name+' Added\n', {file:fileItem._file, base:e.target.result});
+        vm.filesToUpload.push({file:fileItem._file, base:e.target.result});
+        $scope.$apply();
+      };
+      reader.readAsDataURL(fileItem._file);
+    }
+
+    function fileUploadComplete(fileItem, response, status, headers) {
+      console.info('File Uploaded', fileItem, response, status, headers);
+    }
+
+    function allFilesUploaded() {
+      console.info('All Files Uploaded');
+    }
+
+    function removeAttachment(array, index) {
+      array.splice(index,1);
     }
   }
 })();

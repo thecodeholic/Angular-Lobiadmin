@@ -21,7 +21,9 @@
 
       'app.dashboard',
 
-      'app.calendar'
+      'app.calendar',
+      'angularFileUpload',
+      'base64'
     ]);
 
 })();

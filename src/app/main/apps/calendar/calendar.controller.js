@@ -17,7 +17,7 @@
     vm.events = [
       {
         id: 1,
-        title: "event1",
+        title: "short event",
         start: "2017-05-04",
         end: "2017-05-04",
         allDay: true,
@@ -26,7 +26,7 @@
       },
       {
         id: 2,
-        title: "event2",
+        title: "long event",
         start: "2017-05-07",
         end: "2017-05-09",
         allDay: false,
@@ -34,7 +34,7 @@
       },
       {
         id: 3,
-        title: "event3",
+        title: "repeating event",
         start: "2017-05-10",
         end: "2017-05-10",
         allDay: true,
@@ -42,7 +42,7 @@
       },
       {
         id: 3,
-        title: "event3",
+        title: "repeating event",
         start: "2017-05-13",
         end: "2017-05-13",
         allDay: true,
@@ -131,7 +131,7 @@
         templateUrl: 'app/main/apps/calendar/dialogs/drag-dialog/drag-dialog.html',
         controller: 'DragDialogController',
         controllerAs: 'vm',
-        size: 'sm',
+        size: 'md',
         resolve: {
           entry: {text: vm.dragMessage}
         }
