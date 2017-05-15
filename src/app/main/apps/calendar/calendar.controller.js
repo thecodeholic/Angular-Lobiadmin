@@ -16,37 +16,58 @@
 
     vm.events = [
       {
-        id: 1,
-        title: "short event",
-        start: "2017-05-04",
-        end: "2017-05-04",
         allDay: true,
-        className: "event_primary",
-        description: "Hello World"
+        className: ['event_success'],
+        description: "Single day event description",
+        end: "Tue May 02 2017 04:00:00 GMT+0400 (+04)",
+        id: 462399,
+        start: "Mon May 01 2017 04:00:00 GMT+0400 (+04)",
+        title: "Single day event"
       },
       {
-        id: 2,
-        title: "long event",
-        start: "2017-05-07",
-        end: "2017-05-09",
         allDay: false,
-        className: "event_danger"
+        className: ['event_info'],
+        description: "Single day event with custom time description",
+        end: "Tue May 02 2017 20:00:00 GMT+0400 (+04)",
+        id: 180899,
+        start: "Tue May 02 2017 17:00:00 GMT+0400 (+04)",
+        title: "Single day event with custom time"
       },
       {
-        id: 3,
-        title: "repeating event",
-        start: "2017-05-10",
-        end: "2017-05-10",
         allDay: true,
-        className: "event_success"
+        className: ['event_danger'],
+        description: "Long event description",
+        end: "Thu May 11 2017 04:00:00 GMT+0400 (+04)",
+        id: 476339,
+        start: "Sun May 07 2017 04:00:00 GMT+0400 (+04)",
+        title: "Long event"
       },
       {
-        id: 3,
-        title: "repeating event",
-        start: "2017-05-13",
-        end: "2017-05-13",
+        allDay: false,
+        className: ['event_warning'],
+        description: "Long event with custom time description",
+        end: "Fri May 18 2017 02:00:00 GMT+0400 (+04)",
+        id: 704326,
+        start: "Sun May 14 2017 19:00:00 GMT+0400 (+04)",
+        title: "Long event with custom time"
+      },
+      {
         allDay: true,
-        className: "event_success"
+        className: ['event_pink'],
+        description: "Repeating event description",
+        end: "Sun May 14 2017 04:00:00 GMT+0400 (+04)",
+        id: 778852,
+        start: "Fri May 12 2017 04:00:00 GMT+0400 (+04)",
+        title: "Repeating event"
+      },
+      {
+        allDay: true,
+        className: ['event_pink'],
+        description: "Repeating event description",
+        end: "Sun May 21 2017 04:00:00 GMT+0400 (+04)",
+        id: 778852,
+        start: "Fri May 19 2017 04:00:00 GMT+0400 (+04)",
+        title: "Repeating event"
       }
     ];
 
@@ -62,37 +83,42 @@
 
     function init() {
       $('.om-calendar').fullCalendar({
-        dayClick: function (date) {
-          addNewEvent(date);
+
+        events: vm.events, //Event List
+
+        editable: true, //Allows dragging
+
+        eventLimit: true, //Number of events to show per day (others are collapsed)
+
+        selectable: true, //Allows selecting multiple dates
+
+        select: function (start, end) { //On multiple date select add new event
+          addNewEvent(start, end);
         },
 
-        events: vm.events,
-
-        editable: true,
-
-        eventLimit: true,
-
-        eventClick: function(event, element) {
+        eventClick: function(event, element) { //Event editing on click
           editCurrentEvent(event, element);
         },
 
-        eventDragStart: function(event, delta){
+        eventDragStart: function(event, delta){ //Event dragging
           catchDragStart(event,delta);
         },
-        eventDrop: function (event, delta, revertFunc) {
+
+        eventDrop: function (event, delta, revertFunc) { //Event drag finish
           showDragDialog(event, delta, revertFunc);
         }
+
       });
     }
 
-    function addNewEvent(date) {
+    function addNewEvent(start, end) {
       $uibModal.open({
         templateUrl: 'app/main/apps/calendar/dialogs/event-dialog/event-dialog.html',
         controller: 'EventDialogController',
         controllerAs: 'vm',
         size: 'md',
         resolve: {
-          Event: {start:date,end:date}
+          Event: {start:start, end:end}
         }
       }).result.then(function (EVENT) {
 

@@ -19,16 +19,13 @@
 
             <div class="form-group">
                 <label class="control-label">Event date</label>
-                <input ng-class="{'hide':!vm.event.allDay}" date-range-picker type="text" name="date-period"
-                       class="form-control date-picker" ng-model="vm.eventDate.startDate"
-                       options="{singleDatePicker:true}">
-                <input ng-class="{'hide':vm.event.allDay}" date-range-picker type="text" name="date-period"
+                <input date-range-picker type="text" name="date-period"
                        class="form-control date-picker" ng-model="vm.eventDate">
             </div>
 
             <div class="form-group">
                 <label class="checkbox lobicheck">
-                    <input type="checkbox" name="allday" checked="" ng-model="vm.event.allDay"><i></i> All day
+                    <input type="checkbox" name="allday" ng-model="vm.event.allDay"><i></i> All day
                 </label>
             </div>
 
@@ -49,7 +46,6 @@
                 Add Attachments
                 <input id="uploader" type="file" nv-file-select uploader="vm.uploader" multiple/>
             </button>
-            <button type="button" class="btn btn-primary btn-upload" ng-click="vm.uploader.uploadAll()">Upload</button>
             <div class="attachments row" ng-class="{'bordered': vm.filesToUpload[0] != null}">
                 <div class="col-md-3" ng-repeat="fileToUpload in vm.filesToUpload">
                     <i class="fa fa-times close" aria-hidden="true" ng-click="vm.removeAttachment(vm.filesToUpload, $index)"></i>
