@@ -50,7 +50,7 @@
                 <input id="uploader" type="file" nv-file-select uploader="vm.uploader" multiple/>
             </button>
             <button type="button" class="btn btn-primary btn-upload" ng-click="vm.uploader.uploadAll()">Upload</button>
-            <div class="attachments row bordered">
+            <div class="attachments row" ng-class="{'bordered': vm.filesToUpload[0] != null}">
                 <div class="col-md-3" ng-repeat="fileToUpload in vm.filesToUpload">
                     <i class="fa fa-times close" aria-hidden="true" ng-click="vm.removeAttachment(vm.filesToUpload, $index)"></i>
                     <img class="thumb" ng-src="{{fileToUpload.base}}">
