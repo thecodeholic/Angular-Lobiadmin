@@ -3,13 +3,16 @@
     <div om-aside om-slide-direction="right" om-is-off-canvas="true" id="chatAside"
          class="selected off-canvas__nav nav-right pull-right">
         <ul class="list-group chat-contacts">
-            <li class="list-group-item contact">
-                <span class="contact-unread badge">14</span>
+            <li class="list-group-item contact" ng-repeat="contact in vm.contacts" ng-click="vm.AAA()">
+                <span class="contact-unread badge" ng-hide="contact.unread == 0">{{contact.unread}}</span>
                 <span class="contact-image">
-                    <span class="contact-status status-online"></span>
-                    <img src="http://altair_app.tzdthemes.com/assets/img/avatars/avatar_11_tn.png">
+                    <span class="contact-status"
+                          ng-class="{'status-online':contact.status == 'online',
+                                    'status-offline':contact.status == 'offline',
+                                    'status-busy':contact.status == 'busy'}"></span>
+                    <img ng-src="{{contact.thumb}}">
                 </span>
-                <span class="contact-name">Jane Doe</span>
+                <span class="contact-name">{{contact.name}}</span>
             </li>
         </ul>
     </div>

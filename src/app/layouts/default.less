@@ -11,6 +11,10 @@
       .chat-contacts {
         .contact {
           border:0;
+          outline: 0;
+          &:hover{
+            background-color: @gray-lighter;
+          }
           .contact-image {
             position: relative;
             .contact-status{
@@ -26,6 +30,9 @@
               }
               &.status-offline{
                 background-color: grey;
+              }
+              &.status-busy{
+                background-color: @brand-danger;
               }
             }
             img {
