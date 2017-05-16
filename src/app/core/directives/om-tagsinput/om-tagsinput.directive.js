@@ -16,7 +16,7 @@
         'ngModel': '='
       },
       link: function(scope, elem) {
-        var $el = $(elem);
+        var $el = angular.element(elem);
         $el
           .val(scope.ngModel.join(","))
           .tagsinput("items");

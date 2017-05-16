@@ -6,7 +6,8 @@
     .controller('FileManagerController', FileManagerControllerFn);
 
   /** @ngInject */
-  function FileManagerControllerFn($rootScope, $translate, $uibModal, omAside, myFiles, starredFiles, sharedFiles, recentFiles, offlineFiles) {
+  function FileManagerControllerFn($rootScope, $translate, $uibModal, $log, $scope,
+                                   omAside, myFiles, starredFiles, sharedFiles, recentFiles, offlineFiles) {
     var vm = this;
 
     vm.myFiles = myFiles;
@@ -14,11 +15,13 @@
     vm.sharedFiles = sharedFiles;
     vm.recentFiles = recentFiles;
     vm.offlineFiles = offlineFiles;
+    vm.selectedDirectory = myFiles;
 
     vm.files = myFiles.fileList;
     vm.breadcrumbs = myFiles.breadcrumbs;
 
     vm.selectedFile = null;
+    vm.selectedFiles = {};
 
     vm.currentView = 'list-condensed';
     vm.orderByField = 'name';
@@ -32,19 +35,23 @@
     vm.toggleSearch = false;
 
     vm.canPreview = ["Image", "Video", "Audio"];
-    vm.users = [{"name": "John Doe", "email": "JohnDoe@example.com"}, {
-      "name": "Jane Doe",
-      "email": "JaneDoe@examle.com"
-    }, {"name": "user name", "email": "userEmail@example.com"}];
+    vm.users = [{"name": "John Doe", "email": "JohnDoe@example.com"},
+      {"name": "Jane Doe", "email": "JaneDoe@examle.com"},
+      {"name": "user name", "email": "userEmail@example.com"}];
     vm.currentUser = vm.users[0];
+    vm.isOffCanvasMenuOpened = false;
+    vm.allSelected = false;
 
     // Methods
     // --File Directory
     vm.switchDirectory = switchDirectory;
     // --File Selections
     vm.selectFile = selectFile;
+    vm.makeSelection = makeSelection;
     vm.resetSelection = resetSelection;
     vm.isAvailableForPreview = isAvailableForPreview;
+    vm.selectMultiple = selectMultiple;
+    vm.selectAll = selectAll;
     // --File Display
     vm.toggleView = toggleView;
     // --File Type Check
@@ -66,7 +73,8 @@
     // --Delete Modal
     vm.showDeleteDialog = showDeleteDialog;
     // --Side Menu
-    vm.toggleFileManagerAside = toggleFileManagerAside;
+    vm.toggleAside = toggleAside;
+    vm.hasOffCanvasClass = hasOffCanvasClass;
     // --Breadcrumbs click
     vm.changeDirectory = changeDirectory;
 
@@ -76,9 +84,11 @@
     init();
 
     function init() {
-      $rootScope.$on('App:languageChange', function () {
+      var languageChange = $rootScope.$on('App:languageChange', function () {
         translateMenu();
       });
+
+      $rootScope.$on('destroy', languageChange)
     }
 
     function translateMenu() {
@@ -108,57 +118,107 @@
     function toggleView() {
       if (vm.currentView === 'list-condensed') {
         vm.currentView = 'grid-view';
-      } else if (vm.currentView === 'grid-view') {
+      } else {
         vm.currentView = 'list-condensed';
       }
     }
 
-    function selectFile(x) {
-      vm.selectedFile = x;
+    function selectFile(file, isLeftClick) {
+
+      vm.selectedFiles = {};
+      selectMultiple(file, null);
+      openDetailAside();
+      // if (vm.selectedFile === file && isLeftClick) {
+      //   // resetSelection();
+      // } else {
+      //   makeSelection(file);
+      // }
+
+      // vm.checkFileType(file);
+    }
+
+    function selectMultiple(file) {
+      // vm.selectedFile = file;
+
+      makeSelection(file);
+
+      if (Object.keys(vm.selectedFiles).length === 0) {
+        resetSelection();
+      }
+    }
+
+    function selectAll() {
+      if (!vm.allSelected) {
+        vm.selectedFiles = {};
+        if (vm.files.length > 0) {
+          vm.selectedFile = vm.files[0];
+        }
+        angular.forEach(vm.files, function (file, ind) {
+          vm.selectedFiles[file.id] = file;
+        });
+      } else {
+        vm.selectedFiles = {};
+      }
+      vm.allSelected = !vm.allSelected;
+    }
+
+    function makeSelection(file) {
+      vm.selectedFile = file;
+      if (vm.selectedFiles[file.id]) {
+        delete vm.selectedFiles[file.id];
+        vm.allSelected = false;
+      } else {
+        vm.selectedFiles[file.id] = file;
+      }
+    }
+
+    function openDetailAside(){
+      omAside.open("selectedFileAside");
+      vm.hasOffCanvasClass("selectedFileAside");
     }
 
     function resetSelection() {
       vm.selectedFile = null;
+      omAside.close("selectedFileAside");
+      if (vm.isOffCanvasMenuOpened)
+        vm.isOffCanvasMenuOpened = false;
     }
 
     function isAvailableForPreview(file) {
-      if (vm.canPreview.indexOf(file.type) != -1 && (file.preview != "" || file.thumb != "")) {
-        return true;
-      } else
-        return false;
+      return vm.canPreview.indexOf(file.type) !== -1 && (file.preview !== "" || file.thumb !== "");
     }
 
     function chooseFiles(input) {
-      console.log(input.files);
+      $log.debug(input.files);
     }
 
     function chooseFolder(input) {
-      console.log(input.files);
+      $log.debug(input.files);
     }
 
-    function checkFileType($itemScope) {
+    function checkFileType(file) {
       vm.menuOptions = [];
       vm.menuOptionsClone = angular.copy(vm.AllMenuOptions);
-      angular.forEach(vm.menuOptionsClone, function(value, key){
-        if (vm.selectedFile.type === 'Folder' && !(key === 'view' || key === 'download')){
+      angular.forEach(vm.menuOptionsClone, function (value, key) {
+        if (file.type === 'Folder' && !(key === 'view' || key === 'download')) {
           vm.menuOptions.push(value);
-        }else if(!(vm.selectedFile.type === 'Folder') && vm.isAvailableForPreview($itemScope) && !(key === 'open')){
+        } else if (!(file.type === 'Folder') && vm.isAvailableForPreview(file) && !(key === 'open')) {
           vm.menuOptions.push(value);
-        }else if(!(vm.selectedFile.type === 'Folder') && !vm.isAvailableForPreview($itemScope) && !(key === 'open' || key === 'view')){
+        } else if (!(file.type === 'Folder') && !vm.isAvailableForPreview(file) && !(key === 'open' || key === 'view')) {
           vm.menuOptions.push(value);
         }
       });
     }
 
     function openFn($itemScope) {
-      console.log("Open Selected File" + "\nfileID: " + $itemScope.file.id);
-      console.log($itemScope.file);
+      $log.debug("Open Selected File" + "\nfileID: " + $itemScope.file.id);
+      $log.debug($itemScope.file);
       vm.selectedFile = $itemScope.file;
     }
 
     function shareFn($itemScope) {
-      console.log("Share Selected File" + "\nfileID: " + $itemScope.file.id);
-      console.log($itemScope.file);
+      $log.debug("Share Selected File" + "\nfileID: " + $itemScope.file.id);
+      $log.debug($itemScope.file);
       vm.selectedFile = $itemScope.file;
     }
 
@@ -171,16 +231,16 @@
     function filterListByTag(tag) {
       if (tag != null) {
         vm.filterBy = tag;
-        angular.element("#filteredBy").css("display","inline-block");
-      }else {
+        angular.element("#filteredBy").css("display", "inline-block");
+      } else {
         vm.filterBy = "";
-        angular.element("#filteredBy").css("display","none");
+        angular.element("#filteredBy").css("display", "none");
       }
     }
 
     function cutFn($itemScope) {
-      console.log("Cut Selected File" + "\nfileID: " + $itemScope.file.id);
-      console.log($itemScope.file);
+      $log.debug("Cut Selected File" + "\nfileID: " + $itemScope.file.id);
+      $log.debug($itemScope.file);
       vm.selectedFile = $itemScope.file;
     }
 
@@ -200,28 +260,29 @@
     }
 
     function downloadFn($itemScope) {
-      console.log("Download Selected File" + "\nfileID: " + $itemScope.file.id);
-      console.log($itemScope.file);
+      $log.debug("Download Selected File" + "\nfileID: " + $itemScope.file.id);
+      $log.debug($itemScope.file);
       vm.selectedFile = $itemScope.file;
     }
 
     function searchFn(searchValue) {
+      vm.files = vm.selectedDirectory.fileList;
       vm.searchResults = [];
       if (searchValue != "") {
         for (var i = 0; i < vm.files.length; i++) {
           if (vm.files[i].name.indexOf(searchValue) != -1) {
-            vm.searchResults.push({
-              id: vm.files[i].id, icon: vm.files[i].icon, name: vm.files[i].name, type: vm.files[i].type,
-              owner: vm.files[i].owner, size: vm.files[i].size, date: vm.files[i].date
-            });
+            vm.searchResults.push(vm.files[i]);
           }
         }
-        console.log(vm.searchResults);
+        vm.files = vm.searchResults;
+        $log.debug(vm.searchResults);
+      } else {
+        vm.files = vm.selectedDirectory.fileList;
       }
     }
 
     function clearSearchResultsFn() {
-      vm.displayData = vm.files;
+      vm.files = vm.selectedDirectory.fileList;
       vm.searchValue = "";
     }
 
@@ -233,13 +294,13 @@
         size: 'sm',
         resolve: {
           CurrentEntry: null,
-          FileId: vm.files[vm.files.length-1].id + 1
+          FileId: vm.files[vm.files.length - 1].id + 1
         }
       }).result.then(function (newFolder) {
         vm.files.push(newFolder);
-        console.log("resolve", arguments);
+        $log.debug("resolve", arguments);
       }, function () {
-        console.log("reject")
+        $log.debug("reject")
       });
     }
 
@@ -257,9 +318,9 @@
         }
       }).result.then(function (newName) {
         vm.selectedFile.name = newName.name;
-        console.log("resolve", arguments);
+        $log.debug("resolve", arguments);
       }, function () {
-        console.log("reject")
+        $log.debug("reject")
       });
     }
 
@@ -276,14 +337,14 @@
         }
       }).result.then(function (tags) {
         vm.selectedFile.tags = tags;
-        console.log("resolve", arguments);
+        $log.debug("resolve", arguments);
       }, function () {
-        console.log("reject")
+        $log.debug("reject")
       });
     }
 
     function showPreviewFileDialog(file) {
-      if (vm.canPreview.indexOf(file.type) != -1) {
+      if (vm.canPreview.indexOf(file.type) !== -1) {
         $uibModal.open({
           templateUrl: 'app/main/apps/file-manager/dialogs/preview-file/preview-file.html',
           controller: 'PreviewFileController',
@@ -296,7 +357,7 @@
           }
         });
       } else {
-        window.alert("not a valid type");
+        $log.error("Not a valid type");
       }
     }
 
@@ -309,29 +370,39 @@
         resolve: {
           CurrentEntry: vm.selectedFile
         }
-      }).result.then(function (newFolder) {
-        vm.files.splice(file.id,1);
-        for(var i = 0; i < vm.files.length; i++){
+      }).result.then(function () {
+        vm.files.splice(file.id, 1);
+        for (var i = 0; i < vm.files.length; i++) {
           vm.files[i].id = i; //ID UPDATE
         }
-        console.log("resolve", arguments);
+        resetSelection();
+        $log.debug("resolve", arguments);
       }, function () {
-        console.log("reject")
+        $log.debug("reject")
       });
     }
 
-    function toggleFileManagerAside(id) {
+    function toggleAside(id) {
       omAside.toggle(id);
+      vm.hasOffCanvasClass(id);
+    }
+
+    function hasOffCanvasClass(id) {
+      if (angular.element('#' + id).hasClass('is-off-canvas')) {
+        vm.isOffCanvasMenuOpened = true;
+      }
+      $log.debug(vm.isOffCanvasMenuOpened);
     }
 
     function changeDirectory(crumb) {
-      vm.breadcrumbs = vm.breadcrumbs.slice(0, vm.breadcrumbs.indexOf(crumb)+1);
+      vm.breadcrumbs = vm.breadcrumbs.slice(0, vm.breadcrumbs.indexOf(crumb) + 1);
     }
 
-    function switchDirectory(switchTo){
+    function switchDirectory(switchTo) {
       vm.files = switchTo.fileList;
       vm.breadcrumbs = switchTo.breadcrumbs;
-      vm.toggleFileManagerAside('fileManagerAside');
+      vm.selectedDirectory = switchTo;
+      vm.toggleAside('fileManagerAside');
     }
   }
 })();

@@ -60,8 +60,7 @@
 
     /** @ngInject */
     function SettingsBoxServiceFn(ConfigService) {
-        var CONFIG = ConfigService,
-            $ = angular.element;
+        var CONFIG = ConfigService;
 
         var SettingsBoxService = {
             $settingBox: null,
@@ -70,7 +69,7 @@
         };
 
         function init() {
-            SettingsBoxService.$settingBox = $(CONFIG.settingBoxSelector);
+            SettingsBoxService.$settingBox = angular.element(CONFIG.settingBoxSelector);
 
             SettingsBoxService.$settingBox.find('.btn-toggle').click(function () {
                 SettingsBoxService.$settingBox.toggleClass('opened');
@@ -81,7 +80,7 @@
             var $themes = SettingsBoxService.$settingBox.find('[name="header-skin"]');
             $themes.change(function () {
                 $themes.each(function (ind, el) {
-                    $('body').removeClass(el.value);
+                    angular.element('body').removeClass(el.value);
                 });
                 // var storage = _getLocalStorage();
                 // if ($this.is(':checked') && $this.val() !== '0') {

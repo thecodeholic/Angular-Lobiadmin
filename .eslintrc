@@ -6,6 +6,7 @@
     "jasmine": true
   },
   "globals": {
+    "$": true,
     "angular": true,
     "module": true,
     "inject": true

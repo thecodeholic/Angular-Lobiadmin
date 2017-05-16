@@ -46,7 +46,10 @@
 
     function setAside(id, config) {
       asideConfig[id] = config;
-      config.direction != undefined ? angular.element("#" + id).addClass('nav-closed-' + config.direction) : angular.element("#" + id).addClass('nav-closed');
+      config.direction != undefined ? angular.element("#" + id).addClass('nav-closed-' + config.direction + " nav-" + config.direction) : angular.element("#" + id).addClass('nav-closed');
+      if(config.isOffCanvas == "true"){
+        angular.element("#" + id).addClass('is-off-canvas');
+      }
     }
   }
 
@@ -54,10 +57,11 @@
     return {
       restrict: 'A',
       scope: {
-        direction: '@omSlideDirection'
+        direction: '@omSlideDirection',
+        isOffCanvas: '@omIsOffCanvas'
       },
       link: function(scope, el){
-        omAside.setAside(el.attr('id'), {direction: scope.direction});
+        omAside.setAside(el.attr('id'), {direction: scope.direction, isOffCanvas: scope.isOffCanvas});
       }
     };
   }
