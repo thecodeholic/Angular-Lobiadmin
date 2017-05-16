@@ -1,9 +1,17 @@
 <div id="layout-default" class="off-canvas__container off-canvas__content">
     <nav class="navbar navbar-default navbar-header header" ui-view="toolbar"></nav>
-    <div om-aside om-slide-direction="right" om-is-off-canvas="true" id="customAside" class="selected off-canvas__nav nav-right pull-right">
-        <div class="selected-actions">
-            AAAAAAAAAA
-        </div>
+    <div om-aside om-slide-direction="right" om-is-off-canvas="true" id="chatAside"
+         class="selected off-canvas__nav nav-right pull-right">
+        <ul class="list-group chat-contacts">
+            <li class="list-group-item contact">
+                <span class="contact-unread badge">14</span>
+                <span class="contact-image">
+                    <span class="contact-status status-online"></span>
+                    <img src="http://altair_app.tzdthemes.com/assets/img/avatars/avatar_11_tn.png">
+                </span>
+                <span class="contact-name">Jane Doe</span>
+            </li>
+        </ul>
     </div>
     <div ui-view="navigation"></div>
     <!--<div id="navigation-view" ui-view="navigation"></div>-->
