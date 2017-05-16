@@ -6,7 +6,7 @@
             <i class="fa fa-plus pull-right chat-new" aria-hidden="true"></i>
         </div>
         <div class="menu-right text-center">
-            <span class="contact-name">CONTACT INFO<span class="contact-last-online">Active</span></span>
+            <span class="contact-name" ng-repeat="c in vm.openedChat.people" ng-show="vm.openedChat.memberCount == 1">{{c.name}}<span class="contact-last-online">{{c.status}}</span></span>
             <i class="fa fa-info-circle pull-right chat-info" aria-hidden="true"></i>
             <i class="fa fa-trash pull-right chat-delete" aria-hidden="true"></i>
         </div>
@@ -14,11 +14,47 @@
 
     <div class="main clearfix">
         <div class="off-canvas__container off-canvas__content clearfix">
-            <div class="messages">
-                Messages
-            </div>
             <div class="contacts">
-                Contacts
+                <ul class="list-group chat-contacts">
+                    <li class="list-group-item contact" ng-repeat="contact in vm.contacts"
+                        ng-click="vm.openedChat = contact">
+                        <span class="contact-unread badge" ng-hide="contact.unread == 0">{{contact.unread}}</span>
+                        <span class="contact-image" ng-repeat="groupMember in contact.people" uib-tooltip="{{groupMember.name}}" tooltip-placement="right">
+                            <span class="contact-status"
+                                  ng-class="{'status-online':groupMember.status == 'online',
+                                    'status-offline':groupMember.status == 'offline',
+                                    'status-busy':groupMember.status == 'busy'}">
+                            </span>
+                            <img ng-src="{{groupMember.thumb}}">
+                        </span>
+                        <span class="contact-name" ng-repeat="c in contact.people" ng-show="contact.memberCount == 1 && $index==0">{{c.name}}</span>
+                    </li>
+                </ul>
+      </div>
+            <div class="messages">
+                <div class="chat-content">
+                    <div id="{{message.messageId}}" class="message"
+                         ng-repeat="message in vm.chats[vm.openedChat.chatId]">
+                        <div class="row">
+                            <div class="left-side col-md-6 clearfix">
+                                <img class="message-by pull-left" ng-src="{{vm.openedChat.people[message.messageBy].thumb}}"
+                                     ng-show="message.messageBy != 0 && vm.chats[vm.openedChat.chatId][$index-1].messageBy != message.messageBy">
+                                <span class="message-by-other pull-left" ng-show="message.messageBy !=0"
+                                      uib-tooltip="{{message.messageTime}}" tooltip-popup-delay="200" tooltip-placement="right">
+                                {{message.messageBody}}
+                                </span>
+                            </div>
+
+                            <div class="right-side col-md-6 clearfix">
+                                <span class="message-by-me pull-right" ng-show="message.messageBy ==0"
+                                      uib-tooltip="{{message.messageTime}}" tooltip-popup-delay="200" tooltip-placement="left">
+                                    {{message.messageBody}}
+                                </span>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
