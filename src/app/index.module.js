@@ -10,7 +10,8 @@
       'app.pages',
 
       'app.dashboard',
-      'app.fileManager'
+      'app.fileManager',
+      'app.chat'
     ]);
 
 })();

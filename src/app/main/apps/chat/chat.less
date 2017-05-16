@@ -1,3 +1,81 @@
 #chat{
-
+  height: 100%;
+  position: relative;
+  .top-menu {
+    height: 50px;
+    line-height: 45px;
+    width: 100%;
+    background-color: @brand-primary;
+    .menu {
+      display: table;
+      &-left {
+        width: 250px;
+        border-right: 1px solid rgba(0,0,0,0.2);
+        float: left;
+        color: white;
+        display: table-cell;
+        vertical-align: middle;
+        .chat-title{
+          line-height: 47px;
+          font-size: 27px;
+        }
+        > div {
+          display: inline-block;
+        }
+        .chat-settings, .chat-new {
+          line-height:40px;
+          font-size: 20px;
+          margin: 5px;
+          color: white;
+          padding: 0 15px;
+        }
+      }
+      &-right {
+        width: calc(%(~"100% - %s", 250px));
+        float: right;
+        color: white;
+        display: table-cell;
+        vertical-align: middle;
+        line-height: 35px;
+        .contact-name{
+          position: relative;
+          .contact-last-online{
+            position: absolute;
+            left:0;
+            right:0;
+            top: 5px;
+          }
+        }
+        > div {
+          display: inline-block;
+        }
+        i {
+          line-height:40px;
+          font-size: 20px;
+          margin: 5px;
+          color: white;
+          padding-right: 15px;
+        }
+      }
+    }
+  }
+  .main {
+    width: 100%;
+    height: calc(%(~"100% - %s", 100px));
+    .contacts{
+      width: 250px;
+      height: 100%;
+      float: left;
+      background-color: #fdfdfd;
+      overflow-y: auto;
+      border-right: 1px solid rgba(0,0,0,0.2);
+    }
+    .messages {
+      width: calc(%(~"100% - %s", 250px));
+      height: 100%;
+      //overflow-y: auto;
+      float: right;
+      transition: 0.5s ease;
+    }
+  }
 }
