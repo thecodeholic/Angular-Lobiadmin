@@ -14,7 +14,26 @@
     vm.currentView = "month";
     vm.dragMessage = "";
 
+    vm.uiConfig = {
+      calendar:{
+        editable: true,
+        eventLimit: true,
+        selectable: true,
+        // header:{
+        //   left: 'month basicWeek basicDay agendaWeek agendaDay',
+        //   center: 'title',
+        //   right: 'today prev,next'
+        // },
+        select: addNewEvent,
+        eventClick: editCurrentEvent,
+        eventDragStart: catchDragStart,
+        eventDrop: showDragDialog,
+        // eventResize: $scope.alertOnResize
+      }
+    };
+
     vm.events = [
+      [
       {
         allDay: true,
         className: ['event_success'],
@@ -69,6 +88,7 @@
         start: "Fri May 19 2017 04:00:00 GMT+0400 (+04)",
         title: "Repeating event"
       }
+    ]
     ];
 
     // Methods
@@ -82,36 +102,37 @@
     ///////////
 
     function init() {
-      $('.om-calendar').fullCalendar({
-
-        events: vm.events, //Event List
-
-        editable: true, //Allows dragging
-
-        eventLimit: true, //Number of events to show per day (others are collapsed)
-
-        selectable: true, //Allows selecting multiple dates
-
-        select: function (start, end) { //On multiple date select add new event
-          addNewEvent(start, end);
-        },
-
-        eventClick: function(event, element) { //Event editing on click
-          editCurrentEvent(event, element);
-        },
-
-        eventDragStart: function(event, delta){ //Event dragging
-          catchDragStart(event,delta);
-        },
-
-        eventDrop: function (event, delta, revertFunc) { //Event drag finish
-          showDragDialog(event, delta, revertFunc);
-        }
-
-      });
+      // $('.om-calendar').fullCalendar({
+      //
+      //   events: vm.events, //Event List
+      //
+      //   editable: true, //Allows dragging
+      //
+      //   eventLimit: true, //Number of events to show per day (others are collapsed)
+      //
+      //   selectable: true, //Allows selecting multiple dates
+      //
+      //   select: function (start, end) { //On multiple date select add new event
+      //     addNewEvent(start, end);
+      //   },
+      //
+      //   eventClick: function(event, element) { //Event editing on click
+      //     editCurrentEvent(event, element);
+      //   },
+      //
+      //   eventDragStart: function(event, delta){ //Event dragging
+      //     catchDragStart(event,delta);
+      //   },
+      //
+      //   eventDrop: function (event, delta, revertFunc) { //Event drag finish
+      //     showDragDialog(event, delta, revertFunc);
+      //   }
+      //
+      // });
     }
 
     function addNewEvent(start, end) {
+      console.log(start, end);
       $uibModal.open({
         templateUrl: 'app/main/apps/calendar/dialogs/event-dialog/event-dialog.html',
         controller: 'EventDialogController',

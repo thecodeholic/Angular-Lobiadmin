@@ -2,7 +2,9 @@
   'use strict';
 
   angular
-    .module('app.calendar', [])
+    .module('app.calendar', [
+      'ui.calendar'
+    ])
     .config(Config);
 
   /** @ngInject */
@@ -24,7 +26,8 @@
     lobiNavigationServiceProvider.saveItem('app.calendar', {
       text: 'Calendar',
       state: 'app.calendar',
-      weight: 1
+      weight: 5,
+      icon: 'fa fa-calendar'
     });
   }
 })();

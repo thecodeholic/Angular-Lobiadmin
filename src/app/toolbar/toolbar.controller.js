@@ -23,10 +23,11 @@
         'title': 'English',
         'code': 'en'
       },
-      de: {
-        'title': 'Deutsch',
-        'code': 'de'
-      },
+      // de: {
+      //   'title': 'Deutsch',
+      //   'code': 'de'
+      // },
+
       ka: {
         'title': 'ქართული',
         'code': 'ka'

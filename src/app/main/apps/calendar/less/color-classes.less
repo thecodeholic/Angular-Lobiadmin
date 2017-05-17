@@ -3,6 +3,7 @@
   .for(@colors, {
     &@{value} {
       background-color: @@value;
+      border-color: darken(@@value, 5%);
     }
   });
 }
