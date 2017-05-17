@@ -26,7 +26,7 @@
 
     function init() {
       $scope.$watch("vm.selectedUser", function (newValue) {
-        vm.userMessages = $http.get('app/main/apps/chat/data/messages/'+"9653254821"+'.json')
+        vm.userMessages = $http.get('app/main/apps/chat/data/messages/'+newValue.id+'.json')
             .then(function (response) {
               return response.data;
             }, function (error) {
