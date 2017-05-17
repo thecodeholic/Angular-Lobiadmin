@@ -81,6 +81,9 @@
           &:hover {
             background-color: @gray-lighter;
           }
+          &.selected {
+            background-color: #BBBBBB;
+          }
           .badge {
             margin-top: 15px;
           }
@@ -95,13 +98,16 @@
               border: 1px solid white;
               border-radius: 50%;
               &.status-online {
-                background-color: #00AA00; //or @brand-success;
+                background-color: @brand-success;
               }
               &.status-offline {
-                background-color: grey;
+                background-color: @label-default-bg;
               }
               &.status-busy {
                 background-color: @brand-danger;
+              }
+              &.status-away {
+                background-color: @brand-warning;
               }
             }
             img {
@@ -121,6 +127,8 @@
       float: right;
       transition: 0.5s ease;
       padding: 30px 0;
+      overflow-x: hidden;
+      overflow-y: auto;
       .chat-content {
         .message {
           margin-bottom: 10px;

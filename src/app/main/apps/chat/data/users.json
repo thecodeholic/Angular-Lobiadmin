@@ -1,0 +1,52 @@
+{
+  "data": {
+    "1000745632": {
+      "id": "1000745632",
+      "username": "George Batiashvili",
+      "thumb": "assets/images/users/3.jpg",
+      "status": "online",
+      "mood": "What a beautiful day",
+      "unread": null,
+      "last": null
+    },
+    "1000548966": {
+      "id": "1000745632",
+      "username": "Zura Sekhniashvili",
+      "thumb": "assets/images/users/4.jpg",
+      "status": "busy",
+      "mood": "This chat is awesome",
+      "unread": 2,
+      "last": {
+        "who": "1000745632",
+        "what": "Are you working on chat ?",
+        "when": 149500646000
+      }
+    },
+    "1000215466": {
+      "id": "1000215466",
+      "username": "Saiat Kalbiev",
+      "thumb": "assets/images/users/2.jpg",
+      "status": "offline",
+      "mood": "I love PHP",
+      "unread": null,
+      "last": {
+        "who": "me",
+        "what": "I know you love PHP -_-",
+        "when": 1495010207000
+      }
+    },
+    "1000745642": {
+      "id": "1000745642",
+      "username": "Jane Doe",
+      "thumb": "assets/images/users/1.jpg",
+      "status": "away",
+      "mood": "I'll be right back guys",
+      "unread": 6,
+      "last": {
+        "who": "1000215466",
+        "what": "Gotta go for a coffee, chat you later",
+        "when": 1495030207000
+      }
+    }
+  }
+}

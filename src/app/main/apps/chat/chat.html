@@ -16,39 +16,35 @@
         <div class="off-canvas__container off-canvas__content clearfix">
             <div class="contacts">
                 <ul class="list-group chat-contacts">
-                    <li class="list-group-item contact" ng-repeat="contact in vm.contacts"
-                        ng-click="vm.openedChat = contact">
-                        <span class="contact-unread badge" ng-hide="contact.unread == 0">{{contact.unread}}</span>
-                        <span class="contact-image" ng-repeat="groupMember in contact.people" uib-tooltip="{{groupMember.name}}" tooltip-placement="right">
-                            <span class="contact-status"
-                                  ng-class="{'status-online':groupMember.status == 'online',
-                                    'status-offline':groupMember.status == 'offline',
-                                    'status-busy':groupMember.status == 'busy'}">
-                            </span>
-                            <img ng-src="{{groupMember.thumb}}">
+                    <li class="list-group-item contact" ng-repeat="chat in vm.chats"
+                        ng-click="vm.selectedUser = chat" ng-class="{'selected':vm.selectedUser === chat}">
+                        <span class="contact-unread badge" ng-hide="chat.unread== null">{{chat.unread}}</span>
+                        <span class="contact-image" ng-repeat="member in chat.members">
+                            <span class="contact-status status-{{vm.users[chat.members[0]].status}}"></span>
+                            <img ng-src="{{vm.users[member].thumb}}">
                         </span>
-                        <span class="contact-name" ng-repeat="c in contact.people" ng-show="contact.memberCount == 1 && $index==0">{{c.name}}</span>
+                        <span class="contact-name">{{chat.name}}</span>
                     </li>
                 </ul>
       </div>
             <div class="messages">
-                <div class="chat-content">
-                    <div id="{{message.messageId}}" class="message"
-                         ng-repeat="message in vm.chats[vm.openedChat.chatId]">
+                <div class="chat-content" ng-show="vm.selectedUser != null">
+                    <div id="{{message.id}}" class="message"
+                         ng-repeat="message in vm.userMessages.$$state.value.data">
                         <div class="row">
                             <div class="left-side col-md-6 clearfix">
-                                <img class="message-by pull-left" ng-src="{{vm.openedChat.people[message.messageBy].thumb}}"
-                                     ng-show="message.messageBy != 0 && vm.chats[vm.openedChat.chatId][$index-1].messageBy != message.messageBy">
-                                <span class="message-by-other pull-left" ng-show="message.messageBy !=0"
-                                      uib-tooltip="{{message.messageTime}}" tooltip-popup-delay="200" tooltip-placement="right">
-                                {{message.messageBody}}
+                                <img class="message-by pull-left" ng-src="{{vm.users[message.who].thumb}}"
+                                     ng-show="message.who != 'me' && vm.userMessages.$$state.value.data[$index-1].who != message.who">
+                                <span class="message-by-other pull-left" ng-show="message.who != 'me'"
+                                      uib-tooltip="{{message.when | date:'HH:mm, dd/MM/yyyy'}}" tooltip-popup-delay="200" tooltip-placement="right">
+                                {{message.what}}
                                 </span>
                             </div>
 
                             <div class="right-side col-md-6 clearfix">
-                                <span class="message-by-me pull-right" ng-show="message.messageBy ==0"
-                                      uib-tooltip="{{message.messageTime}}" tooltip-popup-delay="200" tooltip-placement="left">
-                                    {{message.messageBody}}
+                                <span class="message-by-me pull-right" ng-show="message.who == 'me'"
+                                      uib-tooltip="{{message.when  | date:'HH:mm, dd/MM/yyyy'}}" tooltip-popup-delay="200" tooltip-placement="left">
+                                    {{message.what}}
                                 </span>
                             </div>
                             </div>
