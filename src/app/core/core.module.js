@@ -30,7 +30,7 @@
     //   urlTemplate: '{lang}.json'
     // });
     // $translateProvider.preferredLanguage('en');
-    // $translateProvider.useSanitizeValueStrategy('sanitize');
+    $translateProvider.useSanitizeValueStrategy(null);
 
     // $translateProvider.useStaticFilesLoader({
     //   prefix: '',
