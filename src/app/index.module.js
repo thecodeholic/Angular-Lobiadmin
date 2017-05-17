@@ -12,7 +12,7 @@
       'app.dashboard',
       'app.calendar',
       'angularFileUpload',
-      'base64'
+      'base64',
       'app.fileManager'
     ]);
 
