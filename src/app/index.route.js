@@ -16,7 +16,12 @@
         views: {
           'main@': {
             templateUrl: 'app/layouts/default.html',
-            controller: 'MainController as vm'
+            controller: 'MainController as vm',
+            resolve: {
+              LoggedIn: function(Auth){
+                return Auth.requireSignIn();
+              }
+            }
           },
           'navigation@app': {
             templateUrl: 'app/navigation/navigation.html',

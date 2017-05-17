@@ -1,0 +1,19 @@
+<div class="grid-view">
+    <div class="files row">
+        <div ng-repeat="file in vm.files | filter:vm.filterBy | orderBy:orderByField:vm.defaultSort"
+             context-menu="vm.menuOptions" class="col-sm-4 col-md-3" uib-tooltip="Right Click for options"
+             tooltip-placement="bottom" tooltip-popup-delay="1500">
+            <div ng-click="vm.selectFile(file,true)"
+                 ng-right-click="vm.selectFile(file,false); vm.checkFileType(file)"
+                 ng-class="{'active': file == vm.selectedFile}" class="thumbnail">
+                <img ng-if="file.thumb != ''" src="{{file.thumb}}" height="72" width="72">
+                <i ng-if="file.thumb == ''" class="fa fa-{{file.type | typeToIcon}}" aria-hidden="true"></i>
+                <div class="caption">
+                    <h5>{{file.name}}</h5>
+                    <p>{{file.size | bytes}}</p>
+                    <p>{{file.type}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

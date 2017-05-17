@@ -1,0 +1,112 @@
+.off-canvas__container {
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.off-canvas__nav {
+  //border: 2px solid rgba(0,0,0,0.2);
+  background-color: white;
+  margin:0;
+  width: @fm-aside-width;
+  height: @fm-aside-height;
+  position: absolute;
+  z-index: 100;
+  opacity: 1;
+  transition: @fm-aside-transition;
+  .box-shadow(0px 0px 8px 5px rgba(0, 0, 0, 0.1));
+  &.selected{
+    width: @fm-selected-width;
+    height: @fm-selected-height;
+  }
+  .heading {
+    text-align: center;
+    font-size: 24px;
+    margin: 25px 12.5px;
+  }
+  .user-select {
+    margin: 25px 12.5px 25px 35px;
+    text-align: left;
+    #user-select {
+      text-decoration: none;
+    }
+    .user {
+      cursor: pointer;
+    }
+  }
+  .list-group {
+    margin: 25px 0;
+    a {
+      cursor: pointer;
+      border: 0;
+      padding-left: 35px;
+    }
+  }
+  &.nav-left{
+    left:0;
+    transition: @fm-aside-transition-left;
+  }
+  &.nav-top{
+    top:0;
+    transition: @fm-aside-transition-top;
+  }
+  &.nav-right{
+    right:0;
+    transition: @fm-aside-transition-right;
+  }
+  &.nav-bottom{
+    bottom:0;
+    transition: @fm-aside-transition-bottom;
+  }
+
+}
+
+.nav-closed {
+  left:0;
+  margin-left: -@fm-aside-width;
+  .box-shadow(0px 0px 8px 5px rgba(0, 0, 0, 0));
+  &.selected{
+    left:0;
+    margin-left: -@fm-selected-width;
+  }
+}
+
+.nav-closed-top {
+  top:0;
+  margin-top: -@fm-aside-height;
+  .box-shadow(0px 0px 8px 5px rgba(0, 0, 0, 0));
+  &.selected{
+    top:0;
+    margin-top: -@fm-selected-height;
+  }
+}
+
+.nav-closed-right {
+  right:0;
+  margin-right: -@fm-aside-width;
+  .box-shadow(0px 0px 8px 5px rgba(0, 0, 0, 0));
+  &.selected{
+    right:0;
+    margin-right: -@fm-selected-width;
+  }
+}
+
+.nav-closed-bottom {
+  bottom:0;
+  margin-bottom: -@fm-aside-height;
+  .box-shadow(0px 0px 8px 5px rgba(0, 0, 0, 0));
+  &.selected{
+    bottom:0;
+    margin-bottom: -@fm-selected-height;
+  }
+}
+
+.nav-closed-left {
+  bottom:0;
+  margin-left: -@fm-aside-width;
+  .box-shadow(0px 0px 8px 5px rgba(0, 0, 0, 0));
+  &.selected{
+    bottom:0;
+    margin-left: -@fm-selected-width;
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "LOGIN" : {
+    "LOGIN_TO_YOUR_ACCOUNT" : "Login to your account",
+    "USERNAME": "Username",
+    "PASSWORD": "Password",
+    "PLEASE_ENTER_USERNAME": "Please enter the username",
+    "PLEASE_ENTER_PASSWORD": "Please enter the password",
+    "FORGOT_PASSWORD": "Forgot your password?",
+    "REMEMBER_ME": "Remember me",
+    "NEW_USER": "New User",
+    "SIGNUP": "Signup",
+    "LOGIN": "Login",
+    "NEW_USER_SIGN_UP": "New User? Sign up",
+    "FIRSTNAME": "First name",
+    "LASTNAME": "Last name",
+    "EMAIL": "Email",
+    "CONFIRM_PASSWORD": "Confirm password",
+    "REGISTER": "Register",
+    "DID_YOU_ALREADY_HAVE_ACCOUNT": "Do you already have an account",
+    "SIGNIN": "Sign in",
+    "FORGOT_YOUR_PASSWORD": "Forgot your password",
+    "EMAIL_OR_USERNAME": "Email or username",
+    "TYPE_YOUR_EMAIL_OR_USERNAME": "Type your username or email",
+    "REMEMBER_YOUR_PASSWORD": "Remember your password",
+    "RESTORE_PASSWORD": "Restore password"
+  }
+}

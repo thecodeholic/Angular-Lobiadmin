@@ -30,8 +30,8 @@
       text: 'Dashboard',
       translate: 'DASHBOARD.TITLE',
       state: 'app.dashboard',
-      weight: 1
-      // icon: 'fa fa-table'
+      weight: 1,
+      icon: 'fa fa-dashboard'
     });
   }
 })();

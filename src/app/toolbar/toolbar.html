@@ -23,7 +23,8 @@
   <ul class="nav navbar-nav navbar-right user-actions">
     <li uib-dropdown class="dropdown">
       <a href="#" class="dropdown-toggle" uib-dropdown-toggle>
-        <img class="user-avatar" src="assets/images/users/me-160.jpg" alt="..."/>
+        <img class="user-avatar img-circle" ng-src="{{$root.user.getAvatar()}}" alt="..."/>
+        {{$root.user.getDisplayName()}}
         <b class="caret"></b>
       </a>
       <ul class="dropdown-menu" uib-dropdown-menu>

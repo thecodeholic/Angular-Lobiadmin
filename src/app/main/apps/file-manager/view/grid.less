@@ -1,0 +1,25 @@
+#fileManager {
+  .grid-view {
+    padding: 0 16px;
+    .files{
+      .thumbnail{
+        max-height: 168px;
+        text-align: center;
+        outline:0;
+        > img{
+          height: @fm-grid-thumb-size;
+          width: @fm-grid-thumb-size;
+        }
+        > i {
+          font-size: @fm-grid-thumb-size;;
+        }
+        .caption{
+          padding: 0;
+        }
+        &.active{
+          background-color: rgb(245,245,245);
+        }
+      }
+    }
+  }
+}

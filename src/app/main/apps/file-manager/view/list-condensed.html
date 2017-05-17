@@ -1,0 +1,161 @@
+<table class="files table table-bordered table-hover">
+    <thead>
+    <tr>
+        <th class="column-checkbox">
+          <label class="checkbox lobicheck lobicheck-inverse" ng-click="$event.stopPropagation()">
+              <input type="checkbox" ng-click="vm.selectAll()" ng-checked="vm.allSelected">
+              <i></i>
+          </label>
+        </th>
+        <th></th>
+        <th ng-click="orderByField='name'; vm.defaultSort = !vm.defaultSort">
+            {{'FILE_MANAGER.VIEW.NAME' | translate}}
+            <span ng-show="orderByField == 'name'">
+                <span ng-show="!vm.defaultSort">
+                    <i class="fa fa-sort-asc" aria-hidden="true"></i>
+                </span>
+                <span ng-show="vm.defaultSort">
+                    <i class="fa fa-sort-desc" aria-hidden="true"></i>
+                </span>
+            </span>
+        </th>
+        <th ng-click="orderByField='type'; vm.defaultSort = !vm.defaultSort">
+            {{'FILE_MANAGER.VIEW.TYPE' | translate}}
+            <span ng-show="orderByField == 'type'">
+                <span ng-show="!vm.defaultSort">
+                    <i class="fa fa-sort-asc" aria-hidden="true"></i>
+                </span>
+                <span ng-show="vm.defaultSort">
+                    <i class="fa fa-sort-desc" aria-hidden="true"></i>
+                </span>
+            </span>
+        </th>
+        <th ng-click="orderByField='owner'; vm.defaultSort = !vm.defaultSort">
+            {{'FILE_MANAGER.VIEW.OWNER' | translate}}
+            <span ng-show="orderByField == 'owner'">
+                                <span ng-show="!vm.defaultSort">
+                                    <i
+                                            class="fa fa-sort-asc" aria-hidden="true"></i>
+                                </span>
+                                <span ng-show="vm.defaultSort">
+                                    <i
+                                            class="fa fa-sort-desc" aria-hidden="true"></i>
+                                </span>
+                            </span>
+        </th>
+        <th ng-click="orderByField='size'; vm.defaultSort = !vm.defaultSort">
+            {{'FILE_MANAGER.VIEW.SIZE' | translate}}
+            <span ng-show="orderByField == 'size'">
+                                <span ng-show="!vm.defaultSort">
+                                    <i
+                                            class="fa fa-sort-asc" aria-hidden="true"></i>
+                                </span>
+                                <span ng-show="vm.defaultSort">
+                                    <i
+                                            class="fa fa-sort-desc" aria-hidden="true"></i>
+                                </span>
+                            </span>
+        </th>
+        <th ng-click="orderByField='date'; vm.defaultSort = !vm.defaultSort">
+            {{'FILE_MANAGER.VIEW.LAST_MODIFIED' | translate}}
+            <span ng-show="orderByField == 'date'">
+                                <span ng-show="!vm.defaultSort">
+                                    <i class="fa fa-sort-asc" aria-hidden="true"></i>
+                                </span>
+                                <span ng-show="vm.defaultSort">
+                                    <i class="fa fa-sort-desc" aria-hidden="true"></i>
+                                </span>
+                            </span>
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="file in vm.files | filter:vm.filterBy |orderBy:orderByField:vm.defaultSort"
+        ng-click="vm.selectFile(file, true)" ng-class="{'active': !!vm.selectedFiles[file.id]}">
+        <td class="column-checkbox">
+          <label class="checkbox lobicheck lobicheck-inverse" ng-click="$event.stopPropagation()">
+              <input type="checkbox" ng-click="vm.selectMultiple(file)" ng-checked="!!vm.selectedFiles[file.id]">
+              <i></i>
+          </label>
+        </td>
+        <td class="text-center">
+            <img ng-if="file.thumb != ''" src="{{file.thumb}}">
+            <i ng-if="file.thumb == ''" class="fa fa-{{file.type | typeToIcon}}" aria-hidden="true"></i>
+        </td>
+        <td class="text-left">{{file.name}}</td>
+        <td class="text-center">{{file.type}}</td>
+        <td class="text-center">{{file.owner}}</td>
+        <td class="text-center">{{file.size | bytes}}</td>
+        <td class="text-center">{{file.date | date:'HH:mm, dd/MM/yyyy'}}</td>
+        <td>
+          <!-- Single button -->
+          <div class="btn-group" uib-dropdown>
+            <button class="btn btn-circle btn-outline btn-primary" uib-dropdown-toggle ng-click="$event.stopPropagation(); vm.checkFileType(file)">
+              <span class="glyphicon glyphicon-option-vertical"></span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-right" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+              <li>
+                <a ng-click="vm.openFn()">
+                  <i class='fa fa-folder-open' aria-hidden='true'></i>
+                  {{'FILE_MANAGER.MENU.OPEN' | translate}}
+                </a>
+              </li>
+              <li>
+                <a ng-click="vm.viewFn()">
+                  <i class='fa fa-eye' aria-hidden='true'></i>
+                  {{'FILE_MANAGER.MENU.VIEW' | translate}}
+                </a>
+              </li>
+              <li>
+                <a ng-click="vm.downloadFn()">
+                  <i class='fa fa-download' aria-hidden='true'></i>
+                  {{'FILE_MANAGER.MENU.DOWNLOAD' | translate}}
+                </a>
+              </li>
+              <li>
+                <a ng-click="vm.shareFn()">
+                  <i class='fa fa-share-alt' aria-hidden='true'></i>
+                  {{'FILE_MANAGER.MENU.SHARE' | translate}}
+                </a>
+              </li>
+              <li>
+                <a ng-click="vm.manageTagsFn()">
+                  <i class='fa fa-tags' aria-hidden='true'></i>
+                  {{'FILE_MANAGER.MENU.MANAGE_TAGS' | translate}}
+                </a>
+              </li>
+              <li>
+                <a ng-click="vm.cutFn()">
+                  <i class='fa fa-scissors' aria-hidden='true'></i>
+                  {{'FILE_MANAGER.MENU.CUT' | translate}}
+                </a>
+              </li>
+              <li>
+                <a ng-click="vm.renameFn()">
+                  <i class='fa fa-pencil' aria-hidden='true'></i>
+                  {{'FILE_MANAGER.MENU.RENAME' | translate}}
+                </a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a ng-click="vm.deleteFn()">
+                  <i class='fa fa-trash' aria-hidden='true'></i>
+                  {{'FILE_MANAGER.MENU.DELETE' | translate}}
+                </a>
+              </li>
+
+              <!--<li role="menuitem"><a href="#">Action</a></li>-->
+              <!--<li role="menuitem"><a href="#">Another action</a></li>-->
+              <!--<li role="menuitem"><a href="#">Something else here</a></li>-->
+              <!--<li class="divider"></li>-->
+              <!--<li role="menuitem"><a href="#">Separated link</a></li>-->
+              <!--<li role="menuitem" ng-repeat="menuItem in vm.menuOptions" ng-class="{'divider': !menuItem}">-->
+                <!--<a ng-click="menuItem[1]" ng-bind-html="menuItem[0]" ng-if="menuItem"></a>-->
+              <!--</li>-->
+            </ul>
+          </div>
+        </td>
+    </tr>
+    </tbody>
+</table>
