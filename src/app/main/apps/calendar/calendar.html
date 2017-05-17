@@ -1,0 +1,24 @@
+<div id="calendar">
+    <div class="top-menu">
+        <div class="menu-left">
+            <i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;&nbsp;Calendar
+        </div>
+        <div class="menu-right">
+            <div ng-click="vm.toggleView(vm.availableViews[0])">
+                <i class="fa fa-square" aria-hidden="true" uib-tooltip="Day View" tooltip-placement="bottom"></i>
+            </div>
+            <div ng-click="vm.toggleView(vm.availableViews[1])">
+                <i class="fa fa-th-large" aria-hidden="true" uib-tooltip="Week View" tooltip-placement="bottom"></i>
+            </div>
+            <div ng-click="vm.toggleView(vm.availableViews[2])">
+                <i class="fa fa-table" aria-hidden="true" uib-tooltip="Month View" tooltip-placement="bottom"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="main clearfix">
+        <div class="view">
+                <div class="om-calendar"></div>
+        </div>
+    </div>
+</div>

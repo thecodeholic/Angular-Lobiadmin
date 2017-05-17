@@ -24,6 +24,9 @@
     "font-awesome": "fontawesome#^4.7.0",
     "angular-translate-storage-local": "^2.15.1",
     "angular-translate-loader-partial": "^2.15.1",
+    "fullcalendar": "^3.4.0",
+    "angular-file-upload": "^2.5.0",
+    "angular-base64": "^2.0.5"
     "angular-bootstrap-contextmenu": "^0.9.9",
     "ng-tags-input": "3.2.0",
     "angular-aside": "1.2.1",

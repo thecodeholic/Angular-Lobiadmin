@@ -1,0 +1,16 @@
+[
+  {
+    "title": "event1",
+    "start": "2017-05-04"
+  },
+  {
+    "title": "event2",
+    "start": "2017-07-04",
+    "end": "2017-07-04"
+  },
+  {
+    "title: "event3",
+    "start": "2017-01-09T12:30:00",
+    "allDay": false
+  }
+]

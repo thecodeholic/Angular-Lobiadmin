@@ -10,6 +10,9 @@
       'app.pages',
 
       'app.dashboard',
+      'app.calendar',
+      'angularFileUpload',
+      'base64'
       'app.fileManager'
     ]);
 
