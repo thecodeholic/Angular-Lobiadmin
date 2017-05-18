@@ -1,5 +1,5 @@
 {
-  "name": "angularLobiadmin",
+  "name": "angular-lobiadmin",
   "version": "0.0.0",
   "dependencies": {
     "angular": "1.5.11",
