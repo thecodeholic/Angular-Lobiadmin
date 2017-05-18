@@ -59,7 +59,14 @@
         end: "Thu May 11 2017 04:00:00 GMT+0400 (+04)",
         id: 476339,
         start: "Sun May 07 2017 04:00:00 GMT+0400 (+04)",
-        title: "Long event"
+        title: "Long event",
+        files: [
+          {
+            id: 1,
+            name: "Very big black cat.png",
+            mime: "image/png"
+          }
+        ]
       },
       {
         allDay: false,

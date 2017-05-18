@@ -9,47 +9,32 @@
     .controller('EventDialogController', EventDialogControllerFn);
 
   /** @ngInject */
-  function EventDialogControllerFn($uibModalInstance, Event, $scope, FileUploader) {
+  function EventDialogControllerFn($uibModalInstance, Event, $scope) {
     var vm = this;
     // variables
     vm.isEdit = !!Event.id;
     vm.eventStyles = ["primary", "success", "danger", "info", "warning", "gray", "cyan", "purple", "pink"];
     vm.eventDate = {startDate: Event.start, endDate: Event.end};
     vm.event = vm.isEdit ? Event : {
-        id: Math.round(Math.random() * 1000000),
-        className: ['event_primary'],
-        start: vm.eventDate.startDate,
-        end: vm.eventDate.endDate,
-        allDay: false
-      };
-    vm.filesToUpload = [];
-    vm.uploader = new FileUploader();
+      id: Math.round(Math.random() * 1000000),
+      className: ['event_primary'],
+      start: vm.eventDate.startDate,
+      end: vm.eventDate.endDate,
+      allDay: false
+    };
+    vm.event.files = vm.event.files || [];
     vm.options = {
       autoUpdateInput: true,
       timePicker: true,
       locale: {format: 'YYYY-MM-DD h:mm A'}
     };
 
-    // CALLBACKS
-    vm.uploader.onAfterAddingFile = addAttachment;
-    vm.uploader.onCompleteItem = fileUploadComplete;
-    vm.uploader.onCompleteAll = allFilesUploaded;
-    /*vm.uploader.filters.push({
-     name: 'imageFilter',
-     fn: function(item /!*{File|FileLikeObject}*!/, options) {
-     var type = '|' + item.type.slice(item.type.lastIndexOf('/') + 1) + '|';
-     return '|jpg|png|jpeg|bmp|gif|'.indexOf(type) !== -1;
-     }
-     });*/
 
     // Methods
     vm.ok = ok;
     vm.cancel = cancel;
-    vm.addAttacment = addAttachment;
-    vm.fileUploadComplete = fileUploadComplete;
-    vm.allFilesUploaded = allFilesUploaded;
+    vm.addAttachments = addAttachments;
     vm.removeAttachment = removeAttachment;
-    // vm.loadOptions = loadOptions;
 
     init();
     function init() {
@@ -66,8 +51,6 @@
     }
 
     function ok() {
-      vm.uploader.uploadAll();
-      console.log(vm.event);
       $uibModalInstance.close(vm.event);
     }
 
@@ -75,42 +58,16 @@
       $uibModalInstance.dismiss('cancel');
     }
 
-    function addAttachment(fileItem) {
-      var reader = new FileReader();
-
-      reader.onload = function (e) {
-        console.info('File ' + fileItem._file.name + ' Added\n', {file: fileItem._file, base: e.target.result});
-        vm.filesToUpload.push({file: fileItem._file, base: e.target.result});
-        $scope.$apply();
-      };
-      reader.readAsDataURL(fileItem._file);
+    function addAttachments(inputEl) {
+      angular.forEach(inputEl.files, function (file, ind) {
+        vm.event.files.push(file);
+      });
+      $scope.$apply();
     }
 
-    function fileUploadComplete(fileItem, response, status, headers) {
-      console.info('File Uploaded', fileItem, response, status, headers);
+    function removeAttachment(file) {
+      vm.event.files.splice(vm.event.files.indexOf(file), 1);
     }
 
-    function allFilesUploaded() {
-      console.info('All Files Uploaded');
-    }
-
-    function removeAttachment(array, index) {
-      array.splice(index, 1);
-    }
-
-    // function loadOptions() {
-    //   console.log("load options");
-    //   if (vm.event.allDay) {
-    //     angular.element('[name=date-period]').daterangepicker({
-    //       locale: {format: 'YYYY-MM-DD'}
-    //     });
-    //   } else {
-    //     angular.element('[name=date-period]').daterangepicker({
-    //       timePicker: true,
-    //       timePickerIncrement: 10,
-    //       locale: {format: 'YYYY-MM-DD h:mm A'}
-    //     });
-    //   }
-    // }
   }
 })();

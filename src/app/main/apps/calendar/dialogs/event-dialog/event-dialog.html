@@ -40,17 +40,22 @@
                 <label class="control-label">Event description</label>
                 <textarea rows="3" class="form-control" name="desc" ng-model="vm.event.description"></textarea>
             </div>
-            <button type="button" class="btn btn-primary btn-upload">
+
+            <ul class="list-group" ng-if="vm.event.files.length > 0">
+                <li class="list-group-item calendar-attachment" ng-repeat="file in vm.event.files">
+                  <span class="attachment-icon"><i class="fa fa-file"></i></span>&nbsp;
+                  <a href="javascript:void(0)" class="attachment-name">{{file.name}}</a>
+                  <div class="pull-right display-inline-block">
+                    <button class="btn btn-icon" uib-tooltip="Remove" ng-click="vm.removeAttachment(file)">
+                      <i class="fa fa-times"></i>
+                    </button>
+                  </div>
+                </li>
+            </ul>
+            <button class="btn-link btn-upload">
                 Add Attachments
-                <input id="uploader" type="file" nv-file-select uploader="vm.uploader" multiple/>
+                <input id="uploader" type="file" onchange="angular.element(this).scope().vm.addAttachments(this, event)" multiple/>
             </button>
-            <div class="attachments row" ng-class="{'bordered': vm.filesToUpload[0] != null}">
-                <div class="col-md-3" ng-repeat="fileToUpload in vm.filesToUpload">
-                    <i class="fa fa-times close" aria-hidden="true" ng-click="vm.removeAttachment(vm.filesToUpload, $index)"></i>
-                    <img class="thumb" ng-src="{{fileToUpload.base}}">
-                    <span ng-bind="fileToUpload.file.name"></span>
-                </div>
-            </div>
         </form>
     </div>
     <div class="modal-footer">
