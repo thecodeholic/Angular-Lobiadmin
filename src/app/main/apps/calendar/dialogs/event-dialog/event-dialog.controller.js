@@ -20,13 +20,17 @@
         className: ['event_primary'],
         start: vm.eventDate.startDate,
         end: vm.eventDate.endDate,
-        allDay: true,
+        allDay: false,
         title: "",
         description: ""
       };
     vm.filesToUpload = [];
     vm.uploader = new FileUploader();
-    vm.options = {};
+    vm.options = {
+      autoUpdateInput: true,
+      timePicker: true,
+      locale: {format: 'YYYY-MM-DD h:mm A'}
+    };
 
     // CALLBACKS
     vm.uploader.onAfterAddingFile = addAttachment;
@@ -51,21 +55,26 @@
 
     init();
     function init() {
-      $scope.$watch(["vm.event","vm.event.allDay"], function () {
-        loadOptions(); //default
-        angular.element('[name=allday]').change(function () {
-          loadOptions(); //on change
-        });
+
+      $scope.$watch("vm.event.allDay", function (newValue) {
+        vm.options.locale.format = !newValue ? 'YYYY-MM-DD h:mm A' : 'YYYY-MM-DD';
       });
 
+      // $scope.$watch(["vm.event","vm.event.allDay"], function () {
+      //   loadOptions(); //default
+      //   angular.element('[name=allday]').change(function () {
+      //     loadOptions(); //on change
+      //   });
+      // });
+      //
       $scope.$watch("vm.eventDate", function (newValue) {
-        if (newValue.endDate == undefined) {
-          vm.event.start = newValue;
-          vm.event.end = newValue;
-        } else {
-          vm.event.start = newValue.startDate;
-          vm.event.end = newValue.endDate;
-        }
+        // if (newValue.endDate == undefined) {
+        //   vm.event.start = newValue;
+        //   vm.event.end = newValue;
+        // } else {
+        //   vm.event.start = newValue.startDate;
+        //   vm.event.end = newValue.endDate;
+        // }
       });
     }
 
@@ -103,6 +112,7 @@
     }
 
     function loadOptions() {
+      console.log("load options");
       if (vm.event.allDay == true) {
         angular.element('[name=date-period]').daterangepicker({
           locale: {format: 'YYYY-MM-DD'}

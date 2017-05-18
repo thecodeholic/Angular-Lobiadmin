@@ -6,7 +6,26 @@
         </h3>
     </div>
     <div class="modal-body" id="modal-body">
-        <form name="eventForm" action="">
+        <form name="eventForm" >
+
+            <div class="form-group" ng-class="{'has-error': eventForm.title.$touched && eventForm.title.$invalid}">
+                <label class="control-label">Event title</label>
+                <input type="text" class="form-control" name="title" ng-model="vm.event.title" required>
+                <div class="help-block" ng-messages="eventForm.title.$touched && eventForm.title.$error" role="alert"
+                     multiple>
+                    <p ng-message="required">This field is required</p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Event date</label>
+                <input date-range-picker type="text" name="date-period" options="vm.options"
+                       class="form-control date-picker" ng-model="vm.eventDate">
+                <label class="checkbox lobicheck">
+                    <input type="checkbox" name="allday" ng-model="vm.event.allDay"><i></i> All day
+                </label>
+            </div>
+
             <div class="form-group">
                 <label class="control-label">Event style</label>
                 <div class="btn-group btn-group-justified btn-group-event-style" data-toggle="buttons">
@@ -14,27 +33,6 @@
                         <input type="radio" ng-model="vm.event.className[0]" value="event_{{style}}">
                         <i class="fa fa-check" ng-show="vm.event.className=='event_'+style"></i>
                     </label>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="control-label">Event date</label>
-                <input date-range-picker type="text" name="date-period"
-                       class="form-control date-picker" ng-model="vm.eventDate">
-            </div>
-
-            <div class="form-group">
-                <label class="checkbox lobicheck">
-                    <input type="checkbox" name="allday" ng-model="vm.event.allDay"><i></i> All day
-                </label>
-            </div>
-
-            <div class="form-group" ng-class="{'has-error': eventForm.title.$touched && eventForm.title.$invalid}">
-                <label class="control-label">Event title</label>
-                <input type="text" class="form-control" name="title" ng-model="vm.event.title" required>
-                <div class="help-block" ng-messages="eventForm.title.$touched && eventForm.title.$error" role="alert"
-                     multiple>
-                    <p ng-message="required">Please enter valid event title !</p>
                 </div>
             </div>
 

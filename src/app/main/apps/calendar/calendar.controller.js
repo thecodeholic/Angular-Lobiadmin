@@ -132,7 +132,7 @@
     }
 
     function addNewEvent(start, end) {
-      console.log(start, end);
+      // console.log(start, end);
       $uibModal.open({
         templateUrl: 'app/main/apps/calendar/dialogs/event-dialog/event-dialog.html',
         controller: 'EventDialogController',
