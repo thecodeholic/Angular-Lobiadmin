@@ -20,9 +20,7 @@
         className: ['event_primary'],
         start: vm.eventDate.startDate,
         end: vm.eventDate.endDate,
-        allDay: false,
-        title: "",
-        description: ""
+        allDay: false
       };
     vm.filesToUpload = [];
     vm.uploader = new FileUploader();
@@ -51,30 +49,19 @@
     vm.fileUploadComplete = fileUploadComplete;
     vm.allFilesUploaded = allFilesUploaded;
     vm.removeAttachment = removeAttachment;
-    vm.loadOptions = loadOptions;
+    // vm.loadOptions = loadOptions;
 
     init();
     function init() {
 
       $scope.$watch("vm.event.allDay", function (newValue) {
+        vm.options.timePicker = !newValue;
         vm.options.locale.format = !newValue ? 'YYYY-MM-DD h:mm A' : 'YYYY-MM-DD';
       });
 
-      // $scope.$watch(["vm.event","vm.event.allDay"], function () {
-      //   loadOptions(); //default
-      //   angular.element('[name=allday]').change(function () {
-      //     loadOptions(); //on change
-      //   });
-      // });
-      //
       $scope.$watch("vm.eventDate", function (newValue) {
-        // if (newValue.endDate == undefined) {
-        //   vm.event.start = newValue;
-        //   vm.event.end = newValue;
-        // } else {
-        //   vm.event.start = newValue.startDate;
-        //   vm.event.end = newValue.endDate;
-        // }
+        vm.event.start = newValue.startDate;
+        vm.event.end = newValue.endDate;
       });
     }
 
@@ -111,19 +98,19 @@
       array.splice(index, 1);
     }
 
-    function loadOptions() {
-      console.log("load options");
-      if (vm.event.allDay == true) {
-        angular.element('[name=date-period]').daterangepicker({
-          locale: {format: 'YYYY-MM-DD'}
-        });
-      } else {
-        angular.element('[name=date-period]').daterangepicker({
-          timePicker: true,
-          timePickerIncrement: 10,
-          locale: {format: 'YYYY-MM-DD h:mm A'}
-        });
-      }
-    }
+    // function loadOptions() {
+    //   console.log("load options");
+    //   if (vm.event.allDay) {
+    //     angular.element('[name=date-period]').daterangepicker({
+    //       locale: {format: 'YYYY-MM-DD'}
+    //     });
+    //   } else {
+    //     angular.element('[name=date-period]').daterangepicker({
+    //       timePicker: true,
+    //       timePickerIncrement: 10,
+    //       locale: {format: 'YYYY-MM-DD h:mm A'}
+    //     });
+    //   }
+    // }
   }
 })();

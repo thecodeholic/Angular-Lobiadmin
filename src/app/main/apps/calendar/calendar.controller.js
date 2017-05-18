@@ -15,7 +15,7 @@
     vm.dragMessage = "";
 
     vm.uiConfig = {
-      calendar:{
+      calendar: {
         editable: true,
         eventLimit: true,
         selectable: true,
@@ -169,11 +169,12 @@
     }
 
     function catchDragStart(event, delta) {
-      vm.dragMessage += "Change "+event.title+"'s position from "+event.start.format();
+      vm.dragMessage += "Change " + event.title + "'s position from " + event.start.format();
     }
+
     function showDragDialog(event, delta, revertFunc) {
       console.log(revertFunc);
-      vm.dragMessage += " to " + event.start.format()+" ?";
+      vm.dragMessage += " to " + event.start.format() + " ?";
       $uibModal.open({
         templateUrl: 'app/main/apps/calendar/dialogs/drag-dialog/drag-dialog.html',
         controller: 'DragDialogController',
