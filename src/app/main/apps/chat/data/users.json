@@ -2,6 +2,7 @@
   "data": {
     "1000745632": {
       "id": "1000745632",
+      "chatId": "5487962154",
       "username": "George Batiashvili",
       "thumb": "assets/images/users/3.jpg",
       "status": "online",
@@ -10,7 +11,8 @@
       "last": null
     },
     "1000548966": {
-      "id": "1000745632",
+      "id": "1000548966",
+      "chatId": "2143658745",
       "username": "Zura Sekhniashvili",
       "thumb": "assets/images/users/4.jpg",
       "status": "busy",
@@ -24,6 +26,7 @@
     },
     "1000215466": {
       "id": "1000215466",
+      "chatId": "3452165478",
       "username": "Saiat Kalbiev",
       "thumb": "assets/images/users/2.jpg",
       "status": "offline",
@@ -37,6 +40,7 @@
     },
     "1000745642": {
       "id": "1000745642",
+      "chatId": "7548621435",
       "username": "Jane Doe",
       "thumb": "assets/images/users/1.jpg",
       "status": "away",

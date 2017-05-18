@@ -1,3 +1,10 @@
+.send-message{
+  z-index:1231;
+  position: absolute;
+  right:0;
+  top:0;
+}
+
 #chat {
   height: 100%;
   position: relative;
@@ -64,62 +71,23 @@
   .main {
     width: 100%;
     height: calc(%(~"100% - %s", 100px));
-    .contacts {
+    .left-side-wrapper {
       width: 250px;
       height: 100%;
       float: left;
       background-color: #fdfdfd;
       overflow-y: auto;
       border-right: 1px solid rgba(0, 0, 0, 0.2);
-      .chat-contacts {
-        .contact {
-          border: 0;
+      //chat-view in /View/chat-view.less
+      //contact-view in /View/contact-view.less
+      //search-view in /View/search-view.less
+      .view-select{
+        li{
           outline: 0;
-          height: 50px;
-          line-height: 50px;
-          padding: 0px 15px;
-          &:hover {
-            background-color: @gray-lighter;
-          }
-          &.selected {
-            background-color: #BBBBBB;
-          }
-          .badge {
-            margin-top: 15px;
-          }
-          .contact-image {
-            position: relative;
-            .contact-status {
-              position: absolute;
-              height: 10px;
-              width: 10px;
-              right: 7px;
-              top: -7px;
-              border: 1px solid white;
-              border-radius: 50%;
-              &.status-online {
-                background-color: @brand-success;
-              }
-              &.status-offline {
-                background-color: @label-default-bg;
-              }
-              &.status-busy {
-                background-color: @brand-danger;
-              }
-              &.status-away {
-                background-color: @brand-warning;
-              }
-            }
-            img {
-              width: 34px;
-              height: 34px;
-              border-radius: 50%;
-              margin: -7px 5px -7px -7px;
-            }
-          }
         }
       }
     }
+
     .messages {
       width: calc(%(~"100% - %s", 250px));
       height: 100%;
@@ -140,23 +108,33 @@
             margin-left: 20px;
             position: absolute;
           }
-          .message-by-other {
-            color: white;
-            background-color: grey;
-            border-radius: 10px;
-            padding: 5px 10px;
-            margin-left: 65px;
-            margin-top: 7.5px;
-            min-height: 20px;
+          .left-side {
+            width:80%;
+            .message-by-other {
+              width: 100%;
+              color: @gray-darker;
+              background-color: @gray-lighter;
+              border-radius: 2px;
+              padding: 15px 10px;
+              margin-left: 65px;
+              margin-top: -4.5px;
+              min-height: 20px;
+
+            }
           }
-          .message-by-me {
-            color: white;
-            background-color: green;
-            border-radius: 10px;
-            padding:5px 10px;
-            margin-right: 20px;
-            margin-top: 7.5px;
-            min-height: 20px;
+          .right-side {
+            width:80%;
+            .message-by-me {
+              width: 100%;
+              color: white;
+              background-color: darken(@brand-blue-light,5%);
+              border-radius: 2px;
+              padding: 15px 10px;
+              margin-right: 20px;
+              margin-top: -4.5px;
+              min-height: 20px;
+
+            }
           }
         }
       }

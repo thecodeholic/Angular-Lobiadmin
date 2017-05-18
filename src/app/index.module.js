@@ -4,6 +4,7 @@
   angular
     .module('angularLobiadmin', [
       'ui.bootstrap.contextMenu',
+      'ui.bootstrap.accordion',
 
       'app.core',
 
