@@ -17,7 +17,15 @@
     vm.uiConfig = {
       calendar: {
         editable: true,
+        droppable: true,
         eventLimit: true,
+        businessHours: true,
+        buttons: false,
+        eventRender: function (event, element) {
+          if (event.description) {
+            element.append('<span class="fc-description">' + event.description + '</span>');
+          }
+        },
         selectable: true,
         header: '',
         // header:{
@@ -46,37 +54,10 @@
     ///////////
 
     function init() {
-      // $('.om-calendar').fullCalendar({
-      //
-      //   events: vm.events, //Event List
-      //
-      //   editable: true, //Allows dragging
-      //
-      //   eventLimit: true, //Number of events to show per day (others are collapsed)
-      //
-      //   selectable: true, //Allows selecting multiple dates
-      //
-      //   select: function (start, end) { //On multiple date select add new event
-      //     addNewEvent(start, end);
-      //   },
-      //
-      //   eventClick: function(event, element) { //Event editing on click
-      //     editCurrentEvent(event, element);
-      //   },
-      //
-      //   eventDragStart: function(event, delta){ //Event dragging
-      //     catchDragStart(event,delta);
-      //   },
-      //
-      //   eventDrop: function (event, delta, revertFunc) { //Event drag finish
-      //     showDragDialog(event, delta, revertFunc);
-      //   }
-      //
-      // });
+
     }
 
     function addNewEvent(start, end) {
-      // console.log(start, end);
       if (!start) {
         start = moment();
         end = moment().add(1, 'd');
@@ -88,8 +69,8 @@
       showEventDialog(event);
     }
 
-    function showEventDialog(event){
-        $uibModal.open({
+    function showEventDialog(event) {
+      $uibModal.open({
         templateUrl: 'app/main/apps/calendar/dialogs/event-dialog/event-dialog.html',
         controller: 'EventDialogController',
         controllerAs: 'vm',
@@ -98,16 +79,28 @@
           Event: event
         }
       }).result.then(function (response) {
-        switch (response.action){
+        switch (response.action) {
           case 'add':
             vm.events[0].push(response.event);
             break;
           case 'edit':
-            for (var i = 0; i < vm.events[0].length; i++){
-              if (response.event.id === vm.events[0][i].id){
-                vm.events[0].splice(i, 1, response.event);
+            for (var i = 0; i < vm.events[0].length; i++) {
+              if (response.event.id === vm.events[0][i].id) {
+                vm.events[0][i] = angular.extend(vm.events[0][i], response.event);
+                break;
               }
             }
+            break;
+          case 'delete':
+            for (var i = 0; i < vm.events[0].length; i++) {
+              if (response.event.id === vm.events[0][i].id) {
+                vm.events[0].splice(i, 1);
+                break;
+              }
+            }
+            break;
+          default:
+            break;
         }
       });
     }

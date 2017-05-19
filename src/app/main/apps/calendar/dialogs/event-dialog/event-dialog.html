@@ -29,9 +29,9 @@
             <div class="form-group">
                 <label class="control-label">Event style</label>
                 <div class="btn-group btn-group-justified btn-group-event-style" data-toggle="buttons">
-                    <label ng-repeat="style in vm.eventStyles" class="btn bg-{{style}} text-white">
-                        <input type="radio" ng-model="vm.event.className[0]" value="event_{{style}}">
-                        <i class="fa fa-check" ng-show="vm.event.className=='event_'+style"></i>
+                    <label ng-repeat="style in vm.eventStyles" class="btn {{style}} text-white">
+                        <input type="radio" ng-model="vm.event.className[0]" value="{{style}}">
+                        <i class="fa fa-check" ng-show="vm.event.className[0] === style"></i>
                     </label>
                 </div>
             </div>
@@ -59,7 +59,7 @@
         </form>
     </div>
     <div class="modal-footer">
-        <button ng-show="vm.isEdit" class="btn btn-pretty btn-danger pull-left" ng-click="vm.deleteEvent()">
+        <button ng-show="vm.isEdit" class="btn btn-pretty btn-inverse pull-left" ng-click="vm.deleteEvent()">
           <i class="fa fa-trash"></i> Delete
         </button>
         <button class="btn btn-pretty btn-primary" type="button" ng-click="vm.ok()" ng-disabled="eventForm.$invalid">OK</button>

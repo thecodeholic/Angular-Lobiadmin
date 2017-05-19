@@ -13,11 +13,11 @@
     var vm = this;
     // variables
     vm.isEdit = !!Event.id;
-    vm.eventStyles = ["primary", "success", "danger", "info", "warning", "gray", "cyan", "purple", "pink"];
+    vm.eventStyles = ["event-primary", "event-success", "event-danger", "event-info", "event-warning", "event-gray", "event-cyan", "event-purple", "event-pink"];
     vm.eventDate = {startDate: Event.start, endDate: Event.end};
-    vm.event = vm.isEdit ? Event : {
+    vm.event = vm.isEdit ? angular.copy(Event) : {
       id: Math.round(Math.random() * 1000000),
-      className: ['event_primary'],
+      className: ['event-primary'],
       start: vm.eventDate.startDate,
       end: vm.eventDate.endDate,
       allDay: false
@@ -78,13 +78,20 @@
       vm.event.files.splice(vm.event.files.indexOf(file), 1);
     }
 
-    function deleteEvent(){
-      console.log(vm.event);
+    function deleteEvent() {
       // @todo This code should be tested
       // vm.event.$delete();
-      $uibModalInstance.close({
-        action: 'delete',
-        event: vm.event
+      Lobibox.confirm({
+        title: 'Deleting event: ' + vm.event.title,
+        msg: 'Are you sure you want to delete this event?',
+        callback: function (lobibox, btn) {
+          if (btn === 'yes') {
+            $uibModalInstance.close({
+              action: 'delete',
+              event: vm.event
+            });
+          }
+        }
       });
     }
 
