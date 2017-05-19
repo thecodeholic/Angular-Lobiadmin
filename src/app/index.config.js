@@ -6,18 +6,27 @@
     .config(config);
 
   /** @ngInject */
-  function config($logProvider, $translateProvider, $translatePartialLoaderProvider, toastrConfig) {
-    // Enable log
-    $logProvider.debugEnabled(true);
+  function config($logProvider, $windowProvider, $resourceProvider, $translateProvider, $translatePartialLoaderProvider, toastrConfig) {
 
+    var $window = $windowProvider.$get();
+
+    // Enable log
+    $logProvider.debugEnabled($window.__env.enableDebug);
+
+    $resourceProvider.defaults.actions.update = {
+      method: 'PUT'
+    };
+
+    $translateProvider.useSanitizeValueStrategy(null);
     // angular-translate configuration
     $translateProvider.useLoader('$translatePartialLoader', {
       urlTemplate: '{part}/i18n/{lang}.json'
     });
     $translateProvider.preferredLanguage('en');
-    // $translateProvider.useSanitizeValueStrategy('sanitize');
     // Translation
     $translatePartialLoaderProvider.addPart('app');
+    // Store the language in the local storage
+    $translateProvider.useLocalStorage();
 
     // Set options third-party lib
     toastrConfig.allowHtml = true;

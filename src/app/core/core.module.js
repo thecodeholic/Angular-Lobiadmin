@@ -25,20 +25,6 @@
 
   /** @ngInject */
   function Config($translateProvider) {
-    // angular-translate configuration
-    // $translateProvider.useLoader('$translatePartialLoader', {
-    //   urlTemplate: '{lang}.json'
-    // });
-    // $translateProvider.preferredLanguage('en');
-    $translateProvider.useSanitizeValueStrategy(null);
 
-    // $translateProvider.useStaticFilesLoader({
-    //   prefix: '',
-    //   suffix: '.json'
-    // });
-    $translateProvider.preferredLanguage('de');
-
-    // Store the language in the local storage
-    $translateProvider.useLocalStorage();
   }
 })();
