@@ -9,7 +9,7 @@
     .controller('EventDialogController', EventDialogControllerFn);
 
   /** @ngInject */
-  function EventDialogControllerFn($uibModalInstance, Event, $scope) {
+  function EventDialogControllerFn($uibModalInstance, Event, apiService, $scope) {
     var vm = this;
     // variables
     vm.isEdit = !!Event.id;
@@ -35,8 +35,10 @@
     vm.cancel = cancel;
     vm.addAttachments = addAttachments;
     vm.removeAttachment = removeAttachment;
+    vm.deleteEvent = deleteEvent;
 
     init();
+
     function init() {
 
       $scope.$watch("vm.event.allDay", function (newValue) {
@@ -51,7 +53,14 @@
     }
 
     function ok() {
-      $uibModalInstance.close(vm.event);
+      // @todo This code should be tested
+      // var eventToSave = angular.copy(vm.event);
+      // delete eventToSave.source;
+      // apiService.resolve('calendar').save(eventToSave);
+      $uibModalInstance.close({
+        action: vm.isEdit ? 'edit' : 'add',
+        event: vm.event
+      });
     }
 
     function cancel() {
@@ -67,6 +76,16 @@
 
     function removeAttachment(file) {
       vm.event.files.splice(vm.event.files.indexOf(file), 1);
+    }
+
+    function deleteEvent(){
+      console.log(vm.event);
+      // @todo This code should be tested
+      // vm.event.$delete();
+      $uibModalInstance.close({
+        action: 'delete',
+        event: vm.event
+      });
     }
 
   }

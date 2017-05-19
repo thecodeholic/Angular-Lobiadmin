@@ -59,7 +59,10 @@
         </form>
     </div>
     <div class="modal-footer">
-        <button class="btn btn-primary" type="button" ng-click="vm.ok()" ng-disabled="eventForm.$invalid">OK</button>
-        <button class="btn btn-default" type="button" ng-click="vm.cancel()">Cancel</button>
+        <button ng-show="vm.isEdit" class="btn btn-pretty btn-danger pull-left" ng-click="vm.deleteEvent()">
+          <i class="fa fa-trash"></i> Delete
+        </button>
+        <button class="btn btn-pretty btn-primary" type="button" ng-click="vm.ok()" ng-disabled="eventForm.$invalid">OK</button>
+        <button class="btn btn-pretty btn-default" type="button" ng-click="vm.cancel()">Cancel</button>
     </div>
 </div>

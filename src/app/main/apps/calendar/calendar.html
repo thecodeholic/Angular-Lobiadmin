@@ -11,13 +11,16 @@
                 <i class="fa fa-th-large" aria-hidden="true" uib-tooltip="Week View" tooltip-placement="bottom"></i>
             </div>
             <div ng-click="vm.toggleView(vm.availableViews[2])">
-                <i class="fa fa-table" aria-hidden="true" uib-tooltip="Month View" tooltip-placement="bottom"></i>
+                <i class="fa fa-th" aria-hidden="true" uib-tooltip="Month View" tooltip-placement="bottom"></i>
             </div>
         </div>
     </div>
 
     <div class="main clearfix">
         <div class="view calendar-wrapper">
+            <button class="btn btn-circle btn-lg btn-danger btn-add-new-event" ng-click="vm.addNewEvent()">
+              <i class="fa fa-calendar-plus-o"></i>
+            </button>
             <div class="om-calendar" ui-calendar="vm.uiConfig.calendar" ng-model="vm.events" calendar="main"></div>
         </div>
     </div>

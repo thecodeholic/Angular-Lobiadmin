@@ -1,10 +1,13 @@
+@header-height: 140px;
+
+
 #calendar {
   height: 100%;
   position: relative;
   .top-menu {
-    height: 100px;
+    height: @header-height;
     width: 100%;
-    padding: 35px;
+    padding: 30px;
     background-color: @brand-primary;
     .menu {
       &-left {
@@ -35,10 +38,11 @@
   }
   .main {
     width: 100%;
-    height: calc(%(~"100% - %s", 100px));
+    height: calc(%(~"100% - %s", @header-height));
 
     .calendar-wrapper {
-      padding: 16px;
+      position: relative;
+      padding: 32px 16px 16px;
     }
     .view {
       height: 100%;
@@ -54,5 +58,11 @@
       //  }
       //}
     }
+  }
+  .btn-add-new-event{
+    position: absolute;
+    right: 25px;
+    top: 0;
+    margin-top: -25px;
   }
 }

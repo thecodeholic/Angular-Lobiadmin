@@ -6,7 +6,7 @@
     .controller('CalendarController', CalendarControllerFn);
 
   /** @ngInject */
-  function CalendarControllerFn($uibModal) {
+  function CalendarControllerFn($uibModal, Events) {
     var vm = this;
 
     // Data
@@ -19,6 +19,7 @@
         editable: true,
         eventLimit: true,
         selectable: true,
+        header: '',
         // header:{
         //   left: 'month basicWeek basicDay agendaWeek agendaDay',
         //   center: 'title',
@@ -33,76 +34,12 @@
     };
 
     vm.events = [
-      [
-      {
-        allDay: true,
-        className: ['event_success'],
-        description: "Single day event description",
-        end: "Tue May 02 2017 04:00:00 GMT+0400 (+04)",
-        id: 462399,
-        start: "Mon May 01 2017 04:00:00 GMT+0400 (+04)",
-        title: "Single day event"
-      },
-      {
-        allDay: false,
-        className: ['event_info'],
-        description: "Single day event with custom time description",
-        end: "Tue May 02 2017 20:00:00 GMT+0400 (+04)",
-        id: 180899,
-        start: "Tue May 02 2017 17:00:00 GMT+0400 (+04)",
-        title: "Single day event with custom time"
-      },
-      {
-        allDay: true,
-        className: ['event_danger'],
-        description: "Long event description",
-        end: "Thu May 11 2017 04:00:00 GMT+0400 (+04)",
-        id: 476339,
-        start: "Sun May 07 2017 04:00:00 GMT+0400 (+04)",
-        title: "Long event",
-        files: [
-          {
-            id: 1,
-            name: "Very big black cat.png",
-            mime: "image/png"
-          }
-        ]
-      },
-      {
-        allDay: false,
-        className: ['event_warning'],
-        description: "Long event with custom time description",
-        end: "Fri May 18 2017 02:00:00 GMT+0400 (+04)",
-        id: 704326,
-        start: "Sun May 14 2017 19:00:00 GMT+0400 (+04)",
-        title: "Long event with custom time"
-      },
-      {
-        allDay: true,
-        className: ['event_pink'],
-        description: "Repeating event description",
-        end: "Sun May 14 2017 04:00:00 GMT+0400 (+04)",
-        id: 778852,
-        start: "Fri May 12 2017 04:00:00 GMT+0400 (+04)",
-        title: "Repeating event"
-      },
-      {
-        allDay: true,
-        className: ['event_pink'],
-        description: "Repeating event description",
-        end: "Sun May 21 2017 04:00:00 GMT+0400 (+04)",
-        id: 778852,
-        start: "Fri May 19 2017 04:00:00 GMT+0400 (+04)",
-        title: "Repeating event"
-      }
-    ]
+      Events
     ];
 
     // Methods
     vm.toggleView = toggleView;
     vm.addNewEvent = addNewEvent;
-    vm.editCurrentEvent = editCurrentEvent;
-    vm.showDragDialog = showDragDialog;
 
     init();
 
@@ -140,25 +77,19 @@
 
     function addNewEvent(start, end) {
       // console.log(start, end);
-      $uibModal.open({
-        templateUrl: 'app/main/apps/calendar/dialogs/event-dialog/event-dialog.html',
-        controller: 'EventDialogController',
-        controllerAs: 'vm',
-        size: 'md',
-        resolve: {
-          Event: {start:start, end:end}
-        }
-      }).result.then(function (EVENT) {
-
-        vm.events.push(EVENT);
-        $('.om-calendar').fullCalendar('renderEvent', EVENT);
-
-      }, function () {
-      });
+      if (!start) {
+        start = moment();
+        end = moment().add(1, 'd');
+      }
+      showEventDialog({start: start, end: end});
     }
 
-    function editCurrentEvent(event, element) {
-      $uibModal.open({
+    function editCurrentEvent(event) {
+      showEventDialog(event);
+    }
+
+    function showEventDialog(event){
+        $uibModal.open({
         templateUrl: 'app/main/apps/calendar/dialogs/event-dialog/event-dialog.html',
         controller: 'EventDialogController',
         controllerAs: 'vm',
@@ -166,12 +97,18 @@
         resolve: {
           Event: event
         }
-      }).result.then(function (EVENT) {
-
-        event = EVENT;
-        $('.om-calendar').fullCalendar('updateEvent', event);
-
-      }, function () {
+      }).result.then(function (response) {
+        switch (response.action){
+          case 'add':
+            vm.events[0].push(response.event);
+            break;
+          case 'edit':
+            for (var i = 0; i < vm.events[0].length; i++){
+              if (response.event.id === vm.events[0][i].id){
+                vm.events[0].splice(i, 1, response.event);
+              }
+            }
+        }
       });
     }
 
