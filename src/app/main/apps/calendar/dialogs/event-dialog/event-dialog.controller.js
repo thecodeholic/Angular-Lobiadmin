@@ -12,7 +12,7 @@
   function EventDialogControllerFn($uibModalInstance, Event, apiService, $scope) {
     var vm = this;
     // variables
-    vm.isEdit = !!Event.id;
+    vm.isEdit = !!Event.title;
     vm.eventStyles = ["event-primary", "event-success", "event-danger", "event-info", "event-warning", "event-gray", "event-cyan", "event-purple", "event-pink"];
     vm.eventDate = {startDate: Event.start, endDate: Event.end};
     vm.event = vm.isEdit ? angular.copy(Event) : {
