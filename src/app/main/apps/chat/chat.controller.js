@@ -14,13 +14,15 @@
 
     vm.selected = null;
     vm.userMessages = {};
+    vm.glued = true;
+    vm.messageToSend = "";
 
     vm.currentView = "chat-view";
 
     // Methods
     vm.openChat = openChat;
     vm.sendMessage = sendMessage;
-    vm.getRandom = getRandom;
+    vm.deleteChat = deleteChat;
 
     init();
 
@@ -31,45 +33,36 @@
     }
 
     function openChat(chatId, chat) {
+      vm.messageToSend = "";
       vm.userMessages = $http.get('app/main/apps/chat/data/messages/' + chatId + '.json')
         .then(function (response) {
           vm.selected = chat;
           return response.data;
         }, function (error) {
-          alert("Chat doesn't exist, creating new chat");
-          generateJson(chatId+".json");
           return 'There was an error getting data' + error;
         });
       console.log("Loaded Messages : ",vm.userMessages);
     }
 
-    function sendMessage(msg, who) {
-      console.log(vm.userMessages, vm.userMessages.$$state.value.data, msg, who);
-      vm.userMessages.$$state.value.data.push({
-        "id": 1,
-        "who": who,
-        "what": msg,
-        "when": 123123123123
-      });
+    function sendMessage(msg, who, $event, buttonClicked) {
+      if ((buttonClicked || $event.keyCode == 13) && msg != "")
+      {
+        vm.userMessages.$$state.value.data.push({
+          "id": vm.userMessages.$$state.value.data.length + 1,
+          "who": who,
+          "what": msg,
+          "when": moment().format('HH:mm, DD/MM/YYYY')
+        });
+      vm.messageToSend = "";
+      }
     }
 
-    function getRandom() {
-      return Math.floor((Math.random()*vm.selected.members.length));
-    }
-
-    function generateJson(name) {
-        var newChat = {
-          "data": []
-        };
-        var blob = new Blob([angular.toJson(newChat, true)], {type: 'text/text'});
-          var e = document.createEvent('MouseEvents'),
-            a = document.createElement('a');
-          a.download = name;
-          a.href = window.URL.createObjectURL(blob);
-          a.dataset.downloadurl = ['text/json', a.download, a.href].join(':');
-          e.initEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
-          a.dispatchEvent(e);
-          //window.URL.revokeObjectURL(url); // clean the url.createObjectURL resource
+    function deleteChat(selected) {
+      var i = vm.chats.indexOf(selected);
+      if(i > -1) {
+        vm.chats.splice(i, 1);
+        vm.selected = null;
+      }
     }
   }
 })();

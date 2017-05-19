@@ -5,11 +5,11 @@
             <span class="chat-title">Chat</span>
             <i class="fa fa-plus pull-right chat-new" aria-hidden="true"></i>
         </div>
-        <div class="menu-right text-center">
-            <span class="contact-name" ng-repeat="c in vm.openedChat.people" ng-show="vm.openedChat.memberCount == 1">{{c.name}}<span
-                    class="contact-last-online">{{c.status}}</span></span>
+        <div class="menu-right text-center" ng-show="vm.selected != null">
+            <span class="contact-name">Name<span
+                    class="contact-last-online">Status</span></span>
             <i class="fa fa-info-circle pull-right chat-info" aria-hidden="true"></i>
-            <i class="fa fa-trash pull-right chat-delete" aria-hidden="true"></i>
+            <i class="fa fa-trash pull-right chat-delete" aria-hidden="true" ng-click="vm.deleteChat(vm.selected)"></i>
         </div>
     </div>
 
@@ -17,8 +17,9 @@
 
         <div class="off-canvas__container off-canvas__content clearfix">
 
-            <div class="left-side-wrapper">
-                <uib-accordion>
+
+            <div class="left-side-wrapper" ng-init="chats.open = true; contacts.open = true">
+                <uib-accordion close-others="false">
                     <div uib-accordion-group class="panel-default" is-open="chats.open">
                         <uib-accordion-heading>
                             Chats
@@ -40,18 +41,9 @@
                 </uib-accordion>
             </div>
 
-            <div class="send-message" ng-show="vm.selected != null">
-                <button ng-if="vm.selected.chatId!=null" class="btn btn-primary"
-                        ng-click="vm.sendMessage('This is test message', vm.selected.id)"><------</button>
-                <button ng-if="vm.selected.chatId==null" class="btn btn-primary"
-                        ng-click="vm.sendMessage('This is test message', vm.users[vm.selected.members[vm.getRandom()]].id)"><------</button>
-                <button class="btn btn-primary" ng-click="vm.sendMessage('This is test message','me')">------></button>
-
-            </div>
-
             <div class="messages">
 
-                <div class="chat-content" ng-show="vm.selected != null">
+                <div class="chat-content" scroll-glue-bottom="" vm.glued ng-show="vm.selected != null">
                     <div id="{{message.id}}" class="message" ng-if="vm.userMessages.$$state.value.data[0] != null"
                          ng-repeat="message in vm.userMessages.$$state.value.data">
                         <div class="row" ng-if="message != null">
@@ -67,7 +59,6 @@
                                       tooltip-popup-delay="200" tooltip-placement="right">
                                     {{message.what}}
                                 </span>
-
                             </div>
 
                             <div class="right-side clearfix pull-right" ng-show="message.who == 'me'">
@@ -88,6 +79,14 @@
 
             </div>
 
+            <div class="message-input" ng-init="isSelected=false; isClicked=false" ng-show="vm.selected != null">
+                <input class="message-field" type="text" placeholder="Enter message and hit enter"
+                       ng-model="vm.messageToSend"
+                       ng-class="{'active': isSelected}" ng-focus="isSelected = true" ng-blur="isSelected = false"
+                       ng-keydown="vm.sendMessage(vm.messageToSend,'me', $event, false)">
+                <button class="send" ng-click="vm.sendMessage(vm.messageToSend, 'me', $event, true)"><i
+                        class="fa fa-paper-plane" aria-hidden="true"></i></button>
+            </div>
         </div>
 
     </div>

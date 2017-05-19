@@ -2,7 +2,9 @@
   'use strict';
 
   angular
-    .module('app.chat', [])
+    .module('app.chat', [
+      'luegg.directives'
+    ])
     .config(Config);
 
   /** @ngInject */
