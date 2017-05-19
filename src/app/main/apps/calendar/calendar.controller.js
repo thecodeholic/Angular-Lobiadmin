@@ -14,6 +14,10 @@
     vm.currentView = "month";
     vm.dragMessage = "";
 
+    vm.calendarView = null;
+    vm.calendar = null;
+    vm.currentMonthShort = null;
+
     vm.uiConfig = {
       calendar: {
         editable: true,
@@ -25,6 +29,11 @@
           if (event.description) {
             element.append('<span class="fc-description">' + event.description + '</span>');
           }
+        },
+        viewRender: function (view) {
+          vm.calendarView = view;
+          vm.calendar = vm.calendarView.calendar;
+          vm.currentMonthShort = vm.calendar.getDate().format('MMM');
         },
         selectable: true,
         header: '',
@@ -46,7 +55,6 @@
     ];
 
     // Methods
-    vm.toggleView = toggleView;
     vm.addNewEvent = addNewEvent;
 
     init();
@@ -128,10 +136,5 @@
       });
     }
 
-    function toggleView(switchTo) {
-      if (switchTo === vm.availableViews[0]) vm.currentView = "day";
-      else if (switchTo === vm.availableViews[1]) vm.currentView = "week";
-      else if (switchTo === vm.availableViews[2]) vm.currentView = "month";
-    }
   }
 })();

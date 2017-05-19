@@ -4,7 +4,8 @@
 #calendar {
   height: 100%;
   position: relative;
-  .top-menu {
+  .page-content-header {
+    position: relative;
     height: @header-height;
     width: 100%;
     padding: 30px;
@@ -34,6 +35,17 @@
           color: white;
         }
       }
+    }
+
+    .header-bottom{
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+    .calendar-title{
+      position: relative;
+      top: 3px;
     }
   }
   .main {
