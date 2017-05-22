@@ -5,7 +5,7 @@
   position: relative;
   .top-menu {
     height: 50px;
-    line-height: 45px;
+    line-height: 42px;
     width: 100%;
     background-color: @brand-primary;
     .menu {
@@ -65,7 +65,7 @@
   }
   .main {
     width: 100%;
-    height: calc(%(~"100% - %s", 100px));
+    height: calc(%(~"100% - %s", 54px));
 
     #chatInfoAside{
       z-index:100;
@@ -211,7 +211,7 @@
         height: @message-input-height;
         padding: 5px;
         margin-right: 20px;
-        line-height: @message-input-height;
+        line-height: calc(@message-input-height - 10px);
         font-size: 24px;
       }
     }

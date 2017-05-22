@@ -63,11 +63,20 @@
     }
 
     function deleteChat(selected) {
-      var i = vm.chats.indexOf(selected);
-      if(i > -1) {
-        vm.chats.splice(i, 1);
-        vm.selected = null;
-      }
+      var del = Lobibox.confirm({
+        title: "Delete Chat ?",
+        msg: "Are you sure you want to delete chat '"+selected.name+"' ?",
+        callback: function ($this, type, ev) {
+          if(type == "yes"){
+            var i = vm.chats.indexOf(selected);
+            if(i > -1) {
+              vm.chats.splice(i, 1);
+              vm.selected = null;
+            }
+          }
+        }
+      });
+      del.show();
     }
 
     function toggleAside(id) {
