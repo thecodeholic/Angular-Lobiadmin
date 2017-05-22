@@ -1,0 +1,80 @@
+@header-height: 140px;
+
+
+#calendar {
+  height: 100%;
+  position: relative;
+  .page-content-header {
+    position: relative;
+    height: @header-height;
+    width: 100%;
+    padding: 30px;
+    background-color: @brand-primary;
+    .menu {
+      &-left {
+        float: left;
+        color: white;
+        font-size: 20px;
+        i {
+          font-size: 20px;
+          margin: 5px;
+        }
+      }
+      &-right {
+        float: right;
+        user-select: none;
+        input {
+          color: black;
+        }
+        > div {
+          display: inline-block;
+        }
+        i {
+          font-size: 20px;
+          margin: 5px;
+          color: white;
+        }
+      }
+    }
+
+    .header-bottom{
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+    .calendar-title{
+      position: relative;
+      top: 3px;
+    }
+  }
+  .main {
+    width: 100%;
+    height: calc(%(~"100% - %s", @header-height));
+
+    .calendar-wrapper {
+      position: relative;
+      padding: 32px 16px 16px;
+    }
+    .view {
+      height: 100%;
+
+      //.om-calendar{
+      //  padding:15px 10px;
+      //  .fc-event-container{
+      //    .fc-event{
+      //      height: 30px;
+      //      line-height: 30px;
+      //      cursor:pointer;
+      //    }
+      //  }
+      //}
+    }
+  }
+  .btn-add-new-event{
+    position: absolute;
+    right: 25px;
+    top: 0;
+    margin-top: -25px;
+  }
+}

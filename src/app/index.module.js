@@ -10,6 +10,7 @@
       'app.pages',
 
       'app.dashboard',
+      'app.calendar',
       'app.fileManager'
     ]);
 
