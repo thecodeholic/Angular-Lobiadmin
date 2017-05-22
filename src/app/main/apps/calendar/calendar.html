@@ -1,0 +1,43 @@
+<div id="calendar">
+    <div class="page-content-header">
+        <div class="header-top clearfix">
+            <div class="menu-left">
+                <i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;&nbsp;Calendar
+            </div>
+            <div class="menu-right">
+                <div ng-click="vm.calendar.changeView('agendaDay')">
+                    <i class="fa fa-square" aria-hidden="true" uib-tooltip="Day View"></i>
+                </div>
+                <div ng-click="vm.calendar.changeView('agendaWeek')">
+                    <i class="fa fa-th-large" aria-hidden="true" uib-tooltip="Week View"></i>
+                </div>
+                <div ng-click="vm.calendar.changeView('month')">
+                    <i class="fa fa-th" aria-hidden="true" uib-tooltip="Month View"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="header-bottom text-center text-white">
+            <button class="btn btn-icon btn-lg btn-primary" ng-click="vm.calendar.prev()">
+                <i class="fa fa-chevron-left"></i>
+            </button>
+
+            <span class="calendar-title font-size-xl">
+                {{vm.calendarView.title}}
+            </span>
+
+            <button class="btn btn-icon btn-lg btn-primary" ng-click="vm.calendar.next()">
+                <i class="fa fa-chevron-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="main clearfix">
+        <div class="view calendar-wrapper">
+            <button class="btn btn-circle btn-lg btn-danger btn-add-new-event" ng-click="vm.addNewEvent()">
+              <i class="fa fa-calendar-plus-o"></i>
+            </button>
+            <div class="om-calendar" ui-calendar="vm.uiConfig.calendar" ng-model="vm.events" calendar="main"></div>
+        </div>
+    </div>
+</div>

@@ -1,25 +1,63 @@
 
-#layout-default{
+#layout-default {
   height: 100%;
-  #customAside{
+  #chatAside {
     &.off-canvas__nav {
-    //override
-      z-index:101;
+      //override
+      padding: 5px;
+      z-index: 101;
       background-color: white;
+      .box-shadow(@aside-default-shadow-left);
+      .chat-contacts {
+        .contact {
+          border:0;
+          outline: 0;
+          &:hover{
+            background-color: @gray-lighter;
+          }
+          .contact-image {
+            position: relative;
+            .contact-status{
+              position: absolute;
+              height:10px;
+              width:10px;
+              right:7px;
+              top:-7px;
+              border:1px solid white;
+              border-radius:50%;
+              &.status-online{
+                background-color: #00AA00; //or @brand-success;
+              }
+              &.status-offline{
+                background-color: grey;
+              }
+              &.status-busy{
+                background-color: @brand-danger;
+              }
+            }
+            img {
+              width: 34px;
+              height: 34px;
+              border-radius: 50%;
+              margin: -7px 5px -7px -7px;
+            }
+          }
+        }
+      }
     }
   }
-  #content-view{
+  #content-view {
     //background-color: #f2f2f2;
   }
-  #main{
-    //padding-bottom: 48px;
-    @media (max-width: @screen-xs-max){
+  #main {
+    padding-bottom: 48px;
+    @media (max-width: @screen-xs-max) {
       padding-bottom: 80px;
     }
-    .spinner-backdrop{
+    .spinner-backdrop {
       z-index: 4;
     }
-    footer{
+    footer {
       position: absolute;
       bottom: 0;
       left: 0;
@@ -30,7 +68,7 @@
       background-color: lighten(@gray-lighter, 3%);
       border-top: 1px solid #e7e7e7;
 
-      p{
+      p {
         margin-bottom: 0;
       }
     }

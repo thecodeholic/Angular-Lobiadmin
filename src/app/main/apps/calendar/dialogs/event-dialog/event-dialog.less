@@ -1,0 +1,52 @@
+#event-dialog {
+  .btn-upload {
+    position: relative;
+    input {
+      position: absolute;
+      width: 100%;
+      opacity: 0;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+    }
+  }
+
+  .attachments {
+    margin: 10px 0;
+    padding: 10px 0;
+    &.bordered {
+      border: 1px solid #ccc;
+      border-radius: 0;
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    }
+    > div {
+      text-align: center;
+      display: inline-block;
+      .close {
+        position: absolute;
+        font-size: 20px;
+        right: 7px;
+        top: 0;
+
+      }
+      > img {
+        height: 128px;
+        width: 128px;
+      }
+    }
+  }
+
+  .calendar-attachment {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    .attachment-name{
+      line-height: 30px;
+    }
+    .attachment-icon {
+      font-size: 19px;
+      position: relative;
+      top: 2px;
+    }
+  }
+}

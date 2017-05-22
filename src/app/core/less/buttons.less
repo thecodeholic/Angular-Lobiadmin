@@ -23,10 +23,10 @@
 //----------------------------BUTTON COLORS-------------------------------------
 //------------------------------------------------------------------------------
 
-.btn-light{ 
+.btn-light{
     .button-variant(@btn-light-color; @btn-light-bg; @btn-light-border);
 }
-.btn-inverse{ 
+.btn-inverse{
     .button-variant(@btn-inverse-color; @btn-inverse-bg; @btn-inverse-border);
 }
 .btn-cyan{
@@ -79,7 +79,7 @@
     }
     &:hover,
     &:focus,
-    &:active, 
+    &:active,
     &:focus:active{
         border-color: transparent;
         color: @btn-outline-hover;
@@ -91,7 +91,7 @@
 .btn-3d{
     position: relative;
     border: 0;
-    border-radius: @btn-3d-border-radius !important; 
+    border-radius: @btn-3d-border-radius !important;
     margin-top: @btn-3d-margin-top;
     .transition(all 0.1s);
     &:active,
@@ -99,7 +99,7 @@
         top: @btn-3d-margin-top;
     }
     &.btn-default{
-        .btn-3d-variant(@btn-default-bg); 
+        .btn-3d-variant(@btn-default-bg);
     }
     &.btn-primary{
         .btn-3d-variant(@btn-primary-bg);
@@ -204,4 +204,18 @@
             }
         }
     }
+}
+
+
+.btn-icon{
+  border-color: transparent;
+  background-color: transparent;
+  .btn-circle();
+  &:hover,
+  &:focus,
+  &:active,
+  &:active:focus{
+    border-color: transparent;
+    background-color: transparent;
+  }
 }

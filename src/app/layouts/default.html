@@ -1,9 +1,20 @@
 <div id="layout-default" class="off-canvas__container off-canvas__content">
     <nav class="navbar navbar-default navbar-header header" ui-view="toolbar"></nav>
-    <div om-aside om-slide-direction="right" om-is-off-canvas="true" id="customAside" class="selected off-canvas__nav nav-right pull-right">
-        <div class="selected-actions">
-            AAAAAAAAAA
-        </div>
+    <div om-aside om-slide-direction="right" om-is-off-canvas="true" id="chatAside"
+         class="selected off-canvas__nav nav-right pull-right">
+        <ul class="list-group chat-contacts">
+            <li class="list-group-item contact" ng-repeat="contact in vm.contacts" ng-click="vm.AAA()">
+                <span class="contact-unread badge" ng-hide="contact.unread == 0">{{contact.unread}}</span>
+                <span class="contact-image">
+                    <span class="contact-status"
+                          ng-class="{'status-online':contact.status == 'online',
+                                    'status-offline':contact.status == 'offline',
+                                    'status-busy':contact.status == 'busy'}"></span>
+                    <img ng-src="{{contact.thumb}}">
+                </span>
+                <span class="contact-name">{{contact.name}}</span>
+            </li>
+        </ul>
     </div>
     <div ui-view="navigation"></div>
     <!--<div id="navigation-view" ui-view="navigation"></div>-->
