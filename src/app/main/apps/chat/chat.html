@@ -8,7 +8,7 @@
         <div class="menu-right text-center" ng-show="vm.selected != null">
             <span class="contact-name">Name<span
                     class="contact-last-online">Status</span></span>
-            <i class="fa fa-info-circle pull-right chat-info" aria-hidden="true"></i>
+            <i class="fa fa-info-circle pull-right chat-info" aria-hidden="true" ng-click="vm.toggleAside('chatInfoAside')"></i>
             <i class="fa fa-trash pull-right chat-delete" aria-hidden="true" ng-click="vm.deleteChat(vm.selected)"></i>
         </div>
     </div>
@@ -17,6 +17,17 @@
 
         <div class="off-canvas__container off-canvas__content clearfix">
 
+            <div om-aside om-slide-direction="right" id="chatInfoAside" class="off-canvas__nav nav-right">
+                <div class="heading" ng-if="vm.selected.name != undefined"><i class="fa fa-star" aria-hidden="true"></i>&nbsp;&nbsp;{{vm.selected.name}}</div>
+                <div class="heading" ng-if="vm.selected.name == undefined"><i class="fa fa-star" aria-hidden="true"></i>&nbsp;&nbsp;{{vm.selected.username}}</div>
+                <hr>
+                <div class="list-group" ng-if="vm.selected.name != undefined">
+                    <a class="list-group-item" ng-repeat="member in vm.selected.members"><img ng-src="{{vm.users[member].thumb}}">&nbsp;&nbsp;{{vm.users[member].username}}</a>
+                </div>
+                <div class="list-group" ng-if="vm.selected.name == undefined">
+                    <a class="list-group-item"><i class="fa fa-star" aria-hidden="true"></i>&nbsp;&nbsp;A</a>
+                </div>
+            </div>
 
             <div class="left-side-wrapper" ng-init="chats.open = true; contacts.open = true">
                 <uib-accordion close-others="false">

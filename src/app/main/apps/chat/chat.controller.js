@@ -6,7 +6,7 @@
     .controller('ChatController', ChatControllerFn);
 
   /** @ngInject */
-  function ChatControllerFn($scope, $http, Users, Chats) {
+  function ChatControllerFn($scope, $log, $http, Users, Chats, omAside) {
     var vm = this;
     // Data
     vm.users = Users.data;
@@ -18,11 +18,13 @@
     vm.messageToSend = "";
 
     vm.currentView = "chat-view";
-
+    vm.isOffCanvasMenuOpened = false;
     // Methods
     vm.openChat = openChat;
     vm.sendMessage = sendMessage;
     vm.deleteChat = deleteChat;
+    vm.toggleAside = toggleAside;
+    vm.hasOffCanvasClass = hasOffCanvasClass;
 
     init();
 
@@ -63,6 +65,18 @@
         vm.chats.splice(i, 1);
         vm.selected = null;
       }
+    }
+
+    function toggleAside(id) {
+      omAside.toggle(id);
+      vm.hasOffCanvasClass(id);
+    }
+
+    function hasOffCanvasClass(id) {
+      if (angular.element('#' + id).hasClass('is-off-canvas')) {
+        vm.isOffCanvasMenuOpened = true;
+      }
+      $log.debug(vm.isOffCanvasMenuOpened);
     }
   }
 })();
