@@ -47,6 +47,8 @@
     }
 
     function sendMessage(msg, who, $event, buttonClicked) {
+      if ($event.keyCode == 13) $event.preventDefault();
+
       if ((buttonClicked || $event.keyCode == 13) && msg != "")
       {
         vm.userMessages.$$state.value.data.push({
@@ -55,7 +57,8 @@
           "what": msg,
           "when": moment().format('HH:mm, DD/MM/YYYY')
         });
-      vm.messageToSend = "";
+
+        vm.messageToSend = "";
       }
     }
 

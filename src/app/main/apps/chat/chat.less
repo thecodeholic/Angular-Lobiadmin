@@ -1,9 +1,4 @@
-.send-message {
-  z-index: 1231;
-  position: absolute;
-  right: 20px;
-  top: 5px;
-}
+@message-input-height: 60px;
 
 #chat {
   height: 100%;
@@ -73,18 +68,21 @@
     height: calc(%(~"100% - %s", 100px));
 
     #chatInfoAside{
-      z-index:2001;
+      z-index:100;
       height: 100%;
       .nav-right{
         box-shadow: @aside-default-shadow;
       }
+      .nav-closed-right{
+        box-shadow: none;
+      }
       .heading {
         text-align: center;
         font-size: 24px;
-        margin: 25px 12.5px;
+        margin: 12.5px 6px;
       }
       .list-group {
-        margin: 25px 0;
+        margin: 12.5px 0;
         img{
           width:40px;
           height:40px;
@@ -101,32 +99,40 @@
       width: 250px;
       height: 100%;
       float: left;
-      background-color: #fdfdfd;
-      padding: 0 0 60px 0;
+      background-color: #ffffff;
+      padding: 0;
       overflow-y: auto;
+      overflow-x: hidden;
       border-right: 1px solid rgba(0, 0, 0, 0.2);
       //chat-view in /view/chat-view.less
       //user-view in /view/user-view.less
-      .view-select {
-        li {
-          outline: 0;
+      uib-accordion .panel-default{
+        border-right: 0;
+        border-left: 0;
+        .panel-body{
+          padding: 0;
+          ul {
+            margin-bottom: 0;
+            li {
+              border-radius: 0;
+            }
+          }
         }
-      }
-      uib-accordion .panel-default .panel-body{
-        padding:0;
       }
     }
 
     .messages {
       width: calc(%(~"100% - %s", 250px));
-      height: 100%;
+      height: calc(%(~"100% - %s", @message-input-height));
       float: right;
       transition: 0.5s ease;
-      padding: 30px 0 60px 0;
-      overflow-x: hidden;
-      overflow-y: auto;
-      position: relative;
+      position:absolute;
+      right:0;
+      bottom: @message-input-height;
       .chat-content {
+        overflow-x: hidden;
+        overflow-y: auto;
+        height: 100%;
         .message {
           margin-bottom: 10px;
           position: relative;
@@ -170,19 +176,24 @@
     }
 
     .message-input {
-      position: fixed;
-      width: calc(%(~"100% - %s", 234px));
-      right:14px;
+      position: absolute;
+      width:100%;
+      right:0;
+      left:0;
       bottom:0;
-      z-index: 2000;
+      z-index: 99;
       .message-field {
         outline: 0;
-        border: 1px solid rgba(0, 0, 0, 0.2);
+        border: 1px solid rgba(0, 0, 0, 0.2) ;
+        border-left:0;
+        border-right:0;
         border-bottom: 3px solid rgba(0, 0, 0, 0.2);
         transition: 0.5s ease;
         transform-origin: left;
-        width: calc(%(~"100% - %s", 250px));
-        min-height: 40px;
+        min-width: calc(%(~"100% - %s", 250px));
+        max-width: calc(%(~"100% - %s", 250px));
+        min-height: @message-input-height;
+        max-height: @message-input-height;
         padding: 5px 80px 5px 10px;
         font-size: 18px;
         float:right;
@@ -196,11 +207,11 @@
         right: 0;
         border: 0;
         background: transparent;
-        width: 40px;
-        height: 40px;
+        width: @message-input-height;
+        height: @message-input-height;
         padding: 5px;
         margin-right: 20px;
-        line-height: 30px;
+        line-height: @message-input-height;
         font-size: 24px;
       }
     }

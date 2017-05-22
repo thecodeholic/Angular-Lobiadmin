@@ -19,13 +19,13 @@
 
             <div om-aside om-slide-direction="right" id="chatInfoAside" class="off-canvas__nav nav-right">
                 <div class="heading" ng-if="vm.selected.name != undefined"><i class="fa fa-star" aria-hidden="true"></i>&nbsp;&nbsp;{{vm.selected.name}}</div>
-                <div class="heading" ng-if="vm.selected.name == undefined"><i class="fa fa-star" aria-hidden="true"></i>&nbsp;&nbsp;{{vm.selected.username}}</div>
+                <div class="heading" ng-if="vm.selected.username != undefined"><i class="fa fa-star" aria-hidden="true"></i>&nbsp;&nbsp;{{vm.selected.username}}</div>
                 <hr>
                 <div class="list-group" ng-if="vm.selected.name != undefined">
                     <a class="list-group-item" ng-repeat="member in vm.selected.members"><img ng-src="{{vm.users[member].thumb}}">&nbsp;&nbsp;{{vm.users[member].username}}</a>
                 </div>
-                <div class="list-group" ng-if="vm.selected.name == undefined">
-                    <a class="list-group-item"><i class="fa fa-star" aria-hidden="true"></i>&nbsp;&nbsp;A</a>
+                <div class="list-group" ng-if="vm.selected.username != undefined">
+                    <a class="list-group-item" ng-repeat="userProp in vm.selected">&nbsp;&nbsp;{{userProp}}</a>
                 </div>
             </div>
 
@@ -54,9 +54,11 @@
 
             <div class="messages">
 
-                <div class="chat-content" scroll-glue-bottom="" vm.glued ng-show="vm.selected != null">
+                <div class="chat-content" ng-show="vm.selected != null">
                     <div id="{{message.id}}" class="message" ng-if="vm.userMessages.$$state.value.data[0] != null"
-                         ng-repeat="message in vm.userMessages.$$state.value.data">
+                         ng-repeat="message in vm.userMessages.$$state.value.data"
+                         ng-class="{'margin-top-20':vm.userMessages.$$state.value.data[$index-1].who != message.who}">
+
                         <div class="row" ng-if="message != null">
                             <div class="left-side clearfix pull-left" ng-show="message.who != 'me'">
 
@@ -91,10 +93,10 @@
             </div>
 
             <div class="message-input" ng-init="isSelected=false; isClicked=false" ng-show="vm.selected != null">
-                <input class="message-field" type="text" placeholder="Enter message and hit enter"
-                       ng-model="vm.messageToSend"
-                       ng-class="{'active': isSelected}" ng-focus="isSelected = true" ng-blur="isSelected = false"
-                       ng-keydown="vm.sendMessage(vm.messageToSend,'me', $event, false)">
+                <textarea class="message-field" placeholder="Enter message and hit enter"
+                       ng-model="vm.messageToSend" ng-class="{'active': isSelected}" ng-focus="isSelected = true"
+                          ng-blur="isSelected = false" ng-keydown="vm.sendMessage(vm.messageToSend,'me', $event, false)">
+                </textarea>
                 <button class="send" ng-click="vm.sendMessage(vm.messageToSend, 'me', $event, true)"><i
                         class="fa fa-paper-plane" aria-hidden="true"></i></button>
             </div>
