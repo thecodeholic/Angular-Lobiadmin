@@ -38,22 +38,39 @@
         color: white;
         display: table-cell;
         vertical-align: middle;
-        line-height: 35px;
+        line-height: 50px;
         .contact-name {
           margin-left: 5px;
           margin-right: 5px;
           position: relative;
           .contact-last-online {
-            position: absolute;
-            left: 0;
-            right: 0;
-            top: 5px;
+            &.status-online {
+              background-color: @label-success-bg;
+            }
+            &.status-offline {
+              background-color: @label-default-bg;
+            }
+            &.status-busy {
+              background-color: @label-danger-bg;
+            }
+            &.status-away {
+              background-color: @label-warning-bg;
+            }
+          }
+          &-edit{
+            text-align: center;
+            background-color: transparent;
+            border:0;
+            border-bottom: 2px solid white;
+            line-height: 50px;
+            height: 25px;
+            width:120px;
           }
         }
         > div {
           display: inline-block;
         }
-        i {
+        > i {
           line-height: 40px;
           font-size: 20px;
           margin: 5px;
@@ -117,6 +134,24 @@
               border-radius: 0;
             }
           }
+        }
+      }
+      .chat-user-search{
+        padding: 5px;
+        position: relative;
+        .search-icon{
+          position: absolute;
+          right:10px;
+          top:10px;
+        }
+        .search-input{
+          height: 25px;
+          padding-left: 5px;
+          padding-right: 25px;
+          background-color:transparent;
+          border:0;
+          border-bottom: 2px solid @brand-primary;
+          width:100%;
         }
       }
     }

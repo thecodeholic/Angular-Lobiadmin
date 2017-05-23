@@ -11,10 +11,14 @@
     // Data
     vm.users = Users.data;
     vm.chats = Chats.data;
+    vm.isChatsAccordionOpened = true;
+    vm.isContactsAccordionOpened = true;
+    vm.Search = "";
 
     vm.selected = null;
+    vm.chatName = "";
+    vm.chatNameEditing = false;
     vm.userMessages = {};
-    vm.glued = true;
     vm.messageToSend = "";
 
     vm.currentView = "chat-view";
@@ -25,13 +29,15 @@
     vm.deleteChat = deleteChat;
     vm.toggleAside = toggleAside;
     vm.hasOffCanvasClass = hasOffCanvasClass;
+    vm.isChatNameEditing = isChatNameEditing;
 
     init();
 
     ///////////
 
     function init() {
-
+      console.log(vm.users);
+      console.log(vm.chats);
     }
 
     function openChat(chatId, chat) {
@@ -39,11 +45,27 @@
       vm.userMessages = $http.get('app/main/apps/chat/data/messages/' + chatId + '.json')
         .then(function (response) {
           vm.selected = chat;
+          vm.chatName = chat.name;
           return response.data;
         }, function (error) {
           return 'There was an error getting data' + error;
         });
       console.log("Loaded Messages : ",vm.userMessages);
+    }
+
+    function isChatNameEditing(confirm) {
+      if(confirm) {
+        if (vm.chatName != "") {
+          vm.selected.name = vm.chatName;
+          vm.chatNameEditing = false;
+        } else {
+          vm.chatName = vm.selected.name;
+          vm.chatNameEditing = false;
+        }
+      }else{
+        vm.chatName = vm.selected.name;
+        vm.chatNameEditing = false;
+      }
     }
 
     function sendMessage(msg, who, $event, buttonClicked) {
@@ -65,7 +87,7 @@
     function deleteChat(selected) {
       var del = Lobibox.confirm({
         title: "Delete Chat ?",
-        msg: "Are you sure you want to delete chat '"+selected.name+"' ?",
+        msg: "Do you want to delete chat '"+selected.name+"' ?",
         callback: function ($this, type, ev) {
           if(type == "yes"){
             var i = vm.chats.indexOf(selected);

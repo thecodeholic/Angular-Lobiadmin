@@ -1,11 +1,11 @@
 <ul class="list-group chats">
 
-        <li class="list-group-item chat-item" ng-repeat="chat in vm.chats"
-            ng-click="vm.openChat(chat.id, chat)" ng-class="{'selected':vm.selected === chat}">
+    <li ng-if="vm.Search != ''" class="list-group-item chat-item" ng-repeat="chat in vm.chats | filter: {name: vm.Search}"
+        ng-click="vm.openChat(chat.id, chat)" ng-class="{'selected':vm.selected === chat}">
 
-            <span class="chat-unread badge" ng-hide="chat.unread== null">{{chat.unread}}</span>
+        <span class="chat-unread badge" ng-hide="chat.unread== null">{{chat.unread}}</span>
 
-            <span class="chat-image" ng-repeat="member in chat.members">
+        <span class="chat-image" ng-repeat="member in chat.members" uib-tooltip="{{vm.users[member].username}}" tooltip-placement="right">
 
                             <span class="chat-member-status status-{{vm.users[member].status}}"></span>
 
@@ -13,8 +13,24 @@
 
             </span>
 
-            <span class=chat-name">{{chat.name}}</span>
+        <span class=chat-name">{{chat.name}}</span>
 
-        </li>
+    </li>
 
+    <li ng-if="vm.Search == ''" class="list-group-item chat-item" ng-repeat="chat in vm.chats"
+        ng-click="vm.openChat(chat.id, chat)" ng-class="{'selected':vm.selected === chat}">
+
+        <span class="chat-unread badge" ng-hide="chat.unread== null">{{chat.unread}}</span>
+
+        <span class="chat-image" ng-repeat="member in chat.members" uib-tooltip="{{vm.users[member].username}}" tooltip-placement="right">
+
+                            <span class="chat-member-status status-{{vm.users[member].status}}"></span>
+
+                            <img ng-src="{{vm.users[member].thumb}}">
+
+            </span>
+
+        <span class=chat-name">{{chat.name}}</span>
+
+    </li>
 </ul>

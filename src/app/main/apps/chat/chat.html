@@ -6,8 +6,16 @@
             <i class="fa fa-plus pull-right chat-new" aria-hidden="true"></i>
         </div>
         <div class="menu-right text-center" ng-show="vm.selected != null">
-            <span class="contact-name">Name<span
-                    class="contact-last-online">Status</span></span>
+            <span class="contact-name" ng-show="vm.selected.username != undefined">{{vm.selected.username}}
+                <span class="contact-last-online label status-{{vm.selected.status}}">{{vm.selected.status}}</span>
+            </span>
+            <div ng-show="vm.selected.name != undefined">
+                <span class="contact-name" ng-show="!vm.chatNameEditing">{{vm.selected.name}}</span>
+                <input class="contact-name-edit" type="text" ng-show="vm.chatNameEditing" ng-model="vm.chatName">
+                <i class="fa fa-pencil" aria-hidden="true" ng-show="!vm.chatNameEditing" ng-click="vm.chatNameEditing = true"></i>
+                <i class="fa fa-check" aria-hidden="true" ng-show="vm.chatNameEditing" ng-click="vm.isChatNameEditing(true)"></i>
+                <i class="fa fa-times" aria-hidden="true" ng-show="vm.chatNameEditing" ng-click="vm.isChatNameEditing(false)"></i>
+            </div>
             <i class="fa fa-info-circle pull-right chat-info" aria-hidden="true" ng-click="vm.toggleAside('chatInfoAside')"></i>
             <i class="fa fa-trash pull-right chat-delete" aria-hidden="true" ng-click="vm.deleteChat(vm.selected)"></i>
         </div>
@@ -18,33 +26,41 @@
         <div class="off-canvas__container off-canvas__content clearfix">
 
             <div om-aside om-slide-direction="right" id="chatInfoAside" class="off-canvas__nav nav-right">
+
                 <div class="heading" ng-if="vm.selected.name != undefined"><i class="fa fa-star" aria-hidden="true"></i>&nbsp;&nbsp;{{vm.selected.name}}</div>
                 <div class="heading" ng-if="vm.selected.username != undefined"><i class="fa fa-star" aria-hidden="true"></i>&nbsp;&nbsp;{{vm.selected.username}}</div>
+
                 <hr>
+
                 <div class="list-group" ng-if="vm.selected.name != undefined">
                     <a class="list-group-item" ng-repeat="member in vm.selected.members"><img ng-src="{{vm.users[member].thumb}}">&nbsp;&nbsp;{{vm.users[member].username}}</a>
                 </div>
                 <div class="list-group" ng-if="vm.selected.username != undefined">
                     <a class="list-group-item" ng-repeat="userProp in vm.selected">&nbsp;&nbsp;{{userProp}}</a>
                 </div>
+
             </div>
 
-            <div class="left-side-wrapper" ng-init="chats.open = true; contacts.open = true">
+            <div class="left-side-wrapper">
+                <div class="chat-user-search">
+                    <i class="search-icon fa fa-search" aria-hidden="true"></i>
+                    <input class="search-input" type="text" placeholder="Search user or chat" ng-model="vm.Search">
+                </div>
                 <uib-accordion close-others="false">
-                    <div uib-accordion-group class="panel-default" is-open="chats.open">
+                    <div uib-accordion-group class="panel-default" is-open="vm.isChatsAccordionOpened">
                         <uib-accordion-heading>
                             Chats
                             <i class="pull-right glyphicon"
-                               ng-class="{'glyphicon-chevron-down': chats.open,'glyphicon-chevron-right': !chats.open}">
+                               ng-class="{'glyphicon-chevron-down': vm.isChatsAccordionOpened,'glyphicon-chevron-right': !vm.isChatsAccordionOpened}">
                             </i>
                         </uib-accordion-heading>
                         <div ng-include="'app/main/apps/chat/view/chat-view.html'"></div>
                     </div>
-                    <div uib-accordion-group class="panel-default" is-open="contacts.open">
+                    <div uib-accordion-group class="panel-default" is-open="vm.isContactsAccordionOpened">
                         <uib-accordion-heading>
                             Contacts
                             <i class="pull-right glyphicon"
-                               ng-class="{'glyphicon-chevron-down': contacts.open,'glyphicon-chevron-right': !contacts.open}">
+                               ng-class="{'glyphicon-chevron-down': vm.isContactsAccordionOpened,'glyphicon-chevron-right': !vm.isContactsAccordionOpened}">
                             </i>
                         </uib-accordion-heading>
                         <div ng-include="'app/main/apps/chat/view/user-view.html'"></div>
