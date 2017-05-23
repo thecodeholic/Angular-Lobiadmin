@@ -1,6 +1,6 @@
 <ul class="list-group chats">
 
-    <li ng-if="vm.Search != ''" class="list-group-item chat-item" ng-repeat="chat in vm.chats | filter: {name: vm.Search}"
+    <li ng-if="vm.searched != ''" class="list-group-item chat-item" ng-repeat="chat in vm.chats | filter: {name: vm.searched}"
         ng-click="vm.openChat(chat.id, chat)" ng-class="{'selected':vm.selected === chat}">
 
         <span class="chat-unread badge" ng-hide="chat.unread== null">{{chat.unread}}</span>
@@ -17,7 +17,7 @@
 
     </li>
 
-    <li ng-if="vm.Search == ''" class="list-group-item chat-item" ng-repeat="chat in vm.chats"
+    <li ng-if="vm.searched == ''" class="list-group-item chat-item" ng-repeat="chat in vm.chats"
         ng-click="vm.openChat(chat.id, chat)" ng-class="{'selected':vm.selected === chat}">
 
         <span class="chat-unread badge" ng-hide="chat.unread== null">{{chat.unread}}</span>

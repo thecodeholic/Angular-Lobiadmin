@@ -13,16 +13,18 @@
     vm.chats = Chats.data;
     vm.isChatsAccordionOpened = true;
     vm.isContactsAccordionOpened = true;
-    vm.Search = "";
+    vm.searched = "";
 
     vm.selected = null;
     vm.chatName = "";
     vm.chatNameEditing = false;
     vm.userMessages = {};
     vm.messageToSend = "";
+    vm.messageInputClicked = false;
 
     vm.currentView = "chat-view";
     vm.isOffCanvasMenuOpened = false;
+
     // Methods
     vm.openChat = openChat;
     vm.sendMessage = sendMessage;
