@@ -9,8 +9,13 @@
   function ChatControllerFn($scope, $log, $http, Users, Chats, omAside) {
     var vm = this;
     // Data
-    vm.users = Users.data;
+    vm.users = Users.data; //for ng-repeat in html
+    vm.usersArray = $.map(vm.users, function (value, index) { //for searching through
+      return [value];
+    });
+
     vm.chats = Chats.data;
+
     vm.isChatsAccordionOpened = true;
     vm.isContactsAccordionOpened = true;
     vm.searched = "";
@@ -24,6 +29,7 @@
 
     vm.currentView = "chat-view";
     vm.isOffCanvasMenuOpened = false;
+    vm.seeUserInfo = null;
 
     // Methods
     vm.openChat = openChat;
@@ -38,11 +44,11 @@
     ///////////
 
     function init() {
-      console.log(vm.users);
-      console.log(vm.chats);
+
     }
 
     function openChat(chatId, chat) {
+      vm.seeUserInfo = null;
       vm.messageToSend = "";
       vm.userMessages = $http.get('app/main/apps/chat/data/messages/' + chatId + '.json')
         .then(function (response) {
@@ -96,6 +102,7 @@
             if(i > -1) {
               vm.chats.splice(i, 1);
               vm.selected = null;
+              vm.seeUserInfo = null;
             }
           }
         }
@@ -104,6 +111,7 @@
     }
 
     function toggleAside(id) {
+      vm.seeUserInfo = null;
       omAside.toggle(id);
       vm.hasOffCanvasClass(id);
     }

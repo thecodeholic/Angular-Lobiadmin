@@ -1,9 +1,7 @@
 <div id="chat">
     <div class="top-menu">
         <div class="menu-left text-center">
-            <i class="fa fa-cog pull-left chat-settings" aria-hidden="true"></i>
             <span class="chat-title">Chat</span>
-            <i class="fa fa-plus pull-right chat-new" aria-hidden="true"></i>
         </div>
         <div class="menu-right text-center" ng-show="vm.selected != null">
             <span class="contact-name" ng-show="vm.selected.username != undefined">{{vm.selected.username}}
@@ -12,11 +10,15 @@
             <div ng-show="vm.selected.name != undefined">
                 <span class="contact-name" ng-show="!vm.chatNameEditing">{{vm.selected.name}}</span>
                 <input class="contact-name-edit" type="text" ng-show="vm.chatNameEditing" ng-model="vm.chatName">
-                <i class="fa fa-pencil" aria-hidden="true" ng-show="!vm.chatNameEditing" ng-click="vm.chatNameEditing = true"></i>
-                <i class="fa fa-check" aria-hidden="true" ng-show="vm.chatNameEditing" ng-click="vm.isChatNameEditing(true)"></i>
-                <i class="fa fa-times" aria-hidden="true" ng-show="vm.chatNameEditing" ng-click="vm.isChatNameEditing(false)"></i>
+                <i class="fa fa-pencil" aria-hidden="true" ng-show="!vm.chatNameEditing"
+                   ng-click="vm.chatNameEditing = true"></i>
+                <i class="fa fa-check" aria-hidden="true" ng-show="vm.chatNameEditing"
+                   ng-click="vm.isChatNameEditing(true)"></i>
+                <i class="fa fa-times" aria-hidden="true" ng-show="vm.chatNameEditing"
+                   ng-click="vm.isChatNameEditing(false)"></i>
             </div>
-            <i class="fa fa-info-circle pull-right chat-info" aria-hidden="true" ng-click="vm.toggleAside('chatInfoAside')"></i>
+            <i class="fa fa-info-circle pull-right chat-info" aria-hidden="true"
+               ng-click="vm.toggleAside('chatInfoAside')"></i>
             <i class="fa fa-trash pull-right chat-delete" aria-hidden="true" ng-click="vm.deleteChat(vm.selected)"></i>
         </div>
     </div>
@@ -27,16 +29,26 @@
 
             <div om-aside om-slide-direction="right" id="chatInfoAside" class="off-canvas__nav nav-right">
 
-                <div class="heading" ng-if="vm.selected.name != undefined"><i class="fa fa-star" aria-hidden="true"></i>&nbsp;&nbsp;{{vm.selected.name}}</div>
-                <div class="heading" ng-if="vm.selected.username != undefined"><i class="fa fa-star" aria-hidden="true"></i>&nbsp;&nbsp;{{vm.selected.username}}</div>
-
-                <hr>
-
-                <div class="list-group" ng-if="vm.selected.name != undefined">
-                    <a class="list-group-item" ng-repeat="member in vm.selected.members"><img ng-src="{{vm.users[member].thumb}}">&nbsp;&nbsp;{{vm.users[member].username}}</a>
+                <div class="heading" ng-if="vm.selected.name != undefined"><i class="fa fa-star" aria-hidden="true"></i>&nbsp;&nbsp;{{vm.selected.name}}
                 </div>
-                <div class="list-group" ng-if="vm.selected.username != undefined">
+                <div class="heading" ng-if="vm.selected.username != undefined"><i class="fa fa-star"
+                                                                                  aria-hidden="true"></i>&nbsp;&nbsp;{{vm.selected.username}}
+                </div>
+
+                <div class="list-group" ng-if="vm.selected.name != undefined && vm.seeUserInfo == null">
+                    <a class="list-group-item" ng-repeat="member in vm.selected.members"
+                       ng-click="vm.seeUserInfo = vm.users[member]">
+                        <img ng-src="{{vm.users[member].thumb}}">&nbsp;&nbsp;{{vm.users[member].username}}
+                    </a>
+                </div>
+                <div class="list-group" ng-if="vm.selected.username != undefined && vm.seeUserInfo == null">
                     <a class="list-group-item" ng-repeat="userProp in vm.selected">&nbsp;&nbsp;{{userProp}}</a>
+                </div>
+                <div class="list-group" ng-if="vm.seeUserInfo != null">
+                    <span class="cancel-user-info">
+                    <i class="fa fa-arrow-circle-left" aria-hidden="true" ng-click="vm.seeUserInfo = null"></i>
+                    </span>
+                    <a class="list-group-item" ng-repeat="userProp in vm.seeUserInfo">&nbsp;&nbsp;{{userProp}}</a>
                 </div>
 
             </div>
@@ -110,8 +122,10 @@
 
             <div class="message-input" ng-show="vm.selected != null">
                 <textarea class="message-field" placeholder="Enter message and hit enter"
-                       ng-model="vm.messageToSend" ng-class="{'active': vm.messageInputClicked}" ng-focus="vm.messageInputClicked = true"
-                          ng-blur="vm.messageInputClicked = false" ng-keydown="vm.sendMessage(vm.messageToSend,'me', $event, false)">
+                          ng-model="vm.messageToSend" ng-class="{'active': vm.messageInputClicked}"
+                          ng-focus="vm.messageInputClicked = true"
+                          ng-blur="vm.messageInputClicked = false"
+                          ng-keydown="vm.sendMessage(vm.messageToSend,'me', $event, false)">
                 </textarea>
                 <button class="send" ng-click="vm.sendMessage(vm.messageToSend, 'me', $event, true)"><i
                         class="fa fa-paper-plane" aria-hidden="true"></i></button>
