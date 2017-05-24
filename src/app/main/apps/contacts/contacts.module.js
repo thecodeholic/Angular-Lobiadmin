@@ -14,7 +14,17 @@
         views: {
           'content@app': {
             templateUrl: 'app/main/apps/contacts/contacts.html',
-            controller: 'ContactsController as vm'
+            controller: 'ContactsController as vm',
+            resolve: {
+              Contacts: function ($http) {
+                return $http.get('app/main/apps/contacts/data/contacts.json')
+                  .then(function (response) {
+                    return response.data;
+                  }, function (error) {
+                    return 'There was an error getting data' + error;
+                  });
+              }
+            }
           }
         },
         bodyClass: 'app-contacts'

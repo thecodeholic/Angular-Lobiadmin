@@ -8,5 +8,58 @@
         </div>
     </div>
 
+    <div class="main clearfix">
 
+        <div class="alphabet-filter">
+
+        </div>
+
+        <div class="contact-grid">
+
+            <div class="row" ng-repeat="contactRow in vm.chunkedContacts">
+
+                <div class="col-sm-3" ng-repeat="contact in contactRow">
+
+                    <div class="contact-card">
+                        <span class="contact-options">
+                        <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+                        </span>
+
+                        <div class="contact-header contact-container text-center">
+
+                            <img class="contact-thumb" ng-src="{{contact.thumb}}">
+                            <div class="contact-name">
+                                {{contact.name}}
+                            </div>
+                            <div class="contact-company">
+                                {{contact.company}}
+                            </div>
+
+                        </div>
+
+                        <div class="contact-email contact-container">
+                            <div class="contact-inner-element">
+                                <b>E-mail</b><br>
+                                {{contact.email}}
+                            </div>
+                        </div>
+
+                        <div class="contact-phone contact-container">
+                            <div class="contact-inner-element">
+                                <b>Phone</b><br>
+                                {{contact.phone}}
+                            </div>
+                        </div>
+
+                        <div class="contact-info contact-container">
+                            <div class="contact-inner-element">
+                                <b>Info</b><br>
+                                {{contact.info}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
