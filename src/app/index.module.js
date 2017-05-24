@@ -12,7 +12,8 @@
       'app.dashboard',
       'app.calendar',
       'app.fileManager',
-      'app.chat'
+      'app.chat',
+      'app.contacts'
     ]);
 
 })();

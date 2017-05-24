@@ -1,0 +1,46 @@
+#contacts {
+  height: 100%;
+  position: relative;
+  .top-menu {
+    height: 50px;
+    line-height: 42px;
+    width: 100%;
+    background-color: @brand-primary;
+    .menu {
+      display: table;
+      &-left {
+        width: 250px;
+        border-right: 1px solid rgba(0, 0, 0, 0.2);
+        float: left;
+        color: white;
+        display: table-cell;
+        vertical-align: middle;
+        .contacts-title {
+          line-height: 47px;
+          font-size: 27px;
+        }
+        > div {
+          display: inline-block;
+        }
+      }
+      &-right {
+        width: calc(%(~"100% - %s", 250px));
+        float: right;
+        color: white;
+        display: table-cell;
+        vertical-align: middle;
+        line-height: 50px;
+        > div {
+          display: inline-block;
+        }
+        > i {
+          line-height: 40px;
+          font-size: 20px;
+          margin: 5px;
+          color: white;
+          padding-right: 15px;
+        }
+      }
+    }
+  }
+}
