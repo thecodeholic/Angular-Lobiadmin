@@ -47,8 +47,10 @@
     width: 100%;
     height: calc(%(~"100% - %s", 54px));
     .alphabet-filter{
+      background-color: @gray-lighter;
+      border-bottom: 1px solid darken(@gray-lighter,5%);
       .ul-wrapper{
-        padding:25px;
+        padding:10px 25px;
         background-color: transparent;
         .alphabet{
           margin:0;
@@ -56,6 +58,7 @@
           .char{
             height:25px;
             width:50px;
+            margin: 2px;
             text-align: center;
             line-height: 14px;
             padding:4px;
