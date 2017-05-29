@@ -6,14 +6,13 @@
     .controller('ChatController', ChatControllerFn);
 
   /** @ngInject */
-  function ChatControllerFn($scope, $log, $http, Users, Chats, omAside) {
+  function ChatControllerFn($scope, $log, $http, Users, Chats, omAside, apiService) {
     var vm = this;
     // Data
     vm.users = Users.data; //for ng-repeat in html
     vm.usersArray = $.map(vm.users, function (value, index) { //for searching through
       return [value];
     });
-
     vm.chats = Chats.data;
 
     vm.isChatsAccordionOpened = true;
@@ -50,14 +49,17 @@
     function openChat(chatId, chat) {
       vm.seeUserInfo = null;
       vm.messageToSend = "";
-      vm.userMessages = $http.get('app/main/apps/chat/data/messages/' + chatId + '.json')
-        .then(function (response) {
-          vm.selected = chat;
-          vm.chatName = chat.name;
-          return response.data;
-        }, function (error) {
-          return 'There was an error getting data' + error;
-        });
+      console.log(apiService.resolve('chat').get({id:chatId}));
+      apiService.resolve('chat').get({id:chatId}, function(response){
+        vm.userMessages = response.data;
+      })
+        // .then(function (response) {
+        //   console.log(arguments);
+        //   vm.userMessages = response.data;
+        // });
+
+      vm.selected = chat;
+      vm.chatName = chat.name;
       console.log("Loaded Messages : ",vm.userMessages);
     }
 
@@ -81,8 +83,8 @@
 
       if ((buttonClicked || $event.keyCode == 13) && msg != "")
       {
-        vm.userMessages.$$state.value.data.push({
-          "id": vm.userMessages.$$state.value.data.length + 1,
+        vm.userMessages.push({
+          "id": vm.userMessages.length + 1,
           "who": who,
           "what": msg,
           "when": moment().format('HH:mm, DD/MM/YYYY')

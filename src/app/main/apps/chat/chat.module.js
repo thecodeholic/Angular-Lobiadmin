@@ -6,7 +6,7 @@
     .config(Config);
 
   /** @ngInject */
-  function Config($stateProvider, lobiNavigationServiceProvider) {
+  function Config($stateProvider, lobiNavigationServiceProvider, apiServiceProvider) {
 
     $stateProvider
       .state('app.chat', {
@@ -31,15 +31,7 @@
                   }, function (error) {
                     return 'There was an error getting data' + error;
                   });
-              }/*,
-              Messages: function ($http) {
-                return $http.get('app/main/apps/chat/data/messages/3466589652.json')
-                  .then(function (response) {
-                    return response.data;
-                  }, function (error) {
-                    return 'There was an error getting data' + error;
-                  });
-              }*/
+              }
             }
           }
         },
@@ -53,5 +45,7 @@
       weight: 1,
       icon: 'fa fa-comments'
     });
+
+    apiServiceProvider.addResource('chat', 'main/apps/chat/data/messages/:id.json');
   }
 })();
