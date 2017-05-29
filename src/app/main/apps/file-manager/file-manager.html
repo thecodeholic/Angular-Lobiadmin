@@ -42,7 +42,7 @@
 
     <div class="main clearfix">
         <div class="off-canvas__container off-canvas__content clearfix">
-            <div om-aside om-slide-direction="left" id="fileManagerAside" class="off-canvas__nav">
+            <div om-aside om-slide-direction="left" id="fileManagerAside" class="nav-left off-canvas__nav">
                 <div class="heading"><i class="fa fa-folder" aria-hidden="true"></i>&nbsp;&nbsp;File Manager</div>
                 <div class="user-select" uib-dropdown on-toggle="toggled(open)">
                     <a href id="user-select" uib-dropdown-toggle class="current-user">
@@ -106,7 +106,7 @@
                          ng-include="'app/main/apps/file-manager/view/list-condensed.html'">
                     </div>
                 </div>
-                <div om-aside om-slide-direction="right" om-is-off-canvas="true" id="selectedFileAside" class="selected off-canvas__nav">
+                <div om-aside om-slide-direction="right" om-is-off-canvas="true" id="selectedFileAside" class="selected nav-right off-canvas__nav">
                     <div class="selected-actions">
 
                     </div>

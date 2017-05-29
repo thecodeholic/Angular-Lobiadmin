@@ -9,15 +9,11 @@
     .controller('ToolbarController', ToolbarController);
 
   /** @ngInject */
-  function ToolbarController($state, $rootScope, $translate) {
+  function ToolbarController($state, Auth, $translate, omAside) {
     var vm = this;
 
     // Data
-
-    // Methods
-    vm.logout = logout;
-    vm.lockScreen = lockScreen;
-    vm.toggleMenu = toggleMenu;
+    vm.isOffCanvasMenuOpened = false;
     vm.languages = {
       en: {
         'title': 'English',
@@ -34,6 +30,12 @@
       }
     };
 
+    // Methods
+    vm.logout = logout;
+    vm.lockScreen = lockScreen;
+    vm.toggleMenu = toggleMenu;
+    vm.toggleAside = toggleAside;
+    vm.hasOffCanvasClass = hasOffCanvasClass;
     vm.changeLanguage = changeLanguage;
 
     init();
@@ -64,9 +66,19 @@
     function changeLanguage(lang) {
       vm.selectedLanguage = lang;
       // Change the language
-      $translate.use(lang.code).then(function () {
-        $rootScope.$emit('App:languageChange', lang);
-      })
+      $translate.use(lang.code);
+    }
+
+    function toggleAside(id) {
+      omAside.toggle(id);
+      vm.hasOffCanvasClass(id);
+    }
+
+    function hasOffCanvasClass(id) {
+      if (angular.element('#' + id).hasClass('is-off-canvas')) {
+        vm.isOffCanvasMenuOpened = true;
+      }
+      console.log(vm.isOffCanvasMenuOpened);
     }
   }
 })();

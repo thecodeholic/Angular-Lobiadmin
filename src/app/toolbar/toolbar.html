@@ -20,7 +20,7 @@
 </form>
 <div class="navbar-items">
   <!--User avatar dropdown-->
-  <ul class="nav navbar-nav navbar-right user-actions">
+  <ul class="nav navbar-nav navbar-left user-actions">
     <li uib-dropdown class="dropdown">
       <a href="#" class="dropdown-toggle" uib-dropdown-toggle>
         <img class="user-avatar img-circle" ng-src="{{$root.user.getAvatar()}}" alt="..."/>
@@ -37,6 +37,9 @@
       </ul>
     </li>
   </ul>
+  <div class="pull-right" ng-click="vm.toggleAside('chatAside')">
+    <i class="fa fa-bars" aria-hidden="true" style="font-size: 27px; line-height: 50px; color:white; margin-right:5px; margin-left: 5px"></i>
+  </div>
 </div>
 <div class="clearfix-xxs"></div>
 <div class="navbar-items-2">

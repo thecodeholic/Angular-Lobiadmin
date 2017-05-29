@@ -1,0 +1,83 @@
+@aside-default-width: 250px;
+@aside-default-height: 100%;
+
+@aside-default-transition: margin-left 0.5s ease;
+@aside-default-transition-left: margin-left 0.5s ease;
+@aside-default-transition-top: margin-top 0.5s ease;
+@aside-default-transition-right: margin-right 0.5s ease;
+@aside-default-transition-bottom: margin-bottom 0.5s ease;
+
+@aside-default-shadow-size: 5px;
+@aside-default-shadow-blur: 8px;
+@aside-default-shadow-color: rgba(0,0,0,0.2);
+@aside-default-shadow: 0px 0px @aside-default-shadow-blur @aside-default-shadow-size @aside-default-shadow-color;
+@aside-default-shadow-right: 0px 0px @aside-default-shadow-blur @aside-default-shadow-size @aside-default-shadow-color;
+@aside-default-shadow-left: -@aside-default-shadow-size 0px @aside-default-shadow-blur 0px @aside-default-shadow-color;
+@aside-default-shadow-top: "";
+@aside-default-shadow-bottom: "";
+
+.off-canvas__container {
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.off-canvas__nav {
+  //border: 2px solid rgba(0,0,0,0.2);
+  background-color: white;
+  margin:0;
+  width: @aside-default-width;
+  height: @aside-default-height;
+  position: absolute;
+  z-index: 100;
+  opacity: 1;
+  transition: @aside-default-transition;
+  .box-shadow(@aside-default-shadow);
+  &.nav-left{
+    left:0;
+    transition: @aside-default-transition-left;
+  }
+  &.nav-top{
+    top:0;
+    transition: @aside-default-transition-top;
+  }
+  &.nav-right{
+    right:0;
+    transition: @aside-default-transition-right;
+  }
+  &.nav-bottom{
+    bottom:0;
+    transition: @aside-default-transition-bottom;
+  }
+
+}
+
+.nav-closed {
+  left:0;
+  margin-left: -@aside-default-width;
+  .box-shadow(@aside-default-shadow);
+}
+
+.nav-closed-top {
+  top:0;
+  margin-top: -@aside-default-height;
+  .box-shadow(@aside-default-shadow-bottom);
+}
+
+.nav-closed-right {
+  right:0;
+  margin-right: -@aside-default-width;
+  .box-shadow(@aside-default-shadow-left);
+}
+
+.nav-closed-bottom {
+  bottom:0;
+  margin-bottom: -@aside-default-height;
+  .box-shadow(@aside-default-shadow-top);
+}
+
+.nav-closed-left {
+  bottom:0;
+  margin-left: -@aside-default-width;
+  .box-shadow(@aside-default-shadow-right);
+}
