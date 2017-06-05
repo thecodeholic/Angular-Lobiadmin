@@ -1,37 +1,21 @@
 <ul class="list-group users">
 
-    <li ng-if="vm.searched != ''" class="list-group-item user-item" ng-repeat="user in vm.usersArray | filter: {username: vm.searched}"
-        ng-click="vm.openChat(user.chatId, user)" ng-class="{'selected':vm.selected === user}">
+  <li class="list-group-item user-item"
+      ng-repeat="user in vm.usersArray | filter:  vm.searched !== '' ? {username: vm.searched} : {}"
+      ng-click="vm.openChat(user.chatId, user)" ng-class="{'selected':vm.selected === user}">
 
-        <span class="user-unread badge" ng-hide="user.unread== null">{{user.unread}}</span>
+    <span class="user-unread badge" ng-hide="user.unread== null">{{user.unread}}</span>
 
-        <span class="user-image">
+    <div class="user-image">
 
-                            <span class="user-status status-{{user.status}}"></span>
+      <span class="user-status status-{{user.status}}"></span>
 
-                            <img ng-src="{{user.thumb}}">
+      <img ng-src="{{user.thumb}}">
 
-            </span>
+    </div>
 
-        <span class="user-name">{{user.username}}</span>
+    <span class="user-name">{{user.username}}</span>
 
-    </li>
-
-    <li ng-if="vm.searched == ''" class="list-group-item user-item" ng-repeat="user in vm.users"
-        ng-click="vm.openChat(user.chatId, user)" ng-class="{'selected':vm.selected === user}">
-
-        <span class="user-unread badge" ng-hide="user.unread== null">{{user.unread}}</span>
-
-        <span class="user-image">
-
-                            <span class="user-status status-{{user.status}}"></span>
-
-                            <img ng-src="{{user.thumb}}">
-
-            </span>
-
-        <span class="user-name">{{user.username}}</span>
-
-    </li>
+  </li>
 
 </ul>
