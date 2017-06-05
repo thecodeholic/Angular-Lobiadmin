@@ -1,33 +1,33 @@
 <div id="event-dialog">
     <div class="modal-header">
         <h3 class="modal-title" id="modal-title">
-            <span ng-if="vm.isEdit">Edit Event</span>
-            <span ng-if="!vm.isEdit">Add Event</span>
+            <span ng-if="vm.isEdit">{{'CALENDAR.EDIT_EVENT' | translate}}</span>
+            <span ng-if="!vm.isEdit">{{'CALENDAR.ADD_EVENT' | translate}}</span>
         </h3>
     </div>
     <div class="modal-body" id="modal-body">
         <form name="eventForm" >
 
             <div class="form-group" ng-class="{'has-error': eventForm.title.$touched && eventForm.title.$invalid}">
-                <label class="control-label">Event title</label>
+                <label class="control-label">{{'CALENDAR.EVENT_TITLE' | translate}}</label>
                 <input type="text" class="form-control" name="title" ng-model="vm.event.title" required>
                 <div class="help-block" ng-messages="eventForm.title.$touched && eventForm.title.$error" role="alert"
                      multiple>
-                    <p ng-message="required">This field is required</p>
+                    <p ng-message="required">{{'CALENDAR.EVENT_REQUIRED_FIELD' | translate}}</p>
                 </div>
             </div>
 
             <div class="form-group">
-                <label class="control-label">Event date</label>
+                <label class="control-label">{{'CALENDAR.EVENT_DATE' | translate}}</label>
                 <input date-range-picker type="text" name="date-period" options="vm.options"
                        class="form-control date-picker" ng-model="vm.eventDate">
                 <label class="checkbox lobicheck">
-                    <input type="checkbox" name="allday" ng-model="vm.event.allDay"><i></i> All day
+                    <input type="checkbox" name="allday" ng-model="vm.event.allDay"><i></i> {{'CALENDAR.ALL_DAY' | translate}}
                 </label>
             </div>
 
             <div class="form-group">
-                <label class="control-label">Event style</label>
+                <label class="control-label">{{'CALENDAR.EVENT_STYLE' | translate}}</label>
                 <div class="btn-group btn-group-justified btn-group-event-style" data-toggle="buttons">
                     <label ng-repeat="style in vm.eventStyles" class="btn {{style}} text-white">
                         <input type="radio" ng-model="vm.event.className[0]" value="{{style}}">
@@ -37,7 +37,7 @@
             </div>
 
             <div class="form-group">
-                <label class="control-label">Event description</label>
+                <label class="control-label">{{'CALENDAR.EVENT_DESC' | translate}}</label>
                 <textarea rows="3" class="form-control" name="desc" ng-model="vm.event.description"></textarea>
             </div>
 
@@ -53,16 +53,16 @@
                 </li>
             </ul>
             <button class="btn-link btn-upload">
-                Add Attachments
+                {{'CALENDAR.EVENT_ATTACHMENTS' | translate}}
                 <input id="uploader" type="file" onchange="angular.element(this).scope().vm.addAttachments(this, event)" multiple/>
             </button>
         </form>
     </div>
     <div class="modal-footer">
         <button ng-show="vm.isEdit" class="btn btn-pretty btn-inverse pull-left" ng-click="vm.deleteEvent()">
-          <i class="fa fa-trash"></i> Delete
+          <i class="fa fa-trash"></i> {{'CALENDAR.EVENT_DELETE' | translate}}
         </button>
-        <button class="btn btn-pretty btn-primary" type="button" ng-click="vm.ok()" ng-disabled="eventForm.$invalid">OK</button>
-        <button class="btn btn-pretty btn-default" type="button" ng-click="vm.cancel()">Cancel</button>
+        <button class="btn btn-pretty btn-primary" type="button" ng-click="vm.ok()" ng-disabled="eventForm.$invalid">{{'CALENDAR.EVENT_OK' | translate}}</button>
+        <button class="btn btn-pretty btn-default" type="button" ng-click="vm.cancel()">{{'CALENDAR.EVENT_CANCEL' | translate}}</button>
     </div>
 </div>

@@ -6,7 +6,7 @@
     .controller('CalendarController', CalendarControllerFn);
 
   /** @ngInject */
-  function CalendarControllerFn($uibModal, Events) {
+  function CalendarControllerFn($uibModal, $translate, Events) {
     var vm = this;
 
     // Data
@@ -114,27 +114,33 @@
     }
 
     function catchDragStart(event, delta) {
-      vm.dragMessage += "Change " + event.title + "'s position from " + event.start.format();
-    }
-
-    function showDragDialog(event, delta, revertFunc) {
-      console.log(revertFunc);
-      vm.dragMessage += " to " + event.start.format() + " ?";
-      $uibModal.open({
-        templateUrl: 'app/main/apps/calendar/dialogs/drag-dialog/drag-dialog.html',
-        controller: 'DragDialogController',
-        controllerAs: 'vm',
-        size: 'md',
-        resolve: {
-          entry: {text: vm.dragMessage}
-        }
-      }).result.then(function () {
-        vm.dragMessage = "";
-      }, function () {
-        vm.dragMessage = "";
-        revertFunc();
+      $translate(['CALENDAR.EVENT_MOVE_MSG_1', 'CALENDAR.EVENT_MOVE_MSG_2']).then(function (translations) {
+        vm.dragMessage += translations['CALENDAR.EVENT_MOVE_MSG_1'] + event.title + translations['CALENDAR.EVENT_MOVE_MSG_2'] + event.start.format();
       });
     }
 
+    function showDragDialog(event, delta, revertFunc) {
+      $translate(['CALENDAR.EVENT_MOVE_MSG_3']).then(function (translations) {
+
+        console.log(revertFunc);
+
+        vm.dragMessage += translations['CALENDAR.EVENT_MOVE_MSG_3'] + event.start.format() + " ?";
+
+        $uibModal.open({
+          templateUrl: 'app/main/apps/calendar/dialogs/drag-dialog/drag-dialog.html',
+          controller: 'DragDialogController',
+          controllerAs: 'vm',
+          size: 'md',
+          resolve: {
+            entry: {text: vm.dragMessage}
+          }
+        }).result.then(function () {
+          vm.dragMessage = "";
+        }, function () {
+          vm.dragMessage = "";
+          revertFunc();
+        });
+      });
+    }
   }
 })();
