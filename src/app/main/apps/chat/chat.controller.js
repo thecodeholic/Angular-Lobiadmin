@@ -44,6 +44,22 @@
 
     function init() {
 
+      //Auto Resize TextArea
+      $scope.$watch("vm.messageToSend", function (newValue) {
+        var element = document.getElementById("chat-textarea");
+        var chatContent = document.getElementById("chat-content");
+        //console.log(newValue);
+        if(newValue === ""){
+          element.style.height = "60px";
+          chatContent.style.height = "100%";
+        }else {
+          element.style.height = element.scrollHeight + "px";
+          var chatOffset = element.scrollHeight - 60;
+          chatContent.style.height = chatOffset > 0 ? "calc(100% - " + chatOffset + "px)" : "100%";
+        }
+      });
+      //--Auto Resize TextArea
+
     }
 
     function openChat(chatId, chat) {
@@ -52,7 +68,7 @@
       console.log(apiService.resolve('chat').get({id:chatId}));
       apiService.resolve('chat').get({id:chatId}, function(response){
         vm.userMessages = response.data;
-      })
+      });
         // .then(function (response) {
         //   console.log(arguments);
         //   vm.userMessages = response.data;
@@ -89,7 +105,6 @@
           "what": msg,
           "when": moment().format('HH:mm, DD/MM/YYYY')
         });
-
         vm.messageToSend = "";
       }
     }

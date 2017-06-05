@@ -82,7 +82,7 @@
 
             <div class="messages">
 
-                <div class="chat-content" ng-show="vm.selected != null">
+                <div id="chat-content" class="chat-content" ng-show="vm.selected != null">
                     <div id="{{message.id}}" class="message clearfix"
                          ng-if="vm.userMessages != null"
                          ng-repeat="message in vm.userMessages"
@@ -112,7 +112,7 @@
             </div>
 
             <div class="message-input" ng-show="vm.selected != null">
-                <textarea class="message-field" placeholder="Enter message and hit enter"
+                <textarea id="chat-textarea" class="message-field" placeholder="Enter message and hit enter"
                           ng-model="vm.messageToSend" ng-class="{'active': vm.messageInputClicked}"
                           ng-focus="vm.messageInputClicked = true"
                           ng-blur="vm.messageInputClicked = false"
