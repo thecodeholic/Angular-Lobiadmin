@@ -1,7 +1,7 @@
 <div id="contacts">
     <div class="top-menu">
         <div class="menu-left text-center">
-            <span class="contacts-title">Contacts</span>
+            <span class="contacts-title">{{'CONTACTS.TITLE' | translate}}</span>
         </div>
         <div class="menu-right text-right">
             <i class="fa fa-search" aria-hidden="true"></i>
@@ -32,7 +32,7 @@
 
                 </div>
 
-                <div ng-if="vm.searchContactsResult[0] == undefined" class="text-center"> <span class="label label-danger"> No results found ! </span></div>
+                <div ng-if="vm.searchContactsResult[0] == undefined" class="text-center"> <span class="label label-danger"> {{'CONTACTS.ERROR' | translate}} </span></div>
 
             </div>
 
