@@ -6,7 +6,15 @@
     .config(Config);
 
   /** @ngInject */
-  function Config($stateProvider, lobiNavigationServiceProvider, apiServiceProvider) {
+  function Config($stateProvider, $translateProvider, $translatePartialLoaderProvider, lobiNavigationServiceProvider, apiServiceProvider) {
+
+    $translateProvider.useLoader('$translatePartialLoader', {
+      urlTemplate: '{part}/i18n/{lang}.json'
+    });
+    $translateProvider.preferredLanguage('en');
+    // $translateProvider.useSanitizeValueStrategy('sanitize');
+    // Translation
+    $translatePartialLoaderProvider.addPart('app/main/apps/chat');
 
     $stateProvider
       .state('app.chat', {

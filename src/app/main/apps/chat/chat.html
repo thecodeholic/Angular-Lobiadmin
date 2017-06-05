@@ -8,7 +8,8 @@
                 <span class="contact-name" ng-show="!vm.chatNameEditing">{{vm.selected.name}}</span>
                 <input class="contact-name-edit" type="text" ng-show="vm.chatNameEditing" ng-model="vm.chatName">
                 <button class="btn btn-default btn-icon" ng-click="vm.chatNameEditing = true"
-                        ng-show="!vm.chatNameEditing">
+                        ng-show="!vm.chatNameEditing" uib-tooltip="{{'CHAT.RENAME' | translate}}"
+                        tooltip-popup-delay="200" tooltip-placement="bottom">
                     <i class="fa fa-pencil" aria-hidden="true"></i>
                 </button>
                 <button class="btn btn-default btn-icon" ng-click="vm.isChatNameEditing(true)"
@@ -20,9 +21,14 @@
                     <i class="fa fa-times" aria-hidden="true"></i>
                 </button>
             </div>
-            <i class="fa fa-info-circle pull-right chat-info" aria-hidden="true"
-               ng-click="vm.toggleAside('chatInfoAside')"></i>
-            <i class="fa fa-trash pull-right chat-delete" aria-hidden="true" ng-click="vm.deleteChat(vm.selected)"></i>
+            <button class="btn btn-default btn-icon pull-right bigger-icon" ng-click="vm.toggleAside('chatInfoAside')"
+                    uib-tooltip="{{'CHAT.INFO' | translate}}" tooltip-popup-delay="200" tooltip-placement="left">
+                <i class="fa fa-info-circle chat-info" aria-hidden="true"></i>
+            </button>
+            <button class="btn btn-default btn-icon pull-right bigger-icon" ng-click="vm.deleteChat(vm.selected)"
+                    uib-tooltip="{{'CHAT.INFO' | translate}}" tooltip-popup-delay="200" tooltip-placement="left">
+                <i class="fa fa-trash chat-delete" aria-hidden="true"></i>
+            </button>
         </div>
     </div>
 
@@ -59,7 +65,7 @@
 
             <div class="left-side-wrapper">
                 <div class="input-group search-group">
-                    <input type="text" class="search-input form-control" placeholder="Search for..."
+                    <input type="text" class="search-input form-control" placeholder="{{'CHAT.SEARCH_FOR' | translate}}"
                            ng-model="vm.searched">
                     <span class="input-group-btn">
                     <button class="btn btn-default btn-icon" type="button">
@@ -69,11 +75,13 @@
                 </div><!-- /input-group -->
 
                 <uib-accordion close-others="false">
-                    <div uib-accordion-group class="panel-default" heading="Chats" is-open="vm.isChatsAccordionOpened"
+                    <div uib-accordion-group class="panel-default"
+                         heading="{{'CHAT.CHATS_ACCORDION_HEADING' | translate}}" is-open="vm.isChatsAccordionOpened"
                          template-url="chat-group-template.html">
                         <div ng-include="'app/main/apps/chat/view/chat-view.html'"></div>
                     </div>
-                    <div uib-accordion-group class="panel-default" heading="Contacts"
+                    <div uib-accordion-group class="panel-default"
+                         heading="{{'CHAT.CONTACTS_ACCORDION_HEADING' | translate}}"
                          is-open="vm.isContactsAccordionOpened" template-url="chat-group-template.html">
                         <div ng-include="'app/main/apps/chat/view/user-view.html'"></div>
                     </div>
@@ -112,7 +120,7 @@
             </div>
 
             <div class="message-input" ng-show="vm.selected != null">
-                <textarea id="chat-textarea" class="message-field" placeholder="Enter message and hit enter"
+                <textarea id="chat-textarea" class="message-field" placeholder="{{'CHAT.ENTER_MESSAGE' | translate}}"
                           ng-model="vm.messageToSend" ng-class="{'active': vm.messageInputClicked}"
                           ng-focus="vm.messageInputClicked = true"
                           ng-blur="vm.messageInputClicked = false"

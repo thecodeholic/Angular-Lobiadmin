@@ -6,7 +6,7 @@
     .controller('ChatController', ChatControllerFn);
 
   /** @ngInject */
-  function ChatControllerFn($scope, $log, $http, Users, Chats, omAside, apiService) {
+  function ChatControllerFn($scope, $translate, $log, $http, Users, Chats, omAside, apiService) {
     var vm = this;
     // Data
     vm.users = Users.data; //for ng-repeat in html
@@ -110,9 +110,18 @@
     }
 
     function deleteChat(selected) {
+      $translate(['CHAT.DELETE_TITLE', 'CHAT.DELETE_MSG', 'CHAT.DELETE_YES', 'CHAT.DELETE_NO']).then(function (translations) {
       var del = Lobibox.confirm({
-        title: "Delete Chat ?",
-        msg: "Do you want to delete chat '"+selected.name+"' ?",
+        title: translations['CHAT.DELETE_TITLE'],
+        msg: translations['CHAT.DELETE_MSG']+selected.name+"' ?",
+        buttons: {
+          yes: {
+            text: translations['CHAT.DELETE_YES']
+          },
+          no: {
+            text: translations['CHAT.DELETE_NO']
+          }
+        },
         callback: function ($this, type, ev) {
           if(type == "yes"){
             var i = vm.chats.indexOf(selected);
@@ -125,6 +134,7 @@
         }
       });
       del.show();
+      });
     }
 
     function toggleAside(id) {
