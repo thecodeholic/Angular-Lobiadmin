@@ -2,7 +2,6 @@
   "fileList": [
     {
       "id": 0,
-      "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
       "name": "New Folder",
       "type": "Folder",
       "thumb": "",
@@ -14,7 +13,6 @@
     },
     {
       "id": 1,
-      "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
       "name": "solar-center-stanford.gif",
       "type": "Image",
       "thumb": "http://solar-center.stanford.edu/latestimg/latest_eit_171_thumbnail.gif",
@@ -26,7 +24,6 @@
     },
     {
       "id": 2,
-      "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
       "name": "Nature.docx",
       "type": "Word",
       "thumb": "",
@@ -38,7 +35,6 @@
     },
     {
       "id": 3,
-      "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
       "name": "Marketing.xls",
       "type": "Excel",
       "thumb": "",
@@ -50,7 +46,6 @@
     },
     {
       "id": 4,
-      "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
       "name": "Famous Museums.pptx",
       "type": "Power Point",
       "thumb": "",
@@ -62,7 +57,6 @@
     },
     {
       "id": 5,
-      "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
       "name": "Birthday.mp4",
       "type": "Video",
       "thumb": "",
@@ -74,7 +68,6 @@
     },
     {
       "id": 6,
-      "icon": "<i class='fa fa-file-text' aria-hidden='true'></i>",
       "name": "We Rock (Official audio).mp3",
       "type": "Audio",
       "thumb": "",
@@ -88,7 +81,6 @@
   "breadcrumbs": [
     {
       "id": 10001,
-      "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
       "name": "Offline Files",
       "type": "Folder",
       "thumb": "",
@@ -100,7 +92,6 @@
     },
     {
       "id": 10002,
-      "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
       "name": "Documents",
       "type": "Folder",
       "thumb": "",

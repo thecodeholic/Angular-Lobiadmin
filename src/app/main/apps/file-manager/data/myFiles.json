@@ -2,7 +2,6 @@
   "fileList": [
     {
       "id": 0,
-      "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
       "name": "New Folder",
       "type": "Folder",
       "thumb": "",
@@ -14,7 +13,6 @@
     },
     {
       "id": 1,
-      "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
       "name": "solar-center-stanford.gif",
       "type": "Image",
       "thumb": "http://solar-center.stanford.edu/latestimg/latest_eit_171_thumbnail.gif",
@@ -26,7 +24,6 @@
     },
     {
       "id": 2,
-      "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
       "name": "Nature.docx",
       "type": "Word",
       "thumb": "",
@@ -38,7 +35,6 @@
     },
     {
       "id": 3,
-      "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
       "name": "Marketing.xls",
       "type": "Excel",
       "thumb": "",
@@ -50,7 +46,6 @@
     },
     {
       "id": 4,
-      "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
       "name": "Famous Museums.pptx",
       "type": "Power Point",
       "thumb": "",
@@ -62,7 +57,6 @@
     },
     {
       "id": 5,
-      "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
       "name": "Birthday.mp4",
       "type": "Video",
       "thumb": "",
@@ -74,7 +68,6 @@
     },
     {
       "id": 6,
-      "icon": "<i class='fa fa-file-text' aria-hidden='true'></i>",
       "name": "We Rock (Official audio).mp3",
       "type": "Audio",
       "thumb": "",
@@ -86,7 +79,6 @@
     },
     {
       "id": 7,
-      "icon": "<i class='fa fa-file-text' aria-hidden='true'></i>",
       "name": "MUSIC",
       "type": "Folder",
       "thumb": "",
@@ -98,7 +90,6 @@
     },
     {
       "id": 8,
-      "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
       "name": "fm-styles.css",
       "type": "Css",
       "thumb": "",
@@ -112,7 +103,6 @@
     },
     {
       "id": 9,
-      "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
       "name": "solar-system.cs",
       "type": "Code",
       "thumb": "",
@@ -126,7 +116,6 @@
     },
     {
       "id": 10,
-      "icon": "<i class='fa fa-file-text' aria-hidden='true'></i>",
       "name": "Windows-7_x64.zip",
       "type": "Archive",
       "thumb": "",
@@ -140,7 +129,6 @@
     },
     {
       "id": 11,
-      "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
       "name": "log-file-b772.log",
       "type": "Other",
       "thumb": "",
@@ -154,7 +142,6 @@
     },
     {
       "id": 12,
-      "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
       "name": "salaries.doc",
       "type": "Document",
       "thumb": "",
@@ -166,7 +153,6 @@
     },
     {
       "id": 13,
-      "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
       "name": "salaries(1).doc",
       "type": "Document",
       "thumb": "",
@@ -178,7 +164,6 @@
     },
     {
       "id": 14,
-      "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
       "name": "GAMES",
       "type": "Folder",
       "thumb": "",
@@ -190,7 +175,6 @@
     },
     {
       "id": 15,
-      "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
       "name": "avatar-user.png",
       "type": "Image",
       "thumb": "https://www.w3schools.com/w3css/img_avatar3.png",
@@ -202,7 +186,6 @@
     },
     {
       "id": 16,
-      "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
       "name": "Essay.docx",
       "type": "Word",
       "thumb": "",
@@ -214,7 +197,6 @@
     },
     {
       "id": 17,
-      "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
       "name": "Financical-research.xls",
       "type": "Excel",
       "thumb": "",
@@ -226,7 +208,6 @@
     },
     {
       "id": 18,
-      "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
       "name": "Planet Earth.pptx",
       "type": "Power Point",
       "thumb": "",
@@ -238,7 +219,6 @@
     },
     {
       "id": 19,
-      "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
       "name": "Kung Fu Panda (ENG).mp4",
       "type": "Video",
       "thumb": "",
@@ -250,7 +230,6 @@
     },
     {
       "id": 20,
-      "icon": "<i class='fa fa-file-text' aria-hidden='true'></i>",
       "name": "Nokia Ringtone.mp3",
       "type": "Audio",
       "thumb": "",
@@ -262,7 +241,6 @@
     },
     {
       "id": 21,
-      "icon": "<i class='fa fa-file-text' aria-hidden='true'></i>",
       "name": "PRIVATE",
       "type": "Folder",
       "thumb": "",
@@ -274,7 +252,6 @@
     },
     {
       "id": 22,
-      "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
       "name": "fm-styles(1).css",
       "type": "Css",
       "thumb": "",
@@ -286,7 +263,6 @@
     },
     {
       "id": 23,
-      "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
       "name": "Problem-312.cs",
       "type": "Code",
       "thumb": "",
@@ -298,7 +274,6 @@
     },
     {
       "id": 24,
-      "icon": "<i class='fa fa-file-text' aria-hidden='true'></i>",
       "name": "Windows-7_x86.zip",
       "type": "Archive",
       "thumb": "",
@@ -310,7 +285,6 @@
     },
     {
       "id": 25,
-      "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
       "name": "another-log.lgg",
       "type": "Other",
       "thumb": "",
@@ -322,7 +296,6 @@
     },
     {
       "id": 26,
-      "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
       "name": "Examination Answers Databases.doc",
       "type": "Document",
       "thumb": "",
@@ -334,7 +307,6 @@
     },
     {
       "id": 27,
-      "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
       "name": "Examination Answers Web.doc",
       "type": "Document",
       "thumb": "",
@@ -346,7 +318,6 @@
     },
     {
       "id": 28,
-      "icon": "<i class='fa fa-image' aria-hidden='true'></i>",
       "name": "fa-fa-image.fa",
       "type": "Image",
       "thumb": "",
@@ -360,7 +331,6 @@
   "breadcrumbs": [
     {
       "id": 10001,
-      "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
       "name": "My Files",
       "type": "Folder",
       "thumb": "",
@@ -372,7 +342,6 @@
     },
     {
       "id": 10002,
-      "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
       "name": "Documents",
       "type": "Folder",
       "thumb": "",

@@ -2,7 +2,6 @@
   "fileList": [
     {
       "id": 0,
-      "icon": "<i class='fa fa-file-text' aria-hidden='true'></i>",
       "name": "MUSIC",
       "type": "Folder",
       "thumb": "",
@@ -14,7 +13,6 @@
     },
     {
       "id": 1,
-      "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
       "name": "solar-system.cs",
       "type": "Code",
       "thumb": "",
@@ -28,7 +26,6 @@
     },
     {
       "id": 2,
-      "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
       "name": "salaries.doc",
       "type": "Document",
       "thumb": "",
@@ -40,7 +37,6 @@
     },
     {
       "id": 3,
-      "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
       "name": "salaries(1).doc",
       "type": "Document",
       "thumb": "",
@@ -52,7 +48,6 @@
     },
     {
       "id": 4,
-      "icon": "<i class='fa fa-file-text' aria-hidden='true'></i>",
       "name": "PRIVATE",
       "type": "Folder",
       "thumb": "",
@@ -64,7 +59,6 @@
     },
     {
       "id": 5,
-      "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
       "name": "Problem-312.cs",
       "type": "Code",
       "thumb": "",
@@ -76,7 +70,6 @@
     },
     {
       "id": 6,
-      "icon": "<i class='fa fa-table' aria-hidden='true'></i>",
       "name": "Examination Answers Databases.doc",
       "type": "Document",
       "thumb": "",
@@ -88,7 +81,6 @@
     },
     {
       "id": 7,
-      "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
       "name": "Examination Answers Web.doc",
       "type": "Document",
       "thumb": "",
@@ -100,7 +92,6 @@
     },
     {
       "id": 8,
-      "icon": "<i class='fa fa-image' aria-hidden='true'></i>",
       "name": "fa-fa-image.fa",
       "type": "Image",
       "thumb": "",
@@ -114,7 +105,6 @@
   "breadcrumbs": [
     {
       "id": 10001,
-      "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
       "name": "Shared with me",
       "type": "Folder",
       "thumb": "",
@@ -126,7 +116,6 @@
     },
     {
       "id": 10002,
-      "icon": "<i class='fa fa-folder' aria-hidden='true'></i>",
       "name": "Documents",
       "type": "Folder",
       "thumb": "",
