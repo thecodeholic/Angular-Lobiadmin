@@ -6,19 +6,18 @@
     .controller('FileManagerController', FileManagerControllerFn);
 
   /** @ngInject */
-  function FileManagerControllerFn($rootScope, $translate, $uibModal, $log, $scope,
-                                   omAside, myFiles, starredFiles, sharedFiles, recentFiles, offlineFiles) {
+  function FileManagerControllerFn($rootScope, $translate, $uibModal, $log, $state, omAside, files, Files) {
     var vm = this;
 
-    vm.myFiles = myFiles;
-    vm.starredFiles = starredFiles;
-    vm.sharedFiles = sharedFiles;
-    vm.recentFiles = recentFiles;
-    vm.offlineFiles = offlineFiles;
-    vm.selectedDirectory = myFiles;
+    vm.myFiles = files;
+    // vm.starredFiles = starredFiles;
+    // vm.sharedFiles = sharedFiles;
+    // vm.recentFiles = recentFiles;
+    // vm.offlineFiles = offlineFiles;
+    vm.selectedDirectory = files;
 
-    vm.files = myFiles.fileList;
-    vm.breadcrumbs = myFiles.breadcrumbs;
+    vm.files = files.fileList;
+    vm.breadcrumbs = files.breadcrumbs;
 
     vm.selectedFile = null;
     vm.selectedFiles = {};
@@ -35,9 +34,11 @@
     vm.toggleSearch = false;
 
     vm.canPreview = ["Image", "Video", "Audio"];
-    vm.users = [{"name": "John Doe", "email": "JohnDoe@example.com"},
+    vm.users = [
+      {"name": "John Doe", "email": "JohnDoe@example.com"},
       {"name": "Jane Doe", "email": "JaneDoe@examle.com"},
-      {"name": "user name", "email": "userEmail@example.com"}];
+      {"name": "user name", "email": "userEmail@example.com"}
+    ];
     vm.currentUser = vm.users[0];
     vm.isOffCanvasMenuOpened = false;
     vm.allSelected = false;
@@ -60,7 +61,6 @@
     vm.chooseFiles = chooseFiles;
     vm.chooseFolder = chooseFolder;
     // --Search
-    vm.searchFn = searchFn;
     vm.clearSearchResultsFn = clearSearchResultsFn;
     // --Create/Rename Folder Modal
     vm.showCreateFolderDialog = showCreateFolderDialog;
@@ -265,22 +265,6 @@
       vm.selectedFile = $itemScope.file;
     }
 
-    function searchFn(searchValue) {
-      vm.files = vm.selectedDirectory.fileList;
-      vm.searchResults = [];
-      if (searchValue != "") {
-        for (var i = 0; i < vm.files.length; i++) {
-          if (vm.files[i].name.indexOf(searchValue) != -1) {
-            vm.searchResults.push(vm.files[i]);
-          }
-        }
-        vm.files = vm.searchResults;
-        $log.debug(vm.searchResults);
-      } else {
-        vm.files = vm.selectedDirectory.fileList;
-      }
-    }
-
     function clearSearchResultsFn() {
       vm.files = vm.selectedDirectory.fileList;
       vm.searchValue = "";
@@ -398,11 +382,20 @@
       vm.breadcrumbs = vm.breadcrumbs.slice(0, vm.breadcrumbs.indexOf(crumb) + 1);
     }
 
-    function switchDirectory(switchTo) {
-      vm.files = switchTo.fileList;
-      vm.breadcrumbs = switchTo.breadcrumbs;
-      vm.selectedDirectory = switchTo;
-      vm.toggleAside('fileManagerAside');
+    function switchDirectory(category) {
+      $state.go('app.fileManager', {category: category});
+      Files.get({category: category}, function(response){
+        debugger;
+        vm.files = response.fileList;
+        vm.breadcrumbs = response.breadcrumbs;
+
+        vm.toggleAside('fileManagerAside')
+      });
+
+      // vm.files = switchTo.fileList;
+      // vm.breadcrumbs = switchTo.breadcrumbs;
+      // vm.selectedDirectory = switchTo;
+      // vm.toggleAside('fileManagerAside');
     }
   }
 })();

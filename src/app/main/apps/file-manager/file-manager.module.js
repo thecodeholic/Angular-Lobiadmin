@@ -8,7 +8,7 @@
     .config(Config);
 
   /** @ngInject */
-  function Config($stateProvider, $translateProvider, $translatePartialLoaderProvider, lobiNavigationServiceProvider) {
+  function Config($stateProvider, $translateProvider, $translatePartialLoaderProvider, apiServiceProvider, lobiNavigationServiceProvider) {
 
     $translateProvider.useLoader('$translatePartialLoader', {
       urlTemplate: '{part}/i18n/{lang}.json'
@@ -20,52 +20,27 @@
 
     $stateProvider
       .state('app.fileManager', {
-        url: '/file-manager',
+        url: '/file-manager/:category?',
         views: {
           'content@app': {
             templateUrl: 'app/main/apps/file-manager/file-manager.html',
             controller: 'FileManagerController as vm',
             resolve: {
-              myFiles: function ($http) {
-                return $http.get('app/main/apps/file-manager/data/myFiles.json')
-                  .then(function (response) {
-                    return response.data;
-                  }, function (error) {
-                    return 'There was an error getting data' + error;
-                  });
-              },
-              starredFiles: function ($http) {
-                return $http.get('app/main/apps/file-manager/data/starredFiles.json')
-                  .then(function (response) {
-                    return response.data;
-                  }, function (error) {
-                    return 'There was an error getting data' + error;
-                  });
-              },
-              sharedFiles: function ($http) {
-                return $http.get('app/main/apps/file-manager/data/sharedFiles.json')
-                  .then(function (response) {
-                    return response.data;
-                  }, function (error) {
-                    return 'There was an error getting data' + error;
-                  });
-              },
-              recentFiles: function ($http) {
-                return $http.get('app/main/apps/file-manager/data/recentFiles.json')
-                  .then(function (response) {
-                    return response.data;
-                  }, function (error) {
-                    return 'There was an error getting data' + error;
-                  });
-              },
-              offlineFiles: function ($http) {
-                return $http.get('app/main/apps/file-manager/data/offlineFiles.json')
-                  .then(function (response) {
-                    return response.data;
-                  }, function (error) {
-                    return 'There was an error getting data' + error;
-                  });
-              }
+              files: ["Files", "$stateParams", function (Files, $stateParams) {
+                return Files.get({category: $stateParams.category || 'my'});
+              }],
+              // starredFiles: ["Files", function (Files) {
+              //   return Files.get({category: 'starred'});
+              // }],
+              // sharedFiles: ["Files", function (Files) {
+              //   return Files.get({category: 'shared'});
+              // }],
+              // recentFiles: ["Files", function (Files) {
+              //   return Files.get({category: 'recent'});
+              // }],
+              // offlineFiles: ["Files", function (Files) {
+              //   return Files.get({category: 'offline'});
+              // }]
             }
           }
         },
@@ -79,5 +54,7 @@
       weight: 10,
       icon: 'fa fa-folder'
     });
+
+    apiServiceProvider.addResource('fileManagerFiles', 'main/apps/file-manager/data/:category-files.json');
   }
 })();
