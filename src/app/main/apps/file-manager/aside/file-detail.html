@@ -1,0 +1,39 @@
+<div om-aside om-slide-direction="right" om-is-off-canvas="true" id="selectedFileAside" class="selected nav-right off-canvas__nav">
+    <div class="selected-actions">
+
+    </div>
+    <div class="selected-image" ng-show="vm.selectedFile != null">
+        <img ng-if="vm.selectedFile.thumb != ''" src="{{vm.selectedFile.thumb}}" height="180"
+             width="180">
+        <i ng-if="vm.selectedFile.thumb == ''" class="fa fa-{{vm.selectedFile.type | typeToIcon}}"
+           aria-hidden="true"></i>
+    </div>
+    <div class="selected-description" ng-show="vm.selectedFile != null">
+        <div class="title">{{vm.selectedFile.name}}</div>
+        <table class="table">
+            <tr class="type">
+                <th>{{'FILE_MANAGER.VIEW.TYPE' | translate}}:</th>
+                <td>{{vm.selectedFile.type}}</td>
+            </tr>
+            <tr class="owner">
+                <th>{{'FILE_MANAGER.VIEW.OWNER' | translate}}:</th>
+                <td>{{vm.selectedFile.owner}}</td>
+            </tr>
+            <tr class="size">
+                <th>{{'FILE_MANAGER.VIEW.SIZE' | translate}}:</th>
+                <td>{{vm.selectedFile.size === '' ? '-': vm.selectedFile.size | bytes}}</td>
+            </tr>
+            <tr class="tags">
+                <th>{{'FILE_MANAGER.VIEW.TAGS' | translate}}:</th>
+                <td>
+                    <span class="label label-primary" ng-repeat="tag in vm.selectedFile.tags"
+                          ng-click="vm.filterListByTag(tag)">{{tag}}</span>
+                </td>
+            </tr>
+            <tr class="date">
+                <th>{{'FILE_MANAGER.VIEW.LAST_MODIFIED' | translate}}:</th>
+                <td>{{vm.selectedFile.date | date:'HH:mm, dd/MM/yyyy'}}</td>
+            </tr>
+        </table>
+    </div>
+</div>

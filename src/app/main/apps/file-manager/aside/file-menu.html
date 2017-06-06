@@ -1,0 +1,33 @@
+<div om-aside om-slide-direction="left" id="fileManagerAside" class="nav-left off-canvas__nav">
+    <div class="heading"><i class="fa fa-folder" aria-hidden="true"></i>&nbsp;&nbsp;File Manager</div>
+    <div class="user-select" uib-dropdown on-toggle="toggled(open)">
+        <a href id="user-select" uib-dropdown-toggle class="current-user">
+            <div> {{vm.currentUser.name}} <br> {{vm.currentUser.email}}
+              <i class="fa fa-caret-down" aria-hidden="true"></i>
+            </div>
+        </a>
+        <ul class="dropdown-menu" uib-dropdown-menu aria-labelledby="user-select">
+            <li class="user" ng-repeat="user in vm.users" ng-click="vm.currentUser=user"><a>
+                <div> {{user.name}} <br> {{user.email}}</div>
+            </a></li>
+        </ul>
+    </div>
+    <hr>
+    <div class="list-group">
+        <a ng-click="vm.switchDirectory('my')" class="list-group-item">
+          <i class="fa fa-folder" aria-hidden="true"></i> My files
+        </a>
+        <a ng-click="vm.switchDirectory('starred')" class="list-group-item">
+          <i class="fa fa-star" aria-hidden="true"></i> Starred files
+        </a>
+        <a ng-click="vm.switchDirectory('shared')" class="list-group-item">
+          <i class="fa fa-share" aria-hidden="true"></i> Shared with me
+        </a>
+        <a ng-click="vm.switchDirectory('recent')" class="list-group-item">
+          <i class="fa fa-clock-o" aria-hidden="true"></i> Recent
+        </a>
+        <a ng-click="vm.switchDirectory('offline')" class="list-group-item">
+          <i class="fa fa-download" aria-hidden="true"></i> Offline Files
+        </a>
+    </div>
+</div>
