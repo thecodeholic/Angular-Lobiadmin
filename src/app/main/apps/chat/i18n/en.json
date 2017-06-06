@@ -1,0 +1,15 @@
+{
+  "CHAT": {
+    "SEARCH_FOR" : "Search For...",
+    "CHATS_ACCORDION_HEADING" : "Chats",
+    "CONTACTS_ACCORDION_HEADING" : "Contacts",
+    "ENTER_MESSAGE": "Enter message and hit enter",
+    "DELETE_TITLE": "Deleting Chat",
+    "DELETE_MSG": "Do you want to delete chat",
+    "DELETE_YES": "Yes",
+    "DELETE_NO": "No",
+    "RENAME": "Rename Chat",
+    "DELETE": "Delete Chat",
+    "INFO": "Chat Info"
+  }
+}

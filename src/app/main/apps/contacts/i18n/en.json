@@ -1,0 +1,11 @@
+{
+  "CONTACTS": {
+    "TITLE": "Contacts",
+    "EMAIL" : "E-Mail",
+    "PHONE" : "Phone",
+    "INFO" : "Info",
+    "EDIT": "Edit",
+    "REMOVE": "Remove",
+    "ERROR": "No Results Found !"
+  }
+}

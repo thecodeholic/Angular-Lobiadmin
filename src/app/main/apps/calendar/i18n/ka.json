@@ -1,0 +1,24 @@
+{
+  "CALENDAR": {
+    "CALENDAR_TITLE": "კალენდარი",
+    "DAY_VIEW" : "დღის განრიგი",
+    "WEEK_VIEW" : "კვირის განრიგი",
+    "MONTH_VIEW" : "თვის განრიგი",
+    "ADD_EVENT": "ივენთის დამატება",
+    "EDIT_EVENT": "ივენთის შეცვლა",
+    "EVENT_TITLE": "სახელი",
+    "EVENT_DATE": "თარიღი",
+    "ALL_DAY": "მთელი დღის მანძილზე",
+    "EVENT_STYLE": "სტილი",
+    "EVENT_DESC": "აღწერა",
+    "EVENT_ATTACHMENTS": "ბმულების დამატება",
+    "EVENT_OK": "თანხმობა",
+    "EVENT_CANCEL": "გაუქმება",
+    "EVENT_DELETE": "წაშლა",
+    "EVENT_MOVE": "ივენთის თარიღის ცვლილება",
+    "EVENT_MOVE_MSG_1": "შევცვალოთ ",
+    "EVENT_MOVE_MSG_2": "-ის თარიღი ",
+    "EVENT_MOVE_MSG_3": "-დან შემდეგ თარიღზე - ",
+    "EVENT_REQUIRED_FIELD": "ველის შევსება აუცილებელია !"
+  }
+}

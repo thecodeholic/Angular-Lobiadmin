@@ -1,0 +1,41 @@
+<div id="contacts">
+    <div class="top-menu">
+        <div class="menu-left text-center">
+            <span class="contacts-title">{{'CONTACTS.TITLE' | translate}}</span>
+        </div>
+        <div class="menu-right text-right">
+            <i class="fa fa-search" aria-hidden="true"></i>
+        </div>
+    </div>
+
+    <div class="main clearfix">
+
+        <div class="alphabet-filter" ng-include="'app/main/apps/contacts/view/alphabet-filter.html'"></div>
+
+        <div class="contact-grid">
+
+            <div ng-if="vm.filterBy == '#'" class="row" ng-repeat="contactRow in vm.chunkedContacts">
+
+                <div class="col-sm-3" ng-repeat="contact in contactRow">
+
+                    <div class="contact-card {{contact.id}}" ng-include="'app/main/apps/contacts/view/contact.html'"></div>
+
+                </div>
+
+            </div>
+
+            <div ng-if="vm.filterBy != '#'" class="row">
+
+                <div  class="col-sm-3" ng-repeat="contact in vm.searchContactsResult | filter: {name : vm.filterBy}">
+
+                    <div class="contact-card {{contact.id}}" ng-include="'app/main/apps/contacts/view/contact.html'"></div>
+
+                </div>
+
+                <div ng-if="vm.searchContactsResult[0] == undefined" class="text-center"> <span class="label label-danger"> {{'CONTACTS.ERROR' | translate}} </span></div>
+
+            </div>
+
+        </div>
+    </div>
+</div>

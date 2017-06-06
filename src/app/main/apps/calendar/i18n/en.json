@@ -1,0 +1,24 @@
+{
+  "CALENDAR": {
+    "CALENDAR_TITLE": "Calendar",
+    "DAY_VIEW" : "Day View",
+    "WEEK_VIEW" : "Week View",
+    "MONTH_VIEW" : "Month View",
+    "ADD_EVENT": "Add Event",
+    "EDIT_EVENT": "Edit Event",
+    "EVENT_TITLE": "Event Title",
+    "EVENT_DATE": "Event Date",
+    "ALL_DAY": "All Day",
+    "EVENT_STYLE": "Event Style",
+    "EVENT_DESC": "Event Description",
+    "EVENT_ATTACHMENTS": "Add Attachments",
+    "EVENT_OK": "OK",
+    "EVENT_CANCEL": "Cancel",
+    "EVENT_DELETE": "Delete",
+    "EVENT_MOVE": "Move Event",
+    "EVENT_MOVE_MSG_1": "Change ",
+    "EVENT_MOVE_MSG_2": "'s position from ",
+    "EVENT_MOVE_MSG_3": " to ",
+    "EVENT_REQUIRED_FIELD": "This field is required !"
+  }
+}

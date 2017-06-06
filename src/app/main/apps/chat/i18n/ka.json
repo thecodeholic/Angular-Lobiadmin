@@ -1,0 +1,15 @@
+{
+  "CHAT": {
+    "SEARCH_FOR" : "ძიება...",
+    "CHATS_ACCORDION_HEADING" : "ჩატები",
+    "CONTACTS_ACCORDION_HEADING" : "კონტაქტები",
+    "ENTER_MESSAGE": "აკრიფეთ ტექსტი და დააჭირეთ 'Enter'",
+    "DELETE_TITLE": "ჩატის წაშლა",
+    "DELETE_MSG": "გსურთ წაშალოთ ჩატი - '",
+    "DELETE_YES": "დიახ",
+    "DELETE_NO": "არა",
+    "RENAME": "სახელის გადარქმევა",
+    "DELETE": "ჩატის წაშლა",
+    "INFO": "ჩატის შესახებ"
+  }
+}

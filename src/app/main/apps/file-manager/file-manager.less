@@ -36,7 +36,7 @@
         user-select: none;
         display: table-cell;
         vertical-align: middle;
-        .search{
+        .search {
           input {
             text-align: right;
             height: 30px;
@@ -46,7 +46,7 @@
             background-color: transparent;
             margin-right: 10px;
             outline: 0;
-            border:0;
+            border: 0;
             border-bottom: 2px solid white;
           }
         }
@@ -91,7 +91,7 @@
           display: none;
         }
       }
-      .files-wrapper{
+      .files-wrapper {
         overflow: auto;
         height: calc(%(~"100% - %a", @actions-toolbar-height))
       }
@@ -108,8 +108,8 @@
           }
         }
       }
-      &.is-off-canvas-menu-opened{
-        width:calc(%(~"100% - %s", @fm-selected-width));
+      &.is-off-canvas-menu-opened {
+        width: calc(%(~"100% - %s", @fm-selected-width));
       }
     }
     .selected {
@@ -156,6 +156,46 @@
         i {
           font-size: 48px;
           padding: 50px 20px;
+        }
+      }
+    }
+  }
+  .off-canvas__nav {
+    &#selectedFileAside {
+      width: @fm-selected-width;
+      height: @fm-selected-height;
+      .box-shadow(0);
+      &.nav-closed-right {
+          margin-right: -@fm-selected-width;
+      }
+    }
+    &#fileManagerAside {
+      width: @fm-aside-width;
+      height: @fm-aside-height;
+      &.nav-closed-left {
+        margin-left: -@fm-aside-width;
+      }
+      .heading {
+        text-align: center;
+        font-size: 24px;
+        margin: 25px 12.5px;
+      }
+      .user-select {
+        margin: 25px 12.5px 25px 35px;
+        text-align: left;
+        #user-select {
+          text-decoration: none;
+        }
+        .user {
+          cursor: pointer;
+        }
+      }
+      .list-group {
+        margin: 25px 0;
+        a {
+          cursor: pointer;
+          border: 0;
+          padding-left: 35px;
         }
       }
     }

@@ -1,0 +1,40 @@
+<div class="contact-options" uib-dropdown on-toggle="toggled(open)">
+    <i id="contact-menu" class="fa fa-cog" aria-hidden="true" uib-dropdown-toggle></i>
+    <ul class="dropdown-menu" uib-dropdown-menu aria-labelledby="contact-menu">
+        <li><a href><i class="fa fa-pencil" aria-hidden="true"></i>{{'CONTACTS.EDIT' | translate}}</a></li>
+        <li><a href ng-click="vm.deleteContact(contact.id)"><i class="fa fa-trash" aria-hidden="true"></i>{{'CONTACTS.REMOVE' | translate}}</a></li>
+    </ul>
+</div>
+
+<div class="contact-header contact-container text-center">
+
+    <img class="contact-thumb" ng-src="{{contact.thumb}}">
+    <div class="contact-name">
+        {{contact.name}}
+    </div>
+    <div class="contact-company">
+        {{contact.company}}
+    </div>
+
+</div>
+
+<div class="contact-email contact-container">
+    <div class="contact-inner-element">
+        <b>{{'CONTACTS.EMAIL' | translate}}</b><br>
+        {{contact.email}}
+    </div>
+</div>
+
+<div class="contact-phone contact-container">
+    <div class="contact-inner-element">
+        <b>{{'CONTACTS.PHONE' | translate}}</b><br>
+        {{contact.phone}}
+    </div>
+</div>
+
+<div class="contact-info contact-container">
+    <div class="contact-inner-element">
+        <b>{{'CONTACTS.INFO' | translate}}</b><br>
+        {{contact.info}}
+    </div>
+</div>

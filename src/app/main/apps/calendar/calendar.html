@@ -2,18 +2,18 @@
     <div class="page-content-header">
         <div class="header-top clearfix">
             <div class="menu-left">
-                <i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;&nbsp;Calendar
+                <i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;&nbsp;{{'CALENDAR.CALENDAR_TITLE' | translate}}
             </div>
             <div class="menu-right">
-                <div ng-click="vm.calendar.changeView('agendaDay')">
-                    <i class="fa fa-square" aria-hidden="true" uib-tooltip="Day View"></i>
-                </div>
-                <div ng-click="vm.calendar.changeView('agendaWeek')">
-                    <i class="fa fa-th-large" aria-hidden="true" uib-tooltip="Week View"></i>
-                </div>
-                <div ng-click="vm.calendar.changeView('month')">
-                    <i class="fa fa-th" aria-hidden="true" uib-tooltip="Month View"></i>
-                </div>
+                <button class="btn btn-default btn-icon btn-lg" ng-click="vm.calendar.changeView('agendaDay')">
+                    <i class="fa fa-square" aria-hidden="true" uib-tooltip="{{'CALENDAR.DAY_VIEW' | translate}}"></i>
+                </button>
+                <button class="btn btn-default btn-icon btn-lg" ng-click="vm.calendar.changeView('agendaWeek')">
+                    <i class="fa fa-th-large" aria-hidden="true" uib-tooltip="{{'CALENDAR.WEEK_VIEW' | translate}}"></i>
+                </button>
+                <button class="btn btn-default btn-icon btn-lg" ng-click="vm.calendar.changeView('month')">
+                    <i class="fa fa-th" aria-hidden="true" uib-tooltip="{{'CALENDAR.MONTH_VIEW' | translate}}"></i>
+                </button>
             </div>
         </div>
 
