@@ -33,22 +33,38 @@
     };
 
     function open(id) {
-      asideConfig[id] != undefined ? angular.element("#" + id).removeClass('nav-closed-' + asideConfig[id].direction) : angular.element("#" + id).removeClass('nav-closed');
+      var $el = angular.element("#" + id);
+      $el.removeClass('nav-closed');
+      if (asideConfig[id] !== undefined){
+        $el.removeClass('nav-closed-' + asideConfig[id].direction)
+      }
     }
 
     function close(id) {
-      asideConfig[id] != undefined ? angular.element("#" + id).addClass('nav-closed-' + asideConfig[id].direction) : angular.element("#" + id).addClass('nav-closed');
+      var $el = angular.element("#" + id);
+      $el.addClass('nav-closed');
+      if (asideConfig[id] !== undefined){
+        $el.addClass('nav-closed-' + asideConfig[id].direction)
+      }
     }
 
     function toggle(id) {
-      asideConfig[id] != undefined ? angular.element("#" + id).toggleClass('nav-closed-' + asideConfig[id].direction) : angular.element("#" + id).toggleClass('nav-closed');
+      var $el = angular.element("#" + id);
+      $el.toggleClass('nav-closed');
+      if (asideConfig[id] !== undefined){
+        $el.toggleClass('nav-closed-' + asideConfig[id].direction)
+      }
     }
 
     function setAside(id, config) {
       asideConfig[id] = config;
-      config.direction != undefined ? angular.element("#" + id).addClass('nav-closed-' + config.direction + " nav-" + config.direction) : angular.element("#" + id).addClass('nav-closed');
-      if(config.isOffCanvas == "true"){
-        angular.element("#" + id).addClass('is-off-canvas');
+      var $el = angular.element("#" + id);
+      $el.addClass('nav-closed');
+      if (config.direction !== undefined){
+        $el.addClass('nav-closed-' + config.direction + " nav-" + config.direction)
+      }
+      if(config.isOffCanvas === "true"){
+        $el.addClass('is-off-canvas');
       }
     }
   }
