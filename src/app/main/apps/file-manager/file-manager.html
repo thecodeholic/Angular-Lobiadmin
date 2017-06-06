@@ -14,7 +14,8 @@
         </div>
         <div class="menu-right">
             <div class="search">
-                <input ng-class="{ 'hidden': ! vm.toggleSearch }" type="text"
+                <input type="text" class="form-control" placeholder="Type a search keyword"
+                       ng-class="{ 'hidden': ! vm.toggleSearch }"
                        ng-model="vm.searchValue" ng-change="vm.searchFn(vm.searchValue)">
                 <button class="btn btn-lg btn-circle btn-primary"
                         uib-tooltip="Search"
@@ -42,36 +43,7 @@
 
     <div class="main clearfix">
         <div class="off-canvas__container off-canvas__content clearfix">
-            <div om-aside om-slide-direction="left" id="fileManagerAside" class="nav-left off-canvas__nav">
-                <div class="heading"><i class="fa fa-folder" aria-hidden="true"></i>&nbsp;&nbsp;File Manager</div>
-                <div class="user-select" uib-dropdown on-toggle="toggled(open)">
-                    <a href id="user-select" uib-dropdown-toggle class="current-user">
-                        <div> {{vm.currentUser.name}} <br> {{vm.currentUser.email}} <i class="fa fa-caret-down"
-                                                                                       aria-hidden="true"></i></div>
-                    </a>
-                    <ul class="dropdown-menu" uib-dropdown-menu aria-labelledby="user-select">
-                        <li class="user" ng-repeat="user in vm.users" ng-click="vm.currentUser=user"><a>
-                            <div> {{user.name}} <br> {{user.email}}</div>
-                        </a></li>
-                    </ul>
-                </div>
-                <hr>
-                <div class="list-group">
-                    <a ng-click="vm.switchDirectory(vm.myFiles)" class="list-group-item"><i class="fa fa-folder"
-                                                                                            aria-hidden="true"></i>&nbsp;&nbsp;My
-                        Files</a>
-                    <a ng-click="vm.switchDirectory(vm.starredFiles)" class="list-group-item"><i class="fa fa-star"
-                                                                                                 aria-hidden="true"></i>&nbsp;&nbsp;Starred</a>
-                    <a ng-click="vm.switchDirectory(vm.sharedFiles)" class="list-group-item"><i class="fa fa-share"
-                                                                                                aria-hidden="true"></i>&nbsp;&nbsp;Shared
-                        with me</a>
-                    <a ng-click="vm.switchDirectory(vm.recentFiles)" class="list-group-item"><i class="fa fa-clock-o"
-                                                                                                aria-hidden="true"></i>&nbsp;&nbsp;Recent</a>
-                    <a ng-click="vm.switchDirectory(vm.offlineFiles)" class="list-group-item"><i class="fa fa-download"
-                                                                                                 aria-hidden="true"></i>&nbsp;&nbsp;Offline
-                        Files</a>
-                </div>
-            </div>
+            <div ng-include="'app/main/apps/file-manager/aside/file-menu.html'"></div>
             <div class="clearfix h-full">
                 <div ng-class="{'is-off-canvas-menu-opened' : vm.isOffCanvasMenuOpened}" class="view">
                     <div class="actions-toolbar display-table w-full">
@@ -106,45 +78,7 @@
                          ng-include="'app/main/apps/file-manager/view/list-condensed.html'">
                     </div>
                 </div>
-                <div om-aside om-slide-direction="right" om-is-off-canvas="true" id="selectedFileAside" class="selected nav-right off-canvas__nav">
-                    <div class="selected-actions">
-
-                    </div>
-                    <div class="selected-image" ng-show="vm.selectedFile != null">
-                        <img ng-if="vm.selectedFile.thumb != ''" src="{{vm.selectedFile.thumb}}" height="180"
-                             width="180">
-                        <i ng-if="vm.selectedFile.thumb == ''" class="fa fa-{{vm.selectedFile.type | typeToIcon}}"
-                           aria-hidden="true"></i>
-                    </div>
-                    <div class="selected-description" ng-show="vm.selectedFile != null">
-                        <div class="title">{{vm.selectedFile.name}}</div>
-                        <table class="table">
-                            <tr class="type">
-                                <th>{{'FILE_MANAGER.VIEW.TYPE' | translate}}:</th>
-                                <td>{{vm.selectedFile.type}}</td>
-                            </tr>
-                            <tr class="owner">
-                                <th>{{'FILE_MANAGER.VIEW.OWNER' | translate}}:</th>
-                                <td>{{vm.selectedFile.owner}}</td>
-                            </tr>
-                            <tr class="size">
-                                <th>{{'FILE_MANAGER.VIEW.SIZE' | translate}}:</th>
-                                <td>{{vm.selectedFile.size === '' ? '-': vm.selectedFile.size | bytes}}</td>
-                            </tr>
-                            <tr class="tags">
-                                <th>{{'FILE_MANAGER.VIEW.TAGS' | translate}}:</th>
-                                <td>
-                                    <span class="label label-primary" ng-repeat="tag in vm.selectedFile.tags"
-                                          ng-click="vm.filterListByTag(tag)">{{tag}}</span>
-                                </td>
-                            </tr>
-                            <tr class="date">
-                                <th>{{'FILE_MANAGER.VIEW.LAST_MODIFIED' | translate}}:</th>
-                                <td>{{vm.selectedFile.date | date:'HH:mm, dd/MM/yyyy'}}</td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
+                <div ng-include="'app/main/apps/file-manager/aside/file-detail.html'"></div>
             </div>
         </div>
     </div>

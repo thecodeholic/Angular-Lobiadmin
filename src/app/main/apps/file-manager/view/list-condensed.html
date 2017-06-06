@@ -8,70 +8,70 @@
           </label>
         </th>
         <th></th>
-        <th ng-click="orderByField='name'; vm.defaultSort = !vm.defaultSort">
+        <th ng-click="vm.orderByField = 'name'; vm.defaultSort = !vm.defaultSort">
             {{'FILE_MANAGER.VIEW.NAME' | translate}}
-            <span ng-show="orderByField == 'name'">
+            <div ng-show="vm.orderByField == 'name'">
                 <span ng-show="!vm.defaultSort">
                     <i class="fa fa-sort-asc" aria-hidden="true"></i>
                 </span>
                 <span ng-show="vm.defaultSort">
                     <i class="fa fa-sort-desc" aria-hidden="true"></i>
                 </span>
-            </span>
+            </div>
         </th>
-        <th ng-click="orderByField='type'; vm.defaultSort = !vm.defaultSort">
+        <th ng-click="vm.orderByField = 'type'; vm.defaultSort = !vm.defaultSort">
             {{'FILE_MANAGER.VIEW.TYPE' | translate}}
-            <span ng-show="orderByField == 'type'">
+            <div ng-show="vm.orderByField == 'type'">
                 <span ng-show="!vm.defaultSort">
                     <i class="fa fa-sort-asc" aria-hidden="true"></i>
                 </span>
                 <span ng-show="vm.defaultSort">
                     <i class="fa fa-sort-desc" aria-hidden="true"></i>
                 </span>
-            </span>
+            </div>
         </th>
-        <th ng-click="orderByField='owner'; vm.defaultSort = !vm.defaultSort">
+        <th ng-click="vm.orderByField = 'owner'; vm.defaultSort = !vm.defaultSort">
             {{'FILE_MANAGER.VIEW.OWNER' | translate}}
-            <span ng-show="orderByField == 'owner'">
-                                <span ng-show="!vm.defaultSort">
-                                    <i
-                                            class="fa fa-sort-asc" aria-hidden="true"></i>
-                                </span>
-                                <span ng-show="vm.defaultSort">
-                                    <i
-                                            class="fa fa-sort-desc" aria-hidden="true"></i>
-                                </span>
-                            </span>
+            <div ng-show="vm.orderByField == 'owner'">
+                <span ng-show="!vm.defaultSort">
+                    <i
+                            class="fa fa-sort-asc" aria-hidden="true"></i>
+                </span>
+                <span ng-show="vm.defaultSort">
+                    <i
+                            class="fa fa-sort-desc" aria-hidden="true"></i>
+                </span>
+            </div>
         </th>
-        <th ng-click="orderByField='size'; vm.defaultSort = !vm.defaultSort">
+        <th ng-click="vm.orderByField = 'size'; vm.defaultSort = !vm.defaultSort">
             {{'FILE_MANAGER.VIEW.SIZE' | translate}}
-            <span ng-show="orderByField == 'size'">
-                                <span ng-show="!vm.defaultSort">
-                                    <i
-                                            class="fa fa-sort-asc" aria-hidden="true"></i>
-                                </span>
-                                <span ng-show="vm.defaultSort">
-                                    <i
-                                            class="fa fa-sort-desc" aria-hidden="true"></i>
-                                </span>
-                            </span>
+            <div ng-show="vm.orderByField == 'size'">
+                <span ng-show="!vm.defaultSort">
+                    <i
+                            class="fa fa-sort-asc" aria-hidden="true"></i>
+                </span>
+                <span ng-show="vm.defaultSort">
+                    <i
+                            class="fa fa-sort-desc" aria-hidden="true"></i>
+                </span>
+            </div>
         </th>
-        <th ng-click="orderByField='date'; vm.defaultSort = !vm.defaultSort">
+        <th ng-click="vm.orderByField = 'date'; vm.defaultSort = !vm.defaultSort">
             {{'FILE_MANAGER.VIEW.LAST_MODIFIED' | translate}}
-            <span ng-show="orderByField == 'date'">
-                                <span ng-show="!vm.defaultSort">
-                                    <i class="fa fa-sort-asc" aria-hidden="true"></i>
-                                </span>
-                                <span ng-show="vm.defaultSort">
-                                    <i class="fa fa-sort-desc" aria-hidden="true"></i>
-                                </span>
-                            </span>
+            <div ng-show="vm.orderByField == 'date'">
+                <span ng-show="!vm.defaultSort">
+                    <i class="fa fa-sort-asc" aria-hidden="true"></i>
+                </span>
+                <span ng-show="vm.defaultSort">
+                    <i class="fa fa-sort-desc" aria-hidden="true"></i>
+                </span>
+            </div>
         </th>
         <th></th>
     </tr>
     </thead>
     <tbody>
-    <tr ng-repeat="file in vm.files | filter:vm.filterBy |orderBy:orderByField:vm.defaultSort"
+    <tr ng-repeat="file in vm.files | filter: vm.searchValue |orderBy:vm.orderByField:vm.defaultSort"
         ng-click="vm.selectFile(file, true)" ng-class="{'active': !!vm.selectedFiles[file.id]}">
         <td class="column-checkbox">
           <label class="checkbox lobicheck lobicheck-inverse" ng-click="$event.stopPropagation()">

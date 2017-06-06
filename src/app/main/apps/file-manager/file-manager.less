@@ -38,16 +38,18 @@
         vertical-align: middle;
         .search {
           input {
-            text-align: right;
-            height: 30px;
-            line-height: 30px;
+            width: auto;
+            display: inline-block;
+            //text-align: right;
+            height: 40px;
+            //line-height: 30px;
             font-size: 18px;
             color: white;
-            background-color: transparent;
+            background-color: rgba(0, 0, 0, 0.2);
             margin-right: 10px;
             outline: 0;
             border: 0;
-            border-bottom: 2px solid white;
+            //border-bottom: 2px solid white;
           }
         }
         > div {
@@ -166,7 +168,7 @@
       height: @fm-selected-height;
       .box-shadow(0);
       &.nav-closed-right {
-          margin-right: -@fm-selected-width;
+        margin-right: -@fm-selected-width;
       }
     }
     &#fileManagerAside {

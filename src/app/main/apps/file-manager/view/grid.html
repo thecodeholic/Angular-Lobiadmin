@@ -1,6 +1,6 @@
 <div class="grid-view">
     <div class="files row">
-        <div ng-repeat="file in vm.files | filter:vm.filterBy | orderBy:orderByField:vm.defaultSort"
+        <div ng-repeat="file in vm.files | filter: vm.searchValue | orderBy: vm.orderByField: vm.defaultSort"
              context-menu="vm.menuOptions" class="col-sm-4 col-md-3" uib-tooltip="Right Click for options"
              tooltip-placement="bottom" tooltip-popup-delay="1500">
             <div ng-click="vm.selectFile(file,true)"
