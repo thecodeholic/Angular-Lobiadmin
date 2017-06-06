@@ -1,21 +1,24 @@
 <div id="chat">
     <div class="top-menu">
-        <div class="menu-left text-center">
-            <span class="chat-title">Chat</span>
-        </div>
         <div class="menu-right text-center" ng-show="vm.selected != null">
-            <span class="contact-name" ng-show="vm.selected.username != undefined">{{vm.selected.username}}
+            <div class="contact-name" ng-show="vm.selected.username != undefined">{{vm.selected.username}}
                 <span class="contact-last-online label status-{{vm.selected.status}}">{{vm.selected.status}}</span>
-            </span>
+            </div>
             <div ng-show="vm.selected.name != undefined">
                 <span class="contact-name" ng-show="!vm.chatNameEditing">{{vm.selected.name}}</span>
                 <input class="contact-name-edit" type="text" ng-show="vm.chatNameEditing" ng-model="vm.chatName">
-                <i class="fa fa-pencil" aria-hidden="true" ng-show="!vm.chatNameEditing"
-                   ng-click="vm.chatNameEditing = true"></i>
-                <i class="fa fa-check" aria-hidden="true" ng-show="vm.chatNameEditing"
-                   ng-click="vm.isChatNameEditing(true)"></i>
-                <i class="fa fa-times" aria-hidden="true" ng-show="vm.chatNameEditing"
-                   ng-click="vm.isChatNameEditing(false)"></i>
+                <button class="btn btn-default btn-icon" ng-click="vm.chatNameEditing = true"
+                        ng-show="!vm.chatNameEditing">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                </button>
+                <button class="btn btn-default btn-icon" ng-click="vm.isChatNameEditing(true)"
+                        ng-show="vm.chatNameEditing">
+                    <i class="fa fa-check" aria-hidden="true"></i>
+                </button>
+                <button class="btn btn-default btn-icon" ng-click="vm.isChatNameEditing(false)"
+                        ng-show="vm.chatNameEditing">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </button>
             </div>
             <i class="fa fa-info-circle pull-right chat-info" aria-hidden="true"
                ng-click="vm.toggleAside('chatInfoAside')"></i>
@@ -30,10 +33,10 @@
             <div om-aside om-slide-direction="right" id="chatInfoAside" class="off-canvas__nav nav-right">
 
                 <div class="heading" ng-if="vm.selected.name != undefined">
-                  <i class="fa fa-star" aria-hidden="true"></i>&nbsp;&nbsp;{{vm.selected.name}}
+                    <i class="fa fa-star" aria-hidden="true"></i>&nbsp;&nbsp;{{vm.selected.name}}
                 </div>
                 <div class="heading" ng-if="vm.selected.username != undefined">
-                  <i class="fa fa-star" aria-hidden="true"></i>&nbsp;&nbsp;{{vm.selected.username}}
+                    <i class="fa fa-star" aria-hidden="true"></i>&nbsp;&nbsp;{{vm.selected.username}}
                 </div>
 
                 <div class="list-group" ng-if="vm.selected.name != undefined && vm.seeUserInfo == null">
@@ -55,20 +58,23 @@
             </div>
 
             <div class="left-side-wrapper">
-                <div class="input-group">
-                  <input type="text" class="form-control" placeholder="Search for...">
-                  <span class="input-group-btn">
-                    <button class="btn btn-default" type="button">
+                <div class="input-group search-group">
+                    <input type="text" class="search-input form-control" placeholder="Search for..."
+                           ng-model="vm.searched">
+                    <span class="input-group-btn">
+                    <button class="btn btn-default btn-icon" type="button">
                       <i class="search-icon fa fa-search" aria-hidden="true"></i>
                     </button>
                   </span>
                 </div><!-- /input-group -->
 
                 <uib-accordion close-others="false">
-                    <div uib-accordion-group class="panel-default" heading="Chats" is-open="vm.isChatsAccordionOpened" template-url="chat-group-template.html">
+                    <div uib-accordion-group class="panel-default" heading="Chats" is-open="vm.isChatsAccordionOpened"
+                         template-url="chat-group-template.html">
                         <div ng-include="'app/main/apps/chat/view/chat-view.html'"></div>
                     </div>
-                    <div uib-accordion-group class="panel-default" heading="Contacts" is-open="vm.isContactsAccordionOpened" template-url="chat-group-template.html">
+                    <div uib-accordion-group class="panel-default" heading="Contacts"
+                         is-open="vm.isContactsAccordionOpened" template-url="chat-group-template.html">
                         <div ng-include="'app/main/apps/chat/view/user-view.html'"></div>
                     </div>
                 </uib-accordion>
@@ -76,34 +82,25 @@
 
             <div class="messages">
 
-                <div class="chat-content" ng-show="vm.selected != null">
-                    <div id="{{message.id}}" class="message" ng-if="vm.userMessages.$$state.value.data[0] != null"
-                         ng-repeat="message in vm.userMessages.$$state.value.data"
-                         ng-class="{'margin-top-20':vm.userMessages.$$state.value.data[$index-1].who != message.who}">
+                <div id="chat-content" class="chat-content" ng-show="vm.selected != null">
+                    <div id="{{message.id}}" class="message clearfix"
+                         ng-if="vm.userMessages != null"
+                         ng-repeat="message in vm.userMessages"
+                         ng-class="{'margin-top-20':vm.userMessages[$index-1].who != message.who}">
 
-                        <div class="" ng-if="message != null">
-                            <div class="left-side clearfix pull-left" ng-if="message.who != 'me'">
+                        <div class="clearfix" ng-class="message.who !== 'me' ? 'left-side' : 'right-side'">
 
-                                <img class="message-by pull-left" ng-src="{{vm.users[message.who].thumb}}"
-                                     ng-show="vm.userMessages.$$state.value.data[$index-1].who != message.who"
-                                     uib-tooltip="{{vm.users[message.who].name}}" tooltip-popup-delay="200"
-                                     tooltip-placement="right">
+                            <img class="message-thumb pull-left" ng-src="{{vm.users[message.who].thumb}}"
+                                 ng-show="vm.userMessages[$index-1].who != message.who"
+                                 uib-tooltip="{{vm.users[message.who].username}}" tooltip-popup-delay="200"
+                                 tooltip-placement="right"
+                                 ng-class="{'hide':message.who === 'me'}">
 
-                                <div class="message-by-other pull-left text-left"
-                                      uib-tooltip="{{message.when | date:'HH:mm, dd/MM/yyyy'}}"
-                                      tooltip-popup-delay="200" tooltip-placement="right">
-                                    {{message.what}}
-                                </div>
-                            </div>
-
-                            <div class="right-side clearfix pull-right" ng-if="message.who == 'me'">
-
-                                <div class="message-by-me pull-right text-right"
-                                      uib-tooltip="{{message.when  | date:'HH:mm, dd/MM/yyyy'}}"
-                                      tooltip-popup-delay="200" tooltip-placement="left">
-                                    {{message.what}}
-                                </div>
-
+                            <div class="message-by" uib-tooltip="{{message.when | date:'HH:mm, dd/MM/yyyy'}}"
+                                 tooltip-popup-delay="200"
+                                 tooltip-placement="{{message.who !== 'me' ? 'right' : 'left'}}"
+                                 ng-class="message.who !== 'me' ? 'other' : 'me'">
+                                {{message.what}}
                             </div>
 
                         </div>
@@ -115,13 +112,14 @@
             </div>
 
             <div class="message-input" ng-show="vm.selected != null">
-                <textarea class="message-field" placeholder="Enter message and hit enter"
+                <textarea id="chat-textarea" class="message-field" placeholder="Enter message and hit enter"
                           ng-model="vm.messageToSend" ng-class="{'active': vm.messageInputClicked}"
                           ng-focus="vm.messageInputClicked = true"
                           ng-blur="vm.messageInputClicked = false"
                           ng-keydown="vm.sendMessage(vm.messageToSend,'me', $event, false)">
                 </textarea>
-                <button class="send" ng-click="vm.sendMessage(vm.messageToSend, 'me', $event, true)"><i
+                <button class="send btn btn-default btn-icon"
+                        ng-click="vm.sendMessage(vm.messageToSend, 'me', $event, true)"><i
                         class="fa fa-paper-plane" aria-hidden="true"></i></button>
             </div>
         </div>
@@ -130,16 +128,17 @@
 
 
     <script type="text/ng-template" id="chat-group-template.html">
-       <div class="panel {{panelClass || 'panel-default'}}">
-          <div class="panel-heading">
-            <h4 class="panel-title" uib-accordion-header tabindex="0" class="accordion-toggle" ng-click="toggleOpen()" uib-accordion-transclude="heading">
-                {{heading}} <i class="pull-right glyphicon glyphicon-chevron-right"></i>
-            </h4>
-          </div>
-          <div class="panel-collapse collapse" uib-collapse="!isOpen">
-            <div class="panel-body" style="text-align: right" ng-transclude></div>
-          </div>
-       </div>
+        <div class="panel {{panelClass || 'panel-default'}}">
+            <div class="panel-heading">
+                <h4 class="panel-title" uib-accordion-header tabindex="0" class="accordion-toggle"
+                    ng-click="toggleOpen()" uib-accordion-transclude="heading">
+                    {{heading}} <i class="pull-right glyphicon glyphicon-chevron-right"></i>
+                </h4>
+            </div>
+            <div class="panel-collapse collapse" uib-collapse="!isOpen">
+                <div class="panel-body" style="text-align: right" ng-transclude></div>
+            </div>
+        </div>
     </script>
 
 </div>
