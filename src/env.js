@@ -6,5 +6,5 @@
   window.__env = window.__env || {};
   window.__env.apiUrl = '/app/';
   window.__env.baseUrl = '/';
-  window.__env.enableDebug = false;
+  window.__env.enableDebug = true;
 }(this));
