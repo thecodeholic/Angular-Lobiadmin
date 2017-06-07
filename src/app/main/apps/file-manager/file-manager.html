@@ -15,12 +15,12 @@
         <div class="menu-right">
             <div class="search">
                 <input type="text" class="form-control" placeholder="Type a search keyword"
-                       ng-class="{ 'hidden': ! vm.toggleSearch }"
+                       ng-class="{ 'hidden': ! toggleSearch }"
                        ng-model="vm.searchValue" ng-change="vm.searchFn(vm.searchValue)">
                 <button class="btn btn-lg btn-circle btn-primary"
                         uib-tooltip="Search"
                         tooltip-append-to-body=true
-                        ng-click="vm.toggleSearch = ! vm.toggleSearch; vm.clearSearchResultsFn();">
+                        ng-click="toggleSearch = ! toggleSearch;">
                     <i class="fa fa-search" aria-hidden="true"></i>
                 </button>
             </div>

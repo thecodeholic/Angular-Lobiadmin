@@ -91,55 +91,55 @@
         <td>
           <!-- Single button -->
           <div class="btn-group" uib-dropdown>
-            <button class="btn btn-circle btn-outline btn-primary" uib-dropdown-toggle ng-click="$event.stopPropagation(); vm.checkFileType(file)">
+            <button class="btn btn-icon" uib-dropdown-toggle ng-click="$event.stopPropagation(); vm.checkFileType(file)">
               <span class="glyphicon glyphicon-option-vertical"></span>
             </button>
             <ul class="dropdown-menu dropdown-menu-right" uib-dropdown-menu role="menu" aria-labelledby="single-button">
               <li>
-                <a ng-click="vm.openFn()">
+                <a ng-click="vm.menuItemClick($event, 'open', file)">
                   <i class='fa fa-folder-open' aria-hidden='true'></i>
                   {{'FILE_MANAGER.MENU.OPEN' | translate}}
                 </a>
               </li>
               <li>
-                <a ng-click="vm.viewFn()">
+                <a ng-click="vm.menuItemClick($event, 'view', file)">
                   <i class='fa fa-eye' aria-hidden='true'></i>
                   {{'FILE_MANAGER.MENU.VIEW' | translate}}
                 </a>
               </li>
               <li>
-                <a ng-click="vm.downloadFn()">
+                <a ng-click="vm.menuItemClick($event, 'download', file)">
                   <i class='fa fa-download' aria-hidden='true'></i>
                   {{'FILE_MANAGER.MENU.DOWNLOAD' | translate}}
                 </a>
               </li>
               <li>
-                <a ng-click="vm.shareFn()">
+                <a ng-click="vm.menuItemClick($event, 'share', file)">
                   <i class='fa fa-share-alt' aria-hidden='true'></i>
                   {{'FILE_MANAGER.MENU.SHARE' | translate}}
                 </a>
               </li>
               <li>
-                <a ng-click="vm.manageTagsFn()">
+                <a ng-click="vm.menuItemClick($event, 'tags', file)">
                   <i class='fa fa-tags' aria-hidden='true'></i>
                   {{'FILE_MANAGER.MENU.MANAGE_TAGS' | translate}}
                 </a>
               </li>
               <li>
-                <a ng-click="vm.cutFn()">
+                <a ng-click="vm.menuItemClick($event, 'cut', file)">
                   <i class='fa fa-scissors' aria-hidden='true'></i>
                   {{'FILE_MANAGER.MENU.CUT' | translate}}
                 </a>
               </li>
               <li>
-                <a ng-click="vm.renameFn()">
+                <a ng-click="vm.menuItemClick($event, 'rename', file)">
                   <i class='fa fa-pencil' aria-hidden='true'></i>
                   {{'FILE_MANAGER.MENU.RENAME' | translate}}
                 </a>
               </li>
               <li class="divider"></li>
               <li>
-                <a ng-click="vm.deleteFn()">
+                <a ng-click="vm.menuItemClick($event, 'delete', file)">
                   <i class='fa fa-trash' aria-hidden='true'></i>
                   {{'FILE_MANAGER.MENU.DELETE' | translate}}
                 </a>

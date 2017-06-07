@@ -9,12 +9,7 @@
   function FileManagerControllerFn($rootScope, $translate, $uibModal, $log, $state, omAside, files, Files) {
     var vm = this;
 
-    vm.myFiles = files;
-    // vm.starredFiles = starredFiles;
-    // vm.sharedFiles = sharedFiles;
-    // vm.recentFiles = recentFiles;
-    // vm.offlineFiles = offlineFiles;
-    vm.selectedDirectory = files;
+    // vm.selectedCategory = files;
 
     vm.files = files.fileList;
     vm.breadcrumbs = files.breadcrumbs;
@@ -30,8 +25,7 @@
     vm.menuOptions = [];
 
     vm.searchValue = "";
-    vm.searchResults = [];
-    vm.toggleSearch = false;
+    // vm.searchResults = [];
 
     vm.canPreview = ["Image", "Video", "Audio"];
     vm.users = [
@@ -44,38 +38,30 @@
     vm.allSelected = false;
 
     // Methods
-    // --File Directory
+
+    // File Display
+    vm.toggleView = toggleView;
+
+    // File Directory
     vm.switchDirectory = switchDirectory;
-    // --File Selections
+
+    // File Selections
     vm.selectFile = selectFile;
-    vm.makeSelection = makeSelection;
-    vm.resetSelection = resetSelection;
-    vm.isAvailableForPreview = isAvailableForPreview;
     vm.selectMultiple = selectMultiple;
     vm.selectAll = selectAll;
-    // --File Display
-    vm.toggleView = toggleView;
-    // --File Type Check
+    // File Type Check
     vm.checkFileType = checkFileType;
-    // --Upload Buttons
+    // Upload Buttons
     vm.chooseFiles = chooseFiles;
     vm.chooseFolder = chooseFolder;
-    // --Search
-    vm.clearSearchResultsFn = clearSearchResultsFn;
-    // --Create/Rename Folder Modal
+    // Create/Rename Folder Modal
     vm.showCreateFolderDialog = showCreateFolderDialog;
-    vm.showRenameFolderDialog = showRenameFolderDialog;
-    // --Manage Tags Modal
-    vm.showManageTagsDialog = showManageTagsDialog;
+
+    // Menu actions
+    vm.menuItemClick = menuItemClick;
+
     vm.filterListByTag = filterListByTag;
-    // --Preview File Modal
-    vm.showPreviewFileDialog = showPreviewFileDialog;
-    // --Delete Modal
-    vm.showDeleteDialog = showDeleteDialog;
-    // --Side Menu
     vm.toggleAside = toggleAside;
-    vm.hasOffCanvasClass = hasOffCanvasClass;
-    // --Breadcrumbs click
     vm.changeDirectory = changeDirectory;
 
     /////////////////////////
@@ -91,30 +77,6 @@
       $rootScope.$on('destroy', languageChange)
     }
 
-    function translateMenu() {
-
-      $translate(['FILE_MANAGER.MENU.OPEN', 'FILE_MANAGER.MENU.SHARE', 'FILE_MANAGER.MENU.MANAGE_TAGS', 'FILE_MANAGER.MENU.CUT',
-        'FILE_MANAGER.MENU.RENAME', 'FILE_MANAGER.MENU.DELETE', 'FILE_MANAGER.MENU.VIEW',
-        'FILE_MANAGER.MENU.DOWNLOAD']).then(function (translations) {
-        vm.AllMenuOptions = {
-          /*
-           ['Menu item name', function ($itemScope, $event, modelValue, text, $li) {
-           vm.selected = $itemScope.item.name;
-           }]
-           */
-          "open": ["<i class='fa fa-folder-open' aria-hidden='true'></i> " + translations['FILE_MANAGER.MENU.OPEN'], openFn],
-          "view": ["<i class='fa fa-eye' aria-hidden='true'></i> " + translations['FILE_MANAGER.MENU.VIEW'], viewFn],
-          "download": ["<i class='fa fa-download' aria-hidden='true'></i> " + translations['FILE_MANAGER.MENU.DOWNLOAD'], downloadFn],
-          "share": ["<i class='fa fa-share-alt' aria-hidden='true'></i> " + translations['FILE_MANAGER.MENU.SHARE'], shareFn],
-          "tags": ["<i class='fa fa-tags' aria-hidden='true'></i> " + translations['FILE_MANAGER.MENU.MANAGE_TAGS'], manageTagsFn],
-          "cut": ["<i class='fa fa-scissors' aria-hidden='true'></i> " + translations['FILE_MANAGER.MENU.CUT'], cutFn],
-          "rename": ["<i class='fa fa-pencil' aria-hidden='true'></i> " + translations['FILE_MANAGER.MENU.RENAME'], renameFn],
-          "null": null, // Divider
-          "delete": ["<i class='fa fa-trash' aria-hidden='true'></i> " + translations['FILE_MANAGER.MENU.DELETE'], deleteFn]
-        };
-      });
-    }
-
     function toggleView() {
       if (vm.currentView === 'list-condensed') {
         vm.currentView = 'grid-view';
@@ -123,18 +85,22 @@
       }
     }
 
-    function selectFile(file, isLeftClick) {
+    function switchDirectory(category) {
+      $state.go('app.fileManager', {category: category});
+      Files.get({category: category}, function (response) {
+        vm.files = response.fileList;
+        vm.breadcrumbs = response.breadcrumbs;
+
+        vm.toggleAside('fileManagerAside')
+      });
+
+    }
+
+    function selectFile(file) {
 
       vm.selectedFiles = {};
       selectMultiple(file, null);
       openDetailAside();
-      // if (vm.selectedFile === file && isLeftClick) {
-      //   // resetSelection();
-      // } else {
-      //   makeSelection(file);
-      // }
-
-      // vm.checkFileType(file);
     }
 
     function selectMultiple(file) {
@@ -172,9 +138,33 @@
       }
     }
 
-    function openDetailAside(){
+    function translateMenu() {
+
+      $translate(['FILE_MANAGER.MENU.OPEN', 'FILE_MANAGER.MENU.SHARE', 'FILE_MANAGER.MENU.MANAGE_TAGS', 'FILE_MANAGER.MENU.CUT',
+        'FILE_MANAGER.MENU.RENAME', 'FILE_MANAGER.MENU.DELETE', 'FILE_MANAGER.MENU.VIEW',
+        'FILE_MANAGER.MENU.DOWNLOAD']).then(function (translations) {
+        vm.allMenuOptions = {
+          /*
+           ['Menu item name', function ($itemScope, $event, modelValue, text, $li) {
+           vm.selected = $itemScope.item.name;
+           }]
+           */
+          "open": ["<i class='fa fa-folder-open' aria-hidden='true'></i> " + translations['FILE_MANAGER.MENU.OPEN'], openFn],
+          "view": ["<i class='fa fa-eye' aria-hidden='true'></i> " + translations['FILE_MANAGER.MENU.VIEW'], viewFn],
+          "download": ["<i class='fa fa-download' aria-hidden='true'></i> " + translations['FILE_MANAGER.MENU.DOWNLOAD'], downloadFn],
+          "share": ["<i class='fa fa-share-alt' aria-hidden='true'></i> " + translations['FILE_MANAGER.MENU.SHARE'], shareFn],
+          "tags": ["<i class='fa fa-tags' aria-hidden='true'></i> " + translations['FILE_MANAGER.MENU.MANAGE_TAGS'], manageTagsFn],
+          "cut": ["<i class='fa fa-scissors' aria-hidden='true'></i> " + translations['FILE_MANAGER.MENU.CUT'], cutFn],
+          "rename": ["<i class='fa fa-pencil' aria-hidden='true'></i> " + translations['FILE_MANAGER.MENU.RENAME'], renameFn],
+          "null": null, // Divider
+          "delete": ["<i class='fa fa-trash' aria-hidden='true'></i> " + translations['FILE_MANAGER.MENU.DELETE'], deleteFn]
+        };
+      });
+    }
+
+    function openDetailAside() {
       omAside.open("selectedFileAside");
-      vm.hasOffCanvasClass("selectedFileAside");
+      hasOffCanvasClass("selectedFileAside");
     }
 
     function resetSelection() {
@@ -190,117 +180,73 @@
 
     function chooseFiles(input) {
       $log.debug(input.files);
+      // @todo Your code goes here
     }
 
     function chooseFolder(input) {
       $log.debug(input.files);
+      // @todo Your code goes here
     }
 
     function checkFileType(file) {
       vm.menuOptions = [];
-      vm.menuOptionsClone = angular.copy(vm.AllMenuOptions);
+      vm.menuOptionsClone = angular.copy(vm.allMenuOptions);
       angular.forEach(vm.menuOptionsClone, function (value, key) {
         if (file.type === 'Folder' && !(key === 'view' || key === 'download')) {
           vm.menuOptions.push(value);
-        } else if (!(file.type === 'Folder') && vm.isAvailableForPreview(file) && !(key === 'open')) {
+        } else if (!(file.type === 'Folder') && isAvailableForPreview(file) && !(key === 'open')) {
           vm.menuOptions.push(value);
-        } else if (!(file.type === 'Folder') && !vm.isAvailableForPreview(file) && !(key === 'open' || key === 'view')) {
+        } else if (!(file.type === 'Folder') && !isAvailableForPreview(file) && !(key === 'open' || key === 'view')) {
           vm.menuOptions.push(value);
         }
       });
+    }
+
+    function menuItemClick($event, action, file) {
+      $event.stopPropagation();
+      vm.allMenuOptions[action][1]({file: file});
     }
 
     function openFn($itemScope) {
       $log.debug("Open Selected File" + "\nfileID: " + $itemScope.file.id);
       $log.debug($itemScope.file);
-      vm.selectedFile = $itemScope.file;
-    }
-
-    function shareFn($itemScope) {
-      $log.debug("Share Selected File" + "\nfileID: " + $itemScope.file.id);
-      $log.debug($itemScope.file);
-      vm.selectedFile = $itemScope.file;
-    }
-
-    function manageTagsFn($itemScope) {
-      vm.selectedFile = $itemScope.file;
-      vm.showManageTagsDialog(vm.selectedFile);
-
-    }
-
-    function filterListByTag(tag) {
-      if (tag != null) {
-        vm.filterBy = tag;
-        angular.element("#filteredBy").css("display", "inline-block");
-      } else {
-        vm.filterBy = "";
-        angular.element("#filteredBy").css("display", "none");
-      }
-    }
-
-    function cutFn($itemScope) {
-      $log.debug("Cut Selected File" + "\nfileID: " + $itemScope.file.id);
-      $log.debug($itemScope.file);
-      vm.selectedFile = $itemScope.file;
-    }
-
-    function renameFn($itemScope) {
-      vm.selectedFile = $itemScope.file;
-      vm.showRenameFolderDialog(vm.selectedFile);
-    }
-
-    function deleteFn($itemScope) {
-      vm.selectedFile = $itemScope.file;
-      vm.showDeleteDialog(vm.selectedFile);
+      // @todo Your code goes here
+      // vm.selectedFile = $itemScope.file;
     }
 
     function viewFn($itemScope) {
-      vm.selectedFile = $itemScope.file;
-      vm.showPreviewFileDialog(vm.selectedFile);
+      showPreviewFileDialog($itemScope.file);
     }
 
     function downloadFn($itemScope) {
       $log.debug("Download Selected File" + "\nfileID: " + $itemScope.file.id);
       $log.debug($itemScope.file);
-      vm.selectedFile = $itemScope.file;
+      // @todo Your code goes here
     }
 
-    function clearSearchResultsFn() {
-      vm.files = vm.selectedDirectory.fileList;
-      vm.searchValue = "";
+    function shareFn($itemScope) {
+      $log.debug("Share Selected File" + "\nfileID: " + $itemScope.file.id);
+      $log.debug($itemScope.file);
+      // @todo Your code goes here
+      // vm.selectedFile = $itemScope.file;
     }
 
-    function showCreateFolderDialog() {
-      $uibModal.open({
-        templateUrl: 'app/main/apps/file-manager/dialogs/create-rename-dialog/create-rename-dialog.html',
-        controller: 'CreateRenameDialogController',
-        controllerAs: 'vm',
-        size: 'sm',
-        resolve: {
-          CurrentEntry: null,
-          FileId: vm.files[vm.files.length - 1].id + 1
-        }
-      }).result.then(function (newFolder) {
-        vm.files.push(newFolder);
-        $log.debug("resolve", arguments);
-      }, function () {
-        $log.debug("reject")
-      });
+    function manageTagsFn($itemScope) {
+      // vm.selectedFile = $itemScope.file;
+      showManageTagsDialog($itemScope.file);
     }
 
-    function showRenameFolderDialog(renameTarget) {
-      $uibModal.open({
-        templateUrl: 'app/main/apps/file-manager/dialogs/create-rename-dialog/create-rename-dialog.html',
-        controller: 'CreateRenameDialogController',
-        controllerAs: 'vm',
-        size: 'sm',
-        resolve: {
-          CurrentEntry: function () {
-            return {name: renameTarget.name};
-          },
-          FileId: vm.selectedFile.id
-        }
-      }).result.then(function (newName) {
+    function cutFn($itemScope) {
+      $log.debug("Cut Selected File" + "\nfileID: " + $itemScope.file.id);
+      $log.debug($itemScope.file);
+      // @todo Your code goes here
+      // vm.selectedFile = $itemScope.file;
+    }
+
+    function renameFn($itemScope) {
+      // vm.selectedFile = $itemScope.file;
+      showCreateRenameDialog($itemScope.file)
+        .result.then(function (newName) {
         vm.selectedFile.name = newName.name;
         $log.debug("resolve", arguments);
       }, function () {
@@ -308,23 +254,58 @@
       });
     }
 
-    function showManageTagsDialog() {
+    function deleteFn($itemScope) {
+      // vm.selectedFile = $itemScope.file;
+      showDeleteDialog($itemScope.file);
+    }
+
+    function showManageTagsDialog(currentFileFolder) {
       $uibModal.open({
         templateUrl: 'app/main/apps/file-manager/dialogs/manage-tags-dialog/manage-tags-dialog.html',
         controller: 'ManageTagsController',
         controllerAs: 'vm',
-        size: 'sm',
         resolve: {
-          CurrentTags: function () {
-            return vm.selectedFile.tags;
-          }
+          FileFolder: currentFileFolder
         }
       }).result.then(function (tags) {
-        vm.selectedFile.tags = tags;
-        $log.debug("resolve", arguments);
+        currentFileFolder.tags = tags;
+        $log.debug("User updated tags", tags);
+      }, function () {
+        $log.debug("User canceled manage tags dialog")
+      });
+    }
+
+    function filterListByTag(tag) {
+      // if (tag != null) {
+      //   vm.filterBy = tag;
+      //   angular.element("#filteredBy").css("display", "inline-block");
+      // } else {
+      //   vm.filterBy = "";
+      //   angular.element("#filteredBy").css("display", "none");
+      // }
+    }
+
+    function showCreateFolderDialog() {
+      showCreateRenameDialog(null)
+        .result.then(function (newFolder) {
+        vm.files.push(newFolder);
+        Lobibox.notify('success', {
+          msg: 'Folder "'+newFolder.name+'" has been successfully created'
+        });
       }, function () {
         $log.debug("reject")
       });
+    }
+
+    function showCreateRenameDialog(fileFolder) {
+      return $uibModal.open({
+        templateUrl: 'app/main/apps/file-manager/dialogs/create-rename-dialog/create-rename-dialog.html',
+        controller: 'CreateRenameDialogController',
+        controllerAs: 'vm',
+        resolve: {
+          FileFolder: fileFolder
+        }
+      })
     }
 
     function showPreviewFileDialog(file) {
@@ -335,40 +316,32 @@
           controllerAs: 'vm',
           size: 'md',
           resolve: {
-            CurrentEntry: function () {
-              return file;
-            }
+            CurrentEntry: file
           }
         });
       } else {
-        $log.error("Not a valid type");
+        Lobibox.notify('error', {
+          msg: "Preview is not available for this file type"
+        });
       }
     }
 
     function showDeleteDialog(file) {
-      $uibModal.open({
-        templateUrl: 'app/main/apps/file-manager/dialogs/delete-dialog/delete-dialog.html',
-        controller: 'DeleteDialogController',
-        controllerAs: 'vm',
-        size: 'md',
-        resolve: {
-          CurrentEntry: vm.selectedFile
+      Lobibox.confirm({
+        title: 'Deleting "' + file.name + '"',
+        msg: "Are you sure you want to delete this " + (file.type.toLowerCase() === 'folder' ? 'folder' : 'file' ) + "?",
+        callback: function (lobibox, btn) {
+          if (btn === 'yes') {
+            vm.files.splice(file.id, 1);
+            resetSelection();
+          }
         }
-      }).result.then(function () {
-        vm.files.splice(file.id, 1);
-        for (var i = 0; i < vm.files.length; i++) {
-          vm.files[i].id = i; //ID UPDATE
-        }
-        resetSelection();
-        $log.debug("resolve", arguments);
-      }, function () {
-        $log.debug("reject")
       });
     }
 
     function toggleAside(id) {
       omAside.toggle(id);
-      vm.hasOffCanvasClass(id);
+      hasOffCanvasClass(id);
     }
 
     function hasOffCanvasClass(id) {
@@ -380,22 +353,6 @@
 
     function changeDirectory(crumb) {
       vm.breadcrumbs = vm.breadcrumbs.slice(0, vm.breadcrumbs.indexOf(crumb) + 1);
-    }
-
-    function switchDirectory(category) {
-      $state.go('app.fileManager', {category: category});
-      Files.get({category: category}, function(response){
-        debugger;
-        vm.files = response.fileList;
-        vm.breadcrumbs = response.breadcrumbs;
-
-        vm.toggleAside('fileManagerAside')
-      });
-
-      // vm.files = switchTo.fileList;
-      // vm.breadcrumbs = switchTo.breadcrumbs;
-      // vm.selectedDirectory = switchTo;
-      // vm.toggleAside('fileManagerAside');
     }
   }
 })();

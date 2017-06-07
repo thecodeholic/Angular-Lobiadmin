@@ -1,12 +1,13 @@
 <div id="manage-tags-dialog">
     <div class="modal-header">
         <h3 class="modal-title" id="modal-title">
-            <span><i class="fa fa-tags" aria-hidden="true"></i>&nbsp;&nbsp;Manage Tags</span>
+            <span><i class="fa fa-tags" aria-hidden="true"></i>&nbsp;&nbsp;Manage Tags for "{{vm.currentFileFolder.name}}"</span>
         </h3>
     </div>
     <div class="modal-body" id="modal-body">
         <!--<pre>{{vm.currentTags | json}}</pre>-->
-        <input om-tagsinput ng-model="vm.currentTags">
+        <label>Type your tag name and press ENTER</label>
+        <input om-tagsinput ng-model="vm.currentFileFolder.tags">
     </div>
     <div class="modal-footer">
         <button class="btn btn-primary" type="button" ng-click="vm.ok()">OK</button>

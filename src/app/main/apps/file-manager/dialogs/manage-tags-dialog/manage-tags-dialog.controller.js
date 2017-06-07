@@ -9,11 +9,13 @@
     .controller('ManageTagsController', ManageTagsControllerFn);
 
   /** @ngInject */
-  function ManageTagsControllerFn($uibModalInstance, CurrentTags) {
+  function ManageTagsControllerFn($uibModalInstance, FileFolder) {
     var vm = this;
 
     // variables
-    vm.currentTags = CurrentTags || [];
+    vm.currentFileFolder = angular.copy(FileFolder);
+    vm.currentFileFolder.tags = vm.currentFileFolder.tags || [];
+
 
     // Methods
     vm.ok = ok;
@@ -21,7 +23,11 @@
 
 
     function ok(){
-      $uibModalInstance.close(vm.currentTags);
+      var tags = vm.currentFileFolder.tags;
+      if (tags.length === 1 && !tags[0]){
+        tags = [];
+      }
+      $uibModalInstance.close(tags);
     }
 
     function cancel(){

@@ -9,13 +9,16 @@
     .controller('CreateRenameDialogController', CreateRenameDialogControllerFn);
 
   /** @ngInject */
-  function CreateRenameDialogControllerFn($uibModalInstance, CurrentEntry, FileId) {
-    var vm = this;
+  function CreateRenameDialogControllerFn($log, $uibModalInstance, FileFolder) {
+    var vm = this,
+      randomId = Math.round(Math.random() * 1000000);
+
+    $log.debug("Generating random ID ", randomId);
+
     // variables
-    vm.isRename = CurrentEntry != null;
-    vm.currentEntry = CurrentEntry || {
-      "id": FileId,
-      "icon": "<i class='fa fa-folder-open' aria-hidden='true'></i>",
+    vm.isRename = FileFolder !== null;
+    vm.currentEntry = FileFolder || {
+      "id": randomId,
       "name": "",
       "type": "Folder",
       "thumb": "",
@@ -32,6 +35,8 @@
 
 
     function ok() {
+      $log.debug("Implement saving/updating ");
+      // @todo Your code goes here
       $uibModalInstance.close(vm.currentEntry);
     }
 
