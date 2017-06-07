@@ -34,6 +34,15 @@
     toastrConfig.positionClass = 'toast-top-right';
     toastrConfig.preventDuplicates = true;
     toastrConfig.progressBar = true;
+
+
+    //Overriding default options
+    Lobibox.notify.DEFAULTS = $.extend({}, Lobibox.notify.DEFAULTS, {
+      sound: false,
+      size: 'mini',
+      position: 'top right',
+      delayIndicator: false
+    });
   }
 
 })();
