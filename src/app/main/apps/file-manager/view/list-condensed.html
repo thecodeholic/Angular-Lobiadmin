@@ -72,10 +72,10 @@
     </thead>
     <tbody>
     <tr ng-repeat="file in vm.files | filter: vm.searchValue |orderBy:vm.orderByField:vm.defaultSort"
-        ng-click="vm.selectFile(file, true)" ng-class="{'active': !!vm.selectedFiles[file.id]}">
+        ng-click="vm.selectFile(file, true)" ng-class="{'active': vm.selectedFiles.indexOf(file) > -1}">
         <td class="column-checkbox">
           <label class="checkbox lobicheck lobicheck-inverse" ng-click="$event.stopPropagation()">
-              <input type="checkbox" ng-click="vm.selectMultiple(file)" ng-checked="!!vm.selectedFiles[file.id]">
+              <input type="checkbox" ng-click="vm.selectMultiple(file)" ng-checked="vm.selectedFiles.indexOf(file) > -1">
               <i></i>
           </label>
         </td>

@@ -48,27 +48,44 @@
                 <div ng-class="{'is-off-canvas-menu-opened' : vm.isOffCanvasMenuOpened}" class="view">
                     <div class="actions-toolbar display-table w-full">
                         <div class="vertical-align-middle">
-                            <div class="btn-group" role="group">
-                                <button type="button" class="btn btn-primary btn-upload" ng-click="vm.openFileUpload()">
-                                    {{'FILE_MANAGER.MENU.UPLOAD_FILE' | translate}}
-                                    <input onchange="angular.element(this).scope().vm.chooseFiles(this, event)" type="file"
-                                           multiple=""/>
-                                </button>
-                                <button type="button" class="btn btn-primary btn-upload" ng-click="vm.openFolderUpload()">
-                                    {{'FILE_MANAGER.MENU.UPLOAD_FOLDER' | translate}}
-                                    <input type="file" onchange="angular.element(this).scope().vm.chooseFolder(this, event)"
-                                           webkitdirectory="" mozdirectory="" msdirectory="" odirectory="" directory=""
-                                           multiple=""/>
-                                </button>
-                                <button type="button" class="btn btn-primary btn-upload"
-                                        ng-click="vm.showCreateFolderDialog()">
-                                    {{'FILE_MANAGER.MENU.CREATE_FOLDER' | translate}}
+                            <div class="btn-toolbar btn-toolbar-info btn-toolbar-pretty">
+                                <div class="btn-group" role="group">
+                                    <button type="button" class="btn btn-upload" ng-click="vm.openFileUpload()">
+                                        <i class="fa fa-cloud-upload"></i>
+                                        {{'FILE_MANAGER.MENU.UPLOAD_FILE' | translate}}
+                                        <input onchange="angular.element(this).scope().vm.chooseFiles(this, event)" type="file"
+                                               multiple=""/>
+                                    </button>
+                                    <button type="button" class="btn btn-upload" ng-click="vm.openFolderUpload()">
+                                        <i class="fa fa-upload"></i>
+                                        {{'FILE_MANAGER.MENU.UPLOAD_FOLDER' | translate}}
+                                        <input type="file" onchange="angular.element(this).scope().vm.chooseFolder(this, event)"
+                                               webkitdirectory="" mozdirectory="" msdirectory="" odirectory="" directory=""
+                                               multiple=""/>
+                                    </button>
+                                    <button type="button" class="btn"
+                                            ng-click="vm.showCreateFolderDialog()">
+                                        <i class="fa fa-edit"></i>
+                                        {{'FILE_MANAGER.MENU.CREATE_FOLDER' | translate}}
+                                    </button>
+                                </div>
+                                <div class="btn-group" role="group">
+                                    <button type="button" class="btn" ng-disabled="!vm.selectedFiles.length"
+                                            ng-click="vm.deleteSelectedFolders()">
+                                        <i class="fa fa-trash"></i>
+                                        {{'FILE_MANAGER.MENU.DELETE' | translate}}
+                                    </button>
+                                    <button type="button" class="btn" ng-disabled="!vm.selectedFiles.length"
+                                            ng-click="vm.downloadSelectedFolders()">
+                                        <i class="fa fa-trash"></i>
+                                        {{'FILE_MANAGER.MENU.DOWNLOAD' | translate}}
+                                    </button>
+                                </div>
+                                <button id="filteredBy" type="button" class="btn btn-default pull-right"
+                                        ng-click="vm.filterListByTag(null)">
+                                    {{vm.filterBy}}&nbsp;&nbsp;<i class="fa fa-times" aria-hidden="true"></i>
                                 </button>
                             </div>
-                            <button id="filteredBy" type="button" class="btn btn-default pull-right"
-                                    ng-click="vm.filterListByTag(null)">
-                                {{vm.filterBy}}&nbsp;&nbsp;<i class="fa fa-times" aria-hidden="true"></i>
-                            </button>
                         </div>
                     </div>
                     <div class="files-wrapper" ng-if="vm.currentView === 'grid-view'"

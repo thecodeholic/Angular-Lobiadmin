@@ -6,7 +6,7 @@
     .controller('FileManagerController', FileManagerControllerFn);
 
   /** @ngInject */
-  function FileManagerControllerFn($rootScope, $translate, $uibModal, $log, $state, omAside, files, Files) {
+  function FileManagerControllerFn($scope, $rootScope, $translate, $uibModal, $log, $state, omAside, files, Files) {
     var vm = this;
 
     // vm.selectedCategory = files;
@@ -15,7 +15,7 @@
     vm.breadcrumbs = files.breadcrumbs;
 
     vm.selectedFile = null;
-    vm.selectedFiles = {};
+    vm.selectedFiles = [];
 
     vm.currentView = 'list-condensed';
     vm.orderByField = 'name';
@@ -49,6 +49,8 @@
     vm.selectFile = selectFile;
     vm.selectMultiple = selectMultiple;
     vm.selectAll = selectAll;
+    vm.deleteSelectedFolders = deleteSelectedFolders;
+
     // File Type Check
     vm.checkFileType = checkFileType;
     // Upload Buttons
@@ -98,7 +100,7 @@
 
     function selectFile(file) {
 
-      vm.selectedFiles = {};
+      vm.selectedFiles = [];
       selectMultiple(file, null);
       openDetailAside();
     }
@@ -108,33 +110,58 @@
 
       makeSelection(file);
 
-      if (Object.keys(vm.selectedFiles).length === 0) {
+      if (vm.selectedFiles.length === 0) {
         resetSelection();
       }
     }
 
     function selectAll() {
       if (!vm.allSelected) {
-        vm.selectedFiles = {};
+        vm.selectedFiles = [];
         if (vm.files.length > 0) {
           vm.selectedFile = vm.files[0];
         }
         angular.forEach(vm.files, function (file, ind) {
-          vm.selectedFiles[file.id] = file;
+          vm.selectedFiles.push(file);
         });
       } else {
-        vm.selectedFiles = {};
+        vm.selectedFiles = [];
       }
       vm.allSelected = !vm.allSelected;
     }
 
+    function deleteSelectedFolders(){
+      var numOfFiles = vm.selectedFiles.length;
+      Lobibox.confirm({
+        title: 'Deleting '+numOfFiles+' files',
+        msg: 'Are you sure you want to delete selected files?',
+        callback: function(lobibox, btn){
+          if (btn === 'yes'){
+            // @todo Your code goes here
+            $scope.$apply(function(){
+              angular.forEach(vm.selectedFiles, function(file, ind){
+                vm.files.splice(vm.files.indexOf(file), 1);
+                vm.selectedFiles.splice(ind, 1);
+              });
+              resetSelection();
+            });
+
+            Lobibox.notify('success', {
+              msg: numOfFiles+' files have been successfully deleted'
+            })
+          }
+        }
+      })
+    }
+
     function makeSelection(file) {
       vm.selectedFile = file;
-      if (vm.selectedFiles[file.id]) {
-        delete vm.selectedFiles[file.id];
+      var ind;
+      if ((ind = vm.selectedFiles.indexOf(file)) > -1) {
+        vm.selectedFiles.splice(ind, 1);
         vm.allSelected = false;
       } else {
-        vm.selectedFiles[file.id] = file;
+        vm.selectedFiles.push(file);
       }
     }
 
