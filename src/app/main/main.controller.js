@@ -10,7 +10,9 @@
 
   /** @ngInject */
   function MainController($scope) {
-    var vm = this;
+    const vm = this;
+
+    vm.sss = "something";
 
     // Variables
     vm.contacts = [

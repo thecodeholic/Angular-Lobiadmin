@@ -6,3 +6,5 @@ coverage/
 .tmp/
 dist/
 src/env.js
+
+npm-debug.log

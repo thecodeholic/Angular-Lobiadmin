@@ -7,6 +7,7 @@
 
       'app.core',
 
+      'app.components',
       'app.pages',
 
       'app.dashboard',

@@ -19,7 +19,8 @@
       'toastr',
       'ui.bootstrap',
       'daterangepicker',
-      'ngTable'
+      'ngTable',
+      'lobipanel'
     ])
     .config(Config);
 
